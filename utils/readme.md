@@ -1,0 +1,1 @@
+Place here the files needed to build the application depending on the target platform.

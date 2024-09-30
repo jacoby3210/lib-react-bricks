@@ -1,0 +1,1 @@
+Images of general applications used.
