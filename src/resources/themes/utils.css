@@ -1,0 +1,39 @@
+a {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  text-decoration: none;
+}
+
+a:visited {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0px;
+}
+
+p {
+  white-space: pre-wrap;
+}
+
+div,
+footer,
+header,
+main,
+section {
+  box-sizing: border-box;
+}
+
+#root {
+  box-sizing: border-box;
+  width: 100vw;
+}/*# sourceMappingURL=utils.css.map */

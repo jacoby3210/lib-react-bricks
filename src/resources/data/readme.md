@@ -1,0 +1,1 @@
+General application data (db, text, etc).
