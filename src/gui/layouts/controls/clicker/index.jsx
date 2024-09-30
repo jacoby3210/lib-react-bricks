@@ -1,4 +1,4 @@
-import { defaultProps, propTypes } from './config';
+import { propValues, propTypes } from './config';
 
 // ------------------------------------------------------------------------- //
 // React Component to track the user's clicks and display the total value.
@@ -22,12 +22,12 @@ const Component = props => {
 
     // render 
     return (
-      <div id={id} onClick={handleClick} value={value} {...attributes}>
+      <div id={id} onClick={handleClick} cost={cost} value={value} {...attributes}>
         {value}
       </div>
     );
 };
 
-export const NativeClicker = {Component, defaultProps};
+export const Clicker = {Component, propValues};
 
 // ========================================================================= //

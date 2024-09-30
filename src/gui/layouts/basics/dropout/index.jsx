@@ -1,37 +1,37 @@
-import {DEFAULT_CLASS, propsValues, propTypes } from "./config"
-import { DropdownButton } from './helpers';
+import {propValues, propTypes } from "./config"
+import { DropdownButton } from './code';
 // ------------------------------------------------------------------------- //
 // React Component for rendering a dropout layouts.
 // ------------------------------------------------------------------------- //
 
 export const Component = props => {
 
-	// initial data
-	const {
-		id,
-		children,
-		caption,
-		shownState,
-		setShownState,
-		...attributes
-	} = props;
+  // initial data
+  const {
+    id,
+    children,
+    caption,
+    shownState,
+    setShownState,
+    ...attributes
+  } = props;
 
-	// render 
-	const handleClick = (evt) => {
-		evt.stopPropagation();
-		setShownState(!shownState)
-	}
+  // render 
+  const handleClick = (evt) => {
+    evt.stopPropagation();
+    setShownState(!shownState)
+  }
 
-	return (
-		shownState 
-			? <>
-					<DropdownButton caption={caption} onClick={handleClick}/>
-					{children}
-				</> 
-			: <DropdownButton caption={caption} onClick={handleClick}/>
-	);
+  return (
+    shownState 
+      ? <>
+          <DropdownButton caption={caption} onClick={handleClick}/>
+          {children}
+        </> 
+      : <DropdownButton caption={caption} onClick={handleClick}/>
+  );
 };
 
-export const NativeDropout = {Component, propsValues}
+export const Dropout = {Component, propValues}
 
 // ------------------------------------------------------------------------- //

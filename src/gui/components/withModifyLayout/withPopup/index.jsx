@@ -10,11 +10,12 @@ export const withPopup = (WrappedComponent) => {
 		// initial data
 		const {parentRef, shown} = props;
 
-		// hooks
+    // hooks
     const [shownState, setShownState] = useState(shown);
 
 		// inputs
     const handleClickOutside = useCallback((event) => {
+      console.log(parentRef?.current)
 			if (!parentRef?.current.contains(event.target)) {
 				setShownState(false);
 			}

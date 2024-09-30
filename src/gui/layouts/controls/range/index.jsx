@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {DEFAULT_CLASS, defaultProps, propTypes } from "./config"
+import {propValues, propTypes } from "./config"
 import {
 	horizontalProps, verticalProps, 
 	RangeTrack, RangeThumb, 
 	getPosition, positionToValue, valueAnimate, valueToStyle,
-} from './helpers';
+} from './code';
 
 // ------------------------------------------------------------------------- //
 // React Component to select a value from the suggested numeric range.
@@ -78,7 +78,7 @@ const Component = props => {
 
 	return (
 		<div
-			id={id} className={`${className}-range`}
+			id={id} className={`${className}`}
 			axis={propsAxis.axis} value={value} {...attributes}
 		>
 			<RangeTrack {...trackProps}>
@@ -90,6 +90,6 @@ const Component = props => {
 };
 
 Component.propTypes = propTypes;
-export const NativeRange = {Component, defaultProps};
+export const Range = {Component, propValues};
 
 // ------------------------------------------------------------------------- //

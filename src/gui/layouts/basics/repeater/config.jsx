@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import * as CommonConfig from "/src/gui/config.jsx"
+import {TemplateViewItemDefault} from "./code.jsx"
 // ------------------------------------------------------------------------- //
 // Constants.
 // ------------------------------------------------------------------------- //
 
-export const CSS_CLASS_DEFAULT = `${CommonConfig.CSS_CLASS_DEFAULT}-dropout`;
+export const CSS_CLASS_DEFAULT = `${CommonConfig.CSS_CLASS_DEFAULT}-repeater`;
 
 // ------------------------------------------------------------------------- //
 // Type checking.
@@ -12,8 +13,11 @@ export const CSS_CLASS_DEFAULT = `${CommonConfig.CSS_CLASS_DEFAULT}-dropout`;
 
 export const propTypes = {
   ... CommonConfig.propTypes,
-  value: PropTypes.any,
-  whenValueChange: PropTypes.func,
+  from: PropTypes.number,
+	length: PropTypes.number,
+	src: PropTypes.array,
+	TemplateViewItem: PropTypes.func,
+	templateViewItemProps: PropTypes.object,
 };
 
 // ------------------------------------------------------------------------- //
@@ -22,8 +26,11 @@ export const propTypes = {
 
 export const propValues = {
   ... CommonConfig.propValues(CSS_CLASS_DEFAULT),
-  value: null,                                    // current value.
-  whenValueChange: (next, prev) => next,          // callback to handle the value state update.
+  from: 0,																				// start index to display elements.
+	length: 0,																			// length of items to display (count).
+	src: [],																				// source data array provider for mapping.
+	TemplateItem: TemplateViewItemDefault, 					// template to generate a gui for an individual item in an array.
+	templateItemProps: {},													// additional properties common to all child elements.
 };
 
 // ------------------------------------------------------------------------- //

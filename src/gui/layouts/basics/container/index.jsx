@@ -1,5 +1,5 @@
 import {useRef} from "react"
-import {DEFAULT_CLASS, propsValues, propTypes } from "./config"
+import {propValues, propTypes } from "./config"
 // ------------------------------------------------------------------------- //
 // React Component for use as a container for other components.
 // ------------------------------------------------------------------------- //
@@ -23,6 +23,6 @@ export const Component = props => {
     );
 };
 
-export const NativeContainer = {Component, propsValues}
+export const Container = {Component, propValues}
 
 // ------------------------------------------------------------------------- //

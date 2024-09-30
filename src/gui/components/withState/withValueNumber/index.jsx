@@ -1,4 +1,4 @@
-import { getDecimalPlaces } from './helpers';
+import { getDecimalPlaces } from './code';
 // ------------------------------------------------------------------------- //
 // HOC to control the state of the value (number) in the wrapped component.	 //
 // ------------------------------------------------------------------------- //

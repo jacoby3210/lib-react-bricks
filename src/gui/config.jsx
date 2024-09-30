@@ -20,6 +20,11 @@ export const propTypes = {
 		PropTypes.array,
 		PropTypes.object,
 	]),
+  classNameDefault: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.array,
+		PropTypes.object,
+	]),
 	id: PropTypes.string,
 };
 
@@ -30,8 +35,9 @@ export const propTypes = {
 export const propValues = (className, id = null) => ({
 	children: [],
 	className,
+	classNameDefault: className,
 	id: id,
 });
 
 
-// ========================================================================= //
+// ------------------------------------------------------------------------- //

@@ -1,4 +1,4 @@
-import { defaultProps, propTypes } from './config';
+import { propValues, propTypes } from './config';
 
 // ------------------------------------------------------------------------- //
 // React Component wrapping around the classic checkbox for simplicity.
@@ -9,6 +9,7 @@ const Component = props => {
 	// initial data
 	const {
 		id,
+    children,
 		value,
 		whenValueChange,
 		whenValueModify,
@@ -17,7 +18,7 @@ const Component = props => {
 
   // handlers
   const handleChange = () => whenValueChange(!value, value);
-
+      console.log(attributes)
 	// render 
 	return (
 		<input 
@@ -25,11 +26,11 @@ const Component = props => {
       type="checkbox" 
 			value={value}
       onChange={handleChange} 
-			{...attributes}
+      {...attributes}
     />
 	);
 };
 
-export const NativeCheckBox = {Component, defaultProps};
+export const CheckBox = {Component, propValues};
 
 // ------------------------------------------------------------------------- //

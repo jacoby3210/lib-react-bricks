@@ -7,9 +7,9 @@ export const RadioBarTemplate = (props) => {
 	const {index, meta, common, ...attributes} = props;
 	const handleChange = (e) => common.whenValueChange(e.target.value);
 
-  return (<label className={`${DEFAULT_CLASS}-option`} key={index}>
+  return (<label className={`${common.classNameDefault}-option`} key={index}>
 		<input
-			className={`${DEFAULT_CLASS}-input`}
+			className={`${common.classNameDefault}-input`}
 			checked={meta.value == common.value}
 			name={common.name}
 			type="radio"

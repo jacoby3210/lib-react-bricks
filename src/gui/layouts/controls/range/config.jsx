@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import * as CommonConfig from "./src/gui/config.jsx"
+import * as CommonConfig from "/src/gui/config.jsx"
 // ------------------------------------------------------------------------- //
 // Constants.
 // ------------------------------------------------------------------------- //
 
-export const DEFAULT_CLASS = `${CommonConfig.DEFAULT_CLASS}-range`;
+export const CSS_CLASS_DEFAULT = `${CommonConfig.CSS_CLASS_DEFAULT}-range`;
 
 // ------------------------------------------------------------------------- //
 // Type checking.
@@ -25,8 +25,8 @@ export const propTypes = {
 // Values by default.
 // ------------------------------------------------------------------------- //
 
-export const propsValues = {
-  ... CommonConfig.propValues(DEFAULT_CLASS),
+export const propValues = {
+  ... CommonConfig.propValues(CSS_CLASS_DEFAULT),
   axis: false,                                     // axis in the depth of which the GUI component is located.
   min: 0.0,                                        // minimum value available for choice.
   max: 1.0,                                        // maximum value available for choice.

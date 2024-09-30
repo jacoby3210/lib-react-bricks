@@ -1,6 +1,5 @@
 import {useRef} from 'react'
-import {DEFAULT_CLASS,  defaultProps, propTypes } from './config';
-
+import {propValues, propTypes } from './config';
 // ------------------------------------------------------------------------- //
 // React Component to control the increase/decrease of the value.
 // ------------------------------------------------------------------------- //
@@ -48,6 +47,6 @@ const Component = props => {
 	);
 };
 
-export const NativeSwing = {Component, defaultProps};
+export const Swing = {Component, propValues};
 
 // ------------------------------------------------------------------------- //

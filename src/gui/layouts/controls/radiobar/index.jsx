@@ -1,4 +1,4 @@
-import { DEFAULT_CLASS, defaultProps, propTypes } from "./config";
+import { propValues, propTypes } from "./config";
 
 // ------------------------------------------------------------------------- //
 // React Component to output multiple radio buttons as a single component.  
@@ -16,6 +16,6 @@ const Component = props => {
 	return (<div/>);
 };
 
-export const NativeRadioBar = {Component, defaultProps};
+export const RadioBar = {Component, propValues};
 
 // ------------------------------------------------------------------------- //

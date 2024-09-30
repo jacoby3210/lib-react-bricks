@@ -23,7 +23,7 @@ export const RangeTrack = receivedProps => {
 	const { children, className, trackRef, ...attributes } = receivedProps;
 	return (
 		<div
-			className={`${className}-range-track`}
+			className={`${className}-track`}
 			ref={trackRef}
 			{...attributes}
 		> {children}
@@ -34,7 +34,7 @@ export const RangeTrack = receivedProps => {
 export const RangeThumb = receivedProps => {
 	const { children, className, thumbRef, ...attributes } = receivedProps;
 	return (<div
-		className={`${className}-range-thumb`}
+		className={`${className}-thumb`}
 		ref={thumbRef}
 		{...attributes}
 	/>);
