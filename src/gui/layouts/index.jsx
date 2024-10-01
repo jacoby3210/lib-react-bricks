@@ -15,4 +15,7 @@ export {RadioBar}         from "./controls/radiobar";   // - to output multiple 
 export {Range}            from "./controls/range";      // - to select a value from the suggested numeric range.
 export {Swing}            from "./controls/swing";      // - to control the increase/decrease of the value
 
+// Components - partials - interface elements interacting with the user by means of a mouse.
+export {Slider} 					from "./partials/slider";			// - represents universal customizable content scroller.
+
 // ------------------------------------------------------------------------- //

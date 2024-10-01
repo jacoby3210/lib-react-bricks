@@ -8,19 +8,19 @@
 	width: 50%;
 }
 
-.rc-slider-range-track,	.rc-range-track {
+.rc-slider-track,	.rc-range-track {
 	height: 100%;
 	width: 100%;
 }
 
-.rc-slider-range-thumb, .rc-range-thumb {
+.rc-slider-thumb, .rc-range-thumb {
 	background-color: olivedrab;
 	height: 24px;
 	width: 24px;
 	position: relative;
 }
 
-.rc-slider-range[axis=vertical], .rc-range[axis=vertical] {
+.rc-slider[axis=vertical], .rc-range[axis=vertical] {
 	background-color: orangered;
 	padding-bottom: 24px;
 	height: 100px;

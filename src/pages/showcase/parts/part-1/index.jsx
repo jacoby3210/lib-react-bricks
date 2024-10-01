@@ -27,7 +27,9 @@ export const ExamplePart1 = receivedProps => {
       <GUI.Widgets.Range     {...props.rangeHorizontal} />
       <GUI.Widgets.Range     {...props.rangeVertical} />
       <GUI.Widgets.Swing     {...props.swing} />
-      {/* <GUI.Widgets.Slider     {...props.slider} /> */}
+
+      {/* partials */}
+      <GUI.Widgets.Slider     {...props.slider} />
 
       {/* fields */}
       {/* <Components.Advisor {...propValues.advisor}/>

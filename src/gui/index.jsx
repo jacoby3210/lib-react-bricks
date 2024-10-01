@@ -4,7 +4,6 @@
 import * as HOC from "./components"
 import * as Layouts from "./layouts"
 
-// import {Layouts.Slider} 					from "./layouts/partials/slider";			// - represents universal customizable content scroller.
 
 //
 const Container = HOC.withMergeProps(Layouts.Container.propValues) (Layouts.Container.Component);
@@ -23,12 +22,17 @@ const Range     = HOC.withMergeProps(Layouts.Range.propValues)
 const Swing     = HOC.withMergeProps(Layouts.Swing.propValues)    
   (HOC.withValue(HOC.withValueNumber(HOC.withContainer(Layouts.Swing.Component))));
 
+const Slider 		= HOC.withMergeProps(Layouts.Slider.propValues)	
+  (HOC.withValue(HOC.withValueNumber(HOC.withContainer(Layouts.Slider.Component))));
+
+
 // external module api
 export const GUI = {
   HOC,    
   Widgets: {
     Container, Dropout, Empty, Repeater,
     CheckBox,  Clicker, RadioBar, Range, Swing,
+    Slider,
   }
  }
 
