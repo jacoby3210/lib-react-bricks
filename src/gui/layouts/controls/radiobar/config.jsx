@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types';
-import * as CommonConfig from "/src/gui/config.jsx"
+import * as cfg from "/src/gui/config.jsx"
 import * as Code from "./code.jsx"
 // ------------------------------------------------------------------------- //
 // Constants.
 // ------------------------------------------------------------------------- //
 
-export const CSS_CLASS_DEFAULT = `${CommonConfig.CSS_CLASS_DEFAULT}-radio-bar`;
+export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-radio-bar`;
 
 // ------------------------------------------------------------------------- //
 // Type checking.
 // ------------------------------------------------------------------------- //
 
 export const propTypes = {
-  ... CommonConfig.propTypes,
+  ... cfg.propTypes,
   Template: PropTypes.func,
   src: PropTypes.array,
   value: PropTypes.any,
@@ -24,7 +24,7 @@ export const propTypes = {
 // ------------------------------------------------------------------------- //
 
 export const propValues = {
-  ... CommonConfig.propValues(CSS_CLASS_DEFAULT),
+  ... cfg.propValues(CSS_CLASS_DEFAULT),
   name: "switch",                                 //
   Template: Code.RadioBarTemplate,                //
   src: [],                                        //

@@ -21,7 +21,7 @@ export const withContainer = (WrappedComponent) => {
 		// render
     return (
 			<div id={id} ref={selfRef} className={className} value={value}>
-				<WrappedComponent parentRef={selfRef} {...props}>
+				<WrappedComponent rootRef={selfRef} {...props}>
 					{children}
 				</WrappedComponent>
 			</div>

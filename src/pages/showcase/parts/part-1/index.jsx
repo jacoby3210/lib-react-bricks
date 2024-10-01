@@ -29,13 +29,13 @@ export const ExamplePart1 = receivedProps => {
       <GUI.Widgets.Swing     {...props.swing} />
 
       {/* partials */}
+      <GUI.Widgets.Select     {...props.select}/>
       <GUI.Widgets.Slider     {...props.slider} />
 
       {/* fields */}
       {/* <Components.Advisor {...propValues.advisor}/>
       <Components.Cloud {...propValues.cloud}/>
       <Components.Switcher {...propValues.select}/> */}
-      {/* <Components.Select     {...propValues.select}/> */}
       
       {/* deprecated */}
       {/* <Components.Path {...propValues.path}/> */}

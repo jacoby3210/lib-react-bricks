@@ -60,7 +60,21 @@ export const defaultProps = {
 	rangeHorizontal: { axis: true, min: 0, max: 10, step: 0.0001, value: 5 },
 	rangeVertical: { min: 0, max: 50, step: 0.1, value: 5 },
 	swing: { min: 0, max: 50, step: 0.1, value: 5 },
-	slider: { min: 0, max: 50, step: 0.1, value: 5 },
+
+  //
+	select: {
+		length: 5,
+		src: produceEntries(5, (v, i) => ({ 
+			caption: `Option #${i}`, 
+			value: i,
+			onMouseDown: (e) => {
+        console.log(`Option #${i}`); 
+        return false;
+      } 
+		})),
+		value: 0,
+	},
+  slider: { min: 0, max: 50, step: 0.1, value: 5 },
 
 	// fields
 	advisor: {
@@ -76,17 +90,7 @@ export const defaultProps = {
 			return {caption: `Option #${i}`, text: `Option #${i}`, id: i}
 		}),
 	},
-	select: {
-		length: 5,
-		src: produceEntries(5, (v, i) => { 
-			return { 
-				caption: `Option #${i}`, 
-				value: i,
-				onClick: (e) => {console.log(`Option #${i}`); return false;} 
-			} 
-		}),
-		value: 0,
-	},
+
 };
 
 // ========================================================================= //

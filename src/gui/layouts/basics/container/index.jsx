@@ -17,7 +17,7 @@ export const Component = props => {
 
 		// render
     return (
-			<div id={id} className={className} value={value}>
+			<div id={id} className={className} value={value} {...attributes}>
 				{children}
 			</div>
     );

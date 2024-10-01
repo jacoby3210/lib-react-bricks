@@ -1,15 +1,20 @@
+// ------------------------------------------------------------------------- //
 // Header file for export module.
+// ------------------------------------------------------------------------- //
 
 // hocs
 import * as HOC from "./components"
 import * as Layouts from "./layouts"
 
-
-//
-const Container = HOC.withMergeProps(Layouts.Container.propValues) (Layouts.Container.Component);
-const Dropout 	= HOC.withMergeProps(Layouts.Dropout.propValues) (HOC.withPopup(HOC.withContainer(Layouts.Dropout.Component)));
-const Empty     = HOC.withMergeProps(Layouts.Empty.propValues)(Layouts.Empty.Component);
-const Repeater  = HOC.withMergeProps(Layouts.Repeater.propValues)(HOC.withValue(HOC.withDataSource(Layouts.Repeater.Component)));
+// Compile widgets
+const Container = HOC.withMergeProps(Layouts.Container.propValues) 
+  (Layouts.Container.Component);
+const Dropout 	= HOC.withMergeProps(Layouts.Dropout.propValues) 
+  (HOC.withContainer(HOC.withPopup(Layouts.Dropout.Component)));
+const Empty     = HOC.withMergeProps(Layouts.Empty.propValues)
+  (Layouts.Empty.Component);
+const Repeater  = HOC.withMergeProps(Layouts.Repeater.propValues)
+  (HOC.withValue(HOC.withDataSource(Layouts.Repeater.Component)));
 
 const CheckBox  = HOC.withMergeProps(Layouts.CheckBox.propValues) 
   (HOC.withValue(Layouts.CheckBox.Component));
@@ -22,9 +27,10 @@ const Range     = HOC.withMergeProps(Layouts.Range.propValues)
 const Swing     = HOC.withMergeProps(Layouts.Swing.propValues)    
   (HOC.withValue(HOC.withValueNumber(HOC.withContainer(Layouts.Swing.Component))));
 
+const Select 		= HOC.withMergeProps(Layouts.Select.propValues)	
+  (HOC.withValue(HOC.withDataSource(HOC.withContainer(HOC.withPopup(Layouts.Select.Component)))));
 const Slider 		= HOC.withMergeProps(Layouts.Slider.propValues)	
-  (HOC.withValue(HOC.withValueNumber(HOC.withContainer(Layouts.Slider.Component))));
-
+  (HOC.withValue(HOC.withValueNumber(HOC.withContainer(Layouts.Select.Component))));
 
 // external module api
 export const GUI = {
@@ -32,8 +38,8 @@ export const GUI = {
   Widgets: {
     Container, Dropout, Empty, Repeater,
     CheckBox,  Clicker, RadioBar, Range, Swing,
-    Slider,
+    Select, Slider,
   }
  }
 
-// ========================================================================= //
+// ------------------------------------------------------------------------- //

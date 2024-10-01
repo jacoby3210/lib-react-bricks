@@ -17,18 +17,18 @@ export const Component = props => {
   } = props;
 
   // render 
-  const handleClick = (evt) => {
+  const handleMouseDown = (evt) => {
     evt.stopPropagation();
-    setShownState(!shownState)
+    setShownState(!shownState);
   }
 
   return (
     shownState 
       ? <>
-          <DropdownButton caption={caption} onClick={handleClick}/>
+          <DropdownButton caption={caption} onMouseDown={handleMouseDown}/>
           {children}
         </> 
-      : <DropdownButton caption={caption} onClick={handleClick}/>
+      : <DropdownButton caption={caption} onMouseDown={handleMouseDown}/>
   );
 };
 

@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types';
-import * as CommonConfig from "/src/gui/config.jsx"
+import * as cfg from "/src/gui/config.jsx"
 import {TemplateViewItemDefault} from "./code.jsx"
 // ------------------------------------------------------------------------- //
 // Constants.
 // ------------------------------------------------------------------------- //
 
-export const CSS_CLASS_DEFAULT = `${CommonConfig.CSS_CLASS_DEFAULT}-repeater`;
+export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-repeater`;
 
 // ------------------------------------------------------------------------- //
 // Type checking.
 // ------------------------------------------------------------------------- //
 
 export const propTypes = {
-  ... CommonConfig.propTypes,
+  ... cfg.propTypes,
   from: PropTypes.number,
 	length: PropTypes.number,
 	src: PropTypes.array,
@@ -25,7 +25,7 @@ export const propTypes = {
 // ------------------------------------------------------------------------- //
 
 export const propValues = {
-  ... CommonConfig.propValues(CSS_CLASS_DEFAULT),
+  ... cfg.propValues(CSS_CLASS_DEFAULT),
   from: 0,																				// start index to display elements.
 	length: 0,																			// length of items to display (count).
 	src: [],																				// source data array provider for mapping.

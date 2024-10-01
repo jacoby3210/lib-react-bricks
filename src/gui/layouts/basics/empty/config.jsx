@@ -1,21 +1,21 @@
 import PropTypes from 'prop-types';
-import * as CommonConfig from "/src/gui/config.jsx"
+import * as cfg from "/src/gui/config.jsx"
 // ------------------------------------------------------------------------- //
 // Constants.
 // ------------------------------------------------------------------------- //
 
-export const CSS_CLASS_DEFAULT = `${CommonConfig.CSS_CLASS_DEFAULT}-empty`;
+export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-empty`;
 
 // ------------------------------------------------------------------------- //
 // Type checking.
 // ------------------------------------------------------------------------- //
 
-export const propTypes = { ... CommonConfig.propTypes };
+export const propTypes = { ... cfg.propTypes };
 
 // ------------------------------------------------------------------------- //
 // Values by default.
 // ------------------------------------------------------------------------- //
 
-export const propValues = { ... CommonConfig.propValues(CSS_CLASS_DEFAULT),};
+export const propValues = { ... cfg.propValues(CSS_CLASS_DEFAULT),};
 
 // ------------------------------------------------------------------------- //

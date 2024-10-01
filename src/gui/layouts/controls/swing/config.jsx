@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
-import * as CommonConfig from "/src/gui/config.jsx"
+import * as cfg from "/src/gui/config.jsx"
 // ------------------------------------------------------------------------- //
 // Constants.
 // ------------------------------------------------------------------------- //
 
-export const CSS_CLASS_DEFAULT = `${CommonConfig.CSS_CLASS_DEFAULT}-swing`;
+export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-swing`;
 
 // ------------------------------------------------------------------------- //
 // Type checking.
 // ------------------------------------------------------------------------- //
 
 export const propTypes = {
-  ... CommonConfig.propTypes,
+  ... cfg.propTypes,
   axis: PropTypes.bool,
   min: PropTypes.number,
   max: PropTypes.number,
@@ -26,7 +26,7 @@ export const propTypes = {
 // ------------------------------------------------------------------------- //
 
 export const propValues = {
-  ... CommonConfig.propValues(CSS_CLASS_DEFAULT),
+  ... cfg.propValues(CSS_CLASS_DEFAULT),
   axis: false,                                     // axis in the depth of which the GUI component is located.
   min: 0.0,                                        // minimum value available for choice.
   max: 1.0,                                        // maximum value available for choice.

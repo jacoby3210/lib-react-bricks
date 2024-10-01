@@ -3,16 +3,16 @@ import {CSS_CLASS_DEFAULT, propValues, propTypes } from "./config"
 // Helper functions.																												 //
 // ------------------------------------------------------------------------- //
 
-export const DropdownButton = receivedProps => {
+export const DropdownButton = props => {
+  const cssPrefix = `${props.classNameDefault}-button`; 
+  props.classNameDefault
 	return (
-		<button className={`${CSS_CLASS_DEFAULT}-button`} onClick={receivedProps?.onClick}>
-			<span className={`${CSS_CLASS_DEFAULT}-button-caption`}>
-				{receivedProps?.caption}
-			</span>
-			<span className={`${CSS_CLASS_DEFAULT}-button-arrow`}>
+		<button className={cssPrefix} {...props}>
+			<span className={`${cssPrefix}-caption`}>{props?.caption}</span>
+			<span className={`${cssPrefix}-arrow`}>
 				<i className={'fa-solid fa-chevron-down'}></i>
 			</span>
-			<span className={`${CSS_CLASS_DEFAULT}-button-caption`}/>
+			<span className={`${cssPrefix}-caption`}/>
 		</button>
 	);
 }
