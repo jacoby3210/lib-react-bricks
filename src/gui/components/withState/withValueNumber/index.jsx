@@ -25,10 +25,9 @@ export const withValueNumber = (WrappedComponent) => {
 		};
 
 		// render
-		const packProps = {...attributes, min, max, step};
     return (
       <WrappedComponent
-        {...packProps}
+        {...props}
 				value={value}
         whenValueChange={handleChange}
       />

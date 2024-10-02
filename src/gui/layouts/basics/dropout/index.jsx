@@ -1,5 +1,5 @@
-import {propValues, propTypes } from "./config"
 import { DropdownButton } from './code';
+import * as cfg from "./config"
 // ------------------------------------------------------------------------- //
 // React Component for rendering a dropout layouts.
 // ------------------------------------------------------------------------- //
@@ -8,12 +8,10 @@ export const Component = props => {
 
   // initial data
   const {
-    id,
     children,
     caption,
     shownState,
     setShownState,
-    ...attributes
   } = props;
 
   // render 
@@ -32,6 +30,7 @@ export const Component = props => {
   );
 };
 
-export const Dropout = {Component, propValues}
+Component.propTypes = cfg.propTypes;
+export const Dropout = {cfg, Component}
 
 // ------------------------------------------------------------------------- //

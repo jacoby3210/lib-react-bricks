@@ -8,7 +8,7 @@ export const TemplateSelectOptionDefault = receivedProps => {
   return (
     <option 
       {...attributes}
-      className={`${common.classNameDefault}-option`} 
+      className={`${common.type}-option`} 
       onMouseDown={meta?.onMouseDown} 
       value={meta?.value}
       {...attributes}

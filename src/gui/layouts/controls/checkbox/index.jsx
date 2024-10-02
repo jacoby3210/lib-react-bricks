@@ -1,5 +1,4 @@
-import { propValues, propTypes } from './config';
-
+import * as cfg from "./config"
 // ------------------------------------------------------------------------- //
 // React Component wrapping around the classic checkbox for simplicity.
 // ------------------------------------------------------------------------- //
@@ -18,8 +17,8 @@ const Component = props => {
 
   // handlers
   const handleChange = () => whenValueChange(!value, value);
-      console.log(attributes)
-	// render 
+
+  // render 
 	return (
 		<input 
       checked={value} 
@@ -31,6 +30,7 @@ const Component = props => {
 	);
 };
 
-export const CheckBox = {Component, propValues};
+Component.propTypes = cfg.propTypes;
+export const CheckBox = {cfg, Component};
 
 // ------------------------------------------------------------------------- //

@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {propValues, propTypes } from "./config"
+import * as cfg from "./config"
 import {
 	horizontalProps, verticalProps, 
 	RangeTrack, RangeThumb, 
 	getPosition, positionToValue, valueAnimate, valueToStyle,
 } from './code';
-
 // ------------------------------------------------------------------------- //
 // React Component to select a value from the suggested numeric range.
 // ------------------------------------------------------------------------- //
@@ -89,7 +88,7 @@ const Component = props => {
 	);
 };
 
-Component.propTypes = propTypes;
-export const Range = {Component, propValues};
+Component.propTypes = cfg.propTypes;
+export const Range = {cfg, Component};
 
 // ------------------------------------------------------------------------- //

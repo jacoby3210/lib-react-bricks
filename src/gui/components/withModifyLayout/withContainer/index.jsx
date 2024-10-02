@@ -13,6 +13,7 @@ export const withContainer = (WrappedComponent) => {
 			className,
 			children,
 			value,
+      Template,
 		} = props;
 
 		// hooks

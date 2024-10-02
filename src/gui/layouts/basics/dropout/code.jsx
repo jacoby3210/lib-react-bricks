@@ -1,11 +1,10 @@
-import {CSS_CLASS_DEFAULT, propValues, propTypes } from "./config"
 // ------------------------------------------------------------------------- //
-// Helper functions.																												 //
+// Contains helper code that ensures the component's operation.
 // ------------------------------------------------------------------------- //
 
 export const DropdownButton = props => {
-  const cssPrefix = `${props.classNameDefault}-button`; 
-  props.classNameDefault
+  const cssPrefix = `${props.type}-button`; 
+  props.type
 	return (
 		<button className={cssPrefix} {...props}>
 			<span className={`${cssPrefix}-caption`}>{props?.caption}</span>

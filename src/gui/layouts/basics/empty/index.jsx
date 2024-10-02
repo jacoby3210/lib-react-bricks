@@ -1,4 +1,4 @@
-import {propValues, propTypes } from "./config"
+import * as cfg from "./config"
 // ========================================================================= //
 // React Component - use in place where the syntax requires component.
 // ========================================================================= //
@@ -7,6 +7,7 @@ export const Component = props => {
 		return (<></>);
 };
 
-export const Empty = {Component, propValues}
+Component.propTypes = cfg.propTypes;
+export const Empty = {cfg, Component}
 
 // ------------------------------------------------------------------------- //

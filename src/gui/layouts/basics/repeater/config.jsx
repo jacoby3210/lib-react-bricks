@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import * as cfg from "/src/gui/config.jsx"
-import {TemplateViewItemDefault} from "./code.jsx"
+import {TemplateDefault} from "./code.jsx"
 // ------------------------------------------------------------------------- //
 // Constants.
 // ------------------------------------------------------------------------- //
@@ -16,8 +16,7 @@ export const propTypes = {
   from: PropTypes.number,
 	length: PropTypes.number,
 	src: PropTypes.array,
-	TemplateViewItem: PropTypes.func,
-	templateViewItemProps: PropTypes.object,
+	Template: PropTypes.func,
 };
 
 // ------------------------------------------------------------------------- //
@@ -29,8 +28,7 @@ export const propValues = {
   from: 0,																				// start index to display elements.
 	length: 0,																			// length of items to display (count).
 	src: [],																				// source data array provider for mapping.
-	TemplateItem: TemplateViewItemDefault, 					// template to generate a gui for an individual item in an array.
-	templateItemProps: {},													// additional properties common to all child elements.
+	Template: TemplateDefault, 	            				// template to generate a gui for an individual item in an array.
 };
 
 // ------------------------------------------------------------------------- //

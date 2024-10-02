@@ -8,7 +8,14 @@ import * as cfg from "./config"
 const Component = props => {
 
 	// initial data
-	const {children, rootRef, src, value, whenValueChange} = props;
+	const {
+    children, 
+    rootRef, 
+    src, 
+    value, 
+    whenValueChange, 
+    whenValueModify
+  } = props;
 	const caption = src?.find(item => item.value == value).caption;
 	
   // 
@@ -34,6 +41,7 @@ const Component = props => {
 	);
 };
 
-export const Select ={Component, propValues: cfg.propValues}
+Component.propTypes = cfg.propTypes;
+export const Select ={cfg, Component }
 
 // ------------------------------------------------------------------------- //

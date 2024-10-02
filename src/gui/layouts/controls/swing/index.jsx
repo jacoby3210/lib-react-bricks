@@ -1,5 +1,5 @@
 import {useRef} from 'react'
-import {propValues, propTypes } from './config';
+import * as cfg from './config';
 // ------------------------------------------------------------------------- //
 // React Component to control the increase/decrease of the value.
 // ------------------------------------------------------------------------- //
@@ -47,6 +47,7 @@ const Component = props => {
 	);
 };
 
-export const Swing = {Component, propValues};
+Component.propTypes = cfg.propTypes;
+export const Swing = {cfg, Component};
 
 // ------------------------------------------------------------------------- //

@@ -1,5 +1,4 @@
-import { propValues, propTypes } from './config';
-
+import * as cfg from './config';
 // ------------------------------------------------------------------------- //
 // React Component to track the user's clicks and display the total value.
 // ------------------------------------------------------------------------- //
@@ -28,6 +27,7 @@ const Component = props => {
     );
 };
 
-export const Clicker = {Component, propValues};
+Component.propTypes = cfg.propTypes;
+export const Clicker = {cfg, Component};
 
 // ========================================================================= //

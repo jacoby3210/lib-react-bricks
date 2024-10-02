@@ -20,7 +20,7 @@ export const propTypes = {
 		PropTypes.array,
 		PropTypes.object,
 	]),
-  classNameDefault: PropTypes.oneOfType([
+  type: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.array,
 		PropTypes.object,
@@ -35,7 +35,7 @@ export const propTypes = {
 export const propValues = (className, id = null) => ({
 	children: [],
 	className,
-	classNameDefault: className,
+	type: className,
 	id: id,
 });
 

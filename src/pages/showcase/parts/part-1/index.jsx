@@ -10,7 +10,6 @@ export const ExamplePart1 = receivedProps => {
     <>
       {/* basics */}
       <GUI.Widgets.Container/>
-      {/* <Components.Indicator   {...props.indicator}/> */}
       <GUI.Widgets.Dropout       {...props.popup}>
         <span>{"Its Popup!"}</span>
       </GUI.Widgets.Dropout>
@@ -40,6 +39,7 @@ export const ExamplePart1 = receivedProps => {
       {/* deprecated */}
       {/* <Components.Path {...propValues.path}/> */}
       {/* <Components.Timer {...propValues.timer}/> */}
+      {/* <Components.Indicator   {...props.indicator}/> */}
 
     </>
   );

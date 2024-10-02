@@ -1,6 +1,6 @@
 import { Range } from '../../controls/range';
 import { Swing } from '../../controls/swing';
-import {propValues, propTypes } from "./config"
+import * as cfg from "./config"
 // ------------------------------------------------------------------------- //
 // React Component represents Range with control buttons.
 // ------------------------------------------------------------------------- //
@@ -19,7 +19,7 @@ const Component = props => {
 	);
 };
 
-Component.propTypes = propTypes;
-export const Slider = {Component, propValues};
+Component.propTypes = cfg.propTypes;
+export const Slider = {cfg, Component};
 
 // ------------------------------------------------------------------------- //
