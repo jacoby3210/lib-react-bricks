@@ -18,7 +18,7 @@ const Component = props => {
   } = props;
 	const caption = src?.find(item => item.value == value).caption;
 	
-  // 
+  // handlers
   const handleClick = (e) => {
     const el = e.target.closest("option");
     whenValueChange(el.value)

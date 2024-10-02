@@ -1,12 +1,9 @@
-// ------------------------------------------------------------------------- //
-// Header file for export module.
-// ------------------------------------------------------------------------- //
-
-// hocs
 import * as HOC from "./components"
 import * as Layouts from "./layouts"
+// ------------------------------------------------------------------------- //
+// Header file for export module. Compile widgets.
+// ------------------------------------------------------------------------- //
 
-// Compile widgets
 const Container = HOC.withMergeProps(Layouts.Container.cfg.propValues) 
   (Layouts.Container.Component);
 const Dropout 	= HOC.withMergeProps(Layouts.Dropout.cfg.propValues) 
@@ -21,7 +18,7 @@ const CheckBox  = HOC.withMergeProps(Layouts.CheckBox.cfg.propValues)
 const Clicker   = HOC.withMergeProps(Layouts.Clicker.cfg.propValues)  
   (HOC.withValue(Layouts.Clicker.Component));
 const RadioBar  = HOC.withMergeProps(Layouts.RadioBar.cfg.propValues) 
-  (HOC.withValue(HOC.withDataSource(Layouts.Container.Component)));
+  (HOC.withValue(HOC.withDataSource(Layouts.RadioBar.Component)));
 const Range     = HOC.withMergeProps(Layouts.Range.cfg.propValues)    
   (HOC.withValue(HOC.withValueNumber(Layouts.Range.Component)));
 const Swing     = HOC.withMergeProps(Layouts.Swing.cfg.propValues)    

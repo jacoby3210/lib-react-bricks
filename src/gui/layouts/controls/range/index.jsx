@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
+import * as code from './code';
 import * as cfg from "./config"
-import {
-	horizontalProps, verticalProps, 
-	RangeTrack, RangeThumb, 
-	getPosition, positionToValue, valueAnimate, valueToStyle,
-} from './code';
+// {
+// 	horizontalProps, verticalProps, 
+// 	RangeTrack, RangeThumb, 
+// 	getPosition, positionToValue, valueAnimate, valueToStyle,
+// } 
 // ------------------------------------------------------------------------- //
 // React Component to select a value from the suggested numeric range.
 // ------------------------------------------------------------------------- //
@@ -19,7 +20,7 @@ const Component = props => {
 		whenValueModify,
 		...attributes
 	} = props;
-	const propsAxis = axis ? horizontalProps : verticalProps;
+	const propsAxis = axis ? code.horizontalProps : code.verticalProps;
 
 	// hooks.
 	const trackRef = useRef(null), thumbRef = useRef(null);
@@ -64,14 +65,14 @@ const Component = props => {
 
 	const handleMouseMove = (evt) => {
 		const rect = trackRef.current.getBoundingClientRect();
-		const relativePos = getPosition(rect, propsAxis, evt[propsAxis.cursor], offsetState);
-		const newValue = positionToValue(relativePos, min, max, step)
+		const relativePos = code.getPosition(rect, propsAxis, evt[propsAxis.cursor], offsetState);
+		const newValue = code.positionToValue(relativePos, min, max, step)
 		handleChange(newValue);
 		evt.preventDefault();
 	};
 
 	// render 
-	const thumbStyle = valueToStyle(axis, value, min, max);
+	const thumbStyle = code.valueToStyle(axis, value, min, max);
 	const trackProps = {className, trackRef, onMouseDown: handleTrackMouseDown };
 	const thumbProps = {className, thumbRef, style: thumbStyle, onMouseDown: handleThumbMouseDown };
 
@@ -80,9 +81,9 @@ const Component = props => {
 			id={id} className={`${className}`}
 			axis={propsAxis.axis} value={value} {...attributes}
 		>
-			<RangeTrack {...trackProps}>
-				<RangeThumb {...thumbProps} />
-			</RangeTrack >
+			<code.RangeTrack {...trackProps}>
+				<code.RangeThumb {...thumbProps} />
+			</code.RangeTrack >
 			<span>{value}</span>
 		</div>
 	);

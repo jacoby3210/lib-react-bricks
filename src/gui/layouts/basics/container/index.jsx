@@ -11,8 +11,6 @@ export const Component = props => {
 			id,
 			className,
 			children,
-      src,
-      Template,
 			value,
       whenValueChange,
       whenValueModify,

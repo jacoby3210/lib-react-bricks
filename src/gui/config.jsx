@@ -35,7 +35,6 @@ export const propTypes = {
 export const propValues = (className, id = null) => ({
 	children: [],
 	className,
-	type: className,
 	id: id,
 });
 

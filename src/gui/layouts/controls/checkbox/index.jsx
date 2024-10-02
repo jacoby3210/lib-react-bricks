@@ -9,6 +9,7 @@ const Component = props => {
 	const {
 		id,
     children,
+    onChange = (evt) => {},
 		value,
 		whenValueChange,
 		whenValueModify,
@@ -16,16 +17,19 @@ const Component = props => {
 	} = props;
 
   // handlers
-  const handleChange = () => whenValueChange(!value, value);
+  const handleChange = (evt) => {
+    onChange(evt),
+    whenValueChange(!value, value);
+  }
 
   // render 
 	return (
 		<input 
+      {...attributes}
       checked={value} 
       type="checkbox" 
 			value={value}
       onChange={handleChange} 
-      {...attributes}
     />
 	);
 };

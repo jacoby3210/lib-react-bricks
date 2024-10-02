@@ -21,7 +21,7 @@ const Component = props => {
 
     // render 
     return (
-      <div id={id} onClick={handleClick} cost={cost} value={value} {...attributes}>
+      <div {...attributes} id={id} onClick={handleClick} cost={cost} value={value} >
         {value}
       </div>
     );

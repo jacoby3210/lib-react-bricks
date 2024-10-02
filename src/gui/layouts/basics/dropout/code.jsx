@@ -2,12 +2,12 @@
 // Contains helper code that ensures the component's operation.
 // ------------------------------------------------------------------------- //
 
-export const DropdownButton = props => {
-  const cssPrefix = `${props.type}-button`; 
-  props.type
+export const DropoutButton = props => {
+  const {className, caption, ...attributes} = props;
+  const cssPrefix = `${className.split(" ")[0]}-button`; 
 	return (
-		<button className={cssPrefix} {...props}>
-			<span className={`${cssPrefix}-caption`}>{props?.caption}</span>
+		<button className={cssPrefix} {...attributes}>
+			<span className={`${cssPrefix}-caption`}>{caption}</span>
 			<span className={`${cssPrefix}-arrow`}>
 				<i className={'fa-solid fa-chevron-down'}></i>
 			</span>

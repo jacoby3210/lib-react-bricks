@@ -3,15 +3,15 @@
 // ------------------------------------------------------------------------- //
 
 // template for forming a gui by metadata.
-export const TemplateSelectOptionDefault = receivedProps => {					
-  const {common, meta, ...attributes} = receivedProps;
+export const TemplateDefault = receivedProps => {					
+  const {common, meta} = receivedProps;
+  const {className, ...attributes} = common;
   return (
     <option 
       {...attributes}
-      className={`${common.type}-option`} 
+      className={`${className.split(" ")[0]}-option`} 
       onMouseDown={meta?.onMouseDown} 
       value={meta?.value}
-      {...attributes}
     >
       {meta.caption}
     </option>

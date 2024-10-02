@@ -1,4 +1,4 @@
-import { DropdownButton } from './code';
+import { DropoutButton } from './code';
 import * as cfg from "./config"
 // ------------------------------------------------------------------------- //
 // React Component for rendering a dropout layouts.
@@ -10,23 +10,25 @@ export const Component = props => {
   const {
     children,
     caption,
+    className,
     shownState,
     setShownState,
   } = props;
 
   // render 
-  const handleMouseDown = (evt) => {
-    evt.stopPropagation();
-    setShownState(!shownState);
+  const dropoutButtonProps = {
+    caption, 
+    className,
+    onMouseDown: (evt) => {
+      evt.stopPropagation();
+      setShownState(!shownState);
+    }
   }
 
   return (
     shownState 
-      ? <>
-          <DropdownButton caption={caption} onMouseDown={handleMouseDown}/>
-          {children}
-        </> 
-      : <DropdownButton caption={caption} onMouseDown={handleMouseDown}/>
+      ? <><DropoutButton {...dropoutButtonProps}/>{children}</>
+      : <DropoutButton {...dropoutButtonProps}/>
   );
 };
 

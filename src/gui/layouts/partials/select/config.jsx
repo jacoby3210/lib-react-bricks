@@ -29,7 +29,7 @@ export const propTypes = {
 export const propValues = {
   ... cfg.propValues(CSS_CLASS_DEFAULT),
   src: [],																				// data source for repeated output of items.
-  Template: code.TemplateSelectOptionDefault,			// jsx template for displaying item data in the ui.
+  Template: code.TemplateDefault,			            // jsx template for displaying item data in the ui.
 	value: 0,																				// current setup value.
   whenValueChange: (next, prev) => next,          // callback to handle the value state update.
 };
