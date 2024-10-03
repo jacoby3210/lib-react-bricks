@@ -7,25 +7,25 @@ export const withContainer = (WrappedComponent) => {
 
   return props => {
 
-		// initial props
-		const {
-			id,
-			className,
-			children,
-			value,
+    // initial props
+    const {
+      id,
+      className,
+      children,
+      value,
       Template,
-		} = props;
+    } = props;
 
-		// hooks
-		const selfRef = useRef(null);
+    // hooks
+    const selfRef = useRef(null);
 
-		// render
+    // render
     return (
-			<div id={id} ref={selfRef} className={className} value={value}>
-				<WrappedComponent rootRef={selfRef} {...props}>
-					{children}
-				</WrappedComponent>
-			</div>
+      <div id={id} ref={selfRef} className={className} value={value}>
+        <WrappedComponent rootRef={selfRef} {...props}>
+          {children}
+        </WrappedComponent>
+      </div>
     );
   };
 

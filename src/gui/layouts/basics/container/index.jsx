@@ -6,25 +6,25 @@ import * as cfg from "./config"
 
 export const Component = props => {
 
-		// initial props
-		const {
-			id,
-			className,
-			children,
-			value,
+    // initial props
+    const {
+      id,
+      className,
+      children,
+      value,
       whenValueChange,
       whenValueModify,
-			...attributes
-		} = props;
+      ...attributes
+    } = props;
 
-		// hooks
-		const selfRef = useRef(null);
+    // hooks
+    const selfRef = useRef(null);
 
-		// render
+    // render
     return (
-			<div id={id} className={className} value={value} {...attributes}>
-				  {children}
-			</div>
+      <div id={id} className={className} value={value} {...attributes}>
+          {children}
+      </div>
     );
 };
 

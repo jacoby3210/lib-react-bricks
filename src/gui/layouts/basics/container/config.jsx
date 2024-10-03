@@ -12,8 +12,8 @@ export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-container`;
 
 export const propTypes = {
   ... cfg.propTypes,
-	value: PropTypes.any,
-	whenValueChange: PropTypes.func,
+  value: PropTypes.any,
+  whenValueChange: PropTypes.func,
 };
 
 // ------------------------------------------------------------------------- //
@@ -22,8 +22,8 @@ export const propTypes = {
 
 export const propValues = {
   ... cfg.propValues(CSS_CLASS_DEFAULT),
-	value: null,																		// current value.
-	whenValueChange: (next, prev) => next,					// callback to handle the value state update.
+  value: null,                                    // current value.
+  whenValueChange: (next, prev) => next,          // callback to handle the value state update.
 };
 
 // ------------------------------------------------------------------------- //

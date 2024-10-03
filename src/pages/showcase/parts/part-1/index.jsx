@@ -20,26 +20,26 @@ export const ExamplePart1 = receivedProps => {
       {/* <Components.Accordion   {...propValues.accordion} /> */}
 
       {/* controls */}
-      <GUI.Widgets.CheckBox   value={false}/>
-      <GUI.Widgets.Clicker   {...props.clicker}/>
-      <GUI.Widgets.RadioBar  {...props.radioBar}/>
-      <GUI.Widgets.Range     {...props.rangeHorizontal} />
-      <GUI.Widgets.Range     {...props.rangeVertical} />
-      <GUI.Widgets.Swing     {...props.swing} />
+      <GUI.Widgets.CheckBox value={false}/>
+      <GUI.Widgets.Clicker  {...props.clicker}/>
+      <GUI.Widgets.RadioBar {...props.radioBar}/>
+      <GUI.Widgets.Range    {...props.rangeHorizontal} />
+      <GUI.Widgets.Range    {...props.rangeVertical} />
+      <GUI.Widgets.Swing    {...props.swing} />
 
       {/* partials */}
-      <GUI.Widgets.Select     {...props.select}/>
-      <GUI.Widgets.Slider     {...props.slider} />
+      <GUI.Widgets.Select   {...props.select}/>
+      <GUI.Widgets.Slider   {...props.slider} />
+      <GUI.Widgets.Switcher {...props.select}/> 
 
       {/* fields */}
-      {/* <Components.Advisor {...propValues.advisor}/>
-      <Components.Cloud {...propValues.cloud}/>
-      <Components.Switcher {...propValues.select}/> */}
+      {/* <GUI.Widgets.Advisor {...propValues.advisor}/> */}
+      {/* <GUI.Widgets.Cloud {...propValues.cloud}/> */}
       
       {/* deprecated */}
-      {/* <Components.Path {...propValues.path}/> */}
-      {/* <Components.Timer {...propValues.timer}/> */}
-      {/* <Components.Indicator   {...props.indicator}/> */}
+      {/* <GUI.Widgets.Path {...propValues.path}/> */}
+      {/* <GUI.Widgets.Timer {...propValues.timer}/> */}
+      {/* <GUI.Widgets.Indicator   {...props.indicator}/> */}
 
     </>
   );

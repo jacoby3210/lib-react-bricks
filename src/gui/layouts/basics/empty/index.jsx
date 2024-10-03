@@ -4,7 +4,7 @@ import * as cfg from "./config"
 // ========================================================================= //
 
 export const Component = props => {
-		return (<></>);
+    return (<></>);
 };
 
 Component.propTypes = cfg.propTypes;

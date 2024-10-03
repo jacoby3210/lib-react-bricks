@@ -1,12 +1,12 @@
 // ------------------------------------------------------------------------- //
-// place the code here for in-depth development.														 //
+// place the code here for in-depth development.                             //
 // ------------------------------------------------------------------------- //
 
 export const TemplateDefault = (props) => {
 
-	const {common, index, meta} = props;
+  const {common, index, meta} = props;
   const {className, ...attributes} = common;
-	const handleChange = (e) => common.whenValueChange(e.target.value);
+  const handleChange = (e) => common.whenValueChange(e.target.value);
 
   return (
     <label 

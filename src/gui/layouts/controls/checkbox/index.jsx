@@ -5,16 +5,16 @@ import * as cfg from "./config"
 
 const Component = props => {
 
-	// initial data
-	const {
-		id,
+  // initial data
+  const {
+    id,
     children,
     onChange = (evt) => {},
-		value,
-		whenValueChange,
-		whenValueModify,
-		...attributes
-	} = props;
+    value,
+    whenValueChange,
+    whenValueModify,
+    ...attributes
+  } = props;
 
   // handlers
   const handleChange = (evt) => {
@@ -23,15 +23,15 @@ const Component = props => {
   }
 
   // render 
-	return (
-		<input 
+  return (
+    <input 
       {...attributes}
       checked={value} 
       type="checkbox" 
-			value={value}
+      value={value}
       onChange={handleChange} 
     />
-	);
+  );
 };
 
 Component.propTypes = cfg.propTypes;

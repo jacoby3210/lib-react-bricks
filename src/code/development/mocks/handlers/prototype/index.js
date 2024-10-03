@@ -6,11 +6,11 @@ import { HttpResponse, http } from "msw";// response resolver
 // ========================================================================= //
 
 export const PrototypeMockResolver = () => {  
-	return HttpResponse.json([    
-		{
-			testData: "andromeda",
-		},
-	]);
+  return HttpResponse.json([    
+    {
+      testData: "andromeda",
+    },
+  ]);
 };
 
 export const PrototypeMockHandler = http.get("/api/posts", PrototypeMockResolver);

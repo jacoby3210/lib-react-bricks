@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------- //
 
 // template for forming a gui by metadata.
-export const TemplateDefault = receivedProps => {					
+export const TemplateDefault = receivedProps => {          
   const {common, meta} = receivedProps;
   const {className, ...attributes} = common;
   return (

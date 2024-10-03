@@ -5,14 +5,14 @@ import * as cfg from './config';
 
 const Component = props => {
 
-		// initial props
+    // initial props
     const {
       id,
       children,
-			cost,
-			value,
-			whenValueChange,
-			whenValueModify,
+      cost,
+      value,
+      whenValueChange,
+      whenValueModify,
       ...attributes
     } = props;
 

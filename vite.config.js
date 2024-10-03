@@ -5,7 +5,7 @@ import consolePro from 'vite-plugin-console-pro'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-		react(), 
-		consolePro({exclude: ["node_modules"]}),
-	],
+    react(), 
+    consolePro({exclude: ["node_modules"]}),
+  ],
 })

@@ -10,22 +10,22 @@ export const CSS_CLASS_DEFAULT = 'rc';
 // ------------------------------------------------------------------------- //
 
 export const propTypes = {
-	children: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.object,
-		PropTypes.string,
-	]),
-	className: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.array,
-		PropTypes.object,
-	]),
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+    PropTypes.string,
+  ]),
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+    PropTypes.object,
+  ]),
   type: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.array,
-		PropTypes.object,
-	]),
-	id: PropTypes.string,
+    PropTypes.string,
+    PropTypes.array,
+    PropTypes.object,
+  ]),
+  id: PropTypes.string,
 };
 
 // ------------------------------------------------------------------------- //
@@ -33,9 +33,9 @@ export const propTypes = {
 // ------------------------------------------------------------------------- //
 
 export const propValues = (className, id = null) => ({
-	children: [],
-	className,
-	id: id,
+  children: [],
+  className,
+  id: id,
 });
 
 

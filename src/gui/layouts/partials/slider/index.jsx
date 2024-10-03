@@ -7,16 +7,16 @@ import * as cfg from "./config"
 
 const Component = props => {
 
-	// initial data
-	const {parentRef, ...otherProps} = props;
-	
-	// render 
-	return (
-		<>
-			<Range.Component {...Range.propValues} {...otherProps} />
-			<Swing.Component {...Swing.propValues} {...otherProps}/>
-		</>
-	);
+  // initial data
+  const {parentRef, ...otherProps} = props;
+  
+  // render 
+  return (
+    <>
+      <Range.Component {...Range.propValues} {...otherProps} />
+      <Swing.Component {...Swing.propValues} {...otherProps}/>
+    </>
+  );
 };
 
 Component.propTypes = cfg.propTypes;

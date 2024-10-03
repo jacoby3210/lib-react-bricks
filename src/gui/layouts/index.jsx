@@ -16,7 +16,7 @@ export {Range}            from "./controls/range";      // - to select a value f
 export {Swing}            from "./controls/swing";      // - to control the increase/decrease of the value
 
 // Components - partials - interface elements interacting with the user by means of a mouse.
-export {Select}           from "./partials/select";     //
-export {Slider} 					from "./partials/slider";			// - represents universal customizable content scroller.
-
+export {Select}           from "./partials/select";     // - for selection one option from the source list.
+export {Slider}           from "./partials/slider";     // - represents universal customizable content scroller.
+export {Switcher}         from "./partials/switcher";   // - for selection one option from the source list (alt mode).
 // ------------------------------------------------------------------------- //

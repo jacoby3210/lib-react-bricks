@@ -7,8 +7,8 @@ import * as cfg from "./config"
 
 const Component = props => {
 
-	// initial data
-	const {
+  // initial data
+  const {
     children, 
     rootRef, 
     src, 
@@ -16,13 +16,13 @@ const Component = props => {
     whenValueChange, 
     whenValueModify
   } = props;
-	const caption = src?.find(item => item.value == value).caption;
-	
+  const caption = src?.find(item => item.value == value).caption;
+  
   // handlers
   const handleClick = (e) => {
     const el = e.target.closest("option");
     whenValueChange(el.value)
-	}
+  }
 
   useEffect(() => {
     const select = rootRef.current;
@@ -33,12 +33,12 @@ const Component = props => {
     };
   }, []);
 
-	// render
-	return (
+  // render
+  return (
     <Dropout.Component {...props} caption={caption} >
       {children}
     </Dropout.Component>
-	);
+  );
 };
 
 Component.propTypes = cfg.propTypes;

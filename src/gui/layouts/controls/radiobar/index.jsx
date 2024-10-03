@@ -6,11 +6,11 @@ import * as cfg from './config';
 
 const Component = props => {
 
-	// initial props
+  // initial props
   const {children, src, Template, ...attributes} = props;
-	
+  
   // render
-	return (
+  return (
     <Container.Component 
       {...attributes}
     >

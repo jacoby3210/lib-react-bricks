@@ -2,12 +2,12 @@
 
 
 a {
-	appearance: none;
-	text-decoration: none;
+  appearance: none;
+  text-decoration: none;
 }
 
 a:visited {
-	appearance: none;
+  appearance: none;
 }
 
 h1,
@@ -17,11 +17,11 @@ h4,
 h5,
 h6,
 p {
-	margin: 0px;
+  margin: 0px;
 }
 
 p {
-	white-space: pre-wrap;
+  white-space: pre-wrap;
 }
 
 div,
@@ -29,10 +29,10 @@ footer,
 header,
 main,
 section {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #root {
-	box-sizing: border-box;
-	width: 100vw;
+  box-sizing: border-box;
+  width: 100vw;
 }

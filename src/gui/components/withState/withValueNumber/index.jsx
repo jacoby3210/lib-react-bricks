@@ -1,34 +1,34 @@
 import { getDecimalPlaces } from './code';
 // ------------------------------------------------------------------------- //
-// HOC to control the state of the value (number) in the wrapped component.	 //
+// HOC to control the state of the value (number) in the wrapped component.   //
 // ------------------------------------------------------------------------- //
 
 export const withValueNumber = (WrappedComponent) => {
 
   return props => {
 
-		// initial props
-		const {
-			min,
-			max,
-			step,
-			value,
-			whenValueChange,
-			...attributes
-		} = props;
+    // initial props
+    const {
+      min,
+      max,
+      step,
+      value,
+      whenValueChange,
+      ...attributes
+    } = props;
 
-		// hooks
+    // hooks
     const handleChange = (next, prev) => {
-			const normNext = Math.round(Math.max(Math.min(next, max), min) / step) * step;
-			const fixNext = parseFloat(normNext.toFixed(getDecimalPlaces(step)));
-			return whenValueChange(fixNext, prev);
-		};
+      const normNext = Math.round(Math.max(Math.min(next, max), min) / step) * step;
+      const fixNext = parseFloat(normNext.toFixed(getDecimalPlaces(step)));
+      return whenValueChange(fixNext, prev);
+    };
 
-		// render
+    // render
     return (
       <WrappedComponent
         {...props}
-				value={value}
+        value={value}
         whenValueChange={handleChange}
       />
     );

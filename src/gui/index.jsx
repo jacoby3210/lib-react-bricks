@@ -6,7 +6,7 @@ import * as Layouts from "./layouts"
 
 const Container = HOC.withMergeProps(Layouts.Container.cfg.propValues) 
   (Layouts.Container.Component);
-const Dropout 	= HOC.withMergeProps(Layouts.Dropout.cfg.propValues) 
+const Dropout   = HOC.withMergeProps(Layouts.Dropout.cfg.propValues) 
   (HOC.withContainer(HOC.withPopup(Layouts.Dropout.Component)));
 const Empty     = HOC.withMergeProps(Layouts.Empty.cfg.propValues)
   (Layouts.Empty.Component);
@@ -24,10 +24,12 @@ const Range     = HOC.withMergeProps(Layouts.Range.cfg.propValues)
 const Swing     = HOC.withMergeProps(Layouts.Swing.cfg.propValues)    
   (HOC.withValue(HOC.withValueNumber(HOC.withContainer(Layouts.Swing.Component))));
 
-const Select 		= HOC.withMergeProps(Layouts.Select.cfg.propValues)	
+const Select     = HOC.withMergeProps(Layouts.Select.cfg.propValues)
   (HOC.withValue(HOC.withDataSource(HOC.withContainer(HOC.withPopup(Layouts.Select.Component)))));
-const Slider 		= HOC.withMergeProps(Layouts.Slider.cfg.propValues)	
+const Slider     = HOC.withMergeProps(Layouts.Slider.cfg.propValues)
   (HOC.withValue(HOC.withValueNumber(HOC.withContainer(Layouts.Select.Component))));
+const Switcher   = HOC.withMergeProps(Layouts.Switcher.cfg.propValues)
+  (HOC.withValue(HOC.withContainer(Layouts.Switcher.Component)));
 
 // external module api
 export const GUI = {
@@ -35,7 +37,7 @@ export const GUI = {
   Widgets: {
     Container, Dropout, Empty, Repeater,
     CheckBox,  Clicker, RadioBar, Range, Swing,
-    Select, Slider,
+    Select, Slider, Switcher,
   }
  }
 

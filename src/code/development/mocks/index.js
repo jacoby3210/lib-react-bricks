@@ -5,7 +5,7 @@ import { PrototypeMockHandler } from "./handlers/prototype";
 // ========================================================================= //
 
 export const worker = setupWorker(
-	PrototypeMockHandler,
+  PrototypeMockHandler,
 );
 
 // ========================================================================= //
