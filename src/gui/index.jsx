@@ -25,8 +25,8 @@ const Swing     = HOC.withMergeProps(Layouts.Swing.cfg.propValues)
   (HOC.withValue(HOC.withValueNumber(HOC.withContainer(Layouts.Swing.Component))));
 
 const Advisor  = HOC.withMergeProps(Layouts.Advisor.cfg.propValues) 
-  (HOC.withValue(HOC.withDataSource(HOC.withContainer(HOC.withPopup(Layouts.Advisor.Component)))));
-
+  (HOC.withValue(HOC.withDataSourceCursor(HOC.withDataSourceFilter(HOC.withContainer(HOC.withPopup(Layouts.Advisor.Component))))));
+  
 const Select     = HOC.withMergeProps(Layouts.Select.cfg.propValues)
   (HOC.withValue(HOC.withDataSource(HOC.withContainer(HOC.withPopup(Layouts.Select.Component)))));
 const Slider     = HOC.withMergeProps(Layouts.Slider.cfg.propValues)

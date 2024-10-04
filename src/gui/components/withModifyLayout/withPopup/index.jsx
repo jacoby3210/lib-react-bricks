@@ -15,16 +15,20 @@ export const withPopup = (WrappedComponent) => {
 
     // inputs
     const handleMouseDown = useCallback((evt) => setShownState(false), []);
+    const handleKeyDown = useCallback((evt) => evt.key === 'Enter' && setShownState(false), []);
 
     // hooks
     useEffect(() => {
       if (shownState) {
         document.addEventListener('mousedown', handleMouseDown);
+        document.addEventListener('keydown', handleKeyDown);
       } else {
         document.removeEventListener('mousedown', handleMouseDown);
+        document.removeEventListener('keydown', handleKeyDown);
       }
       return () => {
         document.removeEventListener('mousedown', handleMouseDown);
+        document.removeEventListener('keydown', handleKeyDown);
       };
     }, [shownState, handleMouseDown]);
 

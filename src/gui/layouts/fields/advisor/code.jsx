@@ -6,7 +6,7 @@
 export const TemplateDefault = props => {
   
 	// initial data
-  const {common, meta, ...attributes} = props;
+  const {common, meta, index, ...attributes} = props;
 	// const {cursorIndexState, ...props} = propsAll;
 
 	// render 
@@ -14,6 +14,7 @@ export const TemplateDefault = props => {
 		<option 
 			{...attributes}
       className={`${common.className.split(" ")[0]}-option`} 
+      cursor={common.cursorIndexState == index ? "true" : null}
 			value={meta.caption}
 		>
 			{meta.caption}

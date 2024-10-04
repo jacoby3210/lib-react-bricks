@@ -7,73 +7,35 @@ import * as cfg from "./config"
 export const Component = props => {
 	// initial data
 	const {
-		id,
     children,
+    rootRef,
 		src, Template,
 		value, whenValueChange, whenValueModify,
     shownState, setShownState,
+    cursorIndexState, setCursorIndexState, onChange, onKeyDown, onMouseDown,
 		...attributes
 	} = props;
 
 	// hooks
 	const inputRef = useRef(null);
-	const [cursorIndexState, setCursorIndexState] = useState(0);
-	const [valueState, setValueState] = useState(value);
-	useEffect(() => {setValueState(value);}, [value]);
 
 	// input from user
-	const handleInputSubmit = (next) => {
-    whenValueChange(next)
-	}
-
-	const handleChange = (evt) => {
-		handleInputSubmit(evt.target.value);
-	}
-	
 	const handleFocus = (evt) => {
-		// setCursorIndexState(0); 
+		setCursorIndexState(0); 
 		setShownState(true);
 	}
 
-	const handleKeyDown = (evt) => {
-		// if (evt.key === 'ArrowDown') {
-		// 	setCursorIndexState(prev => prev < src.length - 1 ? prev + 1 : prev);
-		// } else if (evt.key === 'ArrowUp') {
-		// 	setCursorIndexState(prev => prev > 0 ? prevIndex - 1 : prev);
-		// } else if (evt.key === 'Enter' && cursorIndexState >= 0) {
-		// 	handleInputSubmit(src[cursorIndexState]?.caption);
-		// 	setShownState(false);
-		// }
-	};
-
-	const handleAdvisorOptionClick = (evt) => {
-		// handleInputSubmit(evt.currentTarget.value);
-		// setShownState(false);
-	}
-
 	// render 
+  console.log(attributes);
 	const inputProps = {
-		// className: `${cfg.CSS_CLASS_DEFAULT}-input`,
-		onChange: handleChange,
-		// onKeyDown: handleKeyDown,
-		value: valueState
+		className: `${cfg.CSS_CLASS_DEFAULT}-input`,
+		onChange, onKeyDown, value
 	};
 
-	// const popupProps = {
-	// 	shown: shownState,
-	// 	whenUpdateShownState: setShownState,
-	// };
-
-	// const advisorListProps = {
-	// 	src, 
-	// 	TemplateAdvisorOption, 
-	// 	templateAdvisorOptionProps: {
-	// 		className: `${cfg.CSS_DEFAULT_CLASS}-list-option`,
-	// 		onClick: handleAdvisorOptionClick,
-	// 		cursorIndexState,
-	// 	}, 
-	// 	valueState
-	// } 
+	const listProps = {
+    className: `${cfg.CSS_CLASS_DEFAULT}-list`, 
+     onMouseDown,
+	} 
 
 	return (
 		<>
@@ -81,7 +43,7 @@ export const Component = props => {
         shownState 
         ? <>
             <input autoFocus ref={inputRef} {...inputProps} />
-            <div>
+            <div {...listProps}>
               {children}
             </div>
           </> 
