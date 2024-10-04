@@ -24,6 +24,9 @@ const Range     = HOC.withMergeProps(Layouts.Range.cfg.propValues)
 const Swing     = HOC.withMergeProps(Layouts.Swing.cfg.propValues)    
   (HOC.withValue(HOC.withValueNumber(HOC.withContainer(Layouts.Swing.Component))));
 
+const Advisor  = HOC.withMergeProps(Layouts.Advisor.cfg.propValues) 
+  (HOC.withValue(HOC.withDataSource(HOC.withContainer(HOC.withPopup(Layouts.Advisor.Component)))));
+
 const Select     = HOC.withMergeProps(Layouts.Select.cfg.propValues)
   (HOC.withValue(HOC.withDataSource(HOC.withContainer(HOC.withPopup(Layouts.Select.Component)))));
 const Slider     = HOC.withMergeProps(Layouts.Slider.cfg.propValues)
@@ -37,6 +40,7 @@ export const GUI = {
   Widgets: {
     Container, Dropout, Empty, Repeater,
     CheckBox,  Clicker, RadioBar, Range, Swing,
+    Advisor,
     Select, Slider, Switcher,
   }
  }

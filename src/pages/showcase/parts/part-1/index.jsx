@@ -33,7 +33,7 @@ export const ExamplePart1 = receivedProps => {
       <GUI.Widgets.Switcher {...props.select}/> 
 
       {/* fields */}
-      {/* <GUI.Widgets.Advisor {...propValues.advisor}/> */}
+      <GUI.Widgets.Advisor  {...props.advisor}/>
       {/* <GUI.Widgets.Cloud {...propValues.cloud}/> */}
       
       {/* deprecated */}
