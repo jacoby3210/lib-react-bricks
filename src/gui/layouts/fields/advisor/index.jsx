@@ -26,7 +26,6 @@ export const Component = props => {
 	}
 
 	// render 
-  console.log(attributes);
 	const inputProps = {
 		className: `${cfg.CSS_CLASS_DEFAULT}-input`,
 		onChange, onKeyDown, value

@@ -17,10 +17,10 @@ export {Swing}            from "./controls/swing";        // - to control the in
 
 // Layouts - fields - interface elements interacting with the user by means of a keyboard. 
 export {Advisor}          from "./fields/advisor";        // - to show text line field with autocomplete suggestions.
+export {Select}           from "./fields/select";         // - for selection one option from the source list.
+export {Switcher}         from "./fields/switcher";       // - for selection one option from the source list (alt mode).
 
 // Layouts - partials - interface elements interacting with the user by means of a mouse.
-export {Select}           from "./partials/select";       // - for selection one option from the source list.
 export {Slider}           from "./partials/slider";       // - represents universal customizable content scroller.
-export {Switcher}         from "./partials/switcher";     // - for selection one option from the source list (alt mode).
 
 // ------------------------------------------------------------------------- //
