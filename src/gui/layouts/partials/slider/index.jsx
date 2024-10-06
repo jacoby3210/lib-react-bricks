@@ -8,7 +8,7 @@ import * as cfg from "./config"
 const Component = props => {
 
   // initial data
-  const {parentRef, ...otherProps} = props;
+  const {rootRef, ...otherProps} = props;
   
   // render 
   return (

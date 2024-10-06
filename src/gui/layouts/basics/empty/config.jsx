@@ -10,12 +10,16 @@ export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-empty`;
 // Type checking.
 // ------------------------------------------------------------------------- //
 
-export const propTypes = { ... cfg.propTypes };
+export const propTypes = { 
+  ... cfg.propPackageBase.types 
+};
 
 // ------------------------------------------------------------------------- //
 // Values by default.
 // ------------------------------------------------------------------------- //
 
-export const propValues = { ... cfg.propValues(CSS_CLASS_DEFAULT),};
+export const propValues = { 
+  ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
+};
 
 // ------------------------------------------------------------------------- //

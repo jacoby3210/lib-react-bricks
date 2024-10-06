@@ -12,15 +12,8 @@ export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-select`;
 // ------------------------------------------------------------------------- //
 
 export const propTypes = {
-  ... cfg.propTypes,
-  axis: PropTypes.bool,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  speed: PropTypes.number,
-  step: PropTypes.number,
-  value: PropTypes.number,
-  whenValueChange: PropTypes.func,
-  whenValueModify: PropTypes.func,
+  ... cfg.propPackageBase.types,
+  ... cfg.propPackageValueBase.types,
 };
 
 // ------------------------------------------------------------------------- //
@@ -28,12 +21,10 @@ export const propTypes = {
 // ------------------------------------------------------------------------- //
 
 export const propValues = {
-  ... cfg.propValues(CSS_CLASS_DEFAULT),
+  ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
+  ... cfg.propPackageValueBase.values("0"),
   src: [],                                        // data source for repeated output of items.
-  Template: code.TemplateDefault,                  // jsx template for displaying item data in the ui.
-  value: 0,                                        // current setup value.
-  whenValueChange: (next, prev) => next,          // callback to handle the value state update.
-  whenValueModify: (m) => next,                    // callback to modify the value state by coeff.
+  Template: code.TemplateDefault,                 // jsx template for displaying item data in the ui.
 };
 
 // ------------------------------------------------------------------------- //

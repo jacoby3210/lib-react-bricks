@@ -30,6 +30,7 @@
 [cursor="true"]{
   background-color: red;
 }
+
 .rc-area {
   display: flex;
   flex-direction: row;

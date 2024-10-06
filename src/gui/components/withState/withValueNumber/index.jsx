@@ -1,39 +1,34 @@
-import { getDecimalPlaces } from './code';
+import { withState } from '/src/gui/components/withState/withState';
+import * as code from './code';
 // ------------------------------------------------------------------------- //
 // HOC to control the state of the value (number) in the wrapped component.   //
 // ------------------------------------------------------------------------- //
 
-export const withValueNumber = (WrappedComponent) => {
+export const withValueNumberInternal = (stateName) => (WrappedComponent) => {
 
   return props => {
 
-    // initial props
-    const {
-      min,
-      max,
-      step,
-      value,
-      whenValueChange,
-      ...attributes
-    } = props;
+    // initial data
+    const stateHandlerName = `when${code.capitalizeFirstLetter(stateName)}Change`;
+    const min = props[`${stateName}Min`] || 0;
+    const max = props[`${stateName}Max`] || 100;
+    const step = props[`${stateName}Step`] || 1;
 
     // hooks
-    const handleChange = (next, prev) => {
+    const handleStateChange = (next, prev) => {
       const normNext = Math.round(Math.max(Math.min(next, max), min) / step) * step;
-      const fixNext = parseFloat(normNext.toFixed(getDecimalPlaces(step)));
-      return whenValueChange(fixNext, prev);
+      const fixNext = parseFloat(normNext.toFixed(code.getDecimalPlaces(step)));
+      return props[stateHandlerName](fixNext, prev);
     };
 
     // render
-    return (
-      <WrappedComponent
-        {...props}
-        value={value}
-        whenValueChange={handleChange}
-      />
-    );
+    const modifiedProps = {... props, [stateHandlerName]: handleStateChange,};
+    return (<WrappedComponent {...modifiedProps}/>);
   };
 
 };
+
+export const withValueNumber = (WrappedComponent) => 
+  withValueNumberInternal("value")(withState("value")(WrappedComponent))
 
 // ------------------------------------------------------------------------- //

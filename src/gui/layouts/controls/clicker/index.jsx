@@ -9,19 +9,18 @@ const Component = props => {
     const {
       id,
       children,
-      cost,
-      value,
+      value, valueMax, valueMin, valueSpeed, valueStep,
       whenValueChange,
       whenValueModify,
       ...attributes
     } = props;
 
     // handlers
-    const handleClick = () => whenValueModify(cost);
+    const handleClick = () => whenValueModify(valueStep);
 
     // render 
     return (
-      <div {...attributes} id={id} onClick={handleClick} cost={cost} value={value} >
+      <div {...attributes} id={id} onClick={handleClick} cost={valueStep} value={value} >
         {value}
       </div>
     );

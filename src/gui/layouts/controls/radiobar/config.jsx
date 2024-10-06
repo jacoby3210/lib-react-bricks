@@ -12,7 +12,7 @@ export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-radio-bar`;
 // ------------------------------------------------------------------------- //
 
 export const propTypes = {
-  ... cfg.propTypes,
+  ... cfg.propPackageBase.types,
   src: PropTypes.array,
   Template: PropTypes.func,
   value: PropTypes.any,
@@ -24,7 +24,7 @@ export const propTypes = {
 // ------------------------------------------------------------------------- //
 
 export const propValues = {
-  ... cfg.propValues(CSS_CLASS_DEFAULT),
+  ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
   name: "switch",                                 //
   Template: code.TemplateDefault,                 //
   src: [],                                        //

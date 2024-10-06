@@ -11,11 +11,8 @@ export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-clicker`;
 // ------------------------------------------------------------------------- //
 
 export const propTypes = {
-  ... cfg.propTypes,
-  cost: PropTypes.number,
-  value: PropTypes.any,
-  whenValueChange: PropTypes.func,
-  whenValueModify: PropTypes.func,
+  ... cfg.propPackageBase.types,
+  ... cfg.propPackageValueNumber.types,
 };
 
 // ------------------------------------------------------------------------- //
@@ -23,11 +20,8 @@ export const propTypes = {
 // ------------------------------------------------------------------------- //
 
 export const propValues = {
-  ... cfg.propValues(CSS_CLASS_DEFAULT),
-  cost: 1,
-  value: null,                                    // current value.
-  whenValueChange: (next, prev) => next,          // callback to handle the value state update.
-  whenValueModify: (m) => next,                    // callback to handle the value state update.
+  ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
+  ... cfg.propPackageValueNumber.values(0, 0, 1, 1),
 };
 
 // ------------------------------------------------------------------------- //

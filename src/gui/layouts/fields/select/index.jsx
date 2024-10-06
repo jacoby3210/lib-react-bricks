@@ -12,16 +12,14 @@ const Component = props => {
     children, 
     rootRef, 
     src, 
-    value, 
-    whenValueChange, 
-    whenValueModify
+    value, whenValueChange, whenValueModify
   } = props;
   const caption = src?.find(item => item.value == value).caption;
   
   // handlers
   const handleClick = (e) => {
     const el = e.target.closest("option");
-    whenValueChange(el.value)
+    if(el) whenValueChange(el.value)
   }
 
   useEffect(() => {

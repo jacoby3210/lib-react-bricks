@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import * as code from "./code"
 import * as cfg from "./config"
 // ------------------------------------------------------------------------- //
 // React Component for selection one option from the source list (alt mode).
@@ -13,10 +12,7 @@ export const Component = props => {
     rootRef,
     rounded,
     src,
-    value,
-    whenValueChange,
-    whenValueModify,
-    ...attributes
+    value, whenValueChange, whenValueModify,
   } = props;
 
   // hooks

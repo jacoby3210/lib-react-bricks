@@ -16,23 +16,25 @@ const Repeater  = HOC.withMergeProps(Layouts.Repeater.cfg.propValues)
 const CheckBox  = HOC.withMergeProps(Layouts.CheckBox.cfg.propValues) 
   (HOC.withValue(Layouts.CheckBox.Component));
 const Clicker   = HOC.withMergeProps(Layouts.Clicker.cfg.propValues)  
-  (HOC.withValue(Layouts.Clicker.Component));
+  (HOC.withValueNumber(Layouts.Clicker.Component));
 const RadioBar  = HOC.withMergeProps(Layouts.RadioBar.cfg.propValues) 
   (HOC.withValue(HOC.withDataSource(Layouts.RadioBar.Component)));
 const Range     = HOC.withMergeProps(Layouts.Range.cfg.propValues)    
-  (HOC.withValue(HOC.withValueNumber(Layouts.Range.Component)));
+  (HOC.withValueNumber(Layouts.Range.Component));
 const Swing     = HOC.withMergeProps(Layouts.Swing.cfg.propValues)    
-  (HOC.withValue(HOC.withValueNumber(HOC.withContainer(Layouts.Swing.Component))));
+  (HOC.withValueNumber(HOC.withContainer(Layouts.Swing.Component)));
 
-const Advisor  = HOC.withMergeProps(Layouts.Advisor.cfg.propValues) 
+const Advisor   = HOC.withMergeProps(Layouts.Advisor.cfg.propValues) 
   (HOC.withValue(HOC.withDataSourceCursor(HOC.withDataSourceFilter(HOC.withContainer(HOC.withPopup(Layouts.Advisor.Component))))));
-  
-const Select     = HOC.withMergeProps(Layouts.Select.cfg.propValues)
+const Select    = HOC.withMergeProps(Layouts.Select.cfg.propValues)
   (HOC.withValue(HOC.withDataSource(HOC.withContainer(HOC.withPopup(Layouts.Select.Component)))));
-const Slider     = HOC.withMergeProps(Layouts.Slider.cfg.propValues)
-  (HOC.withValue(HOC.withValueNumber(HOC.withContainer(Layouts.Select.Component))));
-const Switcher   = HOC.withMergeProps(Layouts.Switcher.cfg.propValues)
+const Switcher  = HOC.withMergeProps(Layouts.Switcher.cfg.propValues)
   (HOC.withValue(HOC.withContainer(Layouts.Switcher.Component)));
+  
+const Cloud     = HOC.withMergeProps(Layouts.Cloud.cfg.propValues)
+  (HOC.withValue(HOC.withDataSourceCursor(HOC.withDataSourceFilter((HOC.withContainer(HOC.withPopup(Layouts.Cloud.Component)))))));
+const Slider    = HOC.withMergeProps(Layouts.Slider.cfg.propValues)
+  (HOC.withValueNumber(HOC.withContainer(Layouts.Slider.Component)));
 
 // external module api
 export const GUI = {
@@ -40,7 +42,7 @@ export const GUI = {
   Widgets: {
     Container, Dropout, Empty, Repeater,
     CheckBox,  Clicker, RadioBar, Range, Swing,
-    Advisor,
+    Advisor, Cloud,
     Select, Slider, Switcher,
   }
  }

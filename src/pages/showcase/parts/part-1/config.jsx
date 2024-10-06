@@ -57,11 +57,16 @@ export const defaultProps = {
       return {label: `Option #${i}`, value: i}
     }),
   },
-  rangeHorizontal: { axis: true, min: 0, max: 10, step: 0.0001, value: 5 },
-  rangeVertical: { min: 0, max: 50, step: 0.1, value: 5 },
-  swing: { min: 0, max: 50, step: 0.1, value: 5 },
+  rangeHorizontal: { axis: true, valueMin: 0, valueMax: 10, valueStep: 0.0001, value: 5 },
+  rangeVertical: { valueMax: 50, valueMin: 0, valueStep: 0.1, value: 5 },
+  swing: { valueMax: 50, valueMin: 0, valueStep: 0.5, value: 5 },
 
   //
+  advisor: {
+    src: produceEntries(5, (v, i) => {
+      return {caption: `Option #${i}`, value: i}
+    }),
+  },
   select: {
     length: 5,
     src: produceEntries(5, (v, i) => ({ 
@@ -74,14 +79,8 @@ export const defaultProps = {
     })),
     value: 0,
   },
-  slider: { min: 0, max: 50, step: 0.1, value: 5 },
 
   // fields
-  advisor: {
-    src: produceEntries(5, (v, i) => {
-      return {caption: `Option #${i}`, value: i}
-    }),
-  },
   cloud: {
     src: produceEntries(5, (v, i) => {
       return {caption: `Option #${i}`, text: `Option #${i}`, id: i}
@@ -90,6 +89,7 @@ export const defaultProps = {
       return {caption: `Option #${i}`, text: `Option #${i}`, id: i}
     }),
   },
+  slider: { valueMax: 50, valueMin: 0, valueStep: 0.5, value: 5 },
 
 };
 
