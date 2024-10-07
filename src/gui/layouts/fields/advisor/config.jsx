@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import * as cfg from '/src/gui/config'
 import * as code from "./code"
 // ------------------------------------------------------------------------- //
@@ -13,20 +12,24 @@ export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-advisor`;
 
 export const propTypes = {
 	... cfg.propPackageBase.types,
+  ... cfg.propPackageDataSource.types,
+  ... cfg.propPackageTemplate.types,
   ... cfg.propPackageValueBase.types,
-  src: PropTypes.array,
-	Template: PropTypes.func,
 }
 
 // ------------------------------------------------------------------------- //
 // Values by default.
 // ------------------------------------------------------------------------- //
 
+function filter(item) {
+  return item.caption != this.value && item.caption.includes(this.value);
+}
+
 export const propValues = {
   ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
+  ... cfg.propPackageDataSource.values(filter),
+  ... cfg.propPackageTemplate.values(code.TemplateDefault),
   ... cfg.propPackageValueBase.values(""),
-  src: [],																			// source data array available suggestions.
-	Template: code.TemplateDefault,			          // template to generate a gui for an individual suggestion.
 }
 
 // ------------------------------------------------------------------------- //

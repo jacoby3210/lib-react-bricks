@@ -36,12 +36,40 @@ export const propPackageBase = {
 }
 
 // ------------------------------------------------------------------------- //
-// Package of component parameters description (types and values): base value.
+// Package of component parameters description (types and values): orientation axis.
 // ------------------------------------------------------------------------- //
 
 export const propPackageOrientationBase = {
   types: {axis: PropTypes.bool,},
   values: (axis = true) => ({axis}),
+}
+
+// ------------------------------------------------------------------------- //
+// Package of component parameters description (types and values): with data source.
+// ------------------------------------------------------------------------- //
+
+export const propPackageDataSource = {
+  types: {
+    filter: PropTypes.func,
+    first: PropTypes.number,
+    length: PropTypes.number,
+    src: PropTypes.array,
+  },
+  values: (
+    filter = function(item){console.log(this); return true;}, 
+    first = 0, 
+    length = 0, 
+    src = []
+  ) => ({filter, first, length, src,}),
+}
+
+// ------------------------------------------------------------------------- //
+// Package of component parameters description (types and values): Template.
+// ------------------------------------------------------------------------- //
+
+export const propPackageTemplate = {
+  types: {Template: PropTypes.func,},
+  values: (Template = null) => ({Template}),
 }
 
 // ------------------------------------------------------------------------- //

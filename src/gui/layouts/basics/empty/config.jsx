@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import * as cfg from "/src/gui/config.jsx"
 // ------------------------------------------------------------------------- //
 // Constants.

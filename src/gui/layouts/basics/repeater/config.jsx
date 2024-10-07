@@ -1,6 +1,5 @@
-import PropTypes from 'prop-types';
 import * as cfg from "/src/gui/config.jsx"
-import {TemplateDefault} from "./code.jsx"
+import * as code from "./code.jsx"
 // ------------------------------------------------------------------------- //
 // Constants.
 // ------------------------------------------------------------------------- //
@@ -13,10 +12,8 @@ export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-repeater`;
 
 export const propTypes = {
   ... cfg.propPackageBase.types,
-  from: PropTypes.number,
-  length: PropTypes.number,
-  src: PropTypes.array,
-  Template: PropTypes.func,
+  ... cfg.propPackageDataSource.types,
+  ... cfg.propPackageTemplate.types,
 };
 
 // ------------------------------------------------------------------------- //
@@ -25,10 +22,8 @@ export const propTypes = {
 
 export const propValues = {
   ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
-  from: 0,                                        // start index to display elements.
-  length: 0,                                      // length of items to display (count).
-  src: [],                                        // source data array provider for mapping.
-  Template: TemplateDefault,                       // template to generate a gui for an individual item in an array.
+  ... cfg.propPackageDataSource.values(),
+  ... cfg.propPackageTemplate.values(code.TemplateDefault),
 };
 
 // ------------------------------------------------------------------------- //

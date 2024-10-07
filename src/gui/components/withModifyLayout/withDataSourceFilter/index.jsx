@@ -9,18 +9,14 @@ import { withDataSource } from "../withDataSource";
   return props => {
 
     // initial data
-    const {value} = props;
-    const {
-      filter = (item) => item.caption != value && item.caption.includes(value),
-      src,
-      ...attributes
-    } = props;
+    const { filter, src, ...attributes } = props;
 
     // render
-    const filterSourceData = src.filter(filter);
+    const filterSourceData = src.filter(filter, {});
     const sendProps = {src:filterSourceData, ...attributes};
     return (<WrappedComponent {...sendProps}/>);
   };
+
 };
 
 export const withDataSourceFilter = (WrappedComponent) => withDataSourceFilterInternal(withDataSource(WrappedComponent));

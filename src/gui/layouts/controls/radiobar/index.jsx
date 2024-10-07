@@ -7,7 +7,11 @@ import * as cfg from './config';
 const Component = props => {
 
   // initial props
-  const {children, src, Template, ...attributes} = props;
+  const {
+    children, 
+    filter, src, Template, 
+    ...attributes
+  } = props;
   
   // render
   return (

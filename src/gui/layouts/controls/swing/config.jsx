@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import * as cfg from "/src/gui/config.jsx"
 // ------------------------------------------------------------------------- //
 // Constants.
@@ -14,7 +13,6 @@ export const propTypes = {
   ... cfg.propPackageBase.types,
   ... cfg.propPackageOrientationBase.types,
   ... cfg.propPackageValueNumber.types,
-  axis: PropTypes.bool,
 };
 
 // ------------------------------------------------------------------------- //

@@ -13,6 +13,8 @@ export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-select`;
 
 export const propTypes = {
   ... cfg.propPackageBase.types,
+  ... cfg.propPackageDataSource.types,
+  ... cfg.propPackageTemplate.types,
   ... cfg.propPackageValueBase.types,
 };
 
@@ -22,9 +24,9 @@ export const propTypes = {
 
 export const propValues = {
   ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
+  ... cfg.propPackageDataSource.values(),
+  ... cfg.propPackageTemplate.values(code.TemplateDefault),
   ... cfg.propPackageValueBase.values("0"),
-  src: [],                                        // data source for repeated output of items.
-  Template: code.TemplateDefault,                 // jsx template for displaying item data in the ui.
 };
 
 // ------------------------------------------------------------------------- //

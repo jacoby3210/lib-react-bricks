@@ -7,9 +7,7 @@ export const Component = props => {
 
   // initial data
   const {
-    from,
-    length,
-    src,
+    filter, from, length, src,
     Template,
   } = props;
 

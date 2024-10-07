@@ -12,9 +12,9 @@ export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-switcher`;
 
 export const propTypes = {
   ... cfg.propPackageBase.types,
+  ... cfg.propPackageDataSource.types,
   ... cfg.propPackageValueBase.types,
   rounded: PropTypes.bool,
-  src: PropTypes.array,
 }
 
 // ------------------------------------------------------------------------- //
@@ -23,9 +23,9 @@ export const propTypes = {
 
 export const propValues = {
   ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
+  ... cfg.propPackageValueBase.values(),
   ... cfg.propPackageValueBase.values(""),
-  rounded: true,                                  //
-  src: [],                                        // source data array provider for mapping.
+  rounded: true,
 }
 
 // ------------------------------------------------------------------------- //
