@@ -12,7 +12,7 @@ import { withDataSource } from "../withDataSource";
     const { filter, src, ...attributes } = props;
 
     // render
-    const filterSourceData = src.filter(filter, {});
+    const filterSourceData = src.filter(filter, props);
     const sendProps = {src:filterSourceData, ...attributes};
     return (<WrappedComponent {...sendProps}/>);
   };
