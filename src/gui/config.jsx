@@ -106,7 +106,7 @@ export const propPackageValueNumber = {
     valueSpeed: PropTypes.number,
     valueStep: PropTypes.number,
   },
-  values: (max = 100, min = 0, speed = 1, step = 1, value=0) => ({
+  values: (value=0, max = 100, min = 0, speed = 1, step = 1) => ({
     ... propPackageValueBase.values(value),
     valueMax: max,                                   // maximum value available for choice.
     valueMin: min,                                   // minimum value available for choice.

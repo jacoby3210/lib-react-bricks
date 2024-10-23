@@ -8,8 +8,10 @@ import { props } from "./config"
 export const ExamplePart2 = receivedProps => {
 
 	// hooks
-	// const [currentBrowseTab, setBrowseTab] = useState(0);
-	// const handleBrowseTab = (tabIndex) => { setBrowseTab(tabIndex * 10) }
+	const [currentBrowseTab, setBrowseTab] = useState(0);
+	const handleBrowseTab = (tabIndex) => { 
+    console.log(tabIndex)
+    setBrowseTab(tabIndex * 10) }
 	// const [currentNavigatorSlide, setCurrentNavigatorSlide] = useState(0);
 	// const handleNavigatorSlide = (i) => {setCurrentNavigatorSlide(i);}
 	// const [currentPageState, setCurrentPageState] = useState(0);
@@ -24,10 +26,10 @@ export const ExamplePart2 = receivedProps => {
 	// render 
 	return (
 		<>
+			<GUI.Widgets.Browser {...props.browser} whenValueChange={handleBrowseTab}/>
+			<GUI.Common.Repeater  {...props.viewForBrowser} from={currentBrowseTab}/>
 			{/* <GUI.Widgets.Accordion {...props.accordion} />
 
-			<GUI.Widgets.Browser {...props.browser} whenUpdateValueState={handleBrowseTab}/>
-			<Components.View  {...props.viewForBrowser} from={currentBrowseTab}/>
 
 			<GUI.Widgets.Navigator {...props.navigator} whenUpdateValueState={handleNavigatorSlide}/>
 			<Components.View  {...props.viewForNavigator} from={currentNavigatorSlide}/>

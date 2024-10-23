@@ -22,7 +22,7 @@ export const Component = props => {
         meta={item} 
     />);
   
-  return (children);
+  return (<>{children}</>);
 };
 
 Component.propTypes = cfg.propTypes;

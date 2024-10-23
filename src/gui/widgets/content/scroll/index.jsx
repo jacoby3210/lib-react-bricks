@@ -20,11 +20,11 @@ export const Component = props => {
 	useEffect(() => {
 		target.current.addEventListener("scroll", (e) => {
 			const newValue = code.valueFromPosition(target.current, props);
-			setValueState(prev => {whenValueChange(newValue); return newValue;})
+			return whenValueChange(newValue); 
 		})
 	}, [value]);
 
-	// // inputs
+	// inputs
 	const whenValueChange = useCallback(value => {
 		const area = target.current, 
 			scrollParams = {top: area.scrollTop, left: area.scrollLeft, mode};
