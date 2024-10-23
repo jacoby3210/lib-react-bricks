@@ -31,8 +31,6 @@ const Select    = HOC.withMergeProps(Layouts.Select.cfg.propValues)
 const Switcher  = HOC.withMergeProps(Layouts.Switcher.cfg.propValues)
   (HOC.withValue(HOC.withContainer(Layouts.Switcher.Component)));
   
-const Cloud     = HOC.withMergeProps(Layouts.Cloud.cfg.propValues)
-  (HOC.withValue(HOC.withDataSourceCursor(HOC.withDataSourceFilter((HOC.withContainer(HOC.withPopup(Layouts.Cloud.Component)))))));
 const Slider    = HOC.withMergeProps(Layouts.Slider.cfg.propValues)
   (HOC.withValueNumber(HOC.withContainer(Layouts.Slider.Component)));
 
@@ -42,7 +40,7 @@ export const GUI = {
   Widgets: {
     Container, Dropout, Empty, Repeater,
     CheckBox,  Clicker, RadioBar, Range, Swing,
-    Advisor, Cloud,
+    Advisor, 
     Select, Slider, Switcher,
   }
  }

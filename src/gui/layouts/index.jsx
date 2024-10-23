@@ -21,7 +21,6 @@ export {Select}           from "./fields/select";         // - for selection one
 export {Switcher}         from "./fields/switcher";       // - for selection one option from the source list (alt mode).
 
 // Layouts - partials - interface elements interacting with the user by means of a mouse.
-export {Cloud}            from "./partials/cloud";        // - for displaying the add/remove tags interface. 
 export {Slider}           from "./partials/slider";       // - represents universal customizable content scroller.
 
 // ------------------------------------------------------------------------- //

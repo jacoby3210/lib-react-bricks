@@ -9,7 +9,7 @@ export const Component = props => {
 	const {
     children,
     rootRef,
-		src, Template,
+		src, srcDataMatching, Template,
 		value, whenValueChange, whenValueModify,
     shownState, setShownState,
     cursorIndexState, setCursorIndexState, onChange, onKeyDown, onMouseDown,
@@ -26,7 +26,7 @@ export const Component = props => {
 	}
 
 	// render 
-	const inputProps = {
+	const inputProps  = {
 		className: `${cfg.CSS_CLASS_DEFAULT}-input`,
 		onChange, onKeyDown, value
 	};
