@@ -8,11 +8,13 @@
   width: 50%;
 }
 
+.rc-scroll-track,
 .rc-slider-track,  .rc-range-track {
   height: 100%;
   width: 100%;
 }
 
+.rc-scroll,
 .rc-slider-thumb, .rc-range-thumb {
   background-color: olivedrab;
   height: 24px;
@@ -20,6 +22,7 @@
   position: relative;
 }
 
+.rc-scroll[axis=vertical],
 .rc-slider[axis=vertical], .rc-range[axis=vertical] {
   background-color: orangered;
   padding-bottom: 24px;

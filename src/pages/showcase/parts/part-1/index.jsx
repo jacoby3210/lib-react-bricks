@@ -1,5 +1,5 @@
 import {GUI} from "/src/gui"
-import {defaultProps as props} from "./config";
+import {props} from "./config";
 // ------------------------------------------------------------------------- //
 // React Component  
 // ------------------------------------------------------------------------- //
@@ -9,33 +9,33 @@ export const ExamplePart1 = receivedProps => {
   return (
     <>
       {/* basics */}
-      <GUI.Widgets.Container/>
-      <GUI.Widgets.Dropout  {...props.popup}>{"Its Popup!"}</GUI.Widgets.Dropout>
-      <GUI.Widgets.Empty/>
-      <GUI.Widgets.Repeater {...props.repeater}/> 
+      <GUI.Common.Container/>
+      <GUI.Common.Dropout  {...props.popup}>{"Its Popup!"}</GUI.Common.Dropout>
+      <GUI.Common.Empty/>
+      <GUI.Common.Repeater {...props.repeater}/> 
 
       {/* controls */}
-      <GUI.Widgets.CheckBox value={false}/>
-      <GUI.Widgets.Clicker  {...props.clicker}/>
-      <GUI.Widgets.RadioBar {...props.radioBar}/>
-      <GUI.Widgets.Range    {...props.rangeHorizontal} />
-      <GUI.Widgets.Range    {...props.rangeVertical} />
-      <GUI.Widgets.Swing    {...props.swing} />
+      <GUI.Common.CheckBox value={false}/>
+      <GUI.Common.Clicker  {...props.clicker}/>
+      <GUI.Common.RadioBar {...props.radioBar}/>
+      <GUI.Common.Range    {...props.rangeHorizontal} />
+      <GUI.Common.Range    {...props.rangeVertical} />
+      <GUI.Common.Swing    {...props.swing} />
 
       {/* fields */}
-      <GUI.Widgets.Advisor  {...props.advisor}/>
-      <GUI.Widgets.Select   {...props.select}/>
-      <GUI.Widgets.Switcher {...props.select}/> 
+      <GUI.Common.Advisor  {...props.advisor}/>
+      <GUI.Common.Select   {...props.select}/>
+      <GUI.Common.Switcher {...props.select}/> 
 
       {/* partials */}
-      {/* <GUI.Widgets.Cloud    {...props.cloud}/> */}
-      <GUI.Widgets.Slider   {...props.slider}/>
+      {/* <GUI.Common.Cloud    {...props.cloud}/> */}
+      <GUI.Common.Slider   {...props.slider}/>
       
       {/* deprecated */}
-      {/* <GUI.Widgets.Accordion   {...propValues.accordion} /> */}
-      {/* <GUI.Widgets.Path {...propValues.path}/> */}
-      {/* <GUI.Widgets.Timer {...propValues.timer}/> */}
-      {/* <GUI.Widgets.Indicator   {...props.indicator}/> */}
+      {/* <GUI.Common.Accordion   {...propValues.accordion} /> */}
+      {/* <GUI.Common.Path {...propValues.path}/> */}
+      {/* <GUI.Common.Timer {...propValues.timer}/> */}
+      {/* <GUI.Common.Indicator   {...props.indicator}/> */}
 
     </>
   );

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { ExamplePart1 } from './parts/part-1';
-// import { ExamplePart2 } from './parts/part-2';
+import { ExamplePart2 } from './parts/part-2';
 // import { ExamplePart3 } from './parts/part-3';
 // import { ExamplePart4 } from './parts/part-4';
 import "./index.css"
@@ -22,8 +22,8 @@ const ShowcasePage = receivedProps => {
   return (
     <section id={id} {...attributes}>
       {"Its alive"}
-      <ExamplePart1/>
-      {/* <ExamplePart2/> */}
+      {/* <ExamplePart1/> */}
+      <ExamplePart2/>
       {/* <ExamplePart3/> */}
       {/* <ExamplePart4/> */}
     </section>

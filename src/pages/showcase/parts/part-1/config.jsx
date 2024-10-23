@@ -4,7 +4,7 @@
 
 export const produceEntries = (count, func) => Array.from(new Array(count), func);
 
-export const defaultProps = {
+export const props = {
   // basics
   indicator : {
     colors: ["green", "orange", "red"],

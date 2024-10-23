@@ -1,5 +1,6 @@
 import * as HOC from "./components"
 import * as Layouts from "./layouts"
+import * as Widgets from "./widgets"
 // ------------------------------------------------------------------------- //
 // Header file for export module. Compile widgets.
 // ------------------------------------------------------------------------- //
@@ -34,14 +35,21 @@ const Switcher  = HOC.withMergeProps(Layouts.Switcher.cfg.propValues)
 const Slider    = HOC.withMergeProps(Layouts.Slider.cfg.propValues)
   (HOC.withValueNumber(HOC.withContainer(Layouts.Slider.Component)));
 
+
+const Scroll = HOC.withMergeProps(Widgets.Scroll.cfg.propValues)
+  (HOC.withValueNumber(HOC.withContainer(Widgets.Scroll.Component)));
+
 // external module api
 export const GUI = {
   HOC,    
-  Widgets: {
+  Common: {
     Container, Dropout, Empty, Repeater,
     CheckBox,  Clicker, RadioBar, Range, Swing,
     Advisor, 
     Select, Slider, Switcher,
+  },
+  Widgets: {
+    Scroll,
   }
  }
 
