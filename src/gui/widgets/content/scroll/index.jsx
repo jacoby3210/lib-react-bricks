@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useRef, useState } from 'react';
-import { Slider } from '../../../layouts';
+import { Slider } from '/src/gui/layouts';
 import * as code from './code';
 import * as cfg from "./config"
 // ------------------------------------------------------------------------- //

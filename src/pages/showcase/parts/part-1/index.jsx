@@ -4,7 +4,7 @@ import {props} from "./config";
 // React Component  
 // ------------------------------------------------------------------------- //
 
-export const ExamplePart1 = receivedProps => {
+export const ExamplePart1 = () => {
   
   return (
     <>

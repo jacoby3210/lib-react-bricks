@@ -3,8 +3,9 @@
 // ------------------------------------------------------------------------- //
 
 // Widgets - content - managing the content of the viewing area.
-export {Browser}    from "./content/browser"     // - control switching the displayed content in the view.
-export {Navigator}  from "./content/navigator"   // - switching of displayed slide in the viewing area by linear order. 
+export {Browser}    from "./content/browser"     // - switching of displayed content in the view by special id.
+export {Navigator}  from "./content/navigator"   // - switching of displayed content in the view by linear order. 
+export {Paginator}  from "./content/paginator"   // - switching of displayed content in the view by the page index. 
 export {Scroll}     from "./content/scroll";     // - represents universal customizable content scrollbar.
 
 // ------------------------------------------------------------------------- //

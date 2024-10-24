@@ -5,7 +5,7 @@ import { props } from "./config"
 // React Component  
 // ========================================================================= //
 
-export const ExamplePart2 = receivedProps => {
+export const ExamplePart2 = () => {
 
   // initial data
   const areaRef = React.useRef(null)
@@ -20,25 +20,25 @@ export const ExamplePart2 = receivedProps => {
 	const [currentNavigatorSlide, setCurrentNavigatorSlide] = useState(0);
 	const handleNavigatorSlide = (i) => {setCurrentNavigatorSlide(i); return i;}
 
-	// const [currentPageState, setCurrentPageState] = useState(0);
-	// const handlePage = (i) => {setCurrentPageState(i * 10);}
+	const [currentPageState, setCurrentPageState] = useState(0);
+	const handlePage = (i) => {setCurrentPageState(i * 10);}
 
 	// render 
 	return (
 		<>
+			{/* 
+      <GUI.Widgets.Accordion {...props.accordion} />
+      */}
+      
 			<GUI.Widgets.Browser    {...props.browser} whenValueChange={handleBrowserTab}/>
 			<GUI.Common.Repeater    {...props.viewForBrowser} from={currentBrowserTab}/>
 
 			<GUI.Widgets.Navigator  {...props.navigator} whenValueChange={handleNavigatorSlide} value={currentNavigatorSlide}/>
 			<GUI.Common.Repeater    {...props.viewForNavigator} from={currentNavigatorSlide}/>
 
-			{/* 
-
-      <GUI.Widgets.Accordion {...props.accordion} />
-			<GUI.Widgets.Paginator {...props.paginator} whenUpdateValueState={handlePage}/>
+			<GUI.Widgets.Paginator {...props.paginator} whenValueChange={handlePage}/>
 			<GUI.Common.Repeater {...props.viewForPaginator} from={currentPageState}/> 
-      
-      */}
+
 
 			<GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
 			<TestAreaForScroll />
