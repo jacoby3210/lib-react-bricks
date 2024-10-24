@@ -11,13 +11,14 @@ export const withValueNumberInternal = (stateName) => (WrappedComponent) => {
     // initial data
     const stateHandlerName = `when${code.capitalizeFirstLetter(stateName)}Change`;
     const min = props[`${stateName}Min`] || 0;
-    const max = props[`${stateName}Max`] || 100;
+    const max = props[`${stateName}Max`] || 999999;
     const step = props[`${stateName}Step`] || 1;
 
     // hooks
     const handleStateChange = (next, prev) => {
       const normNext = Math.round(Math.max(Math.min(next, max), min) / step) * step;
       const fixNext = parseFloat(normNext.toFixed(code.getDecimalPlaces(step)));
+      console.log(next, normNext, fixNext)
       return props[stateHandlerName](fixNext, prev);
     };
 

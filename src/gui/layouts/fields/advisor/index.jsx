@@ -33,7 +33,7 @@ export const Component = props => {
 
 	const listProps = {
     className: `${cfg.CSS_CLASS_DEFAULT}-list`, 
-     onMouseDown,
+    onMouseDown,
 	} 
 
 	return (

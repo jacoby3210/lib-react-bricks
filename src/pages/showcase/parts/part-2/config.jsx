@@ -14,7 +14,7 @@ export const props = {
 		length: 10,
 		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
 	},
-	navigator: {infinity: true, length: 250,},
+	navigator: {infinity: true, value:0, valueMax: 250},
 	viewForNavigator: {
 		length: 1,
 		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),

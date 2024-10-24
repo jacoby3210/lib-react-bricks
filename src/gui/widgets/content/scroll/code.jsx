@@ -2,7 +2,6 @@
 // Contains helper code that ensures the component's operation.
 // ------------------------------------------------------------------------- //
 
-
 export const horizontalProps = {
   axis: "horizontal",
 	componentSize: "offsetWidth",

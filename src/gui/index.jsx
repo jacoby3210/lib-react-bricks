@@ -37,6 +37,10 @@ const Slider    = HOC.withMergeProps(Layouts.Slider.cfg.propValues)
 
 const Browser = HOC.withMergeProps(Widgets.Browser.cfg.propValues)
   (HOC.withValueNumber(HOC.withContainer(Widgets.Browser.Component)));
+const Navigator = HOC.withMergeProps(Widgets.Navigator.cfg.propValues)
+  (HOC.withValueNumber(HOC.withContainer(Widgets.Navigator.Component)));
+// const Paginator = HOC.withMergeProps(Widgets.Paginator.cfg.propValues)
+//   (HOC.withValueNumber(HOC.withContainer(Widgets.Paginator.Component)));
 const Scroll = HOC.withMergeProps(Widgets.Scroll.cfg.propValues)
   (HOC.withValueNumber(HOC.withContainer(Widgets.Scroll.Component)));
 
@@ -50,7 +54,7 @@ export const GUI = {
     Select, Slider, Switcher,
   },
   Widgets: {
-    Browser, Scroll,
+    Browser, Navigator, Scroll,
   }
  }
 

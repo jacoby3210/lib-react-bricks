@@ -2,9 +2,9 @@ import React, {useCallback, useEffect, useRef, useState } from 'react';
 import { Slider } from '../../../layouts';
 import * as code from './code';
 import * as cfg from "./config"
-// ========================================================================= //
+// ------------------------------------------------------------------------- //
 // React Component represents universal customizable content scrollbar.
-// ========================================================================= //
+// ------------------------------------------------------------------------- //
 
 export const Component = props => {
 
@@ -40,4 +40,4 @@ export const Component = props => {
 Component.propTypes = cfg.propTypes;
 export const Scroll = {cfg, Component}
 
-// ========================================================================= //
+// ------------------------------------------------------------------------- //
