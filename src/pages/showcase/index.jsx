@@ -6,9 +6,9 @@ import { ExamplePart2 } from './parts/part-2';
 // import { ExamplePart4 } from './parts/part-4';
 import "./index.css"
 // ------------------------------------------------------------------------- //
-// Showcase Application Page.                                                 //
+// Showcase Application Page.                                                //
 // It is used to demonstrate the operation of components / layers / pages    //
-// of the application in artificial conditions.                               //
+// of the application in artificial conditions.                              //
 // ------------------------------------------------------------------------- //
 
 const ShowcasePage = receivedProps => {

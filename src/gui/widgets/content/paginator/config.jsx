@@ -3,7 +3,7 @@ import * as cfg from "/src/gui/config.jsx"
 // Constants.
 // ------------------------------------------------------------------------- //
 
-export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-browser`;
+export const CSS_CLASS_DEFAULT = `${cfg.CSS_CLASS_DEFAULT}-paginator`;
 
 // ------------------------------------------------------------------------- //
 // Type checking.
@@ -22,7 +22,7 @@ export const propTypes = {
 export const propValues = {
   ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
   ... cfg.propPackageDataSource.values(),
-  ... cfg.propPackageValueNumber.values(1.0, 0.0, 0.01, 0.01, 0.00),
+  ... cfg.propPackageValueNumber.values({value:0}),
 };
 
 // ------------------------------------------------------------------------- //

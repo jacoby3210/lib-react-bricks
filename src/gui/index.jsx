@@ -17,13 +17,13 @@ const Repeater  = HOC.withMergeProps(Layouts.Repeater.cfg.propValues)
 const CheckBox  = HOC.withMergeProps(Layouts.CheckBox.cfg.propValues) 
   (HOC.withValue(Layouts.CheckBox.Component));
 const Clicker   = HOC.withMergeProps(Layouts.Clicker.cfg.propValues)  
-  (HOC.withValueNumber(Layouts.Clicker.Component));
+  (HOC.withValueNumberCheck(Layouts.Clicker.Component));
 const RadioBar  = HOC.withMergeProps(Layouts.RadioBar.cfg.propValues) 
   (HOC.withValue(HOC.withDataSource(Layouts.RadioBar.Component)));
 const Range     = HOC.withMergeProps(Layouts.Range.cfg.propValues)    
-  (HOC.withValueNumber(Layouts.Range.Component));
+  (HOC.withValueNumberCheck(Layouts.Range.Component));
 const Swing     = HOC.withMergeProps(Layouts.Swing.cfg.propValues)    
-  (HOC.withValueNumber(HOC.withContainer(Layouts.Swing.Component)));
+  (HOC.withValueNumberCheck(HOC.withContainer(Layouts.Swing.Component)));
 
 const Advisor   = HOC.withMergeProps(Layouts.Advisor.cfg.propValues) 
   (HOC.withValue(HOC.withDataSourceCursor(HOC.withDataSourceFilter(HOC.withContainer(HOC.withPopup(Layouts.Advisor.Component))))));
@@ -33,16 +33,16 @@ const Switcher  = HOC.withMergeProps(Layouts.Switcher.cfg.propValues)
   (HOC.withValue(HOC.withContainer(Layouts.Switcher.Component)));
   
 const Slider    = HOC.withMergeProps(Layouts.Slider.cfg.propValues)
-  (HOC.withValueNumber(HOC.withContainer(Layouts.Slider.Component)));
+  (HOC.withValueNumberCheck(HOC.withContainer(Layouts.Slider.Component)));
 
 const Browser = HOC.withMergeProps(Widgets.Browser.cfg.propValues)
-  (HOC.withValueNumber(HOC.withContainer(Widgets.Browser.Component)));
+  (HOC.withValueNumberCheck(HOC.withContainer(Widgets.Browser.Component)));
 const Navigator = HOC.withMergeProps(Widgets.Navigator.cfg.propValues)
-  (HOC.withValueNumber(HOC.withContainer(Widgets.Navigator.Component)));
+  (HOC.withValueNumberCheck(HOC.withContainer(Widgets.Navigator.Component)));
 const Paginator = HOC.withMergeProps(Widgets.Paginator.cfg.propValues)
-  (HOC.withValueNumber(HOC.withContainer(Widgets.Paginator.Component)));
+  (HOC.withValueNumberCheck(HOC.withContainer(Widgets.Paginator.Component)));
 const Scroll = HOC.withMergeProps(Widgets.Scroll.cfg.propValues)
-  (HOC.withValueNumber(HOC.withContainer(Widgets.Scroll.Component)));
+  (HOC.withValueNumberCheck(HOC.withContainer(Widgets.Scroll.Component)));
 
 // external module api
 export const GUI = {

@@ -1,8 +1,8 @@
-import React             from 'react'
+import React            from 'react'
 import ReactDOM         from 'react-dom/client'
-import {Provider}        from 'react-redux';
-import {BrowserRouter}   from 'react-router-dom';
-import {store}           from '/src/code/store/store.js';
+import {Provider}       from 'react-redux';
+import {BrowserRouter}  from 'react-router-dom';
+import {store}          from '/src/code/store';
 import Router           from '/src/pages/router.jsx'
 // ========================================================================= //
 // The main React component defining the structure of the application.

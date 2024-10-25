@@ -90,7 +90,7 @@ export const propPackageValueBase = {
   values: (value = "") => ({
     value: value,                                    // current value.
     whenValueChange: (next, prev) => next,           // callback to handle the value state update.
-    whenValueModify: (m) => next,                    // callback to modify the value state by coeff.
+    whenValueModify: (m) => m,                       // callback to modify the value state by coeff.
   }),
 }
 
@@ -103,15 +103,17 @@ export const propPackageValueNumber = {
     ... propPackageValueBase.types,
     valueMax: PropTypes.number,
     valueMin: PropTypes.number,
+    valueMode: PropTypes.bool,
     valueSpeed: PropTypes.number,
     valueStep: PropTypes.number,
   },
-  values: (value=0, max = 100, min = 0, speed = 1, step = 1) => ({
+  values: ({value=0, max = 100, min = 0, mode=false, speed = 1, step = 1}) => ({
     ... propPackageValueBase.values(value),
-    valueMax: max,                                   // maximum value available for choice.
-    valueMin: min,                                   // minimum value available for choice.
+    valueMode:  mode,                                // maximum value available for choice.
+    valueMax:   max,                                 // maximum value available for choice.
+    valueMin:   min,                                 // minimum value available for choice.
     valueSpeed: speed,                               // rate of change in value.
-    valueStep: step,                                 // minimum step to change the value.
+    valueStep:  step,                                // minimum step to change the value.
   }),
 }
 

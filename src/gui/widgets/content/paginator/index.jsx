@@ -11,30 +11,34 @@ export const Component = props => {
   // initial data
 	const {
     src,
-		value,
+		value, valueMax, valueStep,
 		whenValueChange,
+		whenValueModify,
 	} = props;
 
   // render 
 	const browserControllerProps = {
-		src,
+    src,
 		value,
+    valueMax, 
+    valueStep,
 		whenValueChange,
 	}
 
 	const navigatorControllerProps = {
-		valueMax: src.length, 
-		length: src.length, 
-		value,
+    value,
+		valueMax,    
+    valueStep,
 		whenValueChange,
+		whenValueModify,
 	}
+  console.log("Paginator",navigatorControllerProps);
 	
 	// render 
-
   return (
 		<>
-			<Navigator.Component {...navigatorControllerProps}/>
-			<Browser.Component {...browserControllerProps}/>
+			<Navigator.Component {...props}/>
+			<Browser.Component {...props}/>
 		</>
 	);
 

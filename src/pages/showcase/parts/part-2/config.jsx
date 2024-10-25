@@ -20,8 +20,8 @@ export const props = {
 		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
 	},
 	paginator: {
-		lengthBrowser: 5,
-		lengthNavigator: 25,
+    valueMax: 250,
+    valueStep: 10,
 		src: produceEntries(25, (v, i) => { return { caption: `Option #${i}`, id: i } }),
 		value: 0,
 	},

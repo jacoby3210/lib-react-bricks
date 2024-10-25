@@ -9,20 +9,12 @@ export const Component = props => {
 	// initial data
 	const {
 		children,
-		id,
-    rootRef,
+		id, rootRef,
 		infinity,
 		value, valueStep, valueMin, valueMax, valueSpeed, 
 		whenValueChange, whenValueModify,
-		...attributes
 	} = props;
-
-  // input from user
-	const normalizeValue = (value) => 
-		infinity 
-		? (value + valueMax) % (valueMax) 
-		: Math.min(value, valueMax - 1);
-
+  console.log(valueMax)
 	// render 
 	const btnFirstProps = {
 		className: `${cfg.CSS_CLASS_DEFAULT}-first`,
@@ -31,18 +23,18 @@ export const Component = props => {
 	}
 	const btnPrevProps = {
 		className: `${cfg.CSS_CLASS_DEFAULT}-first`,
-		onClick: () => { whenValueChange(normalizeValue(value - 1)); },
+		onClick: () => { whenValueModify(- valueStep); },
 		disabled: value === 0 && !infinity,
 	}
 	const btnNextProps = {
 		className: `${cfg.CSS_CLASS_DEFAULT}-next`,
-		onClick: () => {whenValueChange(normalizeValue(value + 1))},
+		onClick: () => {whenValueModify(valueStep)},
 		disabled: value === valueMax - 1 && !infinity,
 	}
 	const btnLastProps = {
 		className: `${cfg.CSS_CLASS_DEFAULT}-last`,
-		onClick: () => { whenValueChange(valueMax - 1); },
-		disabled: value === valueMax - 1,
+		onClick: () => { whenValueChange(valueMax - valueStep); },
+		disabled: value === valueMax - valueStep,
 	}
 
 	return (

@@ -20,7 +20,7 @@ export const propTypes = {
 
 export const propValues = {
   ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
-  ... cfg.propPackageValueNumber.values(1.0, 0.0, 0.01, 0.01, 0.00),
+  ... cfg.propPackageValueNumber.values({value:0}),
 };
 
 // ------------------------------------------------------------------------- //

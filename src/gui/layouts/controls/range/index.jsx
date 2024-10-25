@@ -10,7 +10,7 @@ const Component = props => {
   // initial data
   const {
     id, className,
-    axis, valueMax, valueMin, valueSpeed, valueStep, value,
+    axis, valueMax, valueMin, valueMode, valueSpeed, valueStep, value,
     whenValueChange,
     whenValueModify,
     ...attributes
