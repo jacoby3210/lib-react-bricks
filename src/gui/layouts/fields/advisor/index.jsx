@@ -9,7 +9,7 @@ export const Component = props => {
 	const {
     children,
     rootRef,
-		src, srcDataMatching, Template,
+		src, matchingItems, Template,
 		value, whenValueChange, whenValueModify,
     shownState, setShownState,
     cursorIndexState, setCursorIndexState, onChange, onKeyDown, onMouseDown,

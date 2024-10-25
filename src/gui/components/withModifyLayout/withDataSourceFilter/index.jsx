@@ -1,31 +1,36 @@
-import {useState} from "react"
+import React, { useMemo } from 'react';
 import { withDataSource } from "../withDataSource";
 // ------------------------------------------------------------------------- //
 // HOC to map multiple child nodes by filtered data source and JSX template. //
 // ------------------------------------------------------------------------- //
 
- const withDataSourceFilterInternal = (WrappedComponent) => {
-
-  return props => {
+const withDataSourceFilterInternal = (WrappedComponent) => {
+  return (props) => {
 
     // initial data
-    const { filter, src, ...attributes } = props;
+    const { filter, src = [], ...attributes } = props;
 
-    // render
-    const srcDataMatching = src.filter(filter, props);
-    const srcDataNotMatching = src.filter(item => !srcDataMatching.includes(item));
+    // memo data
+    const [matchingItems, nonMatchingItems] = useMemo(() => {
+      const matching = src.filter(filter, props);
+      const notMatching = src.filter(item => !matching.includes(item));
+      return [matching, notMatching];
+    }, [filter, src, props]);
+
+    // Подготовка пропсов для WrappedComponent
     const sendProps = {
-      src: srcDataMatching, 
-      srcDataMatching, 
-      srcDataNotMatching, 
-      ...attributes
+      src: matchingItems,
+      matchingItems,
+      nonMatchingItems,
+      ...props,
     };
-    return (<WrappedComponent {...sendProps}/>);
-  };
 
+    return <WrappedComponent {...sendProps} />;
+  };
 };
 
 export const withDataSourceFilter = (WrappedComponent) => 
   withDataSourceFilterInternal(withDataSource(WrappedComponent));
+
 
 // ------------------------------------------------------------------------- //
