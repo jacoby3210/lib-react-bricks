@@ -1,34 +1,32 @@
-import {useRef} from "react"
+import React, { useRef, memo, forwardRef } from 'react';
 // ------------------------------------------------------------------------- //
 // HOC - to wrap base component into ui block (<div>).
 // ------------------------------------------------------------------------- //
 
 export const withContainer = (WrappedComponent) => {
+  const MemoizedComponent = memo(WrappedComponent);
 
-  return props => {
-
-    // initial props
+  const Container = (props, ref) => {
     const {
       id,
       className,
       children,
-      value,
       Template,
+      ...restProps
     } = props;
 
-    // hooks
     const selfRef = useRef(null);
 
-    // render
     return (
-      <div id={id} ref={selfRef} className={className} value={value}>
-        <WrappedComponent rootRef={selfRef} {...props}>
+      <div id={id} ref={ref || selfRef} className={className}>
+        <MemoizedComponent rootRef={selfRef} {...restProps}>
           {children}
-        </WrappedComponent>
+        </MemoizedComponent>
       </div>
     );
   };
 
+  return forwardRef(Container);
 };
 
 // ------------------------------------------------------------------------- //
