@@ -4,37 +4,41 @@ import React, { useCallback, useEffect, useState } from 'react';
 // ------------------------------------------------------------------------- //
 
 export const withPopup = (WrappedComponent) => {
+  return (props) => {
 
-  return props => {
-  
     // initial data
-    const {shown} = props;
+    const { shown, ...attributes } = props;
+
+    // handle input
+    const closePopup = useCallback(() => setShownState(false), []);
+    const handleMouseDown = useCallback((evt) => closePopup(), [closePopup]);
+    const handleKeyDown = useCallback(
+      (evt) => {if (evt.key === 'Enter') closePopup();}, 
+      [closePopup]
+    );
 
     // hooks
     const [shownState, setShownState] = useState(shown);
+    useEffect(() => {
+      setShownState(shown);
+    }, [shown]);
 
-    // inputs
-    const handleMouseDown = useCallback((evt) => setShownState(false), []);
-    const handleKeyDown = useCallback((evt) => evt.key === 'Enter' && setShownState(false), []);
-
-    // hooks
     useEffect(() => {
       if (shownState) {
         document.addEventListener('mousedown', handleMouseDown);
         document.addEventListener('keydown', handleKeyDown);
-      } else {
-        document.removeEventListener('mousedown', handleMouseDown);
-        document.removeEventListener('keydown', handleKeyDown);
       }
       return () => {
         document.removeEventListener('mousedown', handleMouseDown);
         document.removeEventListener('keydown', handleKeyDown);
       };
-    }, [shownState, handleMouseDown]);
+    }, [shownState, handleMouseDown, handleKeyDown]);
 
     // render
-    const wrapProps = {shownState, setShownState, ...props}
-    return (<WrappedComponent {...wrapProps} />);
-  }
-}
+    const wrapProps = { shownState, setShownState, ...props };
+    return <WrappedComponent {...wrapProps} />;
+  };
+};
+
+
 // ------------------------------------------------------------------------- //

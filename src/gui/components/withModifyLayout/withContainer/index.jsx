@@ -7,6 +7,8 @@ export const withContainer = (WrappedComponent) => {
   const MemoizedComponent = memo(WrappedComponent);
 
   const Container = (props, ref) => {
+
+    // initial data
     const {
       id,
       className,
@@ -15,8 +17,10 @@ export const withContainer = (WrappedComponent) => {
       ...restProps
     } = props;
 
+    // hooks
     const selfRef = useRef(null);
 
+    // render
     return (
       <div id={id} ref={ref || selfRef} className={className}>
         <MemoizedComponent rootRef={selfRef} {...props}>

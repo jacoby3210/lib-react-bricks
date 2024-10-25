@@ -17,7 +17,7 @@ const withDataSourceFilterInternal = (WrappedComponent) => {
       return [matching, notMatching];
     }, [filter, src, props]);
 
-    // Подготовка пропсов для WrappedComponent
+    // render
     const sendProps = {
       src: matchingItems,
       matchingItems,
