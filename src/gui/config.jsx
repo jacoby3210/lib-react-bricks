@@ -101,19 +101,19 @@ export const propPackageValueBase = {
 export const propPackageValueNumber = {
   types: {
     ... propPackageValueBase.types,
-    valueMax: PropTypes.number,
-    valueMin: PropTypes.number,
-    valueMode: PropTypes.bool,
+    valueMax:   PropTypes.number,
+    valueMin:   PropTypes.number,
+    valueMode:  PropTypes.bool,
     valueSpeed: PropTypes.number,
-    valueStep: PropTypes.number,
+    valueStep:  PropTypes.number,
   },
-  values: ({value=0, max = 100, min = 0, mode=false, speed = 1, step = 1}) => ({
+  values: ({value=0, mode=false, rangeMax = 100, rangeMin = 0, speed = 1, step = 1}) => ({
     ... propPackageValueBase.values(value),
-    valueMode:  mode,                                // maximum value available for choice.
-    valueMax:   max,                                 // maximum value available for choice.
-    valueMin:   min,                                 // minimum value available for choice.
-    valueSpeed: speed,                               // rate of change in value.
-    valueStep:  step,                                // minimum step to change the value.
+    valueMode:            mode,            // maximum value available for choice.
+    valueRangeMax:    rangeMax,            // maximum value available for choice.
+    valueRangeMin:    rangeMin,            // minimum value available for choice.
+    valueSpeed:          speed,            // rate of change in value.
+    valueStep:            step,            // minimum step to change the value.
   }),
 }
 

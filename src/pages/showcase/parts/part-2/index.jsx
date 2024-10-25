@@ -42,7 +42,7 @@ export const ExamplePart2 = () => {
 			<GUI.Common.Repeater    {...props.viewForPaginator} from={currentPageState}/> 
 
 			<GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
-			<TestAreaForScroll />
+			<TestAreaForScroll /> 
 		</>
 	);
 };

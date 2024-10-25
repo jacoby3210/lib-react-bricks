@@ -14,13 +14,17 @@ export const props = {
 		length: 10,
 		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
 	},
-	navigator: {infinity: true, value:0, valueMax: 250},
+	navigator: {
+    valueMode: true, 
+    value:0, 
+    valueRangeMax: 250,
+  },
 	viewForNavigator: {
 		length: 1,
 		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
 	},
 	paginator: {
-    valueMax: 250,
+    valueRangeMax: 250,
     valueStep: 10,
 		src: produceEntries(25, (v, i) => { return { caption: `Option #${i}`, id: i } }),
 		value: 0,

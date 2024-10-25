@@ -9,22 +9,24 @@ export const withValueNumberCheck = (WrappedComponent) => {
 
     // initial data
     const {
-      valueMax: max,
-      valueMin: min,
-      valueMode: infinity,
+      valueMode: mode,
+      valueRangeMax: max,
+      valueRangeMin: min,
       valueStep: step,
       value,
     } = props;
-    console.log(max, min, infinity, step, props)
 
     // hooks
+
+    // Called when attempting to change the value of.
     const whenValueChange = (next) => {
-      const nextInf = infinity ? (next + max) % (max) : Math.min(next, max - 1);
+      const nextInf = mode ? (next + max) % (max) : Math.min(next, max - 1);
       const normNext = Math.round(Math.max(Math.min(nextInf, max), min) / step) * step;
       const fixNext = parseFloat(normNext.toFixed(code.getDecimalPlaces(step)));
-      console.log(max, min, infinity, step, next, nextInf, normNext, fixNext)
       return props["whenValueChange"](fixNext);
     };
+
+    // Short form to increase the value by the specified amount.
     const whenValueModify = m => whenValueChange(parseInt(value) + m)
     
     // render
