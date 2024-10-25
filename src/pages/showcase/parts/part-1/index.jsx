@@ -32,7 +32,6 @@ export const ExamplePart1 = () => {
       <GUI.Common.Slider   {...props.slider}/>
       
       {/* deprecated */}
-      {/* <GUI.Common.Accordion   {...propValues.accordion} /> */}
       {/* <GUI.Common.Path {...propValues.path}/> */}
       {/* <GUI.Common.Timer {...propValues.timer}/> */}
       {/* <GUI.Common.Indicator   {...props.indicator}/> */}

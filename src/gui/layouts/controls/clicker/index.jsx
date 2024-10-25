@@ -9,7 +9,7 @@ const Component = props => {
     const {
       id,
       children,
-      value, valueRangeMax, valueRangeMin, valueSpeed, valueStep,
+      value, valueMode, valueRangeMax, valueRangeMin, valueSpeed, valueStep,
       whenValueChange,
       whenValueModify,
       ...attributes

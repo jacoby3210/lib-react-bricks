@@ -1,43 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import * as code from "./code"
+import React, { useState, useCallback } from 'react';
 // ------------------------------------------------------------------------- //
 // HOC to control the state of the wrapped component.                        //
 // ------------------------------------------------------------------------- //
 
-export const withState = (stateName) => WrappedComponent => {
 
-  return props => {
+export const withState = (stateName) => (WrappedComponent) => {
+  return (props) => {
 
     // initial data
-    const stateValue = props[stateName]; 
-    const stateHandlerName = `when${code.capitalizeFirstLetter(stateName)}Change`;
-    const stateInitial = props[stateName], stateHandler = props[stateHandlerName];
-    const initialStateNormalize = typeof stateInitial === 'function'
-      ? stateInitial(props)
-      : stateInitial;
-
-    // hooks
-    const [state, setState] = useState(initialStateNormalize);
-    const handleStateChange = (next) => {
-      const v = stateHandler(next, stateValue)
-      setState(prev => stateHandler(v, prev));
-    }
+    const stateValue = props[stateName];
+    const stateInitial = typeof stateValue === 'function' ? stateValue(props) : stateValue;
+    const stateHandlerName = `when${stateName.charAt(0).toUpperCase() + stateName.slice(1)}Change`;
+    const stateHandler = props[stateHandlerName];
     
-    const handleStateModify = (next) => {
-      const v = stateHandler(stateValue + next, stateValue)
-      setState(prev => stateHandler(v, prev));
-    }
+    const [state, setState] = useState(stateInitial);
 
-    // render
+    // input from user
+    const handleStateChange = useCallback(
+      (next) => {
+        const updatedValue = stateHandler ? stateHandler(next, stateValue) : next;
+        setState((prev) => (stateHandler ? stateHandler(updatedValue, prev) : updatedValue));
+      },
+      [stateHandler, stateValue]
+    );
+
+    const handleStateModify = useCallback(
+      (delta) => {
+        const newValue = stateValue + delta;
+        const updatedValue = stateHandler ? stateHandler(newValue, stateValue) : newValue;
+        setState((prev) => (stateHandler ? stateHandler(updatedValue, prev) : updatedValue));
+      },
+      [stateHandler, stateValue]
+    );
+
+	  // render 
     const modifiedProps = {
-      ... props,
+      ...props,
       [stateName]: state,
       [stateHandlerName]: handleStateChange,
-      [stateHandlerName.replace("Change", "Modify")]: handleStateModify,
+      [`when${stateName.charAt(0).toUpperCase() + stateName.slice(1)}Modify`]: handleStateModify,
     };
 
-    return <WrappedComponent {...modifiedProps}/>;
-  }
-}
+    return <WrappedComponent {...modifiedProps} />;
+  };
+};
+
 
 // ------------------------------------------------------------------------- //

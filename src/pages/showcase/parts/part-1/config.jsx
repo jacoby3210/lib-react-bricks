@@ -57,9 +57,9 @@ export const props = {
       return {label: `Option #${i}`, value: i}
     }),
   },
-  rangeHorizontal: { axis: true, valueMin: 0, valueMax: 10, valueStep: 0.0001, value: 5 },
-  rangeVertical: { valueMax: 50, valueMin: 0, valueStep: 0.1, value: 5 },
-  swing: { valueMax: 50, valueMin: 0, valueStep: 0.5, value: 5 },
+  rangeHorizontal: { axis: true, valueRangeMin: 0, valueRangeMax: 10, valueStep: 0.0001, value: 5 },
+  rangeVertical: { valueRangeMax: 50, valueRangeMin: 0, valueStep: 0.1, value: 5 },
+  swing: { valueRangeMax: 50, valueRangeMin: 0, valueStep: 0.5, value: 5 },
 
   //
   advisor: {
@@ -89,7 +89,7 @@ export const props = {
       return {caption: `Option #${i}`, text: `Option #${i}`, id: i}
     }),
   },
-  slider: { valueMax: 50, valueMin: 0, valueStep: 0.5, value: 5 },
+  slider: { value: 5, valueRangeMax: 50, valueRangeMin: 0, valueStep: 0.5,},
 
 };
 
