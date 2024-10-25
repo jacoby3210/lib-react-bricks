@@ -23,7 +23,8 @@ export const withValueNumberCheck = (WrappedComponent) => {
     };
 
     const calculateNormalizedValue = (next) => {
-      const wrappedValue = mode ? (next + max) % max : Math.min(next, max - 1);
+      console.log(next)
+      const wrappedValue = mode ? (next + max) % max : Math.max(Math.min(next, max - step));
       const steppedValue = Math.round(wrappedValue / step) * step;
       return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
     };
@@ -31,14 +32,14 @@ export const withValueNumberCheck = (WrappedComponent) => {
     // input from user
     const handleValueChange = useCallback(
       (next) => {
-        const normalizedValue = calculateNormalizedValue(Math.max(Math.min(next, max), min));
+        const normalizedValue = calculateNormalizedValue(next);
         whenValueChange(normalizedValue);
       },
       [min, max, step, mode, whenValueChange]
     );
 
     const handleValueModify = useCallback(
-      (increment) => handleValueChange(parseFloat(value) + increment),
+      (increment) => { console.log(parseFloat(value), increment, parseFloat(value) + increment) ;return handleValueChange(parseFloat(value) + increment)},
       [handleValueChange, value]
     );
 
