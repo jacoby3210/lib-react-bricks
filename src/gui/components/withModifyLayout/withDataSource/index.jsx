@@ -1,32 +1,40 @@
+import React, { memo, useMemo } from 'react';
 // ------------------------------------------------------------------------- //
 // HOC to map multiple child nodes by data source and JSX template.          //
 // ------------------------------------------------------------------------- //
 
 export const withDataSource = (WrappedComponent) => {
+  const MemoizedComponent = memo(WrappedComponent);
 
-  return props => {
+  return (props) => {
 
     // initial data
     const {
-      src,
+      src = [],
       Template,
       ...attributes
     } = props;
 
     // render
-    const children = src.map(
-      (meta, index) => {
-        const templateProps = {index, meta, common: attributes}
-        return <Template key={meta.id || index} {...templateProps}/>;
-      }
-    ); 
-    
+    const children = useMemo(() => 
+      src.map((meta, index) => (
+        <Template 
+          key={meta.id || index} 
+          common={props} 
+          index={index} 
+          meta={meta}  
+        />
+      )),
+      [src, Template, attributes]
+    );
+
     return (
-      <WrappedComponent {...props}>
+      <MemoizedComponent {...props}>
         {children}
-      </WrappedComponent>
+      </MemoizedComponent>
     );
   };
 };
+
 
 // ------------------------------------------------------------------------- //

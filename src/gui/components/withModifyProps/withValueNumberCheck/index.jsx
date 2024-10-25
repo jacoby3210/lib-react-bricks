@@ -39,7 +39,7 @@ export const withValueNumberCheck = (WrappedComponent) => {
     );
 
     const handleValueModify = useCallback(
-      (increment) => { console.log(parseFloat(value), increment, parseFloat(value) + increment) ;return handleValueChange(parseFloat(value) + increment)},
+      (increment) => handleValueChange(parseFloat(value) + increment),
       [handleValueChange, value]
     );
 

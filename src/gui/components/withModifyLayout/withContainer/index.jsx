@@ -19,7 +19,7 @@ export const withContainer = (WrappedComponent) => {
 
     return (
       <div id={id} ref={ref || selfRef} className={className}>
-        <MemoizedComponent rootRef={selfRef} {...restProps}>
+        <MemoizedComponent rootRef={selfRef} {...props}>
           {children}
         </MemoizedComponent>
       </div>
