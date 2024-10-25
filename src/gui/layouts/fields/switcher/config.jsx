@@ -23,8 +23,8 @@ export const propTypes = {
 
 export const propValues = {
   ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
-  ... cfg.propPackageValueBase.values(),
-  ... cfg.propPackageValueBase.values(""),
+  ... cfg.propPackageDataSource.values(),
+  ... cfg.propPackageValueBase.values({value:""}),
   rounded: true,
 }
 

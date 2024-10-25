@@ -15,8 +15,8 @@ export const props = {
 		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
 	},
 	navigator: {
-    valueMode: true, 
     value:0, 
+    valueMode: true, 
     valueRangeMax: 250,
   },
 	viewForNavigator: {

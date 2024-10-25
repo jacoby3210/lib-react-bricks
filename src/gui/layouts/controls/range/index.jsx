@@ -10,7 +10,7 @@ const Component = props => {
   // initial data
   const {
     id, className,
-    axis, valueMax, valueMin, valueMode, valueSpeed, valueStep, value,
+    axis, value, valueMode, valueRangeMax, valueRangeMin, valueSpeed, valueStep,
     whenValueChange,
     whenValueModify,
     ...attributes
@@ -45,7 +45,7 @@ const Component = props => {
   const handleMouseMove = (evt) => {
     const rect = trackRef.current.getBoundingClientRect();
     const relativePos = code.getPosition(rect, propsAxis, evt[propsAxis.cursor], offsetState);
-    const newValue = code.positionToValue(relativePos, valueMin, valueMax, valueStep)
+    const newValue = code.positionToValue(relativePos, valueRangeMin, valueRangeMax, valueStep)
     handleChange(newValue);
     evt.preventDefault();
   };
@@ -62,12 +62,12 @@ const Component = props => {
     if (evt.buttons !== 1) return;
     const rect = trackRef.current.getBoundingClientRect();
     const relativePos = code.getPosition(rect, propsAxis, evt[propsAxis.cursor], 0);
-    const newValue = code.positionToValue(relativePos, valueMin, valueMax, valueStep);
+    const newValue = code.positionToValue(relativePos, valueRangeMin, valueRangeMax, valueStep);
     code.valueAnimate(value, newValue, 200, handleChange);
   }
 
   // render 
-  const thumbStyle = code.valueToStyle(axis, value, valueMin, valueMax);
+  const thumbStyle = code.valueToStyle(axis, value, valueRangeMin, valueRangeMax);
   const trackProps = {className, trackRef, onMouseDown: handleTrackMouseDown };
   const thumbProps = {className, thumbRef, style: thumbStyle, onMouseDown: handleThumbMouseDown };
 

@@ -8,33 +8,7 @@ import * as cfg from "./config";
 
 export const Component = props => {
 
-  // initial data
-	const {
-    src,
-		value, valueMax, valueStep,
-		whenValueChange,
-		whenValueModify,
-	} = props;
-
   // render 
-	const browserControllerProps = {
-    src,
-		value,
-    valueMax, 
-    valueStep,
-		whenValueChange,
-	}
-
-	const navigatorControllerProps = {
-    value,
-		valueMax,    
-    valueStep,
-		whenValueChange,
-		whenValueModify,
-	}
-  console.log("Paginator",navigatorControllerProps);
-	
-	// render 
   return (
 		<>
 			<Navigator.Component {...props}/>

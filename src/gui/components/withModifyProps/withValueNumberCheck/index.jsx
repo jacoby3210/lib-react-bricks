@@ -1,11 +1,10 @@
-import * as code from './code';
+import React, { useCallback } from 'react';
 // ------------------------------------------------------------------------- //
 // HOC to сhecks the numeric value for compliance with additional conditions.   //
 // ------------------------------------------------------------------------- //
 
 export const withValueNumberCheck = (WrappedComponent) => {
-
-  return props => {
+  return (receivedProps) => {
 
     // initial data
     const {
@@ -14,26 +13,44 @@ export const withValueNumberCheck = (WrappedComponent) => {
       valueRangeMin: min,
       valueStep: step,
       value,
-    } = props;
+      whenValueChange,
+    } = receivedProps;
 
-    // hooks
-
-    // Called when attempting to change the value of.
-    const whenValueChange = (next) => {
-      const nextInf = mode ? (next + max) % (max) : Math.min(next, max - 1);
-      const normNext = Math.round(Math.max(Math.min(nextInf, max), min) / step) * step;
-      const fixNext = parseFloat(normNext.toFixed(code.getDecimalPlaces(step)));
-      return props["whenValueChange"](fixNext);
+    // supporting methods
+    const getDecimalPlaces = (num) => {
+      const decimalPart = num.toString().split('.')[1];
+      return decimalPart ? decimalPart.length : 0;
     };
 
-    // Short form to increase the value by the specified amount.
-    const whenValueModify = m => whenValueChange(parseInt(value) + m)
-    
-    // render
-    const modifiedProps = {... props,  whenValueChange, whenValueModify};
-    return (<WrappedComponent {...modifiedProps}/>);
-  };
+    const calculateNormalizedValue = (next) => {
+      const wrappedValue = mode ? (next + max) % max : Math.min(next, max - 1);
+      const steppedValue = Math.round(wrappedValue / step) * step;
+      return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
+    };
 
+    // input from user
+    const handleValueChange = useCallback(
+      (next) => {
+        const normalizedValue = calculateNormalizedValue(Math.max(Math.min(next, max), min));
+        whenValueChange(normalizedValue);
+      },
+      [min, max, step, mode, whenValueChange]
+    );
+
+    const handleValueModify = useCallback(
+      (increment) => handleValueChange(parseFloat(value) + increment),
+      [handleValueChange, value]
+    );
+
+	// render 
+    const modifiedProps = {
+      ...receivedProps,
+      whenValueChange: handleValueChange,
+      whenValueModify: handleValueModify,
+    };
+
+    return <WrappedComponent {...modifiedProps} />;
+  };
 };
 
 // ------------------------------------------------------------------------- //

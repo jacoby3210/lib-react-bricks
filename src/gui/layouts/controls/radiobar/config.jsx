@@ -25,7 +25,7 @@ export const propValues = {
   ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
   ... cfg.propPackageDataSource.values(),
   ... cfg.propPackageTemplate.values(code.TemplateDefault),
-  ... cfg.propPackageValueBase.values(null),
+  ... cfg.propPackageValueBase.values({value:null}),
 };
 
 // ------------------------------------------------------------------------- //

@@ -19,7 +19,6 @@ export const Component = props => {
 	} = props;
 	
 	// render 
-
 	const repeaterProps = {
 		from: 0, 
 		length: src.length, 

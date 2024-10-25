@@ -9,7 +9,7 @@ const Component = props => {
   // initial data
   const {
     className,
-    valueMax, valueMin, valueStep, whenValueChange, whenValueModify,
+    valueRangeMax, valueRangeMin, valueStep, whenValueChange, whenValueModify,
   } = props;
 
   // hooks
@@ -27,7 +27,7 @@ const Component = props => {
   };
 
   const onDoubleClick = (evt) => {
-    const next = isButtonStart(evt.target) ? valueMin : valueMax;
+    const next = isButtonStart(evt.target) ? valueRangeMin : valueRangeMax;
     whenValueChange(next);
   };
   const onMouseUp = () => clearInterval(timeoutRef.current)

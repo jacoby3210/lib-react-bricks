@@ -87,7 +87,7 @@ export const propPackageValueBase = {
     whenValueChange: PropTypes.func,
     whenValueModify: PropTypes.func,
   },
-  values: (value = "") => ({
+  values: ({value = ""}) => ({
     value: value,                                    // current value.
     whenValueChange: (next, prev) => next,           // callback to handle the value state update.
     whenValueModify: (m) => m,                       // callback to modify the value state by coeff.

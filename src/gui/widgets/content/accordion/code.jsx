@@ -3,14 +3,14 @@
 // ------------------------------------------------------------------------- //
 
 // template for forming a gui by metadata.
-export const TemplateDefault = ({common, meta, index}) =>{
-  return <button 
-    className= {`rc-browser-button`} 
-    onClick= {()=> common.whenValueChange(meta.id * common.valueStep)}
-    {...meta}
-  >
-    {meta?.caption || trueIndex}
-  </button>;
-}
+export const TemplateDefault = ({common, meta, index}) => 
+  (
+    <details open={common.value.includes(index)}>
+      <summary onClick={(evt) => handleToggle(evt, index)} >
+        {meta.caption}
+      </summary>
+      <p>{meta.content}</p>
+    </details>
+  );
 
 // ------------------------------------------------------------------------- //

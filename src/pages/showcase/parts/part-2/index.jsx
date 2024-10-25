@@ -21,16 +21,13 @@ export const ExamplePart2 = () => {
 	const handleNavigatorSlide = (i) => {setCurrentNavigatorSlide(i); return i;}
 
 	const [currentPageState, setCurrentPageState] = useState(0);
-	const handlePage = (i) => {
-    console.log(i)
-    setCurrentPageState(i);}
+	const handlePage = (i) => {setCurrentPageState(i);}
 
 	// render 
 	return (
 		<>
-			{/* 
+
       <GUI.Widgets.Accordion {...props.accordion} />
-      */}
        
 			<GUI.Widgets.Browser    {...props.browser} whenValueChange={handleBrowserTab}   value={currentBrowserTab}/>
 			<GUI.Common.Repeater    {...props.viewForBrowser} from={currentBrowserTab}/>
