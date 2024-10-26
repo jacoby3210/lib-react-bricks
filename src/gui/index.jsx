@@ -52,8 +52,8 @@ export const GUI = {
   Common: {
     Container, Dropout, Empty, Repeater,
     CheckBox,  Clicker, RadioBar, Range, Swing,
-    Advisor, 
-    Select, Slider, Switcher,
+    Advisor, Select, Switcher,
+    Slider, 
   },
   Widgets: {
     Accordion, Browser, Navigator, Paginator, Scroll,
