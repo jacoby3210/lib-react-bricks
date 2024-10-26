@@ -11,11 +11,11 @@ export {withDataSourceFilter}  from "./withModifyLayout/withDataSourceFilter";//
 export {withPopup}             from "./withModifyLayout/withPopup";           // - to display child components outside of the main document flow.
 
 // withProperties - modifies 
-export { withMergeProps }      from "./withModifyProps/withMergeProps";       // - to smartly merge the component's default and passed properties.
-export { withValueNumberCheck } from "./withModifyProps/withValueNumberCheck";// - сhecks the numeric value for compliance with additional conditions.
+export {withMergeProps}        from "./withModifyProps/withMergeProps";       // - to smartly merge the component's default and passed properties.
+export {withValueHandleBase}   from "./withModifyProps/withValueHandleBase";  // - to handle a change in the value of a component.
+export {withValueHandleNumber} from "./withModifyProps/withValueHandleNumber";// - to handle a change in the value of a component (numeric type).
 
 // withState - modifies 
-export { withState }            from "./withState/withState";                  // - to control the state of the wrapped component.
-export { withValue }            from "./withState/withValue";                  // - to control the state of the value in the wrapped component.
+export { withState }           from "./withState/withState";                  // - to control the state of the wrapped component.
 
 // -------------------------------------------------------------------------- //

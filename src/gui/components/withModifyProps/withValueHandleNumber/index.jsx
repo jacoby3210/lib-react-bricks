@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 // ------------------------------------------------------------------------- //
-// HOC to сhecks the numeric value for compliance with additional conditions.   //
+// HOC to handle a change in the value of a component (numeric type).        //
 // ------------------------------------------------------------------------- //
 
-export const withValueNumberCheck = (WrappedComponent) => {
+export const withValueHandleNumber = (WrappedComponent) => {
   return (receivedProps) => {
 
     // initial data

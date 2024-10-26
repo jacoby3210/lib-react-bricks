@@ -79,6 +79,7 @@ export const propPackageTemplate = {
 export const propPackageValueBase = {
   types: {
     value: PropTypes.oneOfType([
+      PropTypes.array, 
       PropTypes.bool, 
       PropTypes.number, 
       PropTypes.object, 

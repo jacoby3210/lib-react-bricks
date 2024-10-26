@@ -1,54 +1,54 @@
-import * as HOC from "./components"
+import * as HOCs from "./components"
 import * as Layouts from "./layouts"
 import * as Widgets from "./widgets"
 // ------------------------------------------------------------------------- //
 // Header file for export module. Compile widgets.
 // ------------------------------------------------------------------------- //
 
-const Container = HOC.withMergeProps(Layouts.Container.cfg.propValues) 
+const Container = HOCs.withMergeProps(Layouts.Container.cfg.propValues) 
   (Layouts.Container.Component);
-const Dropout   = HOC.withMergeProps(Layouts.Dropout.cfg.propValues) 
-  (HOC.withContainer(HOC.withPopup(Layouts.Dropout.Component)));
-const Empty     = HOC.withMergeProps(Layouts.Empty.cfg.propValues)
+const Dropout   = HOCs.withMergeProps(Layouts.Dropout.cfg.propValues) 
+  (HOCs.withContainer(HOCs.withPopup(Layouts.Dropout.Component)));
+const Empty     = HOCs.withMergeProps(Layouts.Empty.cfg.propValues)
   (Layouts.Empty.Component);
-const Repeater  = HOC.withMergeProps(Layouts.Repeater.cfg.propValues)
-  (HOC.withValue(HOC.withDataSource(Layouts.Repeater.Component)));
+const Repeater  = HOCs.withMergeProps(Layouts.Repeater.cfg.propValues)
+  (HOCs.withValueHandleBase(HOCs.withDataSource(Layouts.Repeater.Component)));
 
-const CheckBox  = HOC.withMergeProps(Layouts.CheckBox.cfg.propValues) 
-  (HOC.withValue(Layouts.CheckBox.Component));
-const Clicker   = HOC.withMergeProps(Layouts.Clicker.cfg.propValues)  
-  (HOC.withValueNumberCheck(Layouts.Clicker.Component));
-const RadioBar  = HOC.withMergeProps(Layouts.RadioBar.cfg.propValues) 
-  (HOC.withValue(HOC.withDataSource(Layouts.RadioBar.Component)));
-const Range     = HOC.withMergeProps(Layouts.Range.cfg.propValues)    
-  (HOC.withValueNumberCheck(Layouts.Range.Component));
-const Swing     = HOC.withMergeProps(Layouts.Swing.cfg.propValues)    
-  (HOC.withValueNumberCheck(HOC.withContainer(Layouts.Swing.Component)));
+const CheckBox  = HOCs.withMergeProps(Layouts.CheckBox.cfg.propValues) 
+  (HOCs.withValueHandleBase(Layouts.CheckBox.Component));
+const Clicker   = HOCs.withMergeProps(Layouts.Clicker.cfg.propValues)  
+  (HOCs.withValueHandleNumber(Layouts.Clicker.Component));
+const RadioBar  = HOCs.withMergeProps(Layouts.RadioBar.cfg.propValues) 
+  (HOCs.withValueHandleBase(HOCs.withDataSource(Layouts.RadioBar.Component)));
+const Range     = HOCs.withMergeProps(Layouts.Range.cfg.propValues)    
+  (HOCs.withValueHandleNumber(Layouts.Range.Component));
+const Swing     = HOCs.withMergeProps(Layouts.Swing.cfg.propValues)    
+  (HOCs.withValueHandleNumber(HOCs.withContainer(Layouts.Swing.Component)));
 
-const Advisor   = HOC.withMergeProps(Layouts.Advisor.cfg.propValues) 
-  (HOC.withValue(HOC.withDataSourceCursor(HOC.withDataSourceFilter(HOC.withContainer(HOC.withPopup(Layouts.Advisor.Component))))));
-const Select    = HOC.withMergeProps(Layouts.Select.cfg.propValues)
-  (HOC.withValue(HOC.withDataSource(HOC.withContainer(HOC.withPopup(Layouts.Select.Component)))));
-const Switcher  = HOC.withMergeProps(Layouts.Switcher.cfg.propValues)
-  (HOC.withValue(HOC.withContainer(Layouts.Switcher.Component)));
+const Advisor   = HOCs.withMergeProps(Layouts.Advisor.cfg.propValues) 
+  (HOCs.withValueHandleBase(HOCs.withDataSourceCursor(HOCs.withDataSourceFilter(HOCs.withContainer(HOCs.withPopup(Layouts.Advisor.Component))))));
+const Select    = HOCs.withMergeProps(Layouts.Select.cfg.propValues)
+  (HOCs.withValueHandleBase(HOCs.withDataSource(HOCs.withContainer(HOCs.withPopup(Layouts.Select.Component)))));
+const Switcher  = HOCs.withMergeProps(Layouts.Switcher.cfg.propValues)
+  (HOCs.withValueHandleBase(HOCs.withContainer(Layouts.Switcher.Component)));
   
-const Slider    = HOC.withMergeProps(Layouts.Slider.cfg.propValues)
-  (HOC.withValueNumberCheck(HOC.withContainer(Layouts.Slider.Component)));
+const Slider    = HOCs.withMergeProps(Layouts.Slider.cfg.propValues)
+  (HOCs.withValueHandleNumber(HOCs.withContainer(Layouts.Slider.Component)));
 
-const Accordion = HOC.withMergeProps(Widgets.Accordion.cfg.propValues)
-  (HOC.withContainer(Widgets.Accordion.Component));
-const Browser = HOC.withMergeProps(Widgets.Browser.cfg.propValues)
-  (HOC.withValueNumberCheck(HOC.withContainer(Widgets.Browser.Component)));
-const Navigator = HOC.withMergeProps(Widgets.Navigator.cfg.propValues)
-  (HOC.withValueNumberCheck(HOC.withContainer(Widgets.Navigator.Component)));
-const Paginator = HOC.withMergeProps(Widgets.Paginator.cfg.propValues)
-  (HOC.withValueNumberCheck(HOC.withContainer(Widgets.Paginator.Component)));
-const Scroll = HOC.withMergeProps(Widgets.Scroll.cfg.propValues)
-  (HOC.withValueNumberCheck(HOC.withContainer(Widgets.Scroll.Component)));
+const Accordion = HOCs.withMergeProps(Widgets.Accordion.cfg.propValues)
+  (HOCs.withContainer(Widgets.Accordion.Component));
+const Browser = HOCs.withMergeProps(Widgets.Browser.cfg.propValues)
+  (HOCs.withValueHandleNumber(HOCs.withContainer(Widgets.Browser.Component)));
+const Navigator = HOCs.withMergeProps(Widgets.Navigator.cfg.propValues)
+  (HOCs.withValueHandleNumber(HOCs.withContainer(Widgets.Navigator.Component)));
+const Paginator = HOCs.withMergeProps(Widgets.Paginator.cfg.propValues)
+  (HOCs.withValueHandleNumber(HOCs.withContainer(Widgets.Paginator.Component)));
+const Scroll = HOCs.withMergeProps(Widgets.Scroll.cfg.propValues)
+  (HOCs.withValueHandleNumber(HOCs.withContainer(Widgets.Scroll.Component)));
 
 // external module api
 export const GUI = {
-  HOC,    
+  HOCs,    
   Common: {
     Container, Dropout, Empty, Repeater,
     CheckBox,  Clicker, RadioBar, Range, Swing,
