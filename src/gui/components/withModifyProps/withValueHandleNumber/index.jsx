@@ -14,6 +14,7 @@ export const withValueHandleNumber = (WrappedComponent) => {
       valueStep: step,
       value,
       whenValueChange,
+      whenValueModify,
     } = receivedProps;
 
     // supporting methods
@@ -23,7 +24,7 @@ export const withValueHandleNumber = (WrappedComponent) => {
     };
 
     const calculateNormalizedValue = (next) => {
-      const wrappedValue = mode ? (next + max) % max : Math.max(Math.min(next, max - step));
+      const wrappedValue = mode ? (next + max) % max : Math.max(Math.min(next, max));
       const steppedValue = Math.round(wrappedValue / step) * step;
       return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
     };
@@ -32,14 +33,17 @@ export const withValueHandleNumber = (WrappedComponent) => {
     const handleValueChange = useCallback(
       (next) => {
         const normalizedValue = calculateNormalizedValue(next);
-        whenValueChange(normalizedValue);
+        return whenValueChange(normalizedValue);
       },
       [min, max, step, mode, whenValueChange]
     );
 
     const handleValueModify = useCallback(
-      (increment) => handleValueChange(parseFloat(value) + increment),
-      [handleValueChange, value]
+      (increment) => {
+        console.log(1, value); 
+        return whenValueModify( increment)
+      },
+      [whenValueModify, value]
     );
 
 	// render 

@@ -79,6 +79,18 @@ export const props = {
     })),
     value: 0,
   },
+  switcher: {
+    length: 5,
+    src: produceEntries(5, (v, i) => ({ 
+      caption: `Option #${i}`, 
+      value: i,
+      onMouseDown: (e) => {
+        console.log(`Option #${i}`); 
+        return false;
+      } 
+    })),
+    value: 0,
+  },
 
   // fields
   cloud: {

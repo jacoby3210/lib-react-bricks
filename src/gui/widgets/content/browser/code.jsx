@@ -6,7 +6,7 @@
 export const TemplateDefault = ({common, meta, index}) =>{
   return <button 
     className= {`rc-browser-button`} 
-    onClick= {()=> common.whenValueChange(meta.id * common.valueStep)}
+    onClick= {()=> common.whenValueChange(index * common.valueStep)}
     {...meta}
   >
     {meta?.caption || trueIndex}

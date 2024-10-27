@@ -29,7 +29,7 @@ export const ExamplePart1 = () => {
       {/* fields */}
       <fsComponents.Advisor  {...props.advisor}/>
       <fsComponents.Select   {...props.select}/>
-      <fsComponents.Switcher {...props.select}/> 
+      <fsComponents.Switcher {...props.switcher}/> 
 
       {/* partials */}
       {/* <fsComponents.Cloud    {...props.cloud}/> */}

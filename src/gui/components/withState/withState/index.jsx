@@ -18,7 +18,7 @@ export const withState = (stateName) => (WrappedComponent) => {
     // input from user
     const handleStateChange = useCallback(
       (next) => {
-        const updatedValue = stateHandler ? stateHandler(next, stateValue) : next;
+        const updatedValue = stateHandler ? stateHandler(next, state) : next;
         setState((prev) => (stateHandler ? stateHandler(updatedValue, prev) : updatedValue));
       },
       [stateHandler, stateValue]
@@ -26,9 +26,10 @@ export const withState = (stateName) => (WrappedComponent) => {
 
     const handleStateModify = useCallback(
       (delta) => {
-        const newValue = stateValue + delta;
-        const updatedValue = stateHandler ? stateHandler(newValue, stateValue) : newValue;
-        setState((prev) => (stateHandler ? stateHandler(updatedValue, prev) : updatedValue));
+        setState((prev) => {
+          const newValue = prev + delta;
+          return (stateHandler ? stateHandler(newValue, prev) : newValue)
+        });
       },
       [stateHandler, stateValue]
     );

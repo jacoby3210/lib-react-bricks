@@ -23,7 +23,6 @@ const Component = props => {
 		if (isShown) {
 			whenValueChange(value.filter(idx => idx !== index));
 		} else {
-      console.log(mode, [index]);
       if (mode === 'single') whenValueChange([index]);
 			else whenValueChange([...value, index]);
 		}

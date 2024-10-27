@@ -16,16 +16,18 @@ export const Component = props => {
   } = props;
 
   // hooks
-  const srcRef = useRef(src);
 
   // input from user
   const handlePrevClick = () => {
-    if(value !== 0) whenValueModify(-1);
-    else if(rounded) whenValueChange(srcRef.current.length - 1);
+    console.log(value)
+    if(value !== 0) 
+      whenValueModify(-1);
+    else if(rounded) whenValueChange(src.length - 1);
   };
 
   const handleNextClick = () => {
-    if(value !== srcRef.current.length - 1) whenValueModify(1);
+    console.log(rounded, value)
+    if(value !== src.length - 1) whenValueModify(1);
     else if(rounded) whenValueChange(0);
   };
 
@@ -33,7 +35,7 @@ export const Component = props => {
   return (
     <>
       <button onClick={handlePrevClick}>←</button>
-      <span>{srcRef.current[value].caption}</span>
+      <span>{src[value].caption}</span>
       <button onClick={handleNextClick}>→</button>
     </>
   );
