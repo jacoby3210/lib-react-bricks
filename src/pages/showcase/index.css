@@ -1,6 +1,8 @@
 #root {position:relative;}
 
-.rc-slider-range[axis=horizontal], .rc-range[axis=horizontal] {
+.rc-scroll-range[axis=horizontal],
+.rc-slider-range[axis=horizontal], 
+.rc-range[axis=horizontal] {
   background-color: aliceblue;
   height: 24px;
   padding-right: 24px;
@@ -9,13 +11,15 @@
 }
 
 .rc-scroll-track,
-.rc-slider-track,  .rc-range-track {
+.rc-slider-track,  
+.rc-range-track {
   height: 100%;
   width: 100%;
 }
 
-.rc-scroll,
-.rc-slider-thumb, .rc-range-thumb {
+.rc-scroll-thumb,
+.rc-slider-thumb,
+.rc-range-thumb {
   background-color: olivedrab;
   height: 24px;
   width: 24px;
@@ -23,7 +27,8 @@
 }
 
 .rc-scroll[axis=vertical],
-.rc-slider[axis=vertical], .rc-range[axis=vertical] {
+.rc-slider[axis=vertical], 
+.rc-range[axis=vertical] {
   background-color: orangered;
   padding-bottom: 24px;
   height: 100px;

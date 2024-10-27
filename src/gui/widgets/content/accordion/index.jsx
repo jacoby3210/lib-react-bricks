@@ -13,25 +13,26 @@ const Component = props => {
 		id,
 		mode,
 		src,
-		value,
+		value, whenValueChange,
 		...attributes
 	} = props;
 
 	// input from user
 	const handleToggle = useCallback((evt, index) => {
 		const isShown = value.includes(index);
-		// if (isShown) {
-		// 	setvalue(value.filter(idx => idx !== index));
-		// } else {
-		// 	if (mode === 'single') setvalue([index]);
-		// 	else setvalue([...value, index]);
-		// }
+		if (isShown) {
+			whenValueChange(value.filter(idx => idx !== index));
+		} else {
+      console.log(mode, [index]);
+      if (mode === 'single') whenValueChange([index]);
+			else whenValueChange([...value, index]);
+		}
 		evt.stopPropagation();
 	}, []);
 
 	// render 
 	const TemplateDefault = ({common, index, meta}) => {
-    return <details open={value.includes(index)}>
+    return <details open={value.includes(index)} mode={mode}>
         <summary onClick={(evt) => handleToggle(evt, index)} >
           {meta.caption}
         </summary>

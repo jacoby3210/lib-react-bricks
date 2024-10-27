@@ -14,29 +14,35 @@ export const ExamplePart2 = () => {
 	  		<div style={{ height: "200px" }} />
 		</div>;
 
-	// hooks
-	const [currentBrowserTab, setBrowserTab] = useState(0);
-	const handleBrowserTab = (tabIndex) => {setBrowserTab(tabIndex * 10);}
-	const [currentNavigatorSlide, setCurrentNavigatorSlide] = useState(0);
-	const handleNavigatorSlide = (i) => {setCurrentNavigatorSlide(i); return i;}
-
-	const [currentPageState, setCurrentPageState] = useState(0);
-	const handlePage = (i) => {setCurrentPageState(i);}
-
+  const fsComponents = {
+    AccordionExample: GUI.HOCs.withState("value")(GUI.Widgets.Accordion),
+    BrowserExample: GUI.HOCs.withState("value")(
+      (exampleProps) => <>
+        <GUI.Widgets.Browser    {...props.browser} {...exampleProps}/>
+        <GUI.Common.Repeater    {...props.viewForBrowser} from={exampleProps.value * 10}/>
+      </>
+    ),
+    NavigatorExample: GUI.HOCs.withState("value")(
+      (exampleProps) => <>
+        <GUI.Widgets.Navigator  {...props.navigator} {...exampleProps}/>
+        <GUI.Common.Repeater    {...props.viewForNavigator} from={exampleProps.value}/>
+      </>
+    ),
+    PaginatorExample: GUI.HOCs.withState("value")(
+      (exampleProps) => <>
+        <GUI.Widgets.Paginator  {...props.paginator} {...exampleProps}/>
+        <GUI.Common.Repeater    {...props.viewForPaginator} from={exampleProps.value}/> 
+      </>
+    ),
+  }
 	// render 
 	return (
 		<>
 
-      <GUI.Widgets.Accordion {...props.accordion} />
-       
-			<GUI.Widgets.Browser    {...props.browser} whenValueChange={handleBrowserTab}   value={currentBrowserTab}/>
-			<GUI.Common.Repeater    {...props.viewForBrowser} from={currentBrowserTab}/>
-
-			<GUI.Widgets.Navigator  {...props.navigator} whenValueChange={handleNavigatorSlide} value={currentNavigatorSlide}/>
-			<GUI.Common.Repeater    {...props.viewForNavigator} from={currentNavigatorSlide}/>
-
-			<GUI.Widgets.Paginator  {...props.paginator} whenValueChange={handlePage}  value={currentPageState}/>
-			<GUI.Common.Repeater    {...props.viewForPaginator} from={currentPageState}/> 
+      <fsComponents.AccordionExample {...props.accordion}/>
+      <fsComponents.BrowserExample value={0}/>
+      <fsComponents.NavigatorExample value={0}/>
+      <fsComponents.PaginatorExample value={0}/>
 
 			<GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
 			<TestAreaForScroll /> 

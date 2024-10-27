@@ -12,28 +12,31 @@ export const Component = props => {
 	const {
 		mode,
 		target,
+    // whenValueChange,
 		value,
 		...attributes
 	} = props;
+  
 	const axisProps = attributes.axis ? code.horizontalProps : code.verticalProps;
-
 	useEffect(() => {
-		target.current.addEventListener("scroll", (e) => {
-			const newValue = code.valueFromPosition(target.current, props);
+    target.current.addEventListener("scroll", (e) => {
+			const newValue = code.valueFromPosition(target.current, axisProps);
 			return whenValueChange(newValue); 
 		})
-	}, [value]);
-
-	// inputs
-	const whenValueChange = useCallback(value => {
-		const area = target.current, 
-			scrollParams = {top: area.scrollTop, left: area.scrollLeft, mode};
-		  scrollParams[axisProps.scrollDirect] = code.valueToPosition(area, axisProps, value);
-		  area.scrollTo(scrollParams);
 	}, []);
 
+	// inputs
+	const whenValueChange = (next, prev) => {
+		const area = target?.current;
+    if(!area) return;
+		const	scrollParams = {top: area.scrollTop, left: area.scrollLeft, mode};
+		  scrollParams[axisProps.scrollDirect] = code.valueToPosition(area, axisProps, next);
+		area.scrollTo(scrollParams);
+    props.whenValueChange(next);
+	};
+
 	// render
-	const sliderProps = {min: 0.0, max: 1.0, value, whenValueChange}
+	const sliderProps = {valueRangeMin: 0.0, valueRangeMax: 1.0, value, whenValueChange}
 	return (<Slider.Component {...props}  {...sliderProps} />);
 };
 

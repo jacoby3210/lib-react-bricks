@@ -43,8 +43,12 @@ const Navigator = HOCs.withMergeProps(Widgets.Navigator.cfg.propValues)
   (HOCs.withValueHandleNumber(HOCs.withContainer(Widgets.Navigator.Component)));
 const Paginator = HOCs.withMergeProps(Widgets.Paginator.cfg.propValues)
   (HOCs.withValueHandleNumber(HOCs.withContainer(Widgets.Paginator.Component)));
-const Scroll = HOCs.withMergeProps(Widgets.Scroll.cfg.propValues)
-  (HOCs.withValueHandleNumber(HOCs.withContainer(Widgets.Scroll.Component)));
+
+const Scroll = 
+  HOCs.withState("value")
+  (HOCs.withMergeProps(Widgets.Scroll.cfg.propValues)
+  (HOCs.withValueHandleNumber(HOCs.withContainer(Widgets.Scroll.Component)))
+);
 
 // external module api
 export const GUI = {
@@ -56,8 +60,9 @@ export const GUI = {
     Slider, 
   },
   Widgets: {
-    Accordion, Browser, Navigator, Paginator, Scroll,
+    Accordion, Browser, Navigator, Paginator, 
+    Scroll,
   }
- }
+}
 
 // ------------------------------------------------------------------------- //
