@@ -20,7 +20,12 @@ const Component = props => {
 
     // render 
     return (
-      <div {...attributes} id={id} onClick={handleClick} cost={valueStep} value={value} >
+      <div 
+        id={id} onClick={handleClick} 
+        data-cost={valueStep} 
+        data-value={value}
+        {...attributes} 
+      >
         {value}
       </div>
     );

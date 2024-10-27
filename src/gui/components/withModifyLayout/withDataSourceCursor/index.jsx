@@ -5,11 +5,12 @@ import React, { useCallback, useState } from 'react';
 
 export const withDataSourceCursor = (WrappedComponent) => {
   return (props) => {
+    
     // initial data
     const { src = [], whenValueChange, ...attributes } = props;
     const [cursorIndexState, setCursorIndexState] = useState(0);
 
-    // handle input
+    // input handling
     const handleValueChange = useCallback((next) => whenValueChange(next), [whenValueChange]);
     const handleChange = useCallback((evt) => handleValueChange(evt.target.value), [handleValueChange]);
     const handleKeyDown = useCallback(

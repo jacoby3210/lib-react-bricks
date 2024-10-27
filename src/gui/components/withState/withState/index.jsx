@@ -13,9 +13,10 @@ export const withState = (stateName) => (WrappedComponent) => {
     const stateHandlerName = `when${stateName.charAt(0).toUpperCase() + stateName.slice(1)}Change`;
     const stateHandler = props[stateHandlerName];
     
+    // hooks
     const [state, setState] = useState(stateInitial);
 
-    // input from user
+    // input handling
     const handleStateChange = useCallback(
       (next) => {
         const updatedValue = stateHandler ? stateHandler(next, state) : next;

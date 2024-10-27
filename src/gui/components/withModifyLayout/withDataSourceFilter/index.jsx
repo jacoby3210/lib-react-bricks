@@ -9,8 +9,6 @@ const withDataSourceFilterInternal = (WrappedComponent) => {
 
     // initial data
     const { filter, src = [], ...attributes } = props;
-
-    // memo data
     const [matchingItems, nonMatchingItems] = useMemo(() => {
       const matching = src.filter(filter, props);
       const notMatching = src.filter(item => !matching.includes(item));

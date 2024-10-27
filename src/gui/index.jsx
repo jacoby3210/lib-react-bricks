@@ -30,7 +30,7 @@ const Advisor   = HOCs.withMergeProps(Layouts.Advisor.cfg.propValues)
 const Select    = HOCs.withMergeProps(Layouts.Select.cfg.propValues)
   (HOCs.withValueHandleBase(HOCs.withDataSource(HOCs.withContainer(HOCs.withPopup(Layouts.Select.Component)))));
 const Switcher  = HOCs.withMergeProps(Layouts.Switcher.cfg.propValues)
-  (HOCs.withValueHandleNumber(HOCs.withContainer(Layouts.Switcher.Component)));
+  (HOCs.withValueHandleSourceItem(HOCs.withContainer(Layouts.Switcher.Component)));
   
 const Slider    = HOCs.withMergeProps(Layouts.Slider.cfg.propValues)
   (HOCs.withValueHandleNumber(HOCs.withContainer(Layouts.Slider.Component)));

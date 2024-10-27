@@ -5,12 +5,16 @@ import { mergeProps } from 'react-aria';
 // ------------------------------------------------------------------------- //
 
 export const withMergeProps = (defaultProps) => (WrappedComponent) => {
+  
+  // initial data
   const MemoizedComponent = memo(WrappedComponent);
   
+	// render 
   return (receivedProps) => {
     const props = mergeProps(defaultProps, receivedProps);
     return <MemoizedComponent {...props} />;
   };
+  
 };
 
 // ------------------------------------------------------------------------- //

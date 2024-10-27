@@ -12,7 +12,7 @@ export const withValueHandleBase = (WrappedComponent) => {
       whenValueChange,
     } = receivedProps;
 
-    // input from user
+    // input handling
     const handleValueChange = useCallback(
       (next) => whenValueChange(next, value),
       [whenValueChange]

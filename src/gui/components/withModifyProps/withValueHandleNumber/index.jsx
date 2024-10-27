@@ -29,7 +29,7 @@ export const withValueHandleNumber = (WrappedComponent) => {
       return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
     };
 
-    // input from user
+    // input handling
     const handleValueChange = useCallback(
       (next) => {
         const normalizedValue = calculateNormalizedValue(next);

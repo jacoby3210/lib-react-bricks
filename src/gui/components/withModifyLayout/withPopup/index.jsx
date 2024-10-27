@@ -9,7 +9,7 @@ export const withPopup = (WrappedComponent) => {
     // initial data
     const { shown, ...attributes } = props;
 
-    // handle input
+    // input handling
     const closePopup = useCallback(() => setShownState(false), []);
     const handleMouseDown = useCallback((evt) => closePopup(), [closePopup]);
     const handleKeyDown = useCallback(
