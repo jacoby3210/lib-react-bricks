@@ -17,6 +17,7 @@ export {Swing}            from "./controls/swing";                            //
 
 // Layouts - fields - interface elements interacting with the user by means of a keyboard. 
 export {Advisor}          from "./fields/advisor";                            // - to show text line field with autocomplete suggestions.
+export {Paragraph}        from "./fields/paragraph";                          //
 export {Select}           from "./fields/select";                             // - for selection one option from the source list.
 export {Switcher}         from "./fields/switcher";                           // - for selection one option from the source list (alt mode).
 

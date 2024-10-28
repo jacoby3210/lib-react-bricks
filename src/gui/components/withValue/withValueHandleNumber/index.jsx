@@ -31,7 +31,7 @@ export const withValueHandleNumber = (WrappedComponent) => {
 
     // input handling
     const handleValueChange = useCallback(
-      (next) =>  whenValueChange(calculateNormalizedValue(next)),
+      (next) => whenValueChange(calculateNormalizedValue(next)),
       [min, max, step, mode, whenValueChange]
     );
 

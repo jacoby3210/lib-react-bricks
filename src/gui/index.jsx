@@ -26,11 +26,13 @@ const Swing     = HOCs.withMergeProps(Layouts.Swing.cfg.values)
   (HOCs.withValueHandleNumber(HOCs.withContainer(Layouts.Swing.Component)));
 
 const Advisor   = HOCs.withMergeProps(Layouts.Advisor.cfg.values) 
-  (HOCs.withValueHandleBase(HOCs.withDataSourceCursor(HOCs.withSourceData(HOCs.withContainer(HOCs.withPopup(Layouts.Advisor.Component))))));
+  (HOCs.withValueHandleText(HOCs.withSourceDataCursor(HOCs.withSourceData(HOCs.withContainer(HOCs.withPopup(Layouts.Advisor.Component))))));
+const Paragraph = HOCs.withMergeProps(Layouts.Paragraph.cfg.values)
+  (HOCs.withValueHandleText(Layouts.Paragraph.Component));
 const Select    = HOCs.withMergeProps(Layouts.Select.cfg.values)
   (HOCs.withValueHandleBase(HOCs.withSourceData(HOCs.withContainer(HOCs.withPopup(Layouts.Select.Component)))));
 const Switcher  = HOCs.withMergeProps(Layouts.Switcher.cfg.values)
-  (HOCs.withValueHandleSourceItem(HOCs.withContainer(Layouts.Switcher.Component)));
+  (HOCs.withValueHandleItem(HOCs.withContainer(Layouts.Switcher.Component)));
   
 const Slider    = HOCs.withMergeProps(Layouts.Slider.cfg.values)
   (HOCs.withValueHandleNumber(HOCs.withContainer(Layouts.Slider.Component)));
@@ -56,7 +58,7 @@ export const GUI = {
   Common: {
     Container, Dropout, Empty, Repeater,
     CheckBox, Clicker, RadioBar, Range, Swing,
-    Advisor, Select, Switcher,
+    Advisor, Paragraph, Select, Switcher,
     Slider, 
   },
   Widgets: {

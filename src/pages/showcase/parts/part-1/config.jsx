@@ -67,6 +67,9 @@ export const props = {
       return {caption: `Option #${i}`, value: i}
     }),
   },
+  paragraph: {
+    value: "long long long long long long long long long long long long long long long long long long string",
+  },
   select: {
     length: 5,
     src: produceEntries(5, (v, i) => ({ 

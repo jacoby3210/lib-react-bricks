@@ -3,16 +3,27 @@ import React, { useCallback, useState } from 'react';
 // HOC to map multiple child nodes by filtered data source and JSX template. //
 // -------------------------------------------------------------------------- //
 
-export const withDataSourceCursor = (WrappedComponent) => {
+export const withSourceDataCursor = (WrappedComponent) => {
   return (props) => {
     
     // initial data
-    const {src = [], matchingItems, nonMatchingItems, whenValueChange, ...attributes } = props;
+    
+    const {
+      src = [], 
+      matchingItems, 
+      nonMatchingItems, 
+      whenValueChange, 
+      ...attributes
+    } = props;
     const [cursorIndexState, setCursorIndexState] = useState(0);
 
     // input handling
-    const handleValueChange = useCallback((next) => whenValueChange(next), [whenValueChange]);
-    const handleChange = useCallback((evt) => handleValueChange(evt.target.value), [handleValueChange]);
+    
+    const handleChange = useCallback(
+      (evt) => whenValueChange(evt.target.value), 
+      [whenValueChange]
+    );
+
     const handleKeyDown = useCallback(
       (evt) => {
         if (evt.key === 'ArrowDown') {
@@ -20,15 +31,15 @@ export const withDataSourceCursor = (WrappedComponent) => {
         } else if (evt.key === 'ArrowUp') {
           setCursorIndexState((prev) => Math.max(prev - 1, 0));
         } else if (evt.key === 'Enter' && cursorIndexState >= 0) {
-          handleValueChange(src[cursorIndexState]?.caption);
+          whenValueChange(src[cursorIndexState]?.caption);
         }
       },
-      [cursorIndexState, handleValueChange, src]
+      [cursorIndexState, whenValueChange, src]
     );
 
     const handleMouseDown = useCallback(
-      (evt) => handleValueChange(evt.target.value),
-      [handleValueChange]
+      (evt) => whenValueChange(evt.target.value),
+      [whenValueChange]
     );
 
     // render

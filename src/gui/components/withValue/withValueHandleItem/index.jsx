@@ -4,16 +4,12 @@ import {withValueHandleNumber} from '../withValueHandleNumber'
 // HOC to handle a change in the value of a component (source option type).   //
 // -------------------------------------------------------------------------- //
 
-export const withValueHandleSourceItem = (WrappedComponent) => {
+export const withValueHandleItem = (WrappedComponent) => {
   return (receivedProps) => {
 
     // initial data
-    const {
-      src,
-      whenValueChange,
-      whenValueModify,
-    } = receivedProps;
     const EnchancedComponent = withValueHandleNumber(WrappedComponent)
+    const {src} = receivedProps;
 
     // supporting methods
 

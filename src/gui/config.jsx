@@ -105,19 +105,39 @@ export const propPackageValueBase = {
 export const propPackageValueNumber = {
   types: {
     ... propPackageValueBase.types,
-    valueMax:   PropTypes.number,
-    valueMin:   PropTypes.number,
-    valueMode:  PropTypes.bool,
-    valueSpeed: PropTypes.number,
-    valueStep:  PropTypes.number,
+    valueRangeMax:    PropTypes.number,
+    valueRangeMin:    PropTypes.number,
+    valueMode:        PropTypes.bool,
+    valueSpeed:       PropTypes.number,
+    valueStep:        PropTypes.number,
   },
   values: ({value=0, mode=false, rangeMax = 100, rangeMin = 0, speed = 1, step = 1}) => ({
     ... propPackageValueBase.values(value),
-    valueMode:            mode,            // maximum value available for choice.
-    valueRangeMax:    rangeMax,            // maximum value available for choice.
-    valueRangeMin:    rangeMin,            // minimum value available for choice.
-    valueSpeed:          speed,            // rate of change in value.
-    valueStep:            step,            // minimum step to change the value.
+    valueMode:            mode,                     // behavior mode when the maximum / minimum value is reached
+    valueRangeMax:    rangeMax,                     // maximum value available for choice.
+    valueRangeMin:    rangeMin,                     // minimum value available for choice.
+    valueSpeed:          speed,                     // rate of change in value.
+    valueStep:            step,                     // minimum step to change the value.
+  }),
+}
+
+// -------------------------------------------------------------------------- //
+// Package of component parameters description (types and values): value by text.
+// -------------------------------------------------------------------------- //
+
+export const propPackageValueText = {
+  types: {
+    ... propPackageValueBase.types,
+    valueForbiddenChars:  PropTypes.string,
+    valueLengthMax:       PropTypes.number,
+    valueLengthMin:       PropTypes.number,
+    valueMode:            PropTypes.bool,
+  },
+  values: ({value = "", lengthMax = 100, lengthMin = 0, forbiddenChars = ""}) => ({
+    ... propPackageValueBase.values(value),
+    valueForbiddenChars:  forbiddenChars,            // forbidden characters for user input
+    valueLengthMax:            lengthMax,            // maximum value available for choice.
+    valueLengthMin:            lengthMin,            // minimum value available for choice.
   }),
 }
 
