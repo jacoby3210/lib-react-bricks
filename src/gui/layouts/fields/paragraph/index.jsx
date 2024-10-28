@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as gCFG from "/src/gui/config"
 // -------------------------------------------------------------------------- //
 // Configuration.
 // -------------------------------------------------------------------------- //
 
-const cfg = gCFG.createConfig({postfix: "advisor"});
+const cfg = gCFG.createConfig({postfix: "paragraph"});
 gCFG.applyPackage(cfg, gCFG.propPackageValueText, {value: ""});
 
 // -------------------------------------------------------------------------- //
@@ -15,32 +15,24 @@ export const Component = props => {
 	// initial data
 	const {
     children, rootRef,
-		value, whenValueChange, whenValueModify,
+		value, valueLengthMax, valueLengthMin, whenValueChange, whenValueModify,
+    ...attributes
 	} = props;
 
-	// hooks
-	const inputRef = useRef(null);
-
 	// input from user
-	const handleFocus = (evt) => {
-		setCursorIndexState(0); 
-		setShownState(true);
-	}
+  const handleChange = useCallback(
+    (evt) => whenValueChange(evt.target.value), 
+    [whenValueChange]
+  );
 
 	// render 
-	const inputProps  = {
-		className: `${cfg.CSS_CLASS_DEFAULT}-input`,
-		// onChange, onKeyDown, 
+	const paragraphProps  = {
+    ...attributes,
+		onChange: handleChange,  
     value
 	};
 
-	return (
-		<>
-      {
-        <textarea onFocus={handleFocus} {...inputProps} />
-      }
-    </>	
-  );
+	return (<textarea  {...paragraphProps} />);
 };
 
 Component.propTypes = cfg.propTypes;

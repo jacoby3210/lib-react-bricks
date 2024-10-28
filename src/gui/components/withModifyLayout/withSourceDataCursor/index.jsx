@@ -44,7 +44,6 @@ export const withSourceDataCursor = (WrappedComponent) => {
 
     // render
     const sendProps = {
-      onChange: handleChange,
       onKeyDown: handleKeyDown,
       onMouseDown: handleMouseDown,
       cursorIndexState,

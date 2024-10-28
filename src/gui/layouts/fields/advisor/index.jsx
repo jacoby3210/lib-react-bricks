@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import * as gCFG from "/src/gui/config"
 import * as code from "./code.jsx"
 // -------------------------------------------------------------------------- //
@@ -28,6 +28,10 @@ export const Component = props => {
 
 	// hooks
 	const inputRef = useRef(null);
+  const handleChange = useCallback(
+    (evt) => whenValueChange(evt.target.value), 
+    [whenValueChange]
+  );
 
 	// input from user
 	const handleFocus = (evt) => {
@@ -37,8 +41,10 @@ export const Component = props => {
 
 	// render 
 	const inputProps  = {
-		className: `${cfg.CSS_CLASS_DEFAULT}-input`,
-		onChange, onKeyDown, value
+		className:  `${cfg.CSS_CLASS_DEFAULT}-input`,
+		onChange:   handleChange, 
+    onKeyDown, 
+    value
 	};
 
 	const listProps = {
