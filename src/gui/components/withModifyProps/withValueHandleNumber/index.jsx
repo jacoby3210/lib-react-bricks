@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // HOC to handle a change in the value of a component (numeric type).        //
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const withValueHandleNumber = (WrappedComponent) => {
   return (receivedProps) => {
@@ -31,18 +31,12 @@ export const withValueHandleNumber = (WrappedComponent) => {
 
     // input handling
     const handleValueChange = useCallback(
-      (next) => {
-        const normalizedValue = calculateNormalizedValue(next);
-        return whenValueChange(normalizedValue);
-      },
+      (next) =>  whenValueChange(calculateNormalizedValue(next)),
       [min, max, step, mode, whenValueChange]
     );
 
     const handleValueModify = useCallback(
-      (increment) => {
-        console.log(1, value); 
-        return whenValueModify( increment)
-      },
+      (increment) => whenValueModify( increment),
       [whenValueModify, value]
     );
 
@@ -57,4 +51,4 @@ export const withValueHandleNumber = (WrappedComponent) => {
   };
 };
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //

@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // Constants
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const CSS_CLASS_DEFAULT = 'rc';
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // Package of component parameters description (types and values): base.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const propPackageBase = {
   types: {
@@ -35,46 +35,50 @@ export const propPackageBase = {
   }),
 }
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // Package of component parameters description (types and values): orientation axis.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const propPackageOrientationBase = {
   types: {axis: PropTypes.bool,},
   values: (axis = true) => ({axis}),
 }
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // Package of component parameters description (types and values): with data source.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
-export const propPackageDataSource = {
+export const propPackageSourceData = {
   types: {
     filter: PropTypes.func,
     first: PropTypes.number,
     length: PropTypes.number,
+    matchingItems: PropTypes.array,
+    nonMatchingItems: PropTypes.array,
     src: PropTypes.array,
   },
   values: (
-    filter = function(item){console.log(this); return true;}, 
+    filter = function(item){return true;}, 
     first = 0, 
     length = 0, 
-    src = []
+    src = [],
+    matchingItems = [],
+    nonMatchingItems = [],
   ) => ({filter, first, length, src,}),
 }
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // Package of component parameters description (types and values): Template.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const propPackageTemplate = {
   types: {Template: PropTypes.func,},
   values: (Template = null) => ({Template}),
 }
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // Package of component parameters description (types and values): base value.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const propPackageValueBase = {
   types: {
@@ -95,9 +99,9 @@ export const propPackageValueBase = {
   }),
 }
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // Package of component parameters description (types and values): value by number.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const propPackageValueNumber = {
   types: {
@@ -118,4 +122,4 @@ export const propPackageValueNumber = {
   }),
 }
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //

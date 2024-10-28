@@ -1,13 +1,13 @@
 import React, { useCallback, useState } from 'react';
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // HOC to map multiple child nodes by filtered data source and JSX template. //
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const withDataSourceCursor = (WrappedComponent) => {
   return (props) => {
     
     // initial data
-    const { src = [], whenValueChange, ...attributes } = props;
+    const {src = [], matchingItems, nonMatchingItems, whenValueChange, ...attributes } = props;
     const [cursorIndexState, setCursorIndexState] = useState(0);
 
     // input handling
@@ -45,4 +45,4 @@ export const withDataSourceCursor = (WrappedComponent) => {
   };
 };
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //

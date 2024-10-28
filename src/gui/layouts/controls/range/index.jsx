@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as code from './code';
 import * as cfg from "./config"
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // React Component to select a value from the suggested numeric range.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 const Component = props => {
 
@@ -87,4 +87,4 @@ const Component = props => {
 Component.propTypes = cfg.propTypes;
 export const Range = {cfg, Component};
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //

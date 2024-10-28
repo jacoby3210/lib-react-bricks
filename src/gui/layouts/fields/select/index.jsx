@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {Dropout} from '/src/gui/layouts/basics/dropout'
 import * as cfg from "./config"
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // React Component for selection one option from the source list.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 const Component = props => {
 
@@ -42,4 +42,4 @@ const Component = props => {
 Component.propTypes = cfg.propTypes;
 export const Select ={cfg, Component }
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //

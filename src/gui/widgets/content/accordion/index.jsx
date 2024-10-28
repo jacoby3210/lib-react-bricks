@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {Repeater} from "/src/gui/layouts"
 import * as code from "./code";
 import * as cfg from "./config";
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // React Component - represents list of headers and their associated ui blocks.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 const Component = props => {
 
@@ -46,4 +46,4 @@ const Component = props => {
 Component.propTypes = cfg.propTypes;
 export const Accordion = {cfg, Component}
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //

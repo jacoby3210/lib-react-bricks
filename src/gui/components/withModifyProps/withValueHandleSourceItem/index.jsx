@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import {withValueHandleNumber} from '../withValueHandleNumber'
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // HOC to handle a change in the value of a component (numeric type).        //
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const withValueHandleSourceItem = (WrappedComponent) => {
   return (receivedProps) => {
@@ -33,4 +33,4 @@ export const withValueHandleSourceItem = (WrappedComponent) => {
   };
 };
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //

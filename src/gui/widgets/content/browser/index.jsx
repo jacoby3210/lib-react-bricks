@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {Repeater} from "/src/gui/layouts"
 import * as code from "./code";
 import * as cfg from "./config";
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // React Component - switching of displayed content in the view by special id.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const Component = props => {
 
@@ -31,4 +31,4 @@ export const Component = props => {
 Component.propTypes = cfg.propTypes;
 export const Browser = {cfg, Component}
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //

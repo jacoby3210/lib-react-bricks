@@ -1,6 +1,6 @@
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // Layouts intended for the graphical user interface.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 // Layouts - basics - interface elements non-interacting with the user
 export {Container}        from "./basics/container";      // - for use as a container for other components.
@@ -23,4 +23,4 @@ export {Switcher}         from "./fields/switcher";       // - for selection one
 // Layouts - partials - interface elements interacting with the user by means of a mouse.
 export {Slider}           from "./partials/slider";       // - represents universal customizable content scroller.
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //

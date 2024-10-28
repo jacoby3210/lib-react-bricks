@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as cfg from "./config"
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // React component to show text line field with autocomplete suggestions.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const Component = props => {
 	// initial data
@@ -55,4 +55,4 @@ export const Component = props => {
 Component.propTypes = cfg.propTypes;
 export const Advisor = {cfg, Component}
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //

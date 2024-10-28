@@ -1,18 +1,18 @@
 import * as cfg from "./config"
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // React component to render multiple items from a source in a template.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const Component = props => {
 
   // initial data
   const {
-    filter, from, length, src,
+    filter, from, length, src, matchingItems, nonMatchingItems,
     Template,
   } = props;
 
   // render
-  const children = src.slice(from, from + length).map(
+  const children = matchingItems.slice(from, from + length).map(
     (item, i) => 
       <Template 
         className={`${cfg.CSS_CLASS_DEFAULT}-item`} 
@@ -28,4 +28,4 @@ export const Component = props => {
 Component.propTypes = cfg.propTypes;
 export const Repeater = {cfg, Component}
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //

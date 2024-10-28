@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as cfg from "./config"
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // React Component for selection one option from the source list (alt mode).
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const Component = props => {
 
@@ -42,4 +42,4 @@ export const Component = props => {
 Component.propTypes = cfg.propTypes;
 export const Switcher = {cfg, Component}
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //

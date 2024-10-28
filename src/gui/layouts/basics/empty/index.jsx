@@ -10,4 +10,4 @@ export const Component = props => {
 Component.propTypes = cfg.propTypes;
 export const Empty = {cfg, Component}
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //

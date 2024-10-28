@@ -1,8 +1,8 @@
 import {useRef} from "react"
 import * as cfg from "./config"
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 // React Component for use as a container for other components.
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 export const Component = props => {
 
@@ -11,6 +11,7 @@ export const Component = props => {
       id,
       className,
       children,
+      nonMatchingItems, matchingItems,
       value,
       whenValueChange,
       whenValueModify,
@@ -31,4 +32,4 @@ export const Component = props => {
 Component.propTypes = cfg.propTypes;
 export const Container = {cfg, Component}
 
-// ------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
