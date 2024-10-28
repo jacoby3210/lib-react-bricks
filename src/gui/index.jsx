@@ -60,8 +60,7 @@ export const GUI = {
     Slider, 
   },
   Widgets: {
-    Accordion, Browser, Navigator, Paginator, 
-    Scroll,
+    Accordion, Browser, Navigator, Paginator, Scroll,
   }
 }
 
