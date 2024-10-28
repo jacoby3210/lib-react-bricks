@@ -9,17 +9,8 @@ export function applyPackage(source, target, values={}){
   source.values = {...source.values, ...target.values(values)}
   return source;
 }
-export const createConfig = (postfix) => ({
+export const createConfig = ({postfix, id = null}) => ({
   CSS_CLASS_DEFAULT: `${CSS_CLASS_DEFAULT}-${postfix}`,
-  types: {}, 
-  values: {},
-});
-
-// -------------------------------------------------------------------------- //
-// Package of component parameters description (types and values): base.
-// -------------------------------------------------------------------------- //
-
-export const propPackageBase = {
   types: {
     children: PropTypes.oneOfType([
       PropTypes.array,
@@ -38,12 +29,12 @@ export const propPackageBase = {
     ]),
     id: PropTypes.string,
   },
-  values: ({className = CSS_CLASS_DEFAULT, id = null,}) => ({
+  values: {
     children: [],
-    className,
+    className: `${CSS_CLASS_DEFAULT}-${postfix}`,
     id,
-  }),
-}
+  },
+});
 
 // -------------------------------------------------------------------------- //
 // Package of component parameters description (types and values): orientation axis.

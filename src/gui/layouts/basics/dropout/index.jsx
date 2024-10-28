@@ -1,12 +1,11 @@
-import * as globalCFG from "/src/gui/config.jsx"
+import * as gCFG from "/src/gui/config.jsx"
 import { DropoutButton } from './code';
 // -------------------------------------------------------------------------- //
 // Configuration.
 // -------------------------------------------------------------------------- //
 
-const cfg = globalCFG.createConfig("dropout");
-globalCFG.applyPackage(cfg, globalCFG.propPackageBase, {className:cfg.CSS_CLASS_DEFAULT});
-globalCFG.applyPackage(cfg, globalCFG.propPackageValueBase, {value: null});
+const cfg = gCFG.createConfig({postfix:"dropout"});
+gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: null});
 
 // -------------------------------------------------------------------------- //
 // React Component for rendering a dropout layouts.

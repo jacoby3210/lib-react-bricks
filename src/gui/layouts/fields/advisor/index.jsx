@@ -1,5 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import * as cfg from "./config"
+import * as gCFG from "/src/gui/config"
+import * as code from "./code.jsx"
+// -------------------------------------------------------------------------- //
+// Configuration.
+// -------------------------------------------------------------------------- //
+
+const cfg = gCFG.createConfig({postfix: "advisor"});
+gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {filter: code.filter});
+gCFG.applyPackage(cfg, gCFG.propPackageTemplate, {Template: code.TemplateDefault});
+gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: ""});
+
 // -------------------------------------------------------------------------- //
 // React component to show text line field with autocomplete suggestions.
 // -------------------------------------------------------------------------- //

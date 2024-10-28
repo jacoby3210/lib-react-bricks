@@ -1,12 +1,11 @@
 import {useRef} from "react"
-import * as globalCFG from "/src/gui/config.jsx"
+import * as gCFG from "/src/gui/config.jsx"
 // -------------------------------------------------------------------------- //
 // Configuration.
 // -------------------------------------------------------------------------- //
 
-const cfg = globalCFG.createConfig("container");
-globalCFG.applyPackage(cfg, globalCFG.propPackageBase, {className:cfg.CSS_CLASS_DEFAULT});
-globalCFG.applyPackage(cfg, globalCFG.propPackageValueBase);
+const cfg = gCFG.createConfig({postfix:"container"});
+gCFG.applyPackage(cfg, gCFG.propPackageValueBase);
 
 // -------------------------------------------------------------------------- //
 // React Component for use as a container for other components.

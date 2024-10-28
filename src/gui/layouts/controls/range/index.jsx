@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import * as globalCFG from "/src/gui/config"
+import * as gCFG from "/src/gui/config"
 import * as code from './code';
 // -------------------------------------------------------------------------- //
 // Configuration.
 // -------------------------------------------------------------------------- //
 
-const cfg = globalCFG.createConfig("range");
-globalCFG.applyPackage(cfg, globalCFG.propPackageBase, {className:cfg.CSS_CLASS_DEFAULT});
-globalCFG.applyPackage(cfg, globalCFG.propPackageOrientationBase, {axis:false});
-globalCFG.applyPackage(cfg, globalCFG.propPackageValueNumber, {value: 0});
+const cfg = gCFG.createConfig({postfix: "range"});
+gCFG.applyPackage(cfg, gCFG.propPackageOrientationBase, {axis:false});
+gCFG.applyPackage(cfg, gCFG.propPackageValueNumber, {value: 0});
 
 // -------------------------------------------------------------------------- //
 // React Component to select a value from the suggested numeric range.

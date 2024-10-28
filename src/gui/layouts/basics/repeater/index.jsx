@@ -1,13 +1,12 @@
-import * as globalCFG from "/src/gui/config.jsx"
+import * as gCFG from "/src/gui/config.jsx"
 import * as code from "./code"
 // -------------------------------------------------------------------------- //
 // Configuration.
 // -------------------------------------------------------------------------- //
 
-const cfg = globalCFG.createConfig("repeater");
-globalCFG.applyPackage(cfg, globalCFG.propPackageBase, {className:cfg.CSS_CLASS_DEFAULT});
-globalCFG.applyPackage(cfg, globalCFG.propPackageSourceData, {});
-globalCFG.applyPackage(cfg, globalCFG.propPackageTemplate, {Template: code.TemplateDefault});
+const cfg = gCFG.createConfig({postfix: "repeater"});
+gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {});
+gCFG.applyPackage(cfg, gCFG.propPackageTemplate, {Template: code.TemplateDefault});
 
 // -------------------------------------------------------------------------- //
 // React component to render multiple items from a source in a template.

@@ -1,11 +1,10 @@
-import * as globalCFG from "/src/gui/config.jsx"
+import * as gCFG from "/src/gui/config.jsx"
 // -------------------------------------------------------------------------- //
 // Configuration.
 // -------------------------------------------------------------------------- //
 
-const cfg = globalCFG.createConfig("clicker");
-globalCFG.applyPackage(cfg, globalCFG.propPackageBase, {className:cfg.CSS_CLASS_DEFAULT});
-globalCFG.applyPackage(cfg, globalCFG.propPackageValueNumber, {value: 0});
+const cfg = gCFG.createConfig({postfix: "clicker"});
+gCFG.applyPackage(cfg, gCFG.propPackageValueNumber, {value: 0});
 
 // -------------------------------------------------------------------------- //
 // React Component to track the user's clicks and display the total value.

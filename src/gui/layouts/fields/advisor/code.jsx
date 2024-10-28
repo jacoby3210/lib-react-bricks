@@ -7,7 +7,6 @@ export const TemplateDefault = props => {
   
 	// initial data
   const {common, meta, index, ...attributes} = props;
-	// const {cursorIndexState, ...props} = propsAll;
 
 	// render 
 	return (
@@ -21,5 +20,10 @@ export const TemplateDefault = props => {
 		</option>
 	)
 };
+
+// filter src data by default.
+export function filter(item) {
+  return item.caption != this.value && item.caption.includes(this.value);
+}
 
 // -------------------------------------------------------------------------- //

@@ -1,6 +1,15 @@
-import { Range } from '../../controls/range';
-import { Swing } from '../../controls/swing';
-import * as cfg from "./config"
+import React, { useEffect, useRef, useState } from 'react';
+import * as gCFG from "/src/gui/config"
+import { Range } from '/src/gui/layouts/controls/range';
+import { Swing } from '/src/gui/layouts/controls/swing';
+// -------------------------------------------------------------------------- //
+// Configuration.
+// -------------------------------------------------------------------------- //
+
+const cfg = gCFG.createConfig({postfix: "range"});
+gCFG.applyPackage(cfg, gCFG.propPackageOrientationBase, {axis:false});
+gCFG.applyPackage(cfg, gCFG.propPackageValueNumber, {value: 0});
+
 // -------------------------------------------------------------------------- //
 // React Component represents Range with control buttons.
 // -------------------------------------------------------------------------- //

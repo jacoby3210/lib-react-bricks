@@ -1,5 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import * as cfg from "./config"
+import * as gCFG from "/src/gui/config"
+// -------------------------------------------------------------------------- //
+// Configuration.
+// -------------------------------------------------------------------------- //
+
+const cfg = gCFG.createConfig({postfix: "switcher"});
+gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {});
+gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: 0});
+
 // -------------------------------------------------------------------------- //
 // React Component for selection one option from the source list (alt mode).
 // -------------------------------------------------------------------------- //

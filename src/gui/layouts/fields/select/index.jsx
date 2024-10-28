@@ -1,6 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
+import * as gCFG from "/src/gui/config"
 import {Dropout} from '/src/gui/layouts/basics/dropout'
-import * as cfg from "./config"
+import * as code from "./code.jsx"
+// -------------------------------------------------------------------------- //
+// Configuration.
+// -------------------------------------------------------------------------- //
+
+const cfg = gCFG.createConfig({postfix: "select"});
+gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {filter: code.filter});
+gCFG.applyPackage(cfg, gCFG.propPackageTemplate, {Template: code.TemplateDefault});
+gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: ""});
+
 // -------------------------------------------------------------------------- //
 // React Component for selection one option from the source list.
 // -------------------------------------------------------------------------- //

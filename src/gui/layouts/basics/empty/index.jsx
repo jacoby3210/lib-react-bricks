@@ -1,10 +1,9 @@
-import * as globalCFG from "/src/gui/config.jsx"
+import * as gCFG from "/src/gui/config.jsx"
 // -------------------------------------------------------------------------- //
 // Configuration.
 // -------------------------------------------------------------------------- //
 
-const cfg = globalCFG.createConfig("empty");
-globalCFG.applyPackage(cfg, globalCFG.propPackageBase, {className:cfg.CSS_CLASS_DEFAULT});
+const cfg = gCFG.createConfig({postfix:"empty"});
 
 // -------------------------------------------------------------------------- //
 // React Component - use in place where the syntax requires component.
