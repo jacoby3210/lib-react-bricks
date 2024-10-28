@@ -24,7 +24,7 @@ export const propTypes = {
 
 export const propValues = {
   ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
-  ... cfg.propPackageSourceData.values(),
+  // ... cfg.propPackageSourceData.values(),
   ... cfg.propPackageTemplate.values(code.TemplateDefault),
   ... cfg.propPackageValueBase.values("0"),
 };

@@ -27,13 +27,13 @@ export const ExamplePart1 = () => {
       <fsComponents.Swing    {...props.swing} />
 
       {/* fields */}
-      <fsComponents.Advisor  {...props.advisor}/>
-      <fsComponents.Select   {...props.select}/>
-      <fsComponents.Switcher {...props.switcher}/> 
+      {/* <fsComponents.Advisor  {...props.advisor}/> */}
+      {/* <fsComponents.Select   {...props.select}/> */}
+      {/* <fsComponents.Switcher {...props.switcher}/>  */}
 
       {/* partials */}
       {/* <fsComponents.Cloud    {...props.cloud}/> */}
-      <fsComponents.Slider   {...props.slider}/>
+      {/* <fsComponents.Slider   {...props.slider}/> */}
       
       {/* deprecated */}
       {/* <fsComponents.Path {...propValues.path}/> */}

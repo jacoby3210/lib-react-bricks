@@ -1,6 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
+import * as globalCFG from "/src/gui/config"
 import * as code from './code';
-import * as cfg from "./config"
+// -------------------------------------------------------------------------- //
+// Configuration.
+// -------------------------------------------------------------------------- //
+
+const cfg = globalCFG.createConfig("range");
+globalCFG.applyPackage(cfg, globalCFG.propPackageBase, {className:cfg.CSS_CLASS_DEFAULT});
+globalCFG.applyPackage(cfg, globalCFG.propPackageOrientationBase, {axis:false});
+globalCFG.applyPackage(cfg, globalCFG.propPackageValueNumber, {value: 0});
+
 // -------------------------------------------------------------------------- //
 // React Component to select a value from the suggested numeric range.
 // -------------------------------------------------------------------------- //

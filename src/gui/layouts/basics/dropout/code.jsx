@@ -4,7 +4,7 @@
 
 export const DropoutButton = props => {
   const {className, caption, ...attributes} = props;
-  const cssPrefix = `${className.split(" ")[0]}-button`; 
+  const cssPrefix = `button`; 
   return (
     <button className={cssPrefix} {...attributes}>
       <span className={`${cssPrefix}-caption`}>{caption}</span>

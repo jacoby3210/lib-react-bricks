@@ -22,8 +22,8 @@ const ShowcasePage = receivedProps => {
   return (
     <section id={id} {...attributes}>
       {"Its alive"}
-      {/* <ExamplePart1/> */}
-      <ExamplePart2/>
+      <ExamplePart1/>
+      {/* <ExamplePart2/> */}
       {/* <ExamplePart3/> */}
       {/* <ExamplePart4/> */}
     </section>

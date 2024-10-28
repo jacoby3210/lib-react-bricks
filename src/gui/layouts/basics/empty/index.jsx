@@ -1,10 +1,17 @@
-import * as cfg from "./config"
-// ========================================================================= //
-// React Component - use in place where the syntax requires component.
-// ========================================================================= //
+import * as globalCFG from "/src/gui/config.jsx"
+// -------------------------------------------------------------------------- //
+// Configuration.
+// -------------------------------------------------------------------------- //
 
-export const Component = props => {
-    return (<></>);
+const cfg = globalCFG.createConfig("empty");
+globalCFG.applyPackage(cfg, globalCFG.propPackageBase, {className:cfg.CSS_CLASS_DEFAULT});
+
+// -------------------------------------------------------------------------- //
+// React Component - use in place where the syntax requires component.
+// -------------------------------------------------------------------------- //
+
+const Component = props => {
+  return (<></>);
 };
 
 Component.propTypes = cfg.propTypes;

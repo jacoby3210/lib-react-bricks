@@ -4,6 +4,16 @@ import PropTypes from 'prop-types';
 // -------------------------------------------------------------------------- //
 
 export const CSS_CLASS_DEFAULT = 'rc';
+export function applyPackage(source, target, values={}){
+  source.types = {...source.types, ...target.types}
+  source.values = {...source.values, ...target.values(values)}
+  return source;
+}
+export const createConfig = (postfix) => ({
+  CSS_CLASS_DEFAULT: `${CSS_CLASS_DEFAULT}-${postfix}`,
+  types: {}, 
+  values: {},
+});
 
 // -------------------------------------------------------------------------- //
 // Package of component parameters description (types and values): base.
@@ -28,10 +38,10 @@ export const propPackageBase = {
     ]),
     id: PropTypes.string,
   },
-  values: (className, id = null) => ({
+  values: ({className = CSS_CLASS_DEFAULT, id = null,}) => ({
     children: [],
     className,
-    id: id,
+    id,
   }),
 }
 
@@ -41,7 +51,7 @@ export const propPackageBase = {
 
 export const propPackageOrientationBase = {
   types: {axis: PropTypes.bool,},
-  values: (axis = true) => ({axis}),
+  values: ({axis = true}) => ({axis}),
 }
 
 // -------------------------------------------------------------------------- //
@@ -57,14 +67,12 @@ export const propPackageSourceData = {
     nonMatchingItems: PropTypes.array,
     src: PropTypes.array,
   },
-  values: (
+  values: ({
     filter = function(item){return true;}, 
     first = 0, 
     length = 0, 
     src = [],
-    matchingItems = [],
-    nonMatchingItems = [],
-  ) => ({filter, first, length, src,}),
+  }) => ({filter, first, length, src}),
 }
 
 // -------------------------------------------------------------------------- //
@@ -73,7 +81,7 @@ export const propPackageSourceData = {
 
 export const propPackageTemplate = {
   types: {Template: PropTypes.func,},
-  values: (Template = null) => ({Template}),
+  values: ({Template = null}) => ({Template}),
 }
 
 // -------------------------------------------------------------------------- //

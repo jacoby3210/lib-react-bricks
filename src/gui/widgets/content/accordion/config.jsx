@@ -23,7 +23,7 @@ export const propTypes = {
 
 export const propValues = {
   ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
-  ... cfg.propPackageSourceData.values(),
+  // ... cfg.propPackageSourceData.values(),
   ... cfg.propPackageValueBase.values({value:[]}),
 	mode: 'single', 	// mode for toggle sections: single - only one section, multiple - several sections.
 };

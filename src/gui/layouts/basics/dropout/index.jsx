@@ -1,10 +1,18 @@
+import * as globalCFG from "/src/gui/config.jsx"
 import { DropoutButton } from './code';
-import * as cfg from "./config"
+// -------------------------------------------------------------------------- //
+// Configuration.
+// -------------------------------------------------------------------------- //
+
+const cfg = globalCFG.createConfig("dropout");
+globalCFG.applyPackage(cfg, globalCFG.propPackageBase, {className:cfg.CSS_CLASS_DEFAULT});
+globalCFG.applyPackage(cfg, globalCFG.propPackageValueBase, {value: null});
+
 // -------------------------------------------------------------------------- //
 // React Component for rendering a dropout layouts.
 // -------------------------------------------------------------------------- //
 
-export const Component = props => {
+const Component = props => {
 
   // initial data
   const {
@@ -32,7 +40,7 @@ export const Component = props => {
   );
 };
 
-Component.propTypes = cfg.propTypes;
+Component.propTypes = cfg.types;
 export const Dropout = {cfg, Component}
 
 // -------------------------------------------------------------------------- //

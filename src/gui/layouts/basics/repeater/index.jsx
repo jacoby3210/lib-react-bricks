@@ -1,9 +1,19 @@
-import * as cfg from "./config"
+import * as globalCFG from "/src/gui/config.jsx"
+import * as code from "./code"
+// -------------------------------------------------------------------------- //
+// Configuration.
+// -------------------------------------------------------------------------- //
+
+const cfg = globalCFG.createConfig("repeater");
+globalCFG.applyPackage(cfg, globalCFG.propPackageBase, {className:cfg.CSS_CLASS_DEFAULT});
+globalCFG.applyPackage(cfg, globalCFG.propPackageSourceData, {});
+globalCFG.applyPackage(cfg, globalCFG.propPackageTemplate, {Template: code.TemplateDefault});
+
 // -------------------------------------------------------------------------- //
 // React component to render multiple items from a source in a template.
 // -------------------------------------------------------------------------- //
 
-export const Component = props => {
+const Component = props => {
 
   // initial data
   const {
@@ -22,10 +32,14 @@ export const Component = props => {
         meta={item} 
     />);
   
-  return (<>{children}</>);
+  return (
+    <>
+      {children}
+    </>
+  );
 };
 
-Component.propTypes = cfg.propTypes;
+Component.propTypes = cfg.types;
 export const Repeater = {cfg, Component}
 
 // -------------------------------------------------------------------------- //
