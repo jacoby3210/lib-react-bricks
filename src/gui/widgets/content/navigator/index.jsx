@@ -1,5 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import * as cfg from "./config"
+import * as gCFG  from "/src/gui/config"
+// -------------------------------------------------------------------------- //
+// Configuration.
+// -------------------------------------------------------------------------- //
+
+const cfg = gCFG.createConfig({postfix: "navigator"});
+gCFG.applyPackage(cfg, gCFG.propPackageValueNumber, {value: 0});
+
 // -------------------------------------------------------------------------- //
 // React Component - switching of displayed content in the view by linear order. 
 // -------------------------------------------------------------------------- //

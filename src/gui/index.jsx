@@ -41,8 +41,8 @@ const Accordion = HOCs.withMergeProps(Widgets.Accordion.cfg.values)
   (HOCs.withSourceData(HOCs.withContainer(Widgets.Accordion.Component)));
 const Browser = HOCs.withMergeProps(Widgets.Browser.cfg.values)
   (HOCs.withValueHandleNumber(HOCs.withSourceData(HOCs.withContainer(Widgets.Browser.Component))));
-// const Navigator = HOCs.withMergeProps(Widgets.Navigator.cfg.values)
-//   (HOCs.withValueHandleNumber(HOCs.withSourceData(HOCs.withContainer(Widgets.Navigator.Component))));
+const Navigator = HOCs.withMergeProps(Widgets.Navigator.cfg.values)
+  (HOCs.withValueHandleNumber(HOCs.withSourceData(HOCs.withContainer(Widgets.Navigator.Component))));
 // const Paginator = HOCs.withMergeProps(Widgets.Paginator.cfg.values)
 //   (HOCs.withValueHandleNumber(HOCs.withSourceData(HOCs.withContainer(Widgets.Paginator.Component))));
 
@@ -62,8 +62,8 @@ export const GUI = {
     Slider, 
   },
   Widgets: {
-    Accordion, Browser,
-    //  Navigator, Paginator, Scroll,
+    Accordion, Browser, Navigator, 
+    //  Paginator, Scroll,
   }
 }
 
