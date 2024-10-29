@@ -1,7 +1,16 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {Repeater} from "/src/gui/layouts"
-import * as code from "./code";
-import * as cfg from "./config";
+import * as gCFG  from "/src/gui/config"
+import * as code  from "./code.jsx"
+// -------------------------------------------------------------------------- //
+// Configuration.
+// -------------------------------------------------------------------------- //
+
+const cfg = gCFG.createConfig({postfix: "accordion"});
+gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {filter: code.filter});
+gCFG.applyPackage(cfg, gCFG.propPackageTemplate, {Template: code.TemplateDefault});
+gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: []});
+
 // -------------------------------------------------------------------------- //
 // React Component - represents list of headers and their associated ui blocks.
 // -------------------------------------------------------------------------- //

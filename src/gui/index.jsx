@@ -37,8 +37,8 @@ const Switcher  = HOCs.withMergeProps(Layouts.Switcher.cfg.values)
 const Slider    = HOCs.withMergeProps(Layouts.Slider.cfg.values)
   (HOCs.withValueHandleNumber(HOCs.withContainer(Layouts.Slider.Component)));
 
-// const Accordion = HOCs.withMergeProps(Widgets.Accordion.cfg.values)
-//   (HOCs.withSourceData(HOCs.withContainer(Widgets.Accordion.Component)));
+const Accordion = HOCs.withMergeProps(Widgets.Accordion.cfg.values)
+  (HOCs.withSourceData(HOCs.withContainer(Widgets.Accordion.Component)));
 // const Browser = HOCs.withMergeProps(Widgets.Browser.cfg.values)
 //   (HOCs.withValueHandleNumber(HOCs.withSourceData(HOCs.withContainer(Widgets.Browser.Component))));
 // const Navigator = HOCs.withMergeProps(Widgets.Navigator.cfg.values)
@@ -62,7 +62,8 @@ export const GUI = {
     Slider, 
   },
   Widgets: {
-    // Accordion, Browser, Navigator, Paginator, Scroll,
+    Accordion, 
+    // Browser, Navigator, Paginator, Scroll,
   }
 }
 

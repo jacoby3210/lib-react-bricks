@@ -15,7 +15,8 @@ export const Component = props => {
 	// initial data
 	const {
     children, rootRef,
-		value, valueLengthMax, valueLengthMin, whenValueChange, whenValueModify,
+		value, valueForbiddenChars, valueLengthMax, valueLengthMin, 
+    whenValueChange, whenValueModify,
     ...attributes
 	} = props;
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState } from 'react';
 import * as gCFG from "/src/gui/config"
 import {Dropout} from '/src/gui/layouts/basics/dropout'
 import * as code from "./code.jsx"
