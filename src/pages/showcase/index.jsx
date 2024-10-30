@@ -1,29 +1,25 @@
 
 import React, { useState } from 'react';
-import { ExamplePart1 } from './parts/part-1';
-import { ExamplePart2 } from './parts/part-2';
-// import { ExamplePart3 } from './parts/part-3';
-// import { ExamplePart4 } from './parts/part-4';
+import {GroupBasics} from "./groups/basics"
 import "./index.css"
+
 // -------------------------------------------------------------------------- //
 // Showcase Application Page.                                                //
 // It is used to demonstrate the operation of components / layers / pages    //
 // of the application in artificial conditions.                              //
 // -------------------------------------------------------------------------- //
 
-const ShowcasePage = receivedProps => {
+const ShowcasePage = props => {
+
   // initial data
-  const {
-    id,
-    ...attributes
-  } = receivedProps;
+  const {id, ...attributes} = props;
     
   // render
   return (
     <section id={id} {...attributes}>
       {"Its alive"}
-      <ExamplePart1/>
-      <ExamplePart2/>
+      <GroupBasics/>
+      {/* <ExamplePart2/> */}
       {/* <ExamplePart3/> */}
       {/* <ExamplePart4/> */}
     </section>
