@@ -8,10 +8,7 @@ import * as Layouts from "./layouts"
 const Container = HOCs.withMerge(Layouts.Container.cfg.values) 
   (Layouts.Container.Component);
 const Dropout   = HOCs.withMerge(Layouts.Dropout.cfg.values) 
-  // (HOCs.withContainer
-    (HOCs.withReveals(Layouts.Dropout.Component)
-  // )
-);
+  (HOCs.withContainer(HOCs.withReveals(Layouts.Dropout.Component)));
 const List = HOCs.withMerge(Layouts.Item.cfg.values)
   (HOCs.withRepeat(Layouts.Item.Component))
 const Empty = HOCs.withMerge(Layouts.Empty.cfg.values)

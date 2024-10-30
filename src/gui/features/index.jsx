@@ -5,6 +5,7 @@
 
 // layout - modifies and tracks the html layouts of the component.
 
+export {withContainer}          from "./layout/container"                     // - to wrap base component into ui block (<div>).
 export {withRepeat}             from "./layout/repeat";                       // - for creating a list of repeating components.
 export {withReveals}            from "./layout/reveals";                      // - to reveal child components.
 
