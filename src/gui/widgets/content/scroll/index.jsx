@@ -1,7 +1,26 @@
+import PropTypes from 'prop-types';
 import React, {useCallback, useEffect, useRef, useState } from 'react';
+import * as gCFG  from "/src/gui/config"
 import { Slider } from '/src/gui/layouts';
 import * as code from './code';
-import * as cfg from "./config"
+// -------------------------------------------------------------------------- //
+// Configuration.
+// -------------------------------------------------------------------------- //
+
+const cfg = gCFG.createConfig({postfix: "scroll"});
+gCFG.applyPackage(cfg, gCFG.propPackageOrientationBase, {axis:false});
+gCFG.applyPackage(cfg, gCFG.propPackageValueNumber, {value: 0});
+gCFG.applyPackage(cfg, {
+  types:{
+    mode: PropTypes.string,
+	  target: PropTypes.object,
+  },
+  values:{
+    mode: "smooth",						// scrolling mode (using by DOM API methods)
+    target: null,             // scrolling target element.
+  }
+}, {value: 0});
+
 // -------------------------------------------------------------------------- //
 // React Component represents universal customizable content scrollbar.
 // -------------------------------------------------------------------------- //

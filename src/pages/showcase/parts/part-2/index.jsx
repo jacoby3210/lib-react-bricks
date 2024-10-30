@@ -44,9 +44,8 @@ export const ExamplePart2 = () => {
       <fsComponents.NavigatorExample value={0}/>
       <fsComponents.PaginatorExample value={0}/>
 
-      {/* 
 			<GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
-			<TestAreaForScroll />  */}
+			<TestAreaForScroll />  
 		</>
 	);
 };

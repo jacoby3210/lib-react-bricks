@@ -7,6 +7,6 @@ export {Accordion}      from "./content/accordion"                            //
 export {Browser}        from "./content/browser"                              // - switching of displayed content in the view by special id.
 export {Navigator}      from "./content/navigator"                            // - switching of displayed content in the view by linear order. 
 export {Paginator}      from "./content/paginator"                            // - switching of displayed content in the view by the page index. 
-// export {Scroll}     from "./content/scroll";     // - represents universal customizable content scrollbar.
+export {Scroll}         from "./content/scroll";                              // - represents universal customizable content scrollbar.
 
 // -------------------------------------------------------------------------- //
