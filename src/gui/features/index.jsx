@@ -14,4 +14,11 @@ export {withReveals}            from "./content/reveals";                     //
 export {withMerge}              from "./props/merge";                         // - to smartly merge the component's default and passed properties.
 export {withState}              from "./props/state";                         // - to create a managed state of the wrapped component.
 
+// value 
+
+export {withValueBase}          from "./value/base";                          // - to handle a change in the value of a component (variant type).
+export {withValueNumber}        from "./value/number";                        // - to handle a change in the value of a component (numeric type).
+// export {withValueHandleText}    from "./value/text";                          //
+// export {withValueHandleItem}   from "./value/withValueHandleItem"         // - to handle a change in the value of a component (source option type).
+
 // -------------------------------------------------------------------------- //
