@@ -4,11 +4,11 @@ import React, { useRef, memo, forwardRef } from 'react';
 // -------------------------------------------------------------------------- //
 
 export const withContainer = (WrappedComponent) => {
-  const MemoizedComponent = memo(WrappedComponent);
 
-  const Container = (props, ref) => {
+  return (props) => {
 
     // initial data
+    const MemoizedComponent = memo(WrappedComponent);
     const {
       id,
       className,
@@ -22,7 +22,7 @@ export const withContainer = (WrappedComponent) => {
 
     // render
     return (
-      <div id={id} ref={ref || selfRef} className={className}>
+      <div id={id} ref={selfRef} className={className}>
         <MemoizedComponent rootRef={selfRef} {...props}>
           {children}
         </MemoizedComponent>
@@ -30,7 +30,6 @@ export const withContainer = (WrappedComponent) => {
     );
   };
 
-  return forwardRef(Container);
 };
 
 // -------------------------------------------------------------------------- //

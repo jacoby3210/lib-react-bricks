@@ -34,6 +34,7 @@ export const Component = props => {
 		src, 
 		Template: code.TemplateDefault,
 	}
+  console.log(props, repeaterProps)
 	return <Repeater.Component {...props} {...repeaterProps}/>;
 };
 

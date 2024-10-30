@@ -28,12 +28,12 @@ export const ExamplePart2 = () => {
         <GUI.Common.Repeater    {...props.viewForNavigator} from={exampleProps.value}/>
       </>
     ),
-    // PaginatorExample: GUI.HOCs.withState("value")(
-    //   (exampleProps) => <>
-    //     <GUI.Widgets.Paginator  {...props.paginator} {...exampleProps}/>
-    //     <GUI.Common.Repeater    {...props.viewForPaginator} from={exampleProps.value}/> 
-    //   </>
-    // ),
+    PaginatorExample: GUI.HOCs.withState("value")(
+      (exampleProps) => <>
+        <GUI.Widgets.Paginator  {...props.paginator} {...exampleProps}/>
+        <GUI.Common.Repeater    {...props.viewForPaginator} from={exampleProps.value}/> 
+      </>
+    ),
   }
 	// render 
 	return (
@@ -42,10 +42,9 @@ export const ExamplePart2 = () => {
       <fsComponents.AccordionExample {...props.accordion}/>
       <fsComponents.BrowserExample value={0}/>
       <fsComponents.NavigatorExample value={0}/>
-      {/* 
-        
       <fsComponents.PaginatorExample value={0}/>
 
+      {/* 
 			<GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
 			<TestAreaForScroll />  */}
 		</>

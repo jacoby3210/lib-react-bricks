@@ -5,8 +5,12 @@ import PropTypes from 'prop-types';
 
 export const CSS_CLASS_DEFAULT = 'rc';
 export function applyPackage(source, target, values={}){
-  source.types = {...source.types, ...target.types}
-  source.values = {...source.values, ...target.values(values)}
+  const isFunction = typeof target.values == 'function';
+  source.types = {...source.types, ...target.types};
+  source.values = {
+    ...source.values, 
+    ...(isFunction ? target.values(values) : target.values)
+  };
   return source;
 }
 export const createConfig = ({postfix, id = null}) => ({

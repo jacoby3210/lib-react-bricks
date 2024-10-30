@@ -17,7 +17,7 @@ const Component = props => {
   // initial data
   const {
     filter, from, length, src, matchingItems, nonMatchingItems,
-    Template,
+    Template = code.TemplateDefault,
   } = props;
 
   // render

@@ -26,8 +26,8 @@ export const propValues = {
   ... cfg.propPackageBase.values(CSS_CLASS_DEFAULT),
   ... cfg.propPackageOrientationBase.values(false),
   ... cfg.propPackageValueNumber.values({value: 0}),
-	mode: "smooth",																	// scrolling mode (using by DOM API methods)
-	target: null,                                   // scrolling target element.
+	mode: "smooth",															  		// scrolling mode (using by DOM API methods)
+	target: null,                                    // scrolling target element.
 };
 
 // -------------------------------------------------------------------------- //
