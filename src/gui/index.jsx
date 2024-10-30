@@ -5,6 +5,8 @@ import * as Layouts from "./layouts"
 // Header file for export module. Compile widgets.
 // -------------------------------------------------------------------------- //
 
+const Container = HOCs.withMerge(Layouts.Container.cfg.values) 
+  (Layouts.Container.Component);
 const Dropout   = HOCs.withMerge(Layouts.Dropout.cfg.values) 
   // (HOCs.withContainer
     (HOCs.withReveals(Layouts.Dropout.Component)
@@ -12,12 +14,8 @@ const Dropout   = HOCs.withMerge(Layouts.Dropout.cfg.values)
 );
 const List = HOCs.withMerge(Layouts.Item.cfg.values)
   (HOCs.withRepeat(Layouts.Item.Component))
-// const Container = HOCs.withMergeProps(Layouts.Container.cfg.values) 
-//   (Layouts.Container.Component);
 const Empty = HOCs.withMerge(Layouts.Empty.cfg.values)
   (Layouts.Empty.Component);
-// const Repeater  = HOCs.withMergeProps(Layouts.Repeater.cfg.values)
-//   (HOCs.withValueHandleBase(HOCs.withSourceData(Layouts.Repeater.Component)));
 
 // const CheckBox  = HOCs.withMergeProps(Layouts.CheckBox.cfg.values) 
 //   (HOCs.withValueHandleBase(Layouts.CheckBox.Component));
@@ -61,7 +59,7 @@ const Empty = HOCs.withMerge(Layouts.Empty.cfg.values)
 export const GUI = {
   HOCs,    
   Common: {
-    Dropout, Empty, List, 
+    Container, Dropout, Empty, List, 
     // Container, Dropout, Empty, Repeater,
     // CheckBox, Clicker, RadioBar, Range, Swing,
     // Advisor, Paragraph, Select, Switcher,

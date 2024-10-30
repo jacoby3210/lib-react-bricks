@@ -17,12 +17,10 @@ export const GroupBasics = () => {
   return (
     <>
       {/* basics */}
+      <fsComponents.Container/>
       <fsComponents.Dropout  {...props.dropout}>{"Its Popup!"}</fsComponents.Dropout>
       <fsComponents.Empty/>
       <fsComponents.List {...props.list}/>
-      {/* <fsComponents.Container/> */}
-      {/* <fsComponents.Dropout  {...props.popup}>{"Its Popup!"}</fsComponents.Dropout> */}
-      {/* <fsComponents.Repeater {...props.repeater}/>  */}
 
       {/* controls */}
       {/* <fsComponents.CheckBox  value={false}/> */}
