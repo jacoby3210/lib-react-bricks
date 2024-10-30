@@ -14,8 +14,8 @@ const List = HOCs.withMerge(Layouts.Item.cfg.values)
 const Empty = HOCs.withMerge(Layouts.Empty.cfg.values)
   (Layouts.Empty.Component);
 
-// const CheckBox  = HOCs.withMergeProps(Layouts.CheckBox.cfg.values) 
-//   (HOCs.withValueHandleBase(Layouts.CheckBox.Component));
+const CheckBox  = HOCs.withMerge(Layouts.CheckBox.cfg.values) 
+  (HOCs.withValueBase(Layouts.CheckBox.Component));
 // const Clicker   = HOCs.withMergeProps(Layouts.Clicker.cfg.values)  
 //   (HOCs.withValueHandleNumber(Layouts.Clicker.Component));
 // const RadioBar  = HOCs.withMergeProps(Layouts.RadioBar.cfg.values) 
@@ -58,7 +58,7 @@ export const GUI = {
   Common: {
     Container, Dropout, Empty, List, 
     // Container, Dropout, Empty, Repeater,
-    // CheckBox, Clicker, RadioBar, Range, Swing,
+    CheckBox, // Clicker, RadioBar, Range, Swing,
     // Advisor, Paragraph, Select, Switcher,
     // Slider, 
   },
