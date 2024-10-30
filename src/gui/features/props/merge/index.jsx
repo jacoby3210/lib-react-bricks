@@ -8,9 +8,11 @@ import { mergeProps } from 'react-aria';
 export const withMerge = (defaultProps) => (WrappedComponent) => {
   
   // initial data
+  
   const MemoizedComponent = memo(WrappedComponent);
   
 	// render 
+
   return (passedProps) => {
     const props = mergeProps(defaultProps, passedProps);
     return <MemoizedComponent {...props} />;

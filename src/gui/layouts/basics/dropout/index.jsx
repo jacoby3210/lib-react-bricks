@@ -1,5 +1,6 @@
 import * as gCFG from "/src/gui/config.jsx"
 import { DropoutButton } from './code';
+
 // -------------------------------------------------------------------------- //
 // Configuration.
 // -------------------------------------------------------------------------- //
@@ -8,12 +9,13 @@ const cfg = gCFG.createConfig({postfix:"dropout"});
 gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: null});
 
 // -------------------------------------------------------------------------- //
-// React Component for rendering a dropout layouts.
+// Layout - to render the content of the reveal.
 // -------------------------------------------------------------------------- //
 
 const Component = props => {
 
   // initial data
+
   const {
     children,
     className,
@@ -23,6 +25,7 @@ const Component = props => {
   } = props;
 
   // render 
+  
   const dropoutButtonProps = {
     caption, 
     className,

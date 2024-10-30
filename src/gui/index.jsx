@@ -11,11 +11,11 @@ const Dropout   = HOCs.withMerge(Layouts.Dropout.cfg.values)
   // )
 );
 const List = HOCs.withMerge(Layouts.Item.cfg.values)
-(HOCs.withRepeat(Layouts.Item.Component))
+  (HOCs.withRepeat(Layouts.Item.Component))
 // const Container = HOCs.withMergeProps(Layouts.Container.cfg.values) 
 //   (Layouts.Container.Component);
-// const Empty     = HOCs.withMergeProps(Layouts.Empty.cfg.values)
-//   (Layouts.Empty.Component);
+const Empty = HOCs.withMerge(Layouts.Empty.cfg.values)
+  (Layouts.Empty.Component);
 // const Repeater  = HOCs.withMergeProps(Layouts.Repeater.cfg.values)
 //   (HOCs.withValueHandleBase(HOCs.withSourceData(Layouts.Repeater.Component)));
 
@@ -61,8 +61,7 @@ const List = HOCs.withMerge(Layouts.Item.cfg.values)
 export const GUI = {
   HOCs,    
   Common: {
-    Dropout,
-    List, 
+    Dropout, Empty, List, 
     // Container, Dropout, Empty, Repeater,
     // CheckBox, Clicker, RadioBar, Range, Swing,
     // Advisor, Paragraph, Select, Switcher,

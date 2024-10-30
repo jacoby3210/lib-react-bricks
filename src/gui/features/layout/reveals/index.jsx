@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 // -------------------------------------------------------------------------- //
-// A feature to reveals child components.                                     // 
+// A feature to reveals child components.
 // -------------------------------------------------------------------------- //
 
 export const withReveals = (WrappedComponent) => {
+
   return (props) => {
 
     // initial data
@@ -40,6 +41,7 @@ export const withReveals = (WrappedComponent) => {
     const wrapProps = { revealsState, setRevealsState, ...props };
     return <WrappedComponent {...wrapProps} />;
   };
+  
 };
 
 

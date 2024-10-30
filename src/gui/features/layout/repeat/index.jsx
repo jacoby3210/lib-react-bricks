@@ -1,8 +1,8 @@
 import React, { memo, useMemo } from 'react';
 // -------------------------------------------------------------------------- //
-// A feature for creating a list of repeating components based on             //
-// a wrapped component and an array of source data.                           //
-// Supports the ability to output the result of applying a filter to the srс. //
+// A feature for creating a list of repeating components based on 
+// a wrapped component and an array of source data.
+// Supports the ability to output the result of applying a filter to the srс.
 // -------------------------------------------------------------------------- //
 
 export const withRepeat = (WrappedComponent) => {
@@ -30,9 +30,10 @@ export const withRepeat = (WrappedComponent) => {
             item={item}
             index={index}
           />
-        )),
-        [matchingItems]
-      );
+        )
+      ),
+      [matchingItems]
+    );
       
     return (
       <>
