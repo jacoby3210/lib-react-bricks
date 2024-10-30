@@ -5,6 +5,7 @@
 export const produceEntries = (count, func) => Array.from(new Array(count), func);
 
 export const props = {
+  dropout: { reveals: true, },
   list: {
     length: 5,
     src: produceEntries(5, (v, i) => { 
@@ -15,7 +16,7 @@ export const props = {
         onClick: (e) => {console.log(`Option #${i}`); return false;} 
       } 
     }),
-  }
+  },
 };
 
 // -------------------------------------------------------------------------- //

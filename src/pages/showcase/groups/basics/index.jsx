@@ -16,6 +16,7 @@ export const GroupBasics = () => {
   return (
     <>
       {/* basics */}
+      <fsComponents.Dropout  {...props.dropout}>{"Its Popup!"}</fsComponents.Dropout>
       <fsComponents.List {...props.list}/>
       {/* <fsComponents.Container/> */}
       {/* <fsComponents.Dropout  {...props.popup}>{"Its Popup!"}</fsComponents.Dropout> */}

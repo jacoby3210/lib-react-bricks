@@ -5,12 +5,15 @@ import * as Layouts from "./layouts"
 // Header file for export module. Compile widgets.
 // -------------------------------------------------------------------------- //
 
+const Dropout   = HOCs.withMerge(Layouts.Dropout.cfg.values) 
+  // (HOCs.withContainer
+    (HOCs.withReveals(Layouts.Dropout.Component)
+  // )
+);
 const List = HOCs.withMerge(Layouts.Item.cfg.values)
 (HOCs.withRepeat(Layouts.Item.Component))
 // const Container = HOCs.withMergeProps(Layouts.Container.cfg.values) 
 //   (Layouts.Container.Component);
-// const Dropout   = HOCs.withMergeProps(Layouts.Dropout.cfg.values) 
-//   (HOCs.withContainer(HOCs.withPopup(Layouts.Dropout.Component)));
 // const Empty     = HOCs.withMergeProps(Layouts.Empty.cfg.values)
 //   (Layouts.Empty.Component);
 // const Repeater  = HOCs.withMergeProps(Layouts.Repeater.cfg.values)
@@ -58,7 +61,8 @@ const List = HOCs.withMerge(Layouts.Item.cfg.values)
 export const GUI = {
   HOCs,    
   Common: {
-    List,
+    Dropout,
+    List, 
     // Container, Dropout, Empty, Repeater,
     // CheckBox, Clicker, RadioBar, Range, Swing,
     // Advisor, Paragraph, Select, Switcher,

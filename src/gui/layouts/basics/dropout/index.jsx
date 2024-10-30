@@ -1,0 +1,45 @@
+import * as gCFG from "/src/gui/config.jsx"
+import { DropoutButton } from './code';
+// -------------------------------------------------------------------------- //
+// Configuration.
+// -------------------------------------------------------------------------- //
+
+const cfg = gCFG.createConfig({postfix:"dropout"});
+gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: null});
+
+// -------------------------------------------------------------------------- //
+// React Component for rendering a dropout layouts.
+// -------------------------------------------------------------------------- //
+
+const Component = props => {
+
+  // initial data
+  const {
+    children,
+    className,
+    caption,
+    revealsState,
+    setRevealsState,
+  } = props;
+
+  // render 
+  const dropoutButtonProps = {
+    caption, 
+    className,
+    onMouseDown: (evt) => {
+      evt.stopPropagation();
+      setRevealsState(!revealsState);
+    }
+  }
+
+  return (
+    revealsState 
+      ? <><DropoutButton {...dropoutButtonProps}/>{children}</>
+      : <DropoutButton {...dropoutButtonProps}/>
+  );
+};
+
+Component.propTypes = cfg.types;
+export const Dropout = {cfg, Component}
+
+// -------------------------------------------------------------------------- //
