@@ -4,48 +4,43 @@ import * as gCFG from "/src/gui/config.jsx"
 // Configuration.
 // -------------------------------------------------------------------------- //
 
-const cfg = gCFG.createConfig({postfix: "checkbox"});
-gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: null});
+const cfg = gCFG.createConfig({postfix: "clicker"});
+gCFG.applyPackage(cfg, gCFG.propPackageValueNumber, {value: 0});
 
 // -------------------------------------------------------------------------- //
-// Layout - provides an advanced version of the classic checkbox.
+// Layout - to track the user's clicks and display the total value.
 // -------------------------------------------------------------------------- //
 
 const Component = props => {
 
-  // initial data
-
+  // initial props
+  
   const {
     id,
     children,
-    onChange = (evt) => {},
-    value,
+    value, valueMode, valueRangeMax, valueRangeMin, valueSpeed, valueStep,
     whenValueChange,
     whenValueModify,
     ...attributes
   } = props;
 
     // input handling
-
-  const handleChange = (evt) => {
-    onChange(evt),
-    whenValueChange(!value, value);
-  }
+  const handleClick = () => whenValueModify(valueStep);
 
   // render 
-
   return (
-    <input 
-      {...attributes}
-      checked={value} 
-      type="checkbox" 
-      value={value}
-      onChange={handleChange} 
-    />
+    <div 
+      id={id} onClick={handleClick} 
+      data-cost={valueStep} 
+      data-value={value}
+      {...attributes} 
+    >
+      {value}
+    </div>
   );
 };
 
 Component.propTypes = cfg.types;
-export const CheckBox = {cfg, Component};
+export const Clicker = {cfg, Component};
 
-// -------------------------------------------------------------------------- //
+// ========================================================================= //

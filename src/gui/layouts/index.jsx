@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------- //
-// Defining basic layouts for components 
+// Defining the basic layout of components to form a graphical user interface.
 // -------------------------------------------------------------------------- //
 
 // - basics
@@ -10,7 +10,8 @@ export {Empty}            from "./basics/empty";                              //
 export {Item}             from "./basics/item";                               // - to generate a gui for an item in an source data by default.
 
 // - controls
-export {CheckBox}         from "./controls/checkbox";                         // - wrapping around the classic checkbox for simplicity.
+export {CheckBox}         from "./controls/checkbox";                         // - to provide an advanced version of the classic checkbox.
+export {Clicker}          from "./controls/clicker";                          // - to track the user's clicks and display the total value.
 
 // - fields
 

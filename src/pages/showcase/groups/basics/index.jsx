@@ -21,7 +21,7 @@ export const GroupBasics = () => {
 
       {/* controls */}
       <fsComponents.CheckBox  value={false}/>
-      {/* <fsComponents.Clicker   {...props.clicker}/> */}
+      <fsComponents.Clicker   {...props.clicker}/>
       {/* <fsComponents.RadioBar  {...props.radioBar}/> */}
       {/* <fsComponents.Range     {...props.rangeHorizontal} /> */}
       {/* <fsComponents.Range     {...props.rangeVertical} /> */}
