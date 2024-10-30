@@ -38,7 +38,7 @@ export const Component = props => {
 	return <Repeater.Component {...props} {...repeaterProps}/>;
 };
 
-Component.propTypes = cfg.propTypes;
+Component.propTypes = cfg.types;
 export const Browser = {cfg, Component}
 
 // -------------------------------------------------------------------------- //

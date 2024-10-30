@@ -59,7 +59,7 @@ export const Component = props => {
 	return (<Slider.Component {...props}  {...sliderProps} />);
 };
 
-Component.propTypes = cfg.propTypes;
+Component.propTypes = cfg.types;
 export const Scroll = {cfg, Component}
 
 // -------------------------------------------------------------------------- //

@@ -52,7 +52,7 @@ const Component = props => {
 	return (<Repeater.Component id={id} {...attributes} {...repeaterProps}/>);
 };
 
-Component.propTypes = cfg.propTypes;
+Component.propTypes = cfg.types;
 export const Accordion = {cfg, Component}
 
 // -------------------------------------------------------------------------- //

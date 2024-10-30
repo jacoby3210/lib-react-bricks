@@ -36,7 +36,7 @@ export const Component = props => {
 	return (<textarea  {...paragraphProps} />);
 };
 
-Component.propTypes = cfg.propTypes;
+Component.propTypes = cfg.types;
 export const Paragraph = {cfg, Component}
 
 // -------------------------------------------------------------------------- //

@@ -13,7 +13,7 @@ const Component = props => {
   return (<></>);
 };
 
-Component.propTypes = cfg.propTypes;
+Component.propTypes = cfg.types;
 export const Empty = {cfg, Component}
 
 // -------------------------------------------------------------------------- //

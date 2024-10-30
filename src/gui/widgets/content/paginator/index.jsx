@@ -27,7 +27,7 @@ export const Component = props => {
 
 };
 
-Component.propTypes = cfg.propTypes;
+Component.propTypes = cfg.types;
 export const Paginator = {cfg, Component}
 
 // -------------------------------------------------------------------------- //

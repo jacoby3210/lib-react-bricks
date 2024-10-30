@@ -49,7 +49,7 @@ const Component = props => {
   );
 };
 
-Component.propTypes = cfg.propTypes;
+Component.propTypes = cfg.types;
 export const Select ={cfg, Component }
 
 // -------------------------------------------------------------------------- //
