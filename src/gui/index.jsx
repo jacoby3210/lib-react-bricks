@@ -5,7 +5,8 @@ import * as Layouts from "./layouts"
 // Header file for export module. Compile widgets.
 // -------------------------------------------------------------------------- //
 
-const List = HOCs.withRepeat(Layouts.Item)
+const List = HOCs.withMerge(Layouts.Item.cfg.values)
+(HOCs.withRepeat(Layouts.Item.Component))
 // const Container = HOCs.withMergeProps(Layouts.Container.cfg.values) 
 //   (Layouts.Container.Component);
 // const Dropout   = HOCs.withMergeProps(Layouts.Dropout.cfg.values) 
