@@ -9,10 +9,7 @@ export const GroupBasics = () => {
   
   const fsComponents = {} 
   for (let key in GUI.Common)
-    fsComponents[key] = 
-  // GUI.HOCs.withState("value")(
-    GUI.Common[key]
-  // );
+    fsComponents[key] = GUI.HOCs.withState("value")(GUI.Common[key]);
 
   return (
     <>

@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------- //
-// Basic functionality presented as HOCs.
+// Feature set for graphical user interface components
 // Designed for use in conjunction with layouts.
 // -------------------------------------------------------------------------- //
 
@@ -12,5 +12,6 @@ export {withReveals}            from "./content/reveals";                     //
 // props - modifies and tracks the properties of the component.
 
 export {withMerge}              from "./props/merge";                         // - to smartly merge the component's default and passed properties.
+export {withState}              from "./props/state";                         // - to create a managed state of the wrapped component.
 
 // -------------------------------------------------------------------------- //
