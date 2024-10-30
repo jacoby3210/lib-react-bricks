@@ -3,11 +3,11 @@
 // Designed for use in conjunction with layouts.
 // -------------------------------------------------------------------------- //
 
-// layout - modifies and tracks the html layouts of the component.
+// content - modifies and tracks the html layouts of the component.
 
-export {withContainer}          from "./layout/container"                     // - to wrap base component into ui block (<div>).
-export {withRepeat}             from "./layout/repeat";                       // - for creating a list of repeating components.
-export {withReveals}            from "./layout/reveals";                      // - to reveal child components.
+export {withContainer}          from "./content/container"                    // - to wrap base component into ui block (<div>).
+export {withRepeat}             from "./content/repeat";                      // - for creating a list of repeating components.
+export {withReveals}            from "./content/reveals";                     // - to reveal child components.
 
 // props - modifies and tracks the properties of the component.
 
