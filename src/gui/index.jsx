@@ -18,12 +18,12 @@ const CheckBox  = HOCs.withMerge(Layouts.CheckBox.cfg.values)
   (HOCs.withValueBase(Layouts.CheckBox.Component));
 const Clicker   = HOCs.withMerge(Layouts.Clicker.cfg.values)  
   (HOCs.withValueNumber(Layouts.Clicker.Component));
-// const RadioBar  = HOCs.withMergeProps(Layouts.RadioBar.cfg.values) 
-//   (HOCs.withValueHandleBase(HOCs.withSourceData(Layouts.RadioBar.Component)));
 const Range     = HOCs.withMerge(Layouts.Range.cfg.values)    
   (HOCs.withValueNumber(HOCs.withDirection(Layouts.Range.Component)));
-// const Swing     = HOCs.withMergeProps(Layouts.Swing.cfg.values)    
-//   (HOCs.withValueHandleNumber(HOCs.withContainer(Layouts.Swing.Component)));
+const Swing     = HOCs.withMerge(Layouts.Swing.cfg.values)    
+  (HOCs.withValueNumber(HOCs.withContainer(Layouts.Swing.Component)));
+const Toggle  = HOCs.withMerge(Layouts.Toggle.cfg.values) 
+    (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Layouts.Toggle.Component))));
 
 // const Advisor   = HOCs.withMergeProps(Layouts.Advisor.cfg.values) 
 //   (HOCs.withValueHandleText(HOCs.withSourceDataCursor(HOCs.withSourceData(HOCs.withContainer(HOCs.withPopup(Layouts.Advisor.Component))))));
@@ -58,7 +58,7 @@ export const GUI = {
   Common: {
     Container, Dropout, Empty, List, 
     // Container, Dropout, Empty, Repeater,
-    CheckBox, Clicker, Range, // RadioBar, Swing,
+    CheckBox, Clicker, Range, Swing, Toggle,// RadioBar, 
     // Advisor, Paragraph, Select, Switcher,
     // Slider, 
   },

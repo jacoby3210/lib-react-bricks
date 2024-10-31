@@ -19,10 +19,10 @@ export const props = {
   },
 
   clicker:          {value: 0,},
-  radioBar:         {src: produceEntries(5, (v, i) => {return {label: `Option #${i}`, value: i}}),},
   rangeHorizontal:  { axis: true, valueRangeMin: 0, valueRangeMax: 10, valueStep: 0.0001, value: 5 },
   rangeVertical:    { valueRangeMax: 50, valueRangeMin: 0, valueStep: 0.1, value: 5 },
   swing:            { valueRangeMax: 50, valueRangeMin: 0, valueStep: 0.5, value: 5 },
+  toggle:           {src: produceEntries(5, (v, i) => {return {label: `Option #${i}`, value: i}}),},
 };
 
 // -------------------------------------------------------------------------- //

@@ -36,13 +36,12 @@ const Component = props => {
     const newValue = min + Math.round((relativePos * (max - min)) / step) * step;
     return newValue;
   }
-  
+
   // hooks
 
   const thumbRef = useRef(null), trackRef = useRef(null);
   const [captureState, setCaptureState] = useState(false);
   const [offsetState, setOffsetState] = useState(0);
-
   
   // input handling
 

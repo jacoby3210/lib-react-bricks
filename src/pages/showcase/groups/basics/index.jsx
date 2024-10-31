@@ -22,10 +22,10 @@ export const GroupBasics = () => {
       {/* controls */}
       <fsComponents.CheckBox  value={false}/>
       <fsComponents.Clicker   {...props.clicker}/>
-      {/* <fsComponents.RadioBar  {...props.radioBar}/> */}
       <fsComponents.Range     {...props.rangeHorizontal} />
       <fsComponents.Range     {...props.rangeVertical} />
-      {/* <fsComponents.Swing     {...props.swing} /> */}
+      <fsComponents.Swing     {...props.swing} />
+      <fsComponents.Toggle    {...props.toggle}/>
 
       {/* fields */}
       {/* <fsComponents.Advisor   {...props.advisor}/> */}
