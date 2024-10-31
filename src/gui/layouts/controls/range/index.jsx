@@ -18,10 +18,9 @@ const Component = props => {
 
   // initial data
   const {
-    id, className,
-    axis, value, valueMode, valueRangeMax, valueRangeMin, valueSpeed, valueStep,
-    whenValueChange,
-    whenValueModify,
+    id, className, children,
+    axis, value, valueMode, valueRangeMax: max, valueRangeMin: min, valueSpeed: speed, valueStep: step,
+    whenValueChange, whenValueModify,
     ...attributes
   } = props;
   const propsAxis = axis ? code.horizontalProps : code.verticalProps;
@@ -36,8 +35,10 @@ const Component = props => {
 
   const calcValueNew = (evt, offset) => {
     const rect = trackRef.current.getBoundingClientRect();
-    const relativePos = code.getPosition(rect, propsAxis, evt[propsAxis.cursor], offset);
-    const newValue = code.positionToValue(relativePos, valueRangeMin, valueRangeMax, valueStep);
+    const clientOffset = evt[propsAxis.cursor]; 
+    const absolutePos = clientOffset - rect[propsAxis.offset] - offset;
+    const relativePos = Math.max(0, Math.min(1, absolutePos / rect[propsAxis.size]));
+    const newValue = min + Math.round((relativePos * (max - min)) / step) * step;
     return newValue;
   }
   
@@ -80,12 +81,12 @@ const Component = props => {
  
   // render 
 
-  const thumbStyle = code.valueToStyle(axis, value, valueRangeMin, valueRangeMax);
+  const thumbStyle = code.valueToStyle(axis, value, min, max);
 
   return (
     <div id={id} className={className} axis={propsAxis.axis} value={value} {...attributes}>
-      <code.RangeTrack trackRef={trackRef} className={className} onMouseDown={handleTrackMouseDown}>
-        <code.RangeThumb thumbRef={thumbRef} className={className} style={thumbStyle} onMouseDown={handleThumbMouseDown} />
+      <code.RangeTrack ref={trackRef} className={className} onMouseDown={handleTrackMouseDown}>
+        <code.RangeThumb ref={thumbRef} className={className} style={thumbStyle} onMouseDown={handleThumbMouseDown} />
       </code.RangeTrack>
       <span>{value}</span>
     </div>

@@ -18,40 +18,22 @@ export const verticalProps = {
   size: "height",
 }
 
-// Inline components.
-export const RangeTrack = receivedProps => {
-  const { children, className, trackRef, ...attributes } = receivedProps;
+// Additional embedded components.
+export const RangeTrack = React.forwardRef((receivedProps, ref) => {
+  const { children, className,  ...attributes } = receivedProps;
   return (
-    <div
-      className={`${className}-track`}
-      ref={trackRef}
-      {...attributes}
-    > {children}
+    <div className={`${className}-track`} ref={ref} {...attributes}> 
+      {children}
     </div >
   );
-};
+});
 
-export const RangeThumb = receivedProps => {
-  const { children, className, thumbRef, ...attributes } = receivedProps;
-  return (<div
-    className={`${className}-thumb`}
-    ref={thumbRef}
-    {...attributes}
-  />);
-}
-
-// Handle position
-export const getPosition = (
-  rect, props, clientOffset, thumbOffset
-) => {
-  const absolutePos = clientOffset - rect[props.offset] - thumbOffset;
-  const relativePos = Math.max(0, Math.min(1, absolutePos / rect[props.size]));
-  return relativePos;
-};
-
-export const positionToValue = (value, min, max, step) => {
-  return min + Math.round((value * (max - min)) / step) * step
-}
+export const RangeThumb = React.forwardRef((receivedProps, ref) => {
+  const { children, className, ...attributes } = receivedProps;
+  return (
+    <div className={`${className}-thumb`} ref={ref} {...attributes}/>
+  );
+});
 
 // Control value.
 export const valueAnimate = (start, end, duration, handleUpdateValueState) => {
