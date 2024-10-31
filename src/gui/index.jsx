@@ -20,8 +20,8 @@ const Clicker   = HOCs.withMerge(Layouts.Clicker.cfg.values)
   (HOCs.withValueNumber(Layouts.Clicker.Component));
 // const RadioBar  = HOCs.withMergeProps(Layouts.RadioBar.cfg.values) 
 //   (HOCs.withValueHandleBase(HOCs.withSourceData(Layouts.RadioBar.Component)));
-// const Range     = HOCs.withMergeProps(Layouts.Range.cfg.values)    
-//   (HOCs.withValueHandleNumber(Layouts.Range.Component));
+const Range     = HOCs.withMerge(Layouts.Range.cfg.values)    
+  (HOCs.withValueNumber(Layouts.Range.Component));
 // const Swing     = HOCs.withMergeProps(Layouts.Swing.cfg.values)    
 //   (HOCs.withValueHandleNumber(HOCs.withContainer(Layouts.Swing.Component)));
 
@@ -58,7 +58,7 @@ export const GUI = {
   Common: {
     Container, Dropout, Empty, List, 
     // Container, Dropout, Empty, Repeater,
-    CheckBox, Clicker, // RadioBar, Range, Swing,
+    CheckBox, Clicker, Range, // RadioBar, Swing,
     // Advisor, Paragraph, Select, Switcher,
     // Slider, 
   },

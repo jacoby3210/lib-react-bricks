@@ -25,9 +25,11 @@ const Component = props => {
   } = props;
 
     // input handling
+
   const handleClick = () => whenValueModify(valueStep);
 
   // render 
+  
   return (
     <div 
       id={id} onClick={handleClick} 
