@@ -8,7 +8,8 @@ import { withDirection } from "./props/direction";
 // content - modifies and tracks the html layouts of the component.
 
 export {withContainer}          from "./content/container"                    // - to wrap base component into ui block (<div>).
-export {withRepeat}             from "./content/repeat";                      // - for creating a list of repeating components.
+export {withCursor}             from "./content/cursor";                      // - to navigate through the direct children of an element.
+export {withRepeat}             from "./content/repeat";                      // - to create a list of recurring components.
 export {withReveals}            from "./content/reveals";                     // - to reveal child components.
 
 // props - modifies and tracks the properties of the component.

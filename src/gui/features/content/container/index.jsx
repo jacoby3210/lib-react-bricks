@@ -1,6 +1,6 @@
 import React, { useRef, memo, forwardRef } from 'react';
 // -------------------------------------------------------------------------- //
-// HOC - to wrap base component into ui block (<div>).
+//  A feature to wrap base component into ui block (<div>).
 // -------------------------------------------------------------------------- //
 
 export const withContainer = (WrappedComponent) => {

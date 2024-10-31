@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from 'react';
 // -------------------------------------------------------------------------- //
-// A feature for creating a list of repeating components based on 
-// a wrapped component and an array of source data.
+// A feature to create a list of recurring components,
+// based on wrapped component and an array of source data.
 // Supports the ability to output the result of applying a filter to the srс.
 // -------------------------------------------------------------------------- //
 
