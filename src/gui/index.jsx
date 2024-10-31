@@ -21,7 +21,7 @@ const Clicker   = HOCs.withMerge(Layouts.Clicker.cfg.values)
 // const RadioBar  = HOCs.withMergeProps(Layouts.RadioBar.cfg.values) 
 //   (HOCs.withValueHandleBase(HOCs.withSourceData(Layouts.RadioBar.Component)));
 const Range     = HOCs.withMerge(Layouts.Range.cfg.values)    
-  (HOCs.withValueNumber(Layouts.Range.Component));
+  (HOCs.withValueNumber(HOCs.withDirection(Layouts.Range.Component)));
 // const Swing     = HOCs.withMergeProps(Layouts.Swing.cfg.values)    
 //   (HOCs.withValueHandleNumber(HOCs.withContainer(Layouts.Swing.Component)));
 

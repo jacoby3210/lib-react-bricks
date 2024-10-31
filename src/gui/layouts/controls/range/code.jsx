@@ -3,21 +3,6 @@ import React from 'react';
 // Helper functions.                                                         //
 // -------------------------------------------------------------------------- //
 
-// Props
-export const horizontalProps = {
-  axis: "horizontal",
-  cursor: "clientX",
-  offset: "x",
-  size: "width",
-}
-
-export const verticalProps = {
-  axis: "vertical",
-  cursor: "clientY",
-  offset: "y",
-  size: "height",
-}
-
 // Additional embedded components.
 export const RangeTrack = React.forwardRef((receivedProps, ref) => {
   const { children, className,  ...attributes } = receivedProps;

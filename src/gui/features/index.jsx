@@ -3,6 +3,8 @@
 // Designed for use in conjunction with layouts.
 // -------------------------------------------------------------------------- //
 
+import { withDirection } from "./props/direction";
+
 // content - modifies and tracks the html layouts of the component.
 
 export {withContainer}          from "./content/container"                    // - to wrap base component into ui block (<div>).
@@ -11,6 +13,7 @@ export {withReveals}            from "./content/reveals";                     //
 
 // props - modifies and tracks the properties of the component.
 
+export {withDirection}          from "./props/direction";                     // - to support a component with vertical / horizontal direction.
 export {withMerge}              from "./props/merge";                         // - to smartly merge the component's default and passed properties.
 export {withState}              from "./props/state";                         // - to create a managed state of the wrapped component.
 
