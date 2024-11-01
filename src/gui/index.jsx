@@ -1,6 +1,7 @@
 import * as HOCs from "./features"
 import * as Layouts from "./layouts"
 // import * as Widgets from "./widgets"
+
 // -------------------------------------------------------------------------- //
 // Header file for export module. Compile widgets.
 // -------------------------------------------------------------------------- //
@@ -9,9 +10,9 @@ const Container = HOCs.withMerge(Layouts.Container.cfg.values)
   (Layouts.Container.Component);
 const Dropout   = HOCs.withMerge(Layouts.Dropout.cfg.values) 
   (HOCs.withContainer(HOCs.withReveals(Layouts.Dropout.Component)));
-const List = HOCs.withMerge(Layouts.Item.cfg.values)
+const List      = HOCs.withMerge(Layouts.Item.cfg.values)
   (HOCs.withRepeat(Layouts.Item.Component))
-const Empty = HOCs.withMerge(Layouts.Empty.cfg.values)
+const Empty     = HOCs.withMerge(Layouts.Empty.cfg.values)
   (Layouts.Empty.Component);
 
 const CheckBox  = HOCs.withMerge(Layouts.CheckBox.cfg.values) 
@@ -26,7 +27,7 @@ const Toggle  = HOCs.withMerge(Layouts.Toggle.cfg.values)
     (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Layouts.Toggle.Component))));
 
 // const Advisor   = HOCs.withMergeProps(Layouts.Advisor.cfg.values) 
-//   (HOCs.withValueHandleText(HOCs.withSourceDataCursor(HOCs.withSourceData(HOCs.withContainer(HOCs.withPopup(Layouts.Advisor.Component))))));
+  // (HOCs.withValueText(HOCs.withCursor(HOCs.withRepeat(HOCs.withContainer(HOCs.withReveals(Layouts.Advisor.Component))))));
 // const Paragraph = HOCs.withMergeProps(Layouts.Paragraph.cfg.values)
 //   (HOCs.withValueHandleText(Layouts.Paragraph.Component));
 // const Select    = HOCs.withMergeProps(Layouts.Select.cfg.values)
@@ -58,8 +59,9 @@ export const GUI = {
   Common: {
     Container, Dropout, Empty, List, 
     // Container, Dropout, Empty, Repeater,
-    CheckBox, Clicker, Range, Swing, Toggle,// RadioBar, 
-    // Advisor, Paragraph, Select, Switcher,
+    CheckBox, Clicker, Range, Swing, Toggle,
+    // Advisor, 
+    // Paragraph, Select, Switcher,
     // Slider, 
   },
   Widgets: {

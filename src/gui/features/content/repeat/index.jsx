@@ -5,7 +5,7 @@ import React, { memo, useMemo } from 'react';
 // Supports the ability to output the result of applying a filter to the srс.
 // -------------------------------------------------------------------------- //
 
-export const withRepeat = (WrappedComponent) => {
+export const withRepeat = (TemplateComponent, WrappedComponent = null) => {
 
   return (props) => {
   
@@ -24,7 +24,7 @@ export const withRepeat = (WrappedComponent) => {
     const componentList = useMemo(
       () =>
         matchingItems.map((item, index) => (
-          <WrappedComponent
+          <TemplateComponent
             key={item.id || index}
             common={commonProps}
             item={item}
@@ -35,11 +35,10 @@ export const withRepeat = (WrappedComponent) => {
       [matchingItems]
     );
       
-    return (
-      <>
-      {componentList}
-      </>
-    );
+    return WrappedComponent 
+      ? (<WrappedComponent>{componentList}</WrappedComponent>)
+      : (<>{componentList}</>)
+    ;
   };
 };
 
