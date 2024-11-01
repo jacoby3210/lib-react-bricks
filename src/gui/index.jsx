@@ -58,7 +58,6 @@ export const GUI = {
   HOCs,    
   Common: {
     Container, Dropout, Empty, List, 
-    // Container, Dropout, Empty, Repeater,
     CheckBox, Clicker, Range, Swing, Toggle,
     // Advisor, 
     // Paragraph, Select, Switcher,

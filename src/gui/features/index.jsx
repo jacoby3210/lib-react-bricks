@@ -3,8 +3,6 @@
 // Designed for use in conjunction with layouts.
 // -------------------------------------------------------------------------- //
 
-import { withDirection } from "./props/direction";
-
 // content - modifies and tracks the html layouts of the component.
 
 export {withContainer}          from "./content/container"                    // - to wrap base component into ui block (<div>).

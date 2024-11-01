@@ -1,4 +1,5 @@
 import React, { memo, useMemo } from 'react';
+
 // -------------------------------------------------------------------------- //
 // A feature to create a list of recurring components,
 // based on wrapped component and an array of source data.

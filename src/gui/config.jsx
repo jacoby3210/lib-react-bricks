@@ -72,15 +72,6 @@ export const propPackageSourceData = {
 }
 
 // -------------------------------------------------------------------------- //
-// Package of component parameters description (types and values): Template.
-// -------------------------------------------------------------------------- //
-
-export const propPackageTemplate = {
-  types: {Template: PropTypes.func,},
-  values: ({Template = null}) => ({Template}),
-}
-
-// -------------------------------------------------------------------------- //
 // Package of component parameters description (types and values): base value.
 // -------------------------------------------------------------------------- //
 
