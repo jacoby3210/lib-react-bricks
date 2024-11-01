@@ -12,7 +12,7 @@ gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: null});
 // React Component to output multiple radio buttons as a single component.  
 // -------------------------------------------------------------------------- //
 
-const Component = (props) => {
+const Template = (props) => {
 
   // initial data
   
@@ -44,7 +44,7 @@ const Component = (props) => {
   );
 }
 
-Component.propTypes = cfg.types;
-export const Toggle = {cfg, Component};
+Template.propTypes = cfg.types;
+export const Toggle = {cfg, Template};
 
 // -------------------------------------------------------------------------- //

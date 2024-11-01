@@ -16,6 +16,18 @@ const Component = props => {
 
     // initial data
 
+    const {children} = props;
+
+    // render 
+    
+    return (<ul>{children}</ul>);
+
+}
+
+const Template = props => {
+
+    // initial data
+
     const {common, item, ...attributes} = props;
 
     // render 
@@ -24,6 +36,6 @@ const Component = props => {
 
 };
   
-export const Item = {cfg, Component}
+export const List = {cfg, Component, Template}
 
 // -------------------------------------------------------------------------- //

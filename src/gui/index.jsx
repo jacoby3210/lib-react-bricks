@@ -10,8 +10,8 @@ const Container = HOCs.withMerge(Layouts.Container.cfg.values)
   (Layouts.Container.Component);
 const Dropout   = HOCs.withMerge(Layouts.Dropout.cfg.values) 
   (HOCs.withContainer(HOCs.withReveals(Layouts.Dropout.Component)));
-const List      = HOCs.withMerge(Layouts.Item.cfg.values)
-  (HOCs.withRepeat(Layouts.Item.Component))
+const List      = HOCs.withMerge(Layouts.List.cfg.values)
+  (HOCs.withRepeat(Layouts.List.Template, Layouts.List.Component))
 const Empty     = HOCs.withMerge(Layouts.Empty.cfg.values)
   (Layouts.Empty.Component);
 
@@ -24,7 +24,7 @@ const Range     = HOCs.withMerge(Layouts.Range.cfg.values)
 const Swing     = HOCs.withMerge(Layouts.Swing.cfg.values)    
   (HOCs.withValueNumber(HOCs.withContainer(Layouts.Swing.Component)));
 const Toggle  = HOCs.withMerge(Layouts.Toggle.cfg.values) 
-    (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Layouts.Toggle.Component))));
+    (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Layouts.Toggle.Template))));
 
 // const Advisor   = HOCs.withMergeProps(Layouts.Advisor.cfg.values) 
   // (HOCs.withValueText(HOCs.withCursor(HOCs.withRepeat(HOCs.withContainer(HOCs.withReveals(Layouts.Advisor.Component))))));
