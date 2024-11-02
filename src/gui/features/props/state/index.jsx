@@ -41,14 +41,14 @@ export const withState = (stateName) => (WrappedComponent) => {
 
 	  // render 
 
-    const modifiedProps = {
+    const updateProps = {
       ...props,
       [stateName]: state,
       [stateHandlerName]: handleStateChange,
       [`when${stateName.charAt(0).toUpperCase() + stateName.slice(1)}Modify`]: handleStateModify,
     };
 
-    return <WrappedComponent {...modifiedProps} />;
+    return <WrappedComponent {...updateProps} />;
   };
 };
 

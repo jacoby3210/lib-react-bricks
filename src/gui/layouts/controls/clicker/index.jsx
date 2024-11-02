@@ -24,7 +24,7 @@ const Component = props => {
     ...attributes
   } = props;
 
-    // input handling
+  // input handling
 
   const handleClick = () => whenValueModify(valueStep);
 

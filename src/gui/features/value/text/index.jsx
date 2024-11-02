@@ -42,13 +42,13 @@ export const withValueText = (WrappedComponent) => {
 
 	// render 
   
-    const modifiedProps = {
+    const updateProps = {
       ...receivedProps,
       whenValueChange: handleValueChange,
       whenValueModify: handleValueModify,
     };
 
-    return <WrappedComponent {...modifiedProps} />;
+    return <WrappedComponent {...updateProps} />;
   };
 };
 

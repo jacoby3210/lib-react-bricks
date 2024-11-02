@@ -15,23 +15,18 @@ gCFG.applyPackage(cfg, gCFG.propPackageValueBase);
 export const Component = props => {
 
     // initial props
-    const {
-      id,
-      className,
-      children,
-      nonMatchingItems, matchingItems,
-      value,
-      whenValueChange,
-      whenValueModify,
-    } = props;
+
+    const { id, className, children, value } = props;
 
     // hooks
+
     const selfRef = useRef(null);
 
     // render
+    
     return (
-      <div id={id} className={className} value={value} >
-          {children}
+      <div id={id} className={className} ref={selfRef} value={value} >
+        {children}
       </div>
     );
 };

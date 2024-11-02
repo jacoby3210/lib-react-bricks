@@ -15,7 +15,9 @@ export const withReveals = (WrappedComponent) => {
     // input handling
 
     const closePopup = useCallback(() => setRevealsState(false), []);
+
     const handleMouseDown = useCallback((evt) => closePopup(), [closePopup]);
+
     const handleKeyDown = useCallback(
       (evt) => {if (evt.key === 'Enter') closePopup();}, 
       [closePopup]
@@ -24,7 +26,9 @@ export const withReveals = (WrappedComponent) => {
     // hooks
     
     const [revealsState, setRevealsState] = useState(reveals);
+
     useEffect(() => {setRevealsState(reveals);}, [reveals]);
+    
     useEffect(() => {
       if (revealsState) {
         document.addEventListener('mousedown', handleMouseDown);
@@ -38,8 +42,8 @@ export const withReveals = (WrappedComponent) => {
 
     // render
     
-    const wrapProps = { revealsState, setRevealsState, ...props };
-    return <WrappedComponent {...wrapProps} />;
+    const updateProps = { revealsState, setRevealsState, ...props };
+    return <WrappedComponent {...updateProps} />;
   };
   
 };

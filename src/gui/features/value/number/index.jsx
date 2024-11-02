@@ -47,13 +47,13 @@ export const withValueNumber = (WrappedComponent) => {
 
 	// render
 
-    const modifiedProps = {
+    const updateProps = {
       ...props,
       whenValueChange: handleValueChange,
       whenValueModify: handleValueModify,
     };
 
-    return <WrappedComponent {...modifiedProps} />;
+    return <WrappedComponent {...updateProps} />;
   };
 };
 

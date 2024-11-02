@@ -22,14 +22,10 @@ export const Component = props => {
   // initial data
 	
   const {
-    children,
-    rootRef,
-    revealsState, setRevealsState,
-		src, matchingItems, Template,
-		value, whenValueChange, whenValueModify,
+    children, rootRef, onKeyDown, onMouseDown,
     cursorIndexState, setCursorIndexState, 
-    onKeyDown, onMouseDown,
-		...attributes
+    revealsState, setRevealsState,
+		value, whenValueChange, whenValueModify,
 	} = props;
 
 	// hooks
@@ -38,29 +34,21 @@ export const Component = props => {
   
   // input handling
 
-  const onChange = useCallback(
+  const handleChange = useCallback(
     (evt) => whenValueChange(evt.target.value), 
     [whenValueChange]
   );
   
-	const onFocus =  useCallback(
+	const handleFocus =  useCallback(
     (evt) => {setCursorIndexState(0); setRevealsState(true);},
     [revealsState]
   )
 
 	// render 
   
-	const inputProps  = {
-		className:  `${cfg.CSS_CLASS_DEFAULT}-input`,
-		onChange, 
-    onKeyDown, 
-    value
-	};
-
-	const listProps = {
-    className: `${cfg.CSS_CLASS_DEFAULT}-list`, 
-    onMouseDown,
-	} 
+  const className = (postfix) => ({className: `${cfg.CSS_CLASS_DEFAULT}-${postfix}`})
+	const inputProps  = {...className(`input`), onChange: handleChange, onKeyDown, value};
+	const listProps = {...className(`list`), onMouseDown,} 
 
 	return (
 		<>
@@ -72,13 +60,16 @@ export const Component = props => {
 			        {children}
             </div>
           </> 
-        : <input onFocus={onFocus} {...inputProps} />
+        : <input onFocus={handleFocus} {...inputProps} />
       }
     </>	
   );
 };
 
-// template for forming a gui by metadata.
+// -------------------------------------------------------------------------- //
+// Template for forming a gui by metadata.
+// -------------------------------------------------------------------------- //
+
 const Template = (props) => {
   
 	// initial data
@@ -97,6 +88,7 @@ const Template = (props) => {
 		</option>
 	)
 };
+
 Component.propTypes = cfg.types;
 export const Advisor = {cfg, Component, Template}
 

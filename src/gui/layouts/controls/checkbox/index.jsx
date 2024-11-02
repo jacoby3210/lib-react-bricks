@@ -25,7 +25,7 @@ const Component = props => {
     ...attributes
   } = props;
 
-    // input handling
+  // input handling
 
   const handleChange = (evt) => {
     onChange(evt),

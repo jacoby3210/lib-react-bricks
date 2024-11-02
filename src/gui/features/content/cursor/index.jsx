@@ -10,7 +10,7 @@ export const withCursor = (WrappedComponent) => {
     
     // initial data
     
-    const {matchingItems, whenValueChange,} = props;
+    const {matchingItems, whenValueChange} = props;
 
     // hooks
 
@@ -18,11 +18,6 @@ export const withCursor = (WrappedComponent) => {
 
     // input handling
     
-    const handleChange = useCallback(
-      (evt) => whenValueChange(evt.target.value), 
-      [whenValueChange]
-    );
-
     const handleKeyDown = useCallback(
       (evt) => {
         if (evt.key === 'ArrowDown') {
@@ -43,15 +38,13 @@ export const withCursor = (WrappedComponent) => {
 
     // render
 
-    const wrapProps = {
-      onKeyDown: handleKeyDown,
-      onMouseDown: handleMouseDown,
-      cursorIndexState,
-      setCursorIndexState,
+    const updateProps = { 
+      cursorIndexState, setCursorIndexState,
+      onKeyDown: handleKeyDown, onMouseDown: handleMouseDown,
       ...props,
     };
 
-    return <WrappedComponent {...wrapProps} />;
+    return <WrappedComponent {...updateProps} />;
   };
 };
 

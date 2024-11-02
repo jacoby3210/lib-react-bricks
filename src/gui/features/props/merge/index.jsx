@@ -14,8 +14,8 @@ export const withMerge = (defaultProps) => (WrappedComponent) => {
 	// render 
 
   return (passedProps) => {
-    const props = mergeProps(defaultProps, passedProps);
-    return <MemoizedComponent {...props} />;
+    const updateProps = mergeProps(defaultProps, passedProps);
+    return <MemoizedComponent {...updateProps} />;
   };
   
 };

@@ -29,8 +29,8 @@ export const withDirection = (WrappedComponent) => {
 
 	  // render 
 
-    const modifiedProps = {...props, axisProps};
-    return <WrappedComponent {...modifiedProps} />;
+    const updateProps = {...props, axisProps};
+    return <WrappedComponent {...updateProps} />;
   };
 };
 

@@ -21,13 +21,13 @@ export const withRepeat = (TemplateComponent, WrappedComponent = null) => {
     
     // render
 
-    const commonProps = { ...props, matchingItems, nonMatchingItems, }
+    const updateProps = { ...props, matchingItems, nonMatchingItems, }
     const componentList = useMemo(
       () =>
         matchingItems.map((item, index) => (
           <TemplateComponent
             key={item.id || index}
-            common={commonProps}
+            common={updateProps}
             item={item}
             index={index}
           />
@@ -37,7 +37,7 @@ export const withRepeat = (TemplateComponent, WrappedComponent = null) => {
     );
       
     return WrappedComponent 
-      ? (<WrappedComponent {...commonProps}>{componentList}</WrappedComponent>)
+      ? (<WrappedComponent {...updateProps}>{componentList}</WrappedComponent>)
       : (<>{componentList}</>)
     ;
   };
