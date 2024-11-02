@@ -30,8 +30,8 @@ const Advisor   = HOCs.withMerge(Layouts.Advisor.cfg.values)
   (HOCs.withValueText(HOCs.withReveals(HOCs.withCursor(HOCs.withRepeat(Layouts.Advisor.Template, Layouts.Advisor.Component)))));
 const Paragraph = HOCs.withMerge(Layouts.Paragraph.cfg.values)
   (HOCs.withValueText(Layouts.Paragraph.Component));
-// const Select    = HOCs.withMergeProps(Layouts.Select.cfg.values)
-//   (HOCs.withValueHandleBase(HOCs.withSourceData(HOCs.withContainer(HOCs.withPopup(Layouts.Select.Component)))));
+const Select    = HOCs.withMerge(Layouts.Select.cfg.values)
+  (HOCs.withValueBase(HOCs.withReveals(HOCs.withContainer(HOCs.withRepeat(Layouts.Select.Template, Layouts.Select.Component)))));
 // const Switcher  = HOCs.withMergeProps(Layouts.Switcher.cfg.values)
 //   (HOCs.withValueHandleItem(HOCs.withContainer(Layouts.Switcher.Component)));
   
@@ -59,8 +59,8 @@ export const GUI = {
   Common: {
     Container, Dropout, Empty, List, 
     CheckBox, Clicker, Range, Swing, Toggle,
-    Advisor, Paragraph,
-    // , Select, Switcher,
+    Advisor, Paragraph, Select,
+    //  Switcher,
     // Slider, 
   },
   Widgets: {

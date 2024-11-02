@@ -21,6 +21,7 @@ export {Toggle}           from "./controls/toggle";                           //
 
 export {Advisor}          from "./fields/advisor";                            // - to show text line field with autocomplete suggestions.
 export {Paragraph}        from "./fields/paragraph";                          // - to display and edit multiline text (paragraph).
+export {Select}           from "./fields/select";                             // - to select one option from the source list.
 
 // - partials
 
