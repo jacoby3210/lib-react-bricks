@@ -27,9 +27,9 @@ const Toggle  = HOCs.withMerge(Layouts.Toggle.cfg.values)
     (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Layouts.Toggle.Template))));
 
 const Advisor   = HOCs.withMerge(Layouts.Advisor.cfg.values) 
-  (HOCs.withValueText(HOCs.withCursor(HOCs.withContainer(HOCs.withReveals(
+  (HOCs.withValueText(HOCs.withCursor(HOCs.withReveals(
     HOCs.withRepeat(Layouts.Advisor.Template, Layouts.Advisor.Component)
-  )))));
+  ))));
 // const Paragraph = HOCs.withMergeProps(Layouts.Paragraph.cfg.values)
 //   (HOCs.withValueHandleText(Layouts.Paragraph.Component));
 // const Select    = HOCs.withMergeProps(Layouts.Select.cfg.values)

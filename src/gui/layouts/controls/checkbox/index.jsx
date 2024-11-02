@@ -8,7 +8,7 @@ const cfg = gCFG.createConfig({postfix: "checkbox"});
 gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: null});
 
 // -------------------------------------------------------------------------- //
-// Layout - provides an advanced version of the classic checkbox.
+// Layout - to provides an advanced version of the classic checkbox.
 // -------------------------------------------------------------------------- //
 
 const Component = props => {

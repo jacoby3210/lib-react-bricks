@@ -1,16 +1,20 @@
 import React, { useCallback, useRef, useState } from 'react';
 import * as gCFG from "/src/gui/config"
-import { TemplateDefault as Template , filter} from './code'; 
+
 // -------------------------------------------------------------------------- //
 // Configuration.
 // -------------------------------------------------------------------------- //
+
+function filter(item) {
+  return item.caption != this.value && item.caption.includes(this.value);
+}
 
 const cfg = gCFG.createConfig({postfix: "advisor"});
 gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {filter});
 gCFG.applyPackage(cfg, gCFG.propPackageValueText, {value: ""});
 
 // -------------------------------------------------------------------------- //
-// React component to show text line field with autocomplete suggestions.
+// Layout - to show text line field with autocomplete suggestions.
 // -------------------------------------------------------------------------- //
 
 export const Component = props => {
@@ -74,6 +78,25 @@ export const Component = props => {
   );
 };
 
+// template for forming a gui by metadata.
+const Template = (props) => {
+  
+	// initial data
+
+  const {common, item, index} = props;
+
+	// render 
+	
+  return (
+		<option 
+      className={`${common.className.split(" ")[0]}-option`} 
+      cursor={common.cursorIndexState == index ? "true" : null}
+			value={item.caption}
+		>
+			{item.caption}
+		</option>
+	)
+};
 Component.propTypes = cfg.types;
 export const Advisor = {cfg, Component, Template}
 

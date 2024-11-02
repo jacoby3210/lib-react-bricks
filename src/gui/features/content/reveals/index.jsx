@@ -37,6 +37,7 @@ export const withReveals = (WrappedComponent) => {
     }, [revealsState, handleMouseDown, handleKeyDown]);
 
     // render
+    
     const wrapProps = { revealsState, setRevealsState, ...props };
     return <WrappedComponent {...wrapProps} />;
   };
