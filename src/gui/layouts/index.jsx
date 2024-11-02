@@ -19,6 +19,8 @@ export {Toggle}           from "./controls/toggle";                           //
 
 // - fields
 
+export {Advisor}          from "./fields/advisor";                            // - to show text line field with autocomplete suggestions.
+
 // - partials
 
 // -------------------------------------------------------------------------- //

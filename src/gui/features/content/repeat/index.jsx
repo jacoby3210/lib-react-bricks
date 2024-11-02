@@ -37,7 +37,7 @@ export const withRepeat = (TemplateComponent, WrappedComponent = null) => {
     );
       
     return WrappedComponent 
-      ? (<WrappedComponent>{componentList}</WrappedComponent>)
+      ? (<WrappedComponent {...commonProps}>{componentList}</WrappedComponent>)
       : (<>{componentList}</>)
     ;
   };

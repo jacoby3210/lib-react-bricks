@@ -25,7 +25,6 @@ export const withReveals = (WrappedComponent) => {
     
     const [revealsState, setRevealsState] = useState(reveals);
     useEffect(() => {setRevealsState(reveals);}, [reveals]);
-
     useEffect(() => {
       if (revealsState) {
         document.addEventListener('mousedown', handleMouseDown);
