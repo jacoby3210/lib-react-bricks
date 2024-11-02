@@ -29,7 +29,7 @@ export const GroupBasics = () => {
 
       {/* fields */}
       <fsComponents.Advisor   {...props.advisor}/>
-      {/* <fsComponents.Paragraph {...props.paragraph}/> */}
+      <fsComponents.Paragraph {...props.paragraph}/>
       {/* <fsComponents.Select    {...props.select}/> */}
       {/* <fsComponents.Switcher  {...props.switcher}/>  */}
 
