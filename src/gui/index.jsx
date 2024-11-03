@@ -38,19 +38,17 @@ const Switcher  = HOCs.withMerge(Layouts.Switcher.cfg.values)
 const Slider    = HOCs.withMerge(Layouts.Slider.cfg.values)
   (HOCs.withValueNumber(HOCs.withDirection(HOCs.withContainer(Layouts.Slider.Component))));
 
+  // const Browser = HOCs.withMerge(Widgets.Browser.cfg.values)
+  //   (HOCs.withValueNumber(HOCs.withRepeat(HOCs.withContainer(Widgets.Browser.Component))));
+  // const Navigator = HOCs.withMerge(Widgets.Navigator.cfg.values)
+  //   (HOCs.withValueNumber(HOCs.withContainer(HOCs.withRepeat(Widgets.Navigator.Component))));
+  // const Paginator = HOCs.withMerge(Widgets.Paginator.cfg.values)
+  //   (HOCs.withValueNumber(HOCs.withContainer(HOCs.withRepeat(Widgets.Paginator.Component))));
+const Scroll = HOCs.withMerge(Widgets.Scroll.cfg.values)
+ ( HOCs.withState("value")(HOCs.withValueNumber(HOCs.withDirection(HOCs.withContainer(Widgets.Scroll.Component)))));
+
 const Accordion = HOCs.withMerge(Widgets.Accordion.cfg.values)
   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Accordion.Template, Widgets.Accordion.Component))));
-// const Browser = HOCs.withMerge(Widgets.Browser.cfg.values)
-//   (HOCs.withValueNumber(HOCs.withRepeat(HOCs.withContainer(Widgets.Browser.Component))));
-// const Navigator = HOCs.withMerge(Widgets.Navigator.cfg.values)
-//   (HOCs.withValueNumber(HOCs.withContainer(HOCs.withRepeat(Widgets.Navigator.Component))));
-// const Paginator = HOCs.withMerge(Widgets.Paginator.cfg.values)
-//   (HOCs.withValueNumber(HOCs.withContainer(HOCs.withRepeat(Widgets.Paginator.Component))));
-// const Scroll = 
-//   HOCs.withState("value")
-//   (HOCs.withMerge(Widgets.Scroll.cfg.values)
-//   (HOCs.withValueNumber(HOCs.withContainer(Widgets.Scroll.Component)))
-// );
 
 // external module api
 
@@ -63,8 +61,9 @@ export const GUI = {
     Slider, 
   },
   Widgets: {
+    // Accordion, Browser, Navigator, Paginator, 
+    Scroll,
     Accordion,
-    // Accordion, Browser, Navigator, Paginator, Scroll,
   }
 }
 

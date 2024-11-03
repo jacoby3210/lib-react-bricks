@@ -31,8 +31,8 @@ const Component = props => {
   const calcValueNew = (evt, offset) => {
     const rect = trackRef.current.getBoundingClientRect();
     const clientOffset = evt[axisProps.cursor]; 
-    const absolutePos = clientOffset - rect[axisProps.offset] - offset;
-    const relativePos = Math.max(0, Math.min(1, absolutePos / rect[axisProps.size]));
+    const absolutePos = clientOffset - rect[axisProps.rectOffset] - offset;
+    const relativePos = Math.max(0, Math.min(1, absolutePos / rect[axisProps.rectSize]));
     const newValue = min + Math.round((relativePos * (max - min)) / step) * step;
     return newValue;
   }
@@ -52,7 +52,7 @@ const Component = props => {
     (evt) => {
       if (evt.button !== 0) return;
       const rect = evt.currentTarget.getBoundingClientRect();
-      setOffsetState(evt[axisProps.cursor] - rect[axisProps.offset]);
+      setOffsetState(evt[axisProps.cursor] - rect[axisProps.rectOffset]);
   
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
@@ -82,7 +82,7 @@ const Component = props => {
   }, []);
 
   useEffect(() => { handleChange(value); }, [value]);
- 
+
   // render 
 
   const thumbStyle = code.valueToStyle(axis, value, min, max);

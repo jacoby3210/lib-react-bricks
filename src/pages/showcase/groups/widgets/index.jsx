@@ -10,11 +10,11 @@ export const GroupWidgets = () => {
 
   // initial data
   
-  // const areaRef = React.useRef(null)
-	// const TestAreaForScroll = () =>
-	// 	<div style={{ height: "100px", "overflowY": "scroll" }} ref={areaRef}>
-	//   		<div style={{ height: "200px" }} />
-	// 	</div>;
+  const areaRef = React.useRef(null)
+	const TestAreaForScroll = () =>
+		<div style={{ height: "100px", "overflowY": "scroll" }} ref={areaRef}>
+	  		<div style={{ height: "200px" }} />
+		</div>;
 
   const fsComponents = {
     AccordionExample: GUI.HOCs.withState("value")(GUI.Widgets.Accordion),
@@ -38,6 +38,7 @@ export const GroupWidgets = () => {
     // ),
   }
 	// render 
+
 	return (
 		<>
 
@@ -48,8 +49,8 @@ export const GroupWidgets = () => {
       {/* <fsComponents.NavigatorExample value={0}/> */}
       {/* <fsComponents.PaginatorExample value={0}/> */}
 
-			{/* <GUI.Widgets.Scroll {...props.scroll} target={areaRef}  /> */}
-			{/* <TestAreaForScroll />   */}
+			<GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
+			<TestAreaForScroll />  
 		</>
 	);
 };

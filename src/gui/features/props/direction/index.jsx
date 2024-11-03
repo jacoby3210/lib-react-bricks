@@ -10,18 +10,27 @@ export const withDirection = (WrappedComponent) => {
 
     // initial data
   
+
     const horizontalProps = {
       axis: "horizontal",
       cursor: "clientX",
-      offset: "x",
-      size: "width",
+      elementSize: "offsetWidth",
+      rectOffset: "x",
+      rectSize: "width",
+      scrollDirect: "left",
+      scrollOffset: "scrollLeft",
+      scrollSize: "scrollWidth",
     }
     
     const verticalProps = {
       axis: "vertical",
       cursor: "clientY",
-      offset: "y",
-      size: "height",
+      elementSize: "offsetHeight",
+      rectOffset: "y",
+      rectSize: "height",
+      scrollDirect: "top",
+      scrollOffset: "scrollTop",
+      scrollSize: "scrollHeight",
     }
 
     const {axis, ...attributes} = props;
