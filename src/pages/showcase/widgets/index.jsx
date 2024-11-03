@@ -6,7 +6,7 @@ import { props } from "./config"
 // React Component  
 // ------------------------------------------------------------------------- //
 
-export const GroupWidgets = () => {
+export const Widgets = () => {
 
   // initial data
   
@@ -42,15 +42,16 @@ export const GroupWidgets = () => {
 	return (
 		<>
 
-      <fsComponents.AccordionExample {...props.accordion}/>
-      <fsComponents.AccordionExample {...props.accordionSingle}/>
-
       <fsComponents.BrowserExample value={0}/>
       <fsComponents.NavigatorExample value={0}/>
       <fsComponents.PaginatorExample value={0}/>
 
 			<GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
 			<TestAreaForScroll />  
+      
+      <fsComponents.AccordionExample {...props.accordion}/>
+      <fsComponents.AccordionExample {...props.accordionSingle}/>
+
 		</>
 	);
 };

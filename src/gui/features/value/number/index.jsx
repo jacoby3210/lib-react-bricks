@@ -29,7 +29,6 @@ export const withValueNumber = (WrappedComponent) => {
 
     const calculateNormalizedValue = (next) => {
       const wrappedValue = mode ? (next + max) % max : Math.max(Math.min(next, max));
-      console.log(wrappedValue)
       const steppedValue = Math.round(wrappedValue / step) * step;
       return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
     };

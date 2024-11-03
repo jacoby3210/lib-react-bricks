@@ -5,7 +5,7 @@ import {props} from "./config";
 // React Component  
 // -------------------------------------------------------------------------- //
 
-export const GroupBasics = () => {
+export const Common = () => {
   
   const fsComponents = {} 
   for (let key in GUI.Common)

@@ -10,7 +10,6 @@ export const withDirection = (WrappedComponent) => {
 
     // initial data
   
-
     const horizontalProps = {
       axis: "horizontal",
       cursor: "clientX",
