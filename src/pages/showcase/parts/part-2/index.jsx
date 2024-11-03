@@ -8,6 +8,7 @@ import { props } from "./config"
 export const ExamplePart2 = () => {
 
   // initial data
+  
   const areaRef = React.useRef(null)
 	const TestAreaForScroll = () =>
 		<div style={{ height: "100px", "overflowY": "scroll" }} ref={areaRef}>
