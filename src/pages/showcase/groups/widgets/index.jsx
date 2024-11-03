@@ -20,20 +20,20 @@ export const GroupWidgets = () => {
     AccordionExample: GUI.HOCs.withState("value")(GUI.Widgets.Accordion),
     BrowserExample: GUI.HOCs.withState("value")(
       (exampleProps) => <>
-        <GUI.Widgets.Browser  {...props.browser} {...exampleProps}/>
-        <GUI.Common.List      {...props.viewForBrowser} first={exampleProps.value * 10}/>
+        <GUI.Widgets.Browser    {...props.browser} {...exampleProps}/>
+        <GUI.Common.List        {...props.viewForBrowser} first={exampleProps.value * 10}/>
       </>
     ),
-    // NavigatorExample: GUI.HOCs.withState("value")(
-    //   (exampleProps) => <>
-    //     <GUI.Widgets.Navigator  {...props.navigator} {...exampleProps}/>
-    //     <GUI.Common.Repeater    {...props.viewForNavigator} from={exampleProps.value}/>
-    //   </>
-    // ),
+    NavigatorExample: GUI.HOCs.withState("value")(
+      (exampleProps) => <>
+        <GUI.Widgets.Navigator  {...props.navigator} {...exampleProps}/>
+        <GUI.Common.List        {...props.viewForNavigator} first={exampleProps.value}/>
+      </>
+    ),
     // PaginatorExample: GUI.HOCs.withState("value")(
     //   (exampleProps) => <>
     //     <GUI.Widgets.Paginator  {...props.paginator} {...exampleProps}/>
-    //     <GUI.Common.Repeater    {...props.viewForPaginator} from={exampleProps.value}/> 
+    //     <GUI.Common.List    {...props.viewForPaginator} from={exampleProps.value}/> 
     //   </>
     // ),
   }
@@ -46,7 +46,7 @@ export const GroupWidgets = () => {
       <fsComponents.AccordionExample {...props.accordionSingle}/>
 
       <fsComponents.BrowserExample value={0}/>
-      {/* <fsComponents.NavigatorExample value={0}/> */}
+      <fsComponents.NavigatorExample value={0}/>
       {/* <fsComponents.PaginatorExample value={0}/> */}
 
 			<GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
