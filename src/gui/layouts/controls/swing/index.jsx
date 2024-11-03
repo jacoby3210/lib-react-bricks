@@ -10,7 +10,7 @@ gCFG.applyPackage(cfg, gCFG.propPackageOrientationBase, {axis:false});
 gCFG.applyPackage(cfg, gCFG.propPackageValueNumber, {value: 0});
 
 // -------------------------------------------------------------------------- //
-// React Component to control the increase/decrease of the value.
+// Layout - to control the increase/decrease of the value.
 // -------------------------------------------------------------------------- //
 
 const Component = (props) => {

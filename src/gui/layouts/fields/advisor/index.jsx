@@ -67,7 +67,7 @@ export const Component = props => {
 };
 
 // -------------------------------------------------------------------------- //
-// Template for forming a gui by metadata.
+// Template - to create a gui by metadata.
 // -------------------------------------------------------------------------- //
 
 const Template = (props) => {

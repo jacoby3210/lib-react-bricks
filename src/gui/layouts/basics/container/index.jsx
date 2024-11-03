@@ -14,21 +14,21 @@ gCFG.applyPackage(cfg, gCFG.propPackageValueBase);
 
 export const Component = props => {
 
-    // initial props
+  // initial props
 
-    const { id, className, children, value } = props;
+  const { id, className, children, value } = props;
 
-    // hooks
+  // hooks
 
-    const selfRef = useRef(null);
+  const selfRef = useRef(null);
 
-    // render
-    
-    return (
-      <div id={id} className={className} ref={selfRef} value={value} >
-        {children}
-      </div>
-    );
+  // render
+  
+  return (
+    <div id={id} className={className} ref={selfRef} value={value} >
+      {children}
+    </div>
+  );
 };
 
 Component.propTypes = cfg.types;

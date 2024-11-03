@@ -19,10 +19,9 @@ export const Component = props => {
 
   const {
     rounded,
-    src, matchingItems,
+    src, 
     value, whenValueChange, whenValueModify,
   } = props;
-  const index = src.findIndex((item) => item.id == value);
 
   // hooks
   

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 
 // -------------------------------------------------------------------------- //
-// A feature to handle a change in the value of a component (variant type).
+// A feature - to handle a change in the value of a component (variant type).
 // -------------------------------------------------------------------------- //
 
 export const withValueBase = (WrappedComponent) => {

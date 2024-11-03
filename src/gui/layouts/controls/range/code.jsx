@@ -5,6 +5,7 @@ import React from 'react';
 // -------------------------------------------------------------------------- //
 
 // Additional embedded components.
+
 export const RangeTrack = React.forwardRef((receivedProps, ref) => {
   const { children, className,  ...attributes } = receivedProps;
   return (
@@ -21,7 +22,8 @@ export const RangeThumb = React.forwardRef((receivedProps, ref) => {
   );
 });
 
-// Control value.
+// Animate value.
+
 export const valueAnimate = (start, end, duration, handleUpdateValueState) => {
   let startTime = null;
 

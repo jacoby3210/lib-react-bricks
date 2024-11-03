@@ -9,7 +9,7 @@ gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {});
 gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: null});
 
 // -------------------------------------------------------------------------- //
-// Template to output multiple radio buttons as a single component.  
+// Template - to output multiple radio buttons as a single component.  
 // -------------------------------------------------------------------------- //
 
 const Template = (props) => {

@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
+
 // -------------------------------------------------------------------------- //
-//  A feature to handle a change in the value of a component (text type).
+//  A feature - to handle a change in the value of a component (text type).
 // -------------------------------------------------------------------------- //
 
 export const withValueText = (WrappedComponent) => {

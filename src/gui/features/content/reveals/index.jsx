@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 // -------------------------------------------------------------------------- //
-// A feature to reveals child components.
+// A feature - to reveals child components.
 // -------------------------------------------------------------------------- //
 
 export const withReveals = (WrappedComponent) => {
