@@ -48,14 +48,7 @@ export const props = {
     },
     switcher: {
       length: 5,
-      src: produceEntries(5, (v, i) => ({ 
-        caption: `Option #${i}`, 
-        value: i,
-        onMouseDown: (e) => {
-          console.log(`Option #${i}`); 
-          return false;
-        } 
-      })),
+      src: produceEntries(5, (v, i) => ({caption: `Option #${i}`, value: i})),
       value: 0,
     },
 

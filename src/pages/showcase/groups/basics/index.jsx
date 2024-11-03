@@ -31,10 +31,9 @@ export const GroupBasics = () => {
       <fsComponents.Advisor   {...props.advisor}/>
       <fsComponents.Paragraph {...props.paragraph}/>
       <fsComponents.Select    {...props.select}/>
-      {/* <fsComponents.Switcher  {...props.switcher}/>  */}
+      <fsComponents.Switcher  {...props.switcher}/> 
 
       {/* partials */}
-      {/* <fsComponents.Cloud    {...props.cloud}/> */}
       {/* <fsComponents.Slider   {...props.slider}/> */}
       
     </>

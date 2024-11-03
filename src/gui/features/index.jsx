@@ -21,6 +21,5 @@ export {withState}              from "./props/state";                         //
 export {withValueBase}          from "./value/base";                          // - to handle a change in the value of a component (variant type).
 export {withValueNumber}        from "./value/number";                        // - to handle a change in the value of a component (numeric type).
 export {withValueText}          from "./value/text";                          // - to handle a change in the value of a component (text type).
-// export {withValueHandleItem}   from "./value/withValueHandleItem"         // - to handle a change in the value of a component (source option type).
 
 // -------------------------------------------------------------------------- //

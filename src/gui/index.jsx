@@ -32,35 +32,34 @@ const Paragraph = HOCs.withMerge(Layouts.Paragraph.cfg.values)
   (HOCs.withValueText(Layouts.Paragraph.Component));
 const Select    = HOCs.withMerge(Layouts.Select.cfg.values)
   (HOCs.withValueBase(HOCs.withReveals(HOCs.withContainer(HOCs.withRepeat(Layouts.Select.Template, Layouts.Select.Component)))));
-// const Switcher  = HOCs.withMergeProps(Layouts.Switcher.cfg.values)
-//   (HOCs.withValueHandleItem(HOCs.withContainer(Layouts.Switcher.Component)));
+const Switcher  = HOCs.withMerge(Layouts.Switcher.cfg.values)
+  (HOCs.withValueBase(HOCs.withContainer(Layouts.Switcher.Component)));
   
-// const Slider    = HOCs.withMergeProps(Layouts.Slider.cfg.values)
-//   (HOCs.withValueHandleNumber(HOCs.withContainer(Layouts.Slider.Component)));
+// const Slider    = HOCs.withMerge(Layouts.Slider.cfg.values)
+//   (HOCs.withValueNumber(HOCs.withContainer(Layouts.Slider.Component)));
 
-// const Accordion = HOCs.withMergeProps(Widgets.Accordion.cfg.values)
-//   (HOCs.withSourceData(HOCs.withContainer(Widgets.Accordion.Component)));
-// const Browser = HOCs.withMergeProps(Widgets.Browser.cfg.values)
-//   (HOCs.withValueHandleNumber(HOCs.withSourceData(HOCs.withContainer(Widgets.Browser.Component))));
-// const Navigator = HOCs.withMergeProps(Widgets.Navigator.cfg.values)
-//   (HOCs.withValueHandleNumber(HOCs.withSourceData(HOCs.withContainer(Widgets.Navigator.Component))));
-// const Paginator = HOCs.withMergeProps(Widgets.Paginator.cfg.values)
-//   (HOCs.withValueHandleNumber(HOCs.withSourceData(HOCs.withContainer(Widgets.Paginator.Component))));
-
+// const Accordion = HOCs.withMerge(Widgets.Accordion.cfg.values)
+//   (HOCs.withContainer(HOCs.withRepeat(Widgets.Accordion.Component)));
+// const Browser = HOCs.withMerge(Widgets.Browser.cfg.values)
+//   (HOCs.withValueNumber(HOCs.withRepeat(HOCs.withContainer(Widgets.Browser.Component))));
+// const Navigator = HOCs.withMerge(Widgets.Navigator.cfg.values)
+//   (HOCs.withValueNumber(HOCs.withContainer(HOCs.withRepeat(Widgets.Navigator.Component))));
+// const Paginator = HOCs.withMerge(Widgets.Paginator.cfg.values)
+//   (HOCs.withValueNumber(HOCs.withContainer(HOCs.withRepeat(Widgets.Paginator.Component))));
 // const Scroll = 
 //   HOCs.withState("value")
-//   (HOCs.withMergeProps(Widgets.Scroll.cfg.values)
-//   (HOCs.withValueHandleNumber(HOCs.withContainer(Widgets.Scroll.Component)))
+//   (HOCs.withMerge(Widgets.Scroll.cfg.values)
+//   (HOCs.withValueNumber(HOCs.withContainer(Widgets.Scroll.Component)))
 // );
 
 // external module api
+
 export const GUI = {
   HOCs,    
   Common: {
     Container, Dropout, Empty, List, 
     CheckBox, Clicker, Range, Swing, Toggle,
-    Advisor, Paragraph, Select,
-    //  Switcher,
+    Advisor, Paragraph, Select, Switcher,
     // Slider, 
   },
   Widgets: {

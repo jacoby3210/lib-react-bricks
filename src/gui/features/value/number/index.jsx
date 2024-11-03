@@ -41,7 +41,7 @@ export const withValueNumber = (WrappedComponent) => {
     );
 
     const handleValueModify = useCallback(
-      (increment) => whenValueModify( increment),
+      (increment) => whenValueModify(increment),
       [whenValueModify, value]
     );
 

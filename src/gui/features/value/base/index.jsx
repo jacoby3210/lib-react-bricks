@@ -13,6 +13,7 @@ export const withValueBase = (WrappedComponent) => {
     const {
       value,
       whenValueChange,
+      whenValueModify,
     } = props;
 
     // input handling
@@ -23,7 +24,7 @@ export const withValueBase = (WrappedComponent) => {
     );
 
     const handleValueModify = useCallback(
-      (increment) => handleValueChange(value + increment),
+      (increment) => whenValueModify(increment),
       [handleValueChange]
     );
 
