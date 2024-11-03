@@ -52,6 +52,11 @@ export const props = {
       value: 0,
     },
 
+    
+  // partials
+  slider: { value: 5, valueRangeMax: 50, valueRangeMin: 0, valueStep: 0.5,},
+
+
 };
 
 // -------------------------------------------------------------------------- //

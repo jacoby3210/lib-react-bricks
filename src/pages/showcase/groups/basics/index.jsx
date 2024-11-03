@@ -34,7 +34,7 @@ export const GroupBasics = () => {
       <fsComponents.Switcher  {...props.switcher}/> 
 
       {/* partials */}
-      {/* <fsComponents.Slider   {...props.slider}/> */}
+      <fsComponents.Slider   {...props.slider}/>
       
     </>
   );

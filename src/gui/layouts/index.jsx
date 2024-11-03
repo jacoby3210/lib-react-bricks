@@ -26,4 +26,6 @@ export {Switcher}         from "./fields/switcher";                           //
 
 // - partials
 
+export {Slider}           from "./partials/slider";                           // - unites the separate Range and Swing layouts into a Slider.
+
 // -------------------------------------------------------------------------- //

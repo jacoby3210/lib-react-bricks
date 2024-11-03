@@ -35,8 +35,8 @@ const Select    = HOCs.withMerge(Layouts.Select.cfg.values)
 const Switcher  = HOCs.withMerge(Layouts.Switcher.cfg.values)
   (HOCs.withValueBase(HOCs.withContainer(Layouts.Switcher.Component)));
   
-// const Slider    = HOCs.withMerge(Layouts.Slider.cfg.values)
-//   (HOCs.withValueNumber(HOCs.withContainer(Layouts.Slider.Component)));
+const Slider    = HOCs.withMerge(Layouts.Slider.cfg.values)
+  (HOCs.withValueNumber(HOCs.withDirection(HOCs.withContainer(Layouts.Slider.Component))));
 
 // const Accordion = HOCs.withMerge(Widgets.Accordion.cfg.values)
 //   (HOCs.withContainer(HOCs.withRepeat(Widgets.Accordion.Component)));
@@ -60,7 +60,7 @@ export const GUI = {
     Container, Dropout, Empty, List, 
     CheckBox, Clicker, Range, Swing, Toggle,
     Advisor, Paragraph, Select, Switcher,
-    // Slider, 
+    Slider, 
   },
   Widgets: {
     // Accordion, Browser, Navigator, Paginator, Scroll,
