@@ -18,7 +18,8 @@ export const withState = (stateName) => (WrappedComponent) => {
     // hooks
     
     const [state, setState] = useState(stateInitial);
-
+    console.log(state)
+    
     // input handling
     
     const handleStateChange = useCallback(

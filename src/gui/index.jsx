@@ -1,6 +1,6 @@
 import * as HOCs from "./features"
 import * as Layouts from "./layouts"
-// import * as Widgets from "./widgets"
+import * as Widgets from "./widgets"
 
 // -------------------------------------------------------------------------- //
 // Header file for export module. Compile widgets.
@@ -38,8 +38,8 @@ const Switcher  = HOCs.withMerge(Layouts.Switcher.cfg.values)
 const Slider    = HOCs.withMerge(Layouts.Slider.cfg.values)
   (HOCs.withValueNumber(HOCs.withDirection(HOCs.withContainer(Layouts.Slider.Component))));
 
-// const Accordion = HOCs.withMerge(Widgets.Accordion.cfg.values)
-//   (HOCs.withContainer(HOCs.withRepeat(Widgets.Accordion.Component)));
+const Accordion = HOCs.withMerge(Widgets.Accordion.cfg.values)
+  (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Accordion.Template, Widgets.Accordion.Component))));
 // const Browser = HOCs.withMerge(Widgets.Browser.cfg.values)
 //   (HOCs.withValueNumber(HOCs.withRepeat(HOCs.withContainer(Widgets.Browser.Component))));
 // const Navigator = HOCs.withMerge(Widgets.Navigator.cfg.values)
@@ -63,6 +63,7 @@ export const GUI = {
     Slider, 
   },
   Widgets: {
+    Accordion,
     // Accordion, Browser, Navigator, Paginator, Scroll,
   }
 }

@@ -30,6 +30,7 @@ export const Component = props => {
   );
 
 	// render 
+  
 	const paragraphProps  = {
     ...attributes,
 		onChange: handleChange,  

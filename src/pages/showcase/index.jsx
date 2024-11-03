@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
-import {GroupBasics} from "./groups/basics"
+import {GroupBasics} from "./groups/basics";
+import { GroupWidgets } from './groups/widgets';
 import "./index.css"
 
 // -------------------------------------------------------------------------- //
@@ -19,7 +20,8 @@ const ShowcasePage = props => {
     <section id={id} {...attributes}>
       {"Its alive"}
       <div>
-        <GroupBasics/>
+        {/* <GroupBasics/> */}
+        <GroupWidgets/>
       </div>
       {/* <ExamplePart2/> */}
       {/* <ExamplePart3/> */}

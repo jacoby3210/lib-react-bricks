@@ -11,8 +11,10 @@ export const GroupBasics = () => {
   for (let key in GUI.Common)
     fsComponents[key] = GUI.HOCs.withState("value")(GUI.Common[key]);
 
+  // render 
   return (
     <>
+    
       {/* basics */}
       <fsComponents.Container/>
       <fsComponents.Dropout  {...props.dropout}>{"Its Popup!"}</fsComponents.Dropout>
