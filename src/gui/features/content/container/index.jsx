@@ -21,9 +21,9 @@ export const withContainer = (WrappedComponent) => {
     
     return (
       <div id={id} ref={selfRef} className={className} value={value}>
-        <MemoizedComponent rootRef={selfRef} {...props}>
+        <WrappedComponent rootRef={selfRef} {...props}>
           {children}
-        </MemoizedComponent>
+        </WrappedComponent>
       </div>
     );
   };

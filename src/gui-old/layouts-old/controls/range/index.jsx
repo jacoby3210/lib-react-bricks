@@ -10,7 +10,7 @@ gCFG.applyPackage(cfg, gCFG.propPackageOrientationBase, {axis:false});
 gCFG.applyPackage(cfg, gCFG.propPackageValueNumber, {value: 0});
 
 // -------------------------------------------------------------------------- //
-// React Component to select a value from the suggested numeric range.
+// Layout - to select a value from the suggested numeric range.
 // -------------------------------------------------------------------------- //
 
 const Component = props => {
@@ -82,7 +82,7 @@ const Component = props => {
   return (
     <div
       id={id} className={`${className}`}
-      axis={propsAxis.axis} value={value} {...attributes}
+      axis={propsAxis.axis} value={value}
     >
       <code.RangeTrack {...trackProps}>
         <code.RangeThumb {...thumbProps} />

@@ -7,7 +7,7 @@ import { Swing } from '/src/gui/layouts/controls/swing';
 // Configuration.
 // -------------------------------------------------------------------------- //
 
-const cfg = gCFG.createConfig({postfix: "range"});
+const cfg = gCFG.createConfig({postfix: "slider"});
 gCFG.applyPackage(cfg, Range.cfg.values, {value: 0});
 gCFG.applyPackage(cfg, Swing.cfg.values, {value: 0});
 
@@ -17,11 +17,16 @@ gCFG.applyPackage(cfg, Swing.cfg.values, {value: 0});
 
 const Component = props => {
 
+  // initial data
+  
+  const {className, ...otherProps} = props;
+  
   // render 
+  
   return (
     <>
-      <Range.Component {...Range.cfg.values} {...props} />
-      <Swing.Component {...Swing.cfg.values} {...props}/>
+      <Range.Component {...Range.cfg.values} {...otherProps} />
+      <Swing.Component {...Swing.cfg.values} {...otherProps}/>
     </>
   );
 };

@@ -19,12 +19,12 @@ export const ExamplePart1 = () => {
       <fsComponents.Repeater {...props.repeater}/> 
 
       {/* controls */}
-      <fsComponents.CheckBox  value={false}/>
+      {/* <fsComponents.CheckBox  value={false}/>
       <fsComponents.Clicker   {...props.clicker}/>
       <fsComponents.RadioBar  {...props.radioBar}/>
       <fsComponents.Range     {...props.rangeHorizontal} />
       <fsComponents.Range     {...props.rangeVertical} />
-      <fsComponents.Swing     {...props.swing} />
+      <fsComponents.Swing     {...props.swing} /> */}
 
       {/* fields */}
       <fsComponents.Advisor   {...props.advisor}/>
