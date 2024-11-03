@@ -12,7 +12,7 @@ export const withRepeat = (TemplateComponent, WrappedComponent = null) => {
   
     // initial data
 
-    const { src = [], filter, ...attributes } = props;
+    const {first, length, src = [], filter, ...attributes } = props;
     const [matchingItems, nonMatchingItems] = useMemo(() => {
       const matching = filter ? src.filter(filter, props) : src;
       const notMatching = src.filter((item) => !matching.includes(item));
@@ -21,16 +21,18 @@ export const withRepeat = (TemplateComponent, WrappedComponent = null) => {
     
     // render
 
-    const updateProps = { ...props, matchingItems, nonMatchingItems, }
+    const updateProps = { ...props, matchingItems, nonMatchingItems}
     const componentList = useMemo(
       () =>
-        matchingItems.map((item, index) => (
-          <TemplateComponent
-            key={item.id || index}
-            common={updateProps}
-            item={item}
-            index={index}
-          />
+        matchingItems
+          .slice(first, first + (length ? length : matchingItems.length ))
+          .map((item, index) => (
+            <TemplateComponent
+              key={item.id || index}
+              common={updateProps}
+              item={item}
+              index={index}
+            />
         )
       ),
       [matchingItems]

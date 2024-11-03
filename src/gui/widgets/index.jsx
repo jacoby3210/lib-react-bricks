@@ -4,6 +4,7 @@
 
 // content
 
+export {Browser}        from "./content/browser"                              // - to switch of displayed content in the view by special id.
 export {Scroll}         from "./content/scroll";                              // - to scroll the content in the element.
 
 // view

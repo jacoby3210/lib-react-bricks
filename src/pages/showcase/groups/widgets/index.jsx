@@ -18,12 +18,12 @@ export const GroupWidgets = () => {
 
   const fsComponents = {
     AccordionExample: GUI.HOCs.withState("value")(GUI.Widgets.Accordion),
-    // BrowserExample: GUI.HOCs.withState("value")(
-    //   (exampleProps) => <>
-    //     <GUI.Widgets.Browser    {...props.browser} {...exampleProps}/>
-    //     <GUI.Common.Repeater    {...props.viewForBrowser} from={exampleProps.value * 10}/>
-    //   </>
-    // ),
+    BrowserExample: GUI.HOCs.withState("value")(
+      (exampleProps) => <>
+        <GUI.Widgets.Browser  {...props.browser} {...exampleProps}/>
+        <GUI.Common.List      {...props.viewForBrowser} first={exampleProps.value * 10}/>
+      </>
+    ),
     // NavigatorExample: GUI.HOCs.withState("value")(
     //   (exampleProps) => <>
     //     <GUI.Widgets.Navigator  {...props.navigator} {...exampleProps}/>
@@ -45,7 +45,7 @@ export const GroupWidgets = () => {
       <fsComponents.AccordionExample {...props.accordion}/>
       <fsComponents.AccordionExample {...props.accordionSingle}/>
 
-      {/* <fsComponents.BrowserExample value={0}/> */}
+      <fsComponents.BrowserExample value={0}/>
       {/* <fsComponents.NavigatorExample value={0}/> */}
       {/* <fsComponents.PaginatorExample value={0}/> */}
 

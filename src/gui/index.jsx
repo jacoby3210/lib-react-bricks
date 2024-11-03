@@ -24,7 +24,7 @@ const Range     = HOCs.withMerge(Layouts.Range.cfg.values)
 const Swing     = HOCs.withMerge(Layouts.Swing.cfg.values)    
   (HOCs.withValueNumber(HOCs.withContainer(Layouts.Swing.Component)));
 const Toggle  = HOCs.withMerge(Layouts.Toggle.cfg.values) 
-    (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Layouts.Toggle.Template))));
+  (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Layouts.Toggle.Template))));
 
 const Advisor   = HOCs.withMerge(Layouts.Advisor.cfg.values) 
   (HOCs.withValueText(HOCs.withReveals(HOCs.withCursor(HOCs.withRepeat(Layouts.Advisor.Template, Layouts.Advisor.Component)))));
@@ -38,8 +38,8 @@ const Switcher  = HOCs.withMerge(Layouts.Switcher.cfg.values)
 const Slider    = HOCs.withMerge(Layouts.Slider.cfg.values)
   (HOCs.withValueNumber(HOCs.withDirection(HOCs.withContainer(Layouts.Slider.Component))));
 
-  // const Browser = HOCs.withMerge(Widgets.Browser.cfg.values)
-  //   (HOCs.withValueNumber(HOCs.withRepeat(HOCs.withContainer(Widgets.Browser.Component))));
+const Browser = HOCs.withMerge(Widgets.Browser.cfg.values)
+  (HOCs.withValueNumber(HOCs.withContainer(HOCs.withRepeat(Widgets.Browser.Template))));
   // const Navigator = HOCs.withMerge(Widgets.Navigator.cfg.values)
   //   (HOCs.withValueNumber(HOCs.withContainer(HOCs.withRepeat(Widgets.Navigator.Component))));
   // const Paginator = HOCs.withMerge(Widgets.Paginator.cfg.values)
@@ -61,8 +61,8 @@ export const GUI = {
     Slider, 
   },
   Widgets: {
-    // Accordion, Browser, Navigator, Paginator, 
-    Scroll,
+    // Navigator, Paginator, 
+    Browser, Scroll,
     Accordion,
   }
 }
