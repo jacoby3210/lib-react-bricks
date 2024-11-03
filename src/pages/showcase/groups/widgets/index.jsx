@@ -30,12 +30,12 @@ export const GroupWidgets = () => {
         <GUI.Common.List        {...props.viewForNavigator} first={exampleProps.value}/>
       </>
     ),
-    // PaginatorExample: GUI.HOCs.withState("value")(
-    //   (exampleProps) => <>
-    //     <GUI.Widgets.Paginator  {...props.paginator} {...exampleProps}/>
-    //     <GUI.Common.List    {...props.viewForPaginator} from={exampleProps.value}/> 
-    //   </>
-    // ),
+    PaginatorExample: GUI.HOCs.withState("value")(
+     (exampleProps) => <>
+        <GUI.Widgets.Paginator  {...props.paginator} {...exampleProps}/>
+        <GUI.Common.List    {...props.viewForPaginator} first={exampleProps.value}/> 
+      </>
+    ),
   }
 	// render 
 
@@ -47,7 +47,7 @@ export const GroupWidgets = () => {
 
       <fsComponents.BrowserExample value={0}/>
       <fsComponents.NavigatorExample value={0}/>
-      {/* <fsComponents.PaginatorExample value={0}/> */}
+      <fsComponents.PaginatorExample value={0}/>
 
 			<GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
 			<TestAreaForScroll />  

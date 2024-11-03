@@ -42,8 +42,8 @@ const Browser = HOCs.withMerge(Widgets.Browser.cfg.values)
   (HOCs.withValueNumber(HOCs.withContainer(HOCs.withRepeat(Widgets.Browser.Template))));
 const Navigator = HOCs.withMerge(Widgets.Navigator.cfg.values)
   (HOCs.withValueNumber(HOCs.withContainer(Widgets.Navigator.Component)));
-  // const Paginator = HOCs.withMerge(Widgets.Paginator.cfg.values)
-  //   (HOCs.withValueNumber(HOCs.withContainer(HOCs.withRepeat(Widgets.Paginator.Component))));
+  const Paginator = HOCs.withMerge(Widgets.Paginator.cfg.values)
+    (HOCs.withValueNumber(HOCs.withContainer(HOCs.withRepeat(Widgets.Browser.Template, Widgets.Paginator.Component))));
 const Scroll = HOCs.withMerge(Widgets.Scroll.cfg.values)
  ( HOCs.withState("value")(HOCs.withValueNumber(HOCs.withDirection(HOCs.withContainer(Widgets.Scroll.Component)))));
 
@@ -61,8 +61,7 @@ export const GUI = {
     Slider, 
   },
   Widgets: {
-    // , Paginator, 
-    Browser, Navigator, Scroll,
+    Browser, Navigator, Scroll, Paginator, 
     Accordion,
   }
 }
