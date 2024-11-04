@@ -38,8 +38,10 @@ export const Widgets = () => {
     ),
 
     AccordionExample: GUI.HOCs.withState("value")(GUI.Widgets.Accordion),
-    CheckListExample: GUI.HOCs.withState("value")(GUI.Widgets.CheckList)
+    CheckListExample: GUI.HOCs.withState("value")(GUI.Widgets.CheckList),
+    MenuExample:      GUI.HOCs.withState("value")(GUI.Widgets.Menu),
   }
+  
 	// render 
 
 	return (
@@ -52,9 +54,10 @@ export const Widgets = () => {
 			<GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
 			<TestAreaForScroll />  
       
-      <fsComponents.AccordionExample {...props.accordion}/>
-      <fsComponents.AccordionExample {...props.accordionSingle}/>
-      <fsComponents.CheckListExample {...props.checklist}/>
+      <fsComponents.AccordionExample  {...props.accordion}/>
+      <fsComponents.AccordionExample  {...props.accordionSingle}/>
+      <fsComponents.CheckListExample  {...props.checklist}/>
+      <fsComponents.MenuExample       {...props.menu}/>
 
 		</>
 	);

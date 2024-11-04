@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as gCFG  from "/src/gui/config"
-import {CheckBox} from "/src/gui/layouts"
 
 // -------------------------------------------------------------------------- //
 // Configuration.
@@ -11,7 +10,7 @@ gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {});
 gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: []});
 
 // -------------------------------------------------------------------------- //
-// Widget - to display the add/remove tags interface. 
+// Widget - to display desktop application menu. 
 // -------------------------------------------------------------------------- //
 
 // -------------------------------------------------------------------------- //
@@ -42,14 +41,12 @@ const Template = props => {
   }
 
   return (
-		<li {...attributes}>
-      <CheckBox.Component {...updateProps} />
-			<span>{item?.text}</span>
-			<button>X</button>
-		</li>
+    item.type 
+    ? <button>{item.caption}</button>
+    : <li {...attributes}>{item.caption}</li>
 	);
 }
 
-export const CheckList = {cfg, Template}
+export const Menu = {cfg, Template}
 
 // -------------------------------------------------------------------------- //

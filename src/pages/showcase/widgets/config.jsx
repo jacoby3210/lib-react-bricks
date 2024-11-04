@@ -44,6 +44,10 @@ export const props = {
     src: produceEntries(5, (v, i) => { return {id: i, caption: `Option #${i}`, content: i } }),
     value: [],
   },
+  menu: {
+    src: produceEntries(5, (v, i) => { return {id: i, caption: `Option #${i}`, type: i % 2 == 0}}),
+    value: [],
+  },
 };
 
 // -------------------------------------------------------------------------- //
