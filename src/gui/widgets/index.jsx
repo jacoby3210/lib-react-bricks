@@ -11,6 +11,7 @@ export {Scroll}         from "./content/scroll";                              //
 
 // view
 
-export {Accordion}      from "./view/accordion"                               // - represents list of headers and their associated ui blocks..
+export {Accordion}      from "./view/accordion"                               // - represents list of headers and their associated ui blocks.
+export {CheckList}      from "./view/checklist"                               // - to display the add/remove tags interface.
 
 // -------------------------------------------------------------------------- //

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {GUI} from "/src/gui"
 import { props } from "./config"
+import { CheckBox } from '../../../gui/layouts';
 
 // ------------------------------------------------------------------------- //
 // React Component  
@@ -17,7 +18,6 @@ export const Widgets = () => {
 		</div>;
 
   const fsComponents = {
-    AccordionExample: GUI.HOCs.withState("value")(GUI.Widgets.Accordion),
     BrowserExample: GUI.HOCs.withState("value")(
       (exampleProps) => <>
         <GUI.Widgets.Browser    {...props.browser} {...exampleProps}/>
@@ -31,11 +31,14 @@ export const Widgets = () => {
       </>
     ),
     PaginatorExample: GUI.HOCs.withState("value")(
-     (exampleProps) => <>
+      (exampleProps) => <>
         <GUI.Widgets.Paginator  {...props.paginator} {...exampleProps}/>
         <GUI.Common.List    {...props.viewForPaginator} first={exampleProps.value}/> 
       </>
     ),
+
+    AccordionExample: GUI.HOCs.withState("value")(GUI.Widgets.Accordion),
+    CheckListExample: GUI.HOCs.withState("value")(GUI.Widgets.CheckList)
   }
 	// render 
 
@@ -51,6 +54,7 @@ export const Widgets = () => {
       
       <fsComponents.AccordionExample {...props.accordion}/>
       <fsComponents.AccordionExample {...props.accordionSingle}/>
+      <fsComponents.CheckListExample {...props.checklist}/>
 
 		</>
 	);

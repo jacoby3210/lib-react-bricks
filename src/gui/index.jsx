@@ -48,7 +48,9 @@ const Scroll = HOCs.withMerge(Widgets.Scroll.cfg.values)
  ( HOCs.withState("value")(HOCs.withValueNumber(HOCs.withDirection(HOCs.withContainer(Widgets.Scroll.Component)))));
 
 const Accordion = HOCs.withMerge(Widgets.Accordion.cfg.values)
-  (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Accordion.Template, Widgets.Accordion.Component))));
+(HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Accordion.Template, Widgets.Accordion.Component))));
+const CheckList = HOCs.withMerge(Widgets.CheckList.cfg.values)
+  (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.CheckList.Template))));
 
 // external module api
 
@@ -62,7 +64,7 @@ export const GUI = {
   },
   Widgets: {
     Browser, Navigator, Scroll, Paginator, 
-    Accordion,
+    Accordion, CheckList,
   }
 }
 
