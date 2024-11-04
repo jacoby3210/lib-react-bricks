@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import {GUI} from "/src/gui"
+import React from 'react';
+import {GUI} from "@lib-react-bricks/src/gui"
 import { props } from "./config"
-import { CheckBox } from '../../../gui/layouts';
 
 // ------------------------------------------------------------------------- //
 // React Component  

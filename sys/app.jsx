@@ -2,8 +2,9 @@ import React            from 'react'
 import ReactDOM         from 'react-dom/client'
 import {Provider}       from 'react-redux';
 import {BrowserRouter}  from 'react-router-dom';
-import {store}          from '/src/code/store';
-import Router           from '/src/pages/router.jsx'
+import {store}          from '@lib-react-bricks/src/code/store';
+import Router           from '@lib-react-bricks/src/pages/router.jsx'
+
 // ========================================================================= //
 // The main React component defining the structure of the application.
 // ========================================================================= //
@@ -24,7 +25,7 @@ const App = receivedProps => (
 
 async function enableMocking() {
   if (process.env.NODE_ENV === "development") {
-    const { worker } = await import("/src/code/development/mocks/index.js");    
+    const { worker } = await import("@lib-react-bricks/src/code/development/mocks/index.js");    
     return worker.start();  
   }
 }

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import * as gCFG  from "/src/gui/config"
-import {CheckBox} from "/src/gui/layouts"
+import * as gCFG  from "@lib-react-bricks/src/gui/config"
+import {CheckBox} from "@lib-react-bricks/src/gui/layouts"
 
 // -------------------------------------------------------------------------- //
 // Configuration.

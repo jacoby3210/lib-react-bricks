@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState } from 'react';
-import * as gCFG from "/src/gui/config"
-import {Dropout} from '/src/gui/layouts/basics/dropout'
+import * as gCFG from "@lib-react-bricks/src/gui/config"
+import {Dropout} from '@lib-react-bricks/src/gui/layouts/basics/dropout'
 
 // -------------------------------------------------------------------------- //
 // Configuration.

@@ -18,7 +18,7 @@
 
 ### Stage 04
   - setup msw workflow.
-  - update react-template-app/src/app.jsx
+  - update react-template-app@lib-react-bricks/srcapp.jsx
   - update react-template-app/README.md
 
 ### Stage 05

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import * as gCFG from "/src/gui/config"
+import * as gCFG from "@lib-react-bricks/src/gui/config"
 
 // -------------------------------------------------------------------------- //
 // Configuration.

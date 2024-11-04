@@ -1,4 +1,4 @@
-import {GUI} from "/src/gui"
+import {GUI} from "@lib-react-bricks/src/gui"
 import {props} from "./config";
 
 // -------------------------------------------------------------------------- //

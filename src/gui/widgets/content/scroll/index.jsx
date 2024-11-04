@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {useCallback, useEffect, useRef, useState } from 'react';
-import * as gCFG  from "/src/gui/config"
-import { Slider } from '/src/gui/layouts';
+import * as gCFG  from "@lib-react-bricks/src/gui/config"
+import { Slider } from '@lib-react-bricks/src/gui/layouts';
 
 // -------------------------------------------------------------------------- //
 // Configuration.

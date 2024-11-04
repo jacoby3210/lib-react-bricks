@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import {Browser}    from '/src/gui/widgets/content/browser'
-import {Navigator}  from '/src/gui/widgets/content/navigator'
-import * as gCFG    from "/src/gui/config"
+import {Browser}    from '@lib-react-bricks/src/gui/widgets/content/browser'
+import {Navigator}  from '@lib-react-bricks/src/gui/widgets/content/navigator'
+import * as gCFG    from "@lib-react-bricks/src/gui/config"
 
 // -------------------------------------------------------------------------- //
 // Configuration.

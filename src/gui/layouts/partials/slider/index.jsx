@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import * as gCFG from "/src/gui/config"
-import { Range } from '/src/gui/layouts/controls/range';
-import { Swing } from '/src/gui/layouts/controls/swing';
+import * as gCFG from "@lib-react-bricks/src/gui/config"
+import { Range } from '@lib-react-bricks/src/gui/layouts/controls/range';
+import { Swing } from '@lib-react-bricks/src/gui/layouts/controls/swing';
 
 // -------------------------------------------------------------------------- //
 // Configuration.

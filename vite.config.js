@@ -1,3 +1,4 @@
+import path from 'path';
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import {viteConsolePro} from 'vite-plugin-console-pro'
@@ -8,4 +9,9 @@ export default defineConfig({
     react(), 
     viteConsolePro({exclude: ["node_modules"]}),
   ],
+  resolve: {
+    alias: {
+      '@lib-react-bricks/src/': "/src/",
+    }
+  }
 })
