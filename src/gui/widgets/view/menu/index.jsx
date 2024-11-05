@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as gCFG  from "@lib-react-bricks/src/gui/config"
+import {Dropout} from "@lib-react-bricks/src/gui/layouts"
 
 // -------------------------------------------------------------------------- //
 // Configuration.
@@ -21,9 +22,14 @@ const Template = props => {
   
   // initial data
 	
-  const {common, item, ...attributes} = props;
+  const {common, item, index, ...attributes} = props;
   const {value, whenValueChange} = common;
   
+  // hooks 
+
+  const [revealsState, setRevealsState] = useState(value);
+  useEffect(() => {setRevealsState(value.includes(index))}, [value]);
+
   // input handling
   
   const handleToggle = useCallback(
@@ -34,7 +40,7 @@ const Template = props => {
   );
   
   // render
-
+  const dropoutProps = {revealsState, setRevealsState}
   const updateProps = {
     value: value.includes(item.id), 
     whenValueChange: handleToggle
@@ -43,7 +49,9 @@ const Template = props => {
   return (
     item.type 
     ? <button>{item.caption}</button>
-    : <li {...attributes}>{item.caption}</li>
+    : <Dropout.Component {...dropoutProps} {...attributes}>
+      {item.caption}
+    </Dropout.Component>
 	);
 }
 

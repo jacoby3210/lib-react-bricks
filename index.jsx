@@ -1,1 +1,1 @@
-export {GUI} from ".@lib-react-bricks/src/gui"
+export {GUI} from "./src/gui"
