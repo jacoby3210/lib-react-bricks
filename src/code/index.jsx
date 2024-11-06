@@ -1,13 +1,11 @@
-import {Code} from "./src/code"
-import {GUI} from "./src/gui"
+import { Store } from "./store";
 
 // -------------------------------------------------------------------------- //
-// Header file for export module. Compile widgets.
+// external module api
 // -------------------------------------------------------------------------- //
 
-export const LRB = {
-  Code,
-  GUI,
-}
+export const Code = {
+  Store
+};
 
 // -------------------------------------------------------------------------- //

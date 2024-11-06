@@ -1,11 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
+import {createArraySlice} from "./templates/array" 
 
 // -------------------------------------------------------------------------- //
-// Create data store for app.
+// Сombines support methods for working with the repository.
 // -------------------------------------------------------------------------- //
 
-export const store = configureStore({
-  reducer: () => { },
-});
+export const Store = {
+  Slice: {createArraySlice},
+};
 
 // -------------------------------------------------------------------------- //

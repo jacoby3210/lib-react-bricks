@@ -7,7 +7,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const createArraySlice = (name, array) => {
 
   // initial data
-
+  
   const initialState = {
     counter: array.length ? Math.max(...array.map(item => item.id)) : 0,
     items: array.reduce((acc, item) => (acc[item.id] = item), {}),

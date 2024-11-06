@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------- //
-// Layouts intended for the graphical user interface.
+// Widget - gui components with inbuilt functionality.
 // -------------------------------------------------------------------------- //
 
 // content

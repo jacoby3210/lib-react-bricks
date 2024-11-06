@@ -3,7 +3,7 @@ import * as Layouts from "./layouts"
 import * as Widgets from "./widgets"
 
 // -------------------------------------------------------------------------- //
-// Header file for export module. Compile widgets.
+// prepare api
 // -------------------------------------------------------------------------- //
 
 const Container = HOCs.withMerge(Layouts.Container.cfg.values) 
@@ -54,7 +54,9 @@ const CheckList = HOCs.withMerge(Widgets.CheckList.cfg.values)
 const Menu = HOCs.withMerge(Widgets.Menu.cfg.values)
   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Menu.Template))));
 
+// -------------------------------------------------------------------------- //
 // external module api
+// -------------------------------------------------------------------------- //
 
 export const GUI = {
   HOCs,    

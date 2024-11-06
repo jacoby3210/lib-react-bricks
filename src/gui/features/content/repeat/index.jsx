@@ -13,11 +13,13 @@ export const withRepeat = (TemplateComponent, WrappedComponent = null) => {
     // initial data
 
     const {first, length, src = [], filter, ...attributes } = props;
+    const srcArray = Array.isArray(src) ? src : Object.values(src);
+
     const [matchingItems, nonMatchingItems] = useMemo(() => {
-      const matching = filter ? src.filter(filter, props) : src;
-      const notMatching = src.filter((item) => !matching.includes(item));
+      const matching = filter ? srcArray.filter(filter, props) : srcArray;
+      const notMatching = srcArray.filter((item) => !matching.includes(item));
       return [matching, notMatching];
-    }, [filter, src, props]);
+    }, [filter, srcArray, props]);
     
     // render
 
