@@ -19,7 +19,7 @@ const Component = props => {
   const {
     children,
     className,
-    caption,
+    label,
     revealsState,
     setRevealsState,
   } = props;
@@ -27,8 +27,8 @@ const Component = props => {
   // render 
   
   const dropoutButtonProps = {
-    caption, 
     className,
+    label, 
     onMouseDown: (evt) => {
       evt.stopPropagation();
       setRevealsState(!revealsState);

@@ -44,7 +44,7 @@ const Template = props => {
 
   return (
     item.type 
-    ? <button>{item.caption}</button>
+    ? <Button.Component>{item.caption}</Button.Component>
     : <Dropout.Component {...dropoutProps} {...attributes}>
       {item.caption}
     </Dropout.Component>

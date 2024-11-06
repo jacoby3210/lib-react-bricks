@@ -1,4 +1,3 @@
-import {useRef} from "react"
 import { useDispatch } from 'react-redux';
 import * as gCFG from "@lib-react-bricks/src/gui/config.jsx"
 
@@ -17,21 +16,21 @@ export const Component = props => {
 
   // initial props
 
-  const { action, label, } = props;
+  const { action, children, label, onClick, } = props;
   
   // hooks
   
-  const dispatch = useDispatch();
+  const dispatch = action ? useDispatch() : null;
 
   // input handling
 
-  const handleClick = () => dispatch(action());
+  const handleClick = action ? (evt) => dispatch(action()) : onClick;
 
   // render
   
   return (
     <button onClick={handleClick}>
-      {label}
+      {label || children}
     </button>
   );
 };
