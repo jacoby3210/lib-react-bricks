@@ -4,13 +4,16 @@ import { createSlice } from '@reduxjs/toolkit';
 // Create Slice to manage dictionary of items available to the user.
 // ------------------------------------------------------------------------- //
 
-export const createArraySlice = (name, array) => {
+export const createArraySlice = (name, data) => {
 
   // initial data
-  
+
   const initialState = {
-    counter: array.length ? Math.max(...array.map(item => item.id)) : 0,
-    items: array.reduce((acc, item) => (acc[item.id] = item), {}),
+    counter: data.length ? Math.max(...data.map(item => item.id)) : 0,
+    items:
+      Array.isArray(data) 
+        ? data.reduce((acc, item) => {acc[item.id] = item; return acc;}, {}) 
+        : data
   };
 
   // create slice
@@ -21,7 +24,7 @@ export const createArraySlice = (name, array) => {
     reducers: {
 
       add: (state, action) => {
-        const newId = state.counter++;
+        const newId = ++state.counter;
         state.items[newId] = { ...action.payload, id: newId };
       },
       
