@@ -1,29 +1,43 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 // ------------------------------------------------------------------------- //
-// Create Slice to manage array available to the user.
+// Create Slice to manage dictionary of items available to the user.
 // ------------------------------------------------------------------------- //
 
 export const createArraySlice = (name, array) => {
-  const initialState = {array, counter: 0};
+
+  // initial data
+
+  const initialState = {
+    counter: array.length ? Math.max(...array.map(item => item.id)) : 0,
+    items: array.reduce((acc, item) => (acc[item.id] = item), {}),
+  };
+
+  // create slice
+  
   return createSlice({
     name,
     initialState,
     reducers: {
 
-      // Adding a new item
-      add: (state, action) => {state.array.push({...action.payload, id: state.counter++});},
-
-      // Edit an existing item
-      edit: (state, action) => {
+      add: (state, action) => {
+        const newId = state.counter++;
+        state.items[newId] = { ...action.payload, id: newId };
+      },
+      
+      remove: (state, action) => {
+        delete state.items[action.payload];
       },
 
-      // Deleting only the item
-      remove: (state, action) => {
-        return state.array.filter(el => !(el.id === action.payload));
-      }
+      update: (state, action) => {
+        const { id, data } = action.payload;
+        if (state.items[id]) {
+          state.items[id] = { ...state.items[id], ...data };
+        }
+      },
+
     }
-  })
+  });
 }
 
 // ------------------------------------------------------------------------- //
