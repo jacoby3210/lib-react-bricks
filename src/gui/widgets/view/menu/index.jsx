@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as gCFG  from "@lib-react-bricks/src/gui/config"
-import {Dropout} from "@lib-react-bricks/src/gui/layouts"
+import {Button, Dropout} from "@lib-react-bricks/src/gui/layouts"
 
 // -------------------------------------------------------------------------- //
 // Configuration.
@@ -41,10 +41,6 @@ const Template = props => {
   
   // render
   const dropoutProps = {revealsState, setRevealsState}
-  const updateProps = {
-    value: value.includes(item.id), 
-    whenValueChange: handleToggle
-  }
 
   return (
     item.type 
