@@ -5,7 +5,7 @@ import * as gCFG from "@lib-react-bricks/src/gui/config.jsx"
 // -------------------------------------------------------------------------- //
 
 const cfg = gCFG.createConfig({postfix: "checkbox"});
-gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: null});
+gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: false});
 
 // -------------------------------------------------------------------------- //
 // Layout - to provides an advanced version of the classic checkbox.
