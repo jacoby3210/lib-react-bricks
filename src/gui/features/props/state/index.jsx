@@ -23,7 +23,6 @@ export const withState = (stateName) => (WrappedComponent) => {
     
     const handleStateChange = useCallback(
       (next) => {
-        console.log(1, next)
         const updatedValue = stateHandler ? stateHandler(next, state) : next;
         setState((prev) => (stateHandler ? stateHandler(updatedValue, prev) : updatedValue));
       },

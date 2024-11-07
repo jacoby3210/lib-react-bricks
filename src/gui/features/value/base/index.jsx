@@ -24,7 +24,7 @@ export const withValueBase = (WrappedComponent) => {
     );
 
     const handleValueModify = useCallback(
-      (increment) => whenValueModify(increment),
+      (increment) => whenValueChange(value + increment),
       [handleValueChange]
     );
 

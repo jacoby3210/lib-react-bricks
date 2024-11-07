@@ -33,7 +33,6 @@ export const Component = props => {
   };
 
   const handleNextClick = () => {
-    console.log(props)
     if(value !== src.length - 1) whenValueModify(1);
     else if(rounded) whenValueChange(0);
   };
