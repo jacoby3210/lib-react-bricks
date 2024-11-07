@@ -29,8 +29,8 @@ const src = [
   sig("note",       "reference", {src:  selectSrc}, GUI.Common.Select),
   sig("isPlayable", "bool",      {},                GUI.Common.CheckBox),
   sig("type",       "enum",      {src:switcherSrc}, GUI.Common.Switcher),
+  sig("tooltip",    "text",      {},                GUI.Common.Paragraph),
 
-  // sig("", "text", {}, GUI.Common.Paragraph, ),
 ];
 
 export const props = {
@@ -44,6 +44,7 @@ export const props = {
       note: 2,
       isPlayable: true,
       type: 1,
+      tooltip: "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
     },
   },
 };

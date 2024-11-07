@@ -1,7 +1,7 @@
 import {createArraySlice} from "./templates/array" 
 
 // -------------------------------------------------------------------------- //
-// Сombines support methods for working with the repository.
+// Web application data management using redux\toolkit
 // -------------------------------------------------------------------------- //
 
 export const Store = {

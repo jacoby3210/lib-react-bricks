@@ -9,6 +9,7 @@ export {Container}        from "./basics/container";                          //
 export {Dropout}          from "./basics/dropout";                            // - to render the content of the reveal.
 export {Empty}            from "./basics/empty";                              // - to use in place where the syntax requires component.
 export {List}             from "./basics/list";                               // - to generate a gui for an item in an source data by default.
+export {Text}             from "./basics/text";                               // - to render only read value (as text).
 
 // - controls
 

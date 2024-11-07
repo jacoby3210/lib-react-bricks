@@ -32,7 +32,6 @@ export const Template = props =>{
   </button>;
 }
 
-
 Template.propTypes = cfg.types;
 export const Browser = {cfg, Template}
 

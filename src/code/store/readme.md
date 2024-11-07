@@ -1,1 +1,0 @@
-Web application data management using redux\toolkit
