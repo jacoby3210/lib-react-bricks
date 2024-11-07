@@ -1,6 +1,4 @@
-import { useDispatch } from 'react-redux';
 import * as gCFG from "@lib-react-bricks/src/gui/config.jsx"
-import * as code from './code'
 
 // -------------------------------------------------------------------------- //
 // Configuration.
@@ -8,7 +6,7 @@ import * as code from './code'
 
 const cfg = gCFG.createConfig({postfix:"inspector"});
 gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {});
-gCFG.applyPackage(cfg, gCFG.propPackageValueBase);
+gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: {}});
 
 // -------------------------------------------------------------------------- //
 //  Widget - to generate form to view/edit objects c JS (basic)
@@ -30,19 +28,21 @@ export const Template = props => {
 
   // initial props
 
-  const { common, item, index, ...attributtes } = props;
-  const signature = common.map[index];
-
-  // hooks
-
+  const { common, item, index } = props;
+  
   // input handling
 
+  const whenValueChange = (next, prev) => 
+    common.whenValueChange({...common.value, [item.caption]: next});
+
   // render
-  
+
+  const valueProps = {whenValueChange, value: common.value[item.caption]};
+
   return (
-    <div name={signature.caption} type={signature.datatype}>
-      <label>{signature.caption}</label>
-      <signature.Render/>  
+    <div name={item.caption} type={item.datatype}>
+      <label>{item.caption}</label>
+      <item.Render {...item.props} {...valueProps}/>  
     </div>
   );
 };

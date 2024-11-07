@@ -6,33 +6,37 @@ import {GUI} from '/src/gui'
 const sig = (caption, datatype, props, Render) => 
   ({caption, datatype, props, Render})
 
-const map = [
-  // sig("id",    "noedit",    {}, GUI.Common.CheckBox),
-  sig("label",      "string",    {}, GUI.Common.Advisor),
-  sig("name",       "reference", {}, GUI.Common.Select),
-  sig("desc",       "reference", {}, GUI.Common.Select),
-  sig("note",       "reference", {}, GUI.Common.Select),
-  sig("isPlayable", "bool",      {}, GUI.Common.CheckBox),
-  sig("type",       "enum",      {}, GUI.Common.Switcher),
+const switcherSrc = [
+  {id: 0, caption: "label-0",},
+  {id: 1, caption: "label-1",},
+  {id: 2, caption: "label-2",},
+  {id: 3, caption: "label-3",},
+]
 
-  // sig(GUI.Common.Paragraph, "text",),
+const src = [
+  sig("id",         "noedit",    {},            ({value}) => <span>{value}</span>),
+  sig("label",      "string",    {},                GUI.Common.Advisor),
+  sig("name",       "reference", {},                GUI.Common.Select),
+  sig("desc",       "reference", {},                GUI.Common.Select),
+  sig("note",       "reference", {},                GUI.Common.Select),
+  sig("isPlayable", "bool",      {},                GUI.Common.CheckBox),
+  sig("type",       "enum",      {src:switcherSrc}, GUI.Common.Switcher),
+
+  // sig("", "text", {}, GUI.Common.Paragraph, ),
 ];
 
 export const props = {
   inspector: {
-    map,
-    src: {
-      // id: 0, 
-      label: "label", 
+    src,
+    value: {
+      id: 0, 
+      label: "label-0", 
       name: 0, 
       desc: 1, 
       note: 2,
-      isPlayable: false,
+      isPlayable: true,
       type: 1,
     },
-      // {id: 1, label: "label", name: 3, desc: 4, note: 5, type: 2,},
-      // {id: 2, label: "label", name: 6, desc: 7, note: 8, type: 1,},
-    // ],
   },
 };
 

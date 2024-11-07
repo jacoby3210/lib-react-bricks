@@ -11,7 +11,7 @@ export const Workflows = () => {
   // initial data
   
   const fsComponents = {
-    Inspector: GUI.Widgets.Inspector
+    Inspector: GUI.HOCs.withState("value")(GUI.Widgets.Inspector)
   }
   
 	// render 
