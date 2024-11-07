@@ -37,7 +37,10 @@ const Component = props => {
 
   return (
     revealsState 
-      ? <><DropoutButton {...dropoutButtonProps}/>{children}</>
+      ? <>
+          <DropoutButton {...dropoutButtonProps}/>
+          {children}
+        </>
       : <DropoutButton {...dropoutButtonProps}/>
   );
 };

@@ -51,8 +51,14 @@ const Accordion = HOCs.withMerge(Widgets.Accordion.cfg.values)
 (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Accordion.Template, Widgets.Accordion.Component))));
 const CheckList = HOCs.withMerge(Widgets.CheckList.cfg.values)
   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.CheckList.Template))));
+
+
+const Inspector = HOCs.withMerge(Widgets.Inspector.cfg.values)
+  (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Inspector.Template))));
 const Menu = HOCs.withMerge(Widgets.Menu.cfg.values)
   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Menu.Template))));
+
+
 
 // -------------------------------------------------------------------------- //
 // external module api
@@ -68,7 +74,7 @@ export const GUI = {
   },
   Widgets: {
     Browser, Navigator, Scroll, Paginator, 
-    Accordion, CheckList, Menu,
+    Accordion, CheckList, Menu, Inspector,
   }
 }
 

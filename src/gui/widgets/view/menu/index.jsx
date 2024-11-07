@@ -30,17 +30,14 @@ const Template = props => {
   const [revealsState, setRevealsState] = useState(value);
   useEffect(() => {setRevealsState(value.includes(index))}, [value]);
 
-  // input handling
-  
-  const handleToggle = useCallback(
-    (isNotCheck) => whenValueChange(
-        isNotCheck ? [...value, item.id] : value.filter(i => i !== item.id)
-    ),
-    [value, whenValueChange]
-  );
-  
   // render
-  const dropoutProps = {revealsState, setRevealsState}
+  
+  const dropoutProps = {
+    label: item.caption, 
+    revealsState, 
+    setRevealsState, 
+    ...common
+  }
 
   return (
     item.type 

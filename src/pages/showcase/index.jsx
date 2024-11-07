@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Common } from "./common";
 import { Widgets } from './widgets';
+import { Workflows } from './workflows';
 import "./index.css"
 
 // -------------------------------------------------------------------------- //
@@ -21,9 +22,9 @@ const ShowcasePage = props => {
       {"Its alive"}
       <div>
         {/* <Common/> */}
-        <Widgets/>
+        {/* <Widgets/> */}
+        <Workflows/>
       </div>
-      {/* <ExamplePart2/> */}
       {/* <ExamplePart3/> */}
       {/* <ExamplePart4/> */}
     </section>
