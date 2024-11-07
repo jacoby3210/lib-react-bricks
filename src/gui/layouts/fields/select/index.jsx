@@ -25,7 +25,7 @@ const Component = props => {
     value, whenValueChange, whenValueModify
   } = props;
 
-  const caption = src?.find(item => item.value == value).caption;
+  const current = src?.find(item => item.value == value);
   
   // input handling
 
@@ -47,7 +47,7 @@ const Component = props => {
   // render
 
   return (
-    <Dropout.Component {...props} caption={caption} >
+    <Dropout.Component {...props} caption={current?.caption || value} >
       {children}
     </Dropout.Component>
   );
@@ -57,11 +57,11 @@ const Component = props => {
 // Template - to create a gui by metadata.
 // -------------------------------------------------------------------------- //
 
-const Template = receivedProps => {          
+const Template = props => {          
   
   // initial data
 
-  const {common, item} = receivedProps;
+  const {common, item} = props;
   const {className, whenValueChange, whenValueModify, ...attributes} = common;
   
   // render

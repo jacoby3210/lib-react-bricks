@@ -9,9 +9,9 @@ const sig = (caption, datatype, props, Render) =>
 const map = [
   // sig("id",    "noedit",    {}, GUI.Common.CheckBox),
   sig("label", "string",    {}, GUI.Common.Advisor),
-  // sig("name",  "reference", {}, GUI.Common.Select),
-  // sig("desc",  "reference", {}, GUI.Common.Select),
-  // sig("note",  "reference", {}, GUI.Common.Select),
+  sig("name",  "reference", {}, GUI.Common.Select),
+  sig("desc",  "reference", {}, GUI.Common.Select),
+  sig("note",  "reference", {}, GUI.Common.Select),
   // sig("type",  "enum",      {}, GUI.Common.Switcher),
 
   // sig(GUI.Common.Paragraph, "text",),
