@@ -13,7 +13,7 @@ const map = [
   sig("desc",       "reference", {}, GUI.Common.Select),
   sig("note",       "reference", {}, GUI.Common.Select),
   sig("isPlayable", "bool",      {}, GUI.Common.CheckBox),
-  // sig("type",  "enum",        {}, GUI.Common.Switcher),
+  sig("type",       "enum",      {}, GUI.Common.Switcher),
 
   // sig(GUI.Common.Paragraph, "text",),
 ];
@@ -28,6 +28,7 @@ export const props = {
       desc: 1, 
       note: 2,
       isPlayable: false,
+      type: 1,
     },
       // {id: 1, label: "label", name: 3, desc: 4, note: 5, type: 2,},
       // {id: 2, label: "label", name: 6, desc: 7, note: 8, type: 1,},

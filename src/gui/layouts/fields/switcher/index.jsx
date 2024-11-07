@@ -28,14 +28,11 @@ export const Component = props => {
   // input handling
 
   const handlePrevClick = () => {
-    console.log(value);
-    if(value !== 0) 
-      whenValueModify(-1);
+    if(value !== 0) whenValueModify(-1);
     else if(rounded) whenValueChange(src.length - 1);
   };
 
   const handleNextClick = () => {
-    console.log(value);
     if(value !== src.length - 1) whenValueModify(1);
     else if(rounded) whenValueChange(0);
   };
@@ -45,7 +42,7 @@ export const Component = props => {
   return (
     <>
       <button onClick={handlePrevClick}>←</button>
-      <span>{src[value].caption}</span>
+      <span>{src[value]?.caption || "Not Found"}</span>
       <button onClick={handleNextClick}>→</button>
     </>
   );
