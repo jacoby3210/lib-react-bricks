@@ -25,8 +25,8 @@ const Component = props => {
     value, whenValueChange, whenValueModify
   } = props;
 
-  const current = src?.find(item => item.value == value);
-  
+  const current = src?.find(item => item.id == value);
+
   // input handling
 
   const handleClick = (e) => {
@@ -68,7 +68,6 @@ const Template = props => {
 
   return (
     <option 
-      {...attributes}
       className={`${className.split(" ")[0]}-option`} 
       onMouseDown={item?.onMouseDown} 
       value={item?.value}

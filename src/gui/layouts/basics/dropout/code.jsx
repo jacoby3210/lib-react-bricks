@@ -3,11 +3,11 @@
 // -------------------------------------------------------------------------- //
 
 export const DropoutButton = props => {
-  const {className, children, label, ...attributes} = props;
+  const {className, children, caption, ...attributes} = props;
   const cssPrefix = `button`; 
   return (
     <button className={cssPrefix} {...attributes}>
-      <span className={`${cssPrefix}-caption`}>{label || children}</span>
+      <span className={`${cssPrefix}-caption`}>{caption || children}</span>
       <span className={`${cssPrefix}-arrow`}>
         <i className={'fa-solid fa-chevron-down'}></i>
       </span>

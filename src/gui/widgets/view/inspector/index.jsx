@@ -29,15 +29,19 @@ export const Template = props => {
   // initial props
 
   const { common, item, index } = props;
-  
+  const value = common.value[item.caption];
+
   // input handling
 
   const whenValueChange = (next, prev) => 
     common.whenValueChange({...common.value, [item.caption]: next});
 
+  const whenValueModify = (increment) => 
+    common.whenValueChange({...common.value, [item.caption]: value + increment});
+
   // render
 
-  const valueProps = {whenValueChange, value: common.value[item.caption]};
+  const valueProps = {whenValueChange, whenValueModify, value};
 
   return (
     <div name={item.caption} type={item.datatype}>

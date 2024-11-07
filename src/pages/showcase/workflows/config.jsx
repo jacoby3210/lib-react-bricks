@@ -6,6 +6,14 @@ import {GUI} from '/src/gui'
 const sig = (caption, datatype, props, Render) => 
   ({caption, datatype, props, Render})
 
+const selectSrc = [
+  {id: 0, caption: "label-0",},
+  {id: 1, caption: "label-1",},
+  {id: 2, caption: "label-2",},
+  {id: 3, caption: "label-3",},
+]
+
+
 const switcherSrc = [
   {id: 0, caption: "label-0",},
   {id: 1, caption: "label-1",},
@@ -14,11 +22,11 @@ const switcherSrc = [
 ]
 
 const src = [
-  sig("id",         "noedit",    {},            ({value}) => <span>{value}</span>),
+  sig("id",         "noedit",    {},                ({value}) => <span>{value}</span>),
   sig("label",      "string",    {},                GUI.Common.Advisor),
-  sig("name",       "reference", {},                GUI.Common.Select),
-  sig("desc",       "reference", {},                GUI.Common.Select),
-  sig("note",       "reference", {},                GUI.Common.Select),
+  sig("name",       "reference", {src:  selectSrc}, GUI.Common.Select),
+  sig("desc",       "reference", {src:  selectSrc}, GUI.Common.Select),
+  sig("note",       "reference", {src:  selectSrc}, GUI.Common.Select),
   sig("isPlayable", "bool",      {},                GUI.Common.CheckBox),
   sig("type",       "enum",      {src:switcherSrc}, GUI.Common.Switcher),
 

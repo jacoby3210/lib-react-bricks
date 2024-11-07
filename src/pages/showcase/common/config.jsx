@@ -37,7 +37,7 @@ export const props = {
     length: 5,
     src: produceEntries(5, (v, i) => ({ 
       caption: `Option #${i}`, 
-      value: i,
+      id: i,
       onMouseDown: (e) => {
         console.log(`Option #${i}`); 
         return false;
@@ -47,7 +47,7 @@ export const props = {
   },
   switcher: {
     length: 5,
-    src: produceEntries(5, (v, i) => ({caption: `Option #${i}`, value: i})),
+    src: produceEntries(5, (v, i) => ({caption: `Option #${i}`, id: i})),
     value: 0,
   },
 
