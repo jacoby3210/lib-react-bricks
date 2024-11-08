@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { connect } from 'react-redux';
 
 // -------------------------------------------------------------------------- //
 //  A feature - to handle a change in the value of a component (text type).
@@ -20,8 +21,15 @@ export const withValueLocale = (WrappedComponent) => {
     
     // hooks
 
-    // const locale = useSelector(state => state.locale.items);
+    const mapStateToProps = (state) => {
+      return {
+        value: state.locale.items[value].text,
+      }
+    };
     
+    const mapDispatchToProps = {};
+    const UpdatedComponent = connect(mapStateToProps, mapDispatchToProps)(WrappedComponent)
+
     // input handling
 
     const handleValueChange = useCallback(
@@ -42,7 +50,7 @@ export const withValueLocale = (WrappedComponent) => {
       whenValueModify: handleValueModify,
     };
 
-    return <WrappedComponent {...updateProps} />;
+    return <UpdatedComponent {...updateProps} />;
   };
 };
 
