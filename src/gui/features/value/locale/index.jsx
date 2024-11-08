@@ -4,12 +4,11 @@ import React, { useCallback } from 'react';
 //  A feature - to handle a change in the value of a component (text type).
 // -------------------------------------------------------------------------- //
 
-export const withValueText = (WrappedComponent) => {
+export const withValueLocale = (WrappedComponent) => {
 
   return (props) => {
 
     // initial data
-
     const {
       valueForbiddenChars: forbidden, 
       valueLengthMax: max,
@@ -18,21 +17,15 @@ export const withValueText = (WrappedComponent) => {
       whenValueChange,
       whenValueModify,
     } = props;
+    
+    // hooks
 
-    // supporting methods
-
-    const containsForbiddenChars = (next) => {
-      const forbiddenPattern = new RegExp(`[${forbidden.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}]`);
-      return forbiddenPattern.test(next);
-    }
-
+    // const locale = useSelector(state => state.locale.items);
+    
     // input handling
 
     const handleValueChange = useCallback(
-      (next) => {
-        if(!containsForbiddenChars(next)) 
-          whenValueChange(next)
-      },
+      (next) => whenValueChange(next),
       [min, max, whenValueChange]
     );
 

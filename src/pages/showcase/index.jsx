@@ -21,9 +21,9 @@ const ShowcasePage = props => {
     <section id={id} {...attributes}>
       {"Its alive"}
       <div>
-        {/* <Common/> */}
+        <Common/>
         {/* <Widgets/> */}
-        <Workflows/>
+        {/* <Workflows/> */}
       </div>
       {/* <ExamplePart3/> */}
       {/* <ExamplePart4/> */}

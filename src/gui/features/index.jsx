@@ -19,7 +19,8 @@ export {withState}              from "./props/state";                         //
 // value 
 
 export {withValueBase}          from "./value/base";                          // - to handle a change in the value of a component (variant type).
-export {withValueNumber}        from "./value/number";                        // - to handle a change in the value of a component (numeric type).
+export {withValueDigit}         from "./value/digit";                         // - to handle a change in the value of a component (digit type).
+export {withValueLocale}        from "./value/locale";                        // - to handle a change in the value of a component (locale type).
 export {withValueText}          from "./value/text";                          // - to handle a change in the value of a component (text type).
 
 // -------------------------------------------------------------------------- //

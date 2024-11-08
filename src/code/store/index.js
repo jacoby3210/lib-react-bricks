@@ -1,11 +1,13 @@
-import {createArraySlice} from "./templates/array" 
+import {createArraySlice} from "./array" 
 
 // -------------------------------------------------------------------------- //
 // Web application data management using redux\toolkit
 // -------------------------------------------------------------------------- //
 
 export const Store = {
-  Slice: {createArraySlice},
+  Slice: {
+    Creators:{ createArraySlice},
+  },
 };
 
 // -------------------------------------------------------------------------- //

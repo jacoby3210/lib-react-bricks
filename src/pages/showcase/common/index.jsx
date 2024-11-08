@@ -38,6 +38,8 @@ export const Common = () => {
       {/* partials */}
       <fsComponents.Slider   {...props.slider}/>
       
+      <GUI.Locale.LAdvisor value={0}/>
+      <GUI.Locale.LParagraph value={0}/>
     </>
   );
 };
