@@ -1,7 +1,8 @@
 // -------------------------------------------------------------------------- //
-// Layout - to use in place where the syntax requires component.
+// Layout - to render value as only read text..
 // -------------------------------------------------------------------------- //
 
-export const Empty = props => {return (<></>);};
+export const Text  = ({className, children, value}) => 
+  (<span className={className}>{value||children}</span>);
 
 // -------------------------------------------------------------------------- //

@@ -6,34 +6,37 @@ import * as Layouts from "./layouts"
 // prepare api
 // -------------------------------------------------------------------------- //
 
-const Container = HOCs.withMerge(Layouts.Container.cfg.values) 
-  (Layouts.Container.Component);
-const Dropout   = HOCs.withMerge(Layouts.Dropout.cfg.values) 
-  (HOCs.withContainer(HOCs.withReveals(Layouts.Dropout.Component)));
-const List      = HOCs.withMerge(Layouts.List.cfg.values)
-  (HOCs.withRepeat(Layouts.List.Template, Layouts.List.Component))
-const Empty     = HOCs.withMerge(Layouts.Empty.cfg.values)
-  (Layouts.Empty.Component);
+const Container = HOCs.withMerge("rc-container") 
+  (Layouts.Container);
+const Dropout   = HOCs.withMerge("rc-dropout", {shown: false}) 
+  (HOCs.withContainer(HOCs.withReveals(Layouts.Dropout)));
+const List      = HOCs.withMerge("rc-list")
+  (HOCs.withRepeat(Layouts.List.Template, Layouts.List.Container))
+const Empty     = HOCs.withMerge("rc-empty")
+  (Layouts.Empty);
+
   
-const CheckBox  = HOCs.withMerge(Layouts.CheckBox.cfg.values)
+const CheckBox  = HOCs.withMerge("rc-checkbox", Layouts.CheckBox.cfg.values)
   (HOCs.withValueBoolean(Layouts.CheckBox.Component));
-const Clicker   = HOCs.withMerge(Layouts.Clicker.cfg.values)  
+const Clicker   = HOCs.withMerge("rc-clicker", Layouts.Clicker.cfg.values)  
   (HOCs.withValueDigit(Layouts.Clicker.Component));
-const Range     = HOCs.withMerge(Layouts.Range.cfg.values)    
+const Range     = HOCs.withMerge("rc-range", Layouts.Range.cfg.values)    
   (HOCs.withValueDigit(HOCs.withDirection(Layouts.Range.Component)));
-const Swing     = HOCs.withMerge(Layouts.Swing.cfg.values)    
+const Swing     = HOCs.withMerge("rc-swing", Layouts.Swing.cfg.values)    
   (HOCs.withValueDigit(HOCs.withContainer(Layouts.Swing.Component)));
-const Toggle  = HOCs.withMerge(Layouts.Toggle.cfg.values) 
+const Toggle    = HOCs.withMerge("rc-toggle", Layouts.Toggle.cfg.values) 
   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Layouts.Toggle.Template))));
 
-const Advisor   = HOCs.withMerge(Layouts.Advisor.cfg.values) 
+const Advisor   = HOCs.withMerge("rc-checkbox", Layouts.Advisor.cfg.values) 
   (HOCs.withValueText(HOCs.withReveals(HOCs.withCursor(HOCs.withRepeat(Layouts.Advisor.Template, Layouts.Advisor.Component)))));
-const Paragraph = HOCs.withMerge(Layouts.Paragraph.cfg.values)
+const Paragraph = HOCs.withMerge("rc-paragraph", Layouts.Paragraph.cfg.values)
   (HOCs.withValueText(Layouts.Paragraph.Component));
-const Select    = HOCs.withMerge(Layouts.Select.cfg.values)
+const Select    = HOCs.withMerge("rc-select", Layouts.Select.cfg.values)
   (HOCs.withValueBase(HOCs.withReveals(HOCs.withContainer(HOCs.withRepeat(Layouts.Select.Template, Layouts.Select.Component)))));
-const Switcher  = HOCs.withMerge(Layouts.Switcher.cfg.values)
+const Switcher  = HOCs.withMerge("rc-switcher", Layouts.Switcher.cfg.values)
   (HOCs.withValueBase(HOCs.withContainer(Layouts.Switcher.Component)));
+const Text      = HOCs.withMerge("rc-text")
+  (Layouts.Text);
 
 // -------------------------------------------------------------------------- //
 // external module api
@@ -42,7 +45,7 @@ const Switcher  = HOCs.withMerge(Layouts.Switcher.cfg.values)
 export const GUI = {
   Native: {HOCs, Layouts},    
   Common: {
-    Container, Dropout, Empty, List, 
+    Container, Dropout, Empty, List, Text,
     CheckBox, Clicker, Range, Swing, Toggle,
     Advisor, Paragraph, Select, Switcher,
     // Slider, 

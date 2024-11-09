@@ -1,17 +1,3 @@
-import PropTypes from 'prop-types';
-import * as gCFG from "@lib-react-bricks/src/common/gui/config"
-
-// -------------------------------------------------------------------------- //
-// Configuration.
-// -------------------------------------------------------------------------- //
-
-const cfg = gCFG.createConfig({postfix:"dropout"});
-gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: null});
-gCFG.applyPackage(cfg, {
-  types: {shown: PropTypes.bool}, 
-  values:{shown: false}
-});
-
 // -------------------------------------------------------------------------- //
 // Contains helper code that ensures the component's operation.
 // -------------------------------------------------------------------------- //
@@ -34,7 +20,7 @@ const DropoutButton = props => {
 // Layout - to render the content of the reveal.
 // -------------------------------------------------------------------------- //
 
-const Component = props => {
+export const Dropout = props => {
 
   // initial data
 
@@ -66,8 +52,5 @@ const Component = props => {
       : <DropoutButton {...dropoutButtonProps}/>
   );
 };
-
-Component.propTypes = cfg.types;
-export const Dropout = {cfg, Component}
 
 // -------------------------------------------------------------------------- //

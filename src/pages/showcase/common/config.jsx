@@ -18,6 +18,7 @@ export const props = {
       } 
     }),
   },
+  text: {value: "ttttttttttttttttttt"},
 
   clicker:          {value: 0,},
   rangeHorizontal:  { axis: true, valueRangeMin: 0, valueRangeMax: 10, valueStep: 0.0001, value: 5 },

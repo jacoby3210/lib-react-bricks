@@ -1,25 +1,16 @@
-import * as gCFG from "@lib-react-bricks/src/common/gui/config"
-
-// -------------------------------------------------------------------------- //
-// Configuration.
-// -------------------------------------------------------------------------- //
-
-const cfg = gCFG.createConfig({postfix: "repeater"});
-gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {});
-
 // -------------------------------------------------------------------------- //
 // Layout - to generate a gui for an item in an source data by default.
 // -------------------------------------------------------------------------- //
 
-const Component = props => {
+const Container = props => {
 
   // initial data
 
-  const {children} = props;
+  const {className, children} = props;
 
   // render 
   
-  return (<ul>{children}</ul>);
+  return (<ul className={className}>{children}</ul>);
 
 }
 
@@ -35,6 +26,6 @@ const Template = props => {
 
 };
   
-export const List = {cfg, Component, Template}
+export const List = {Container, Template}
 
 // -------------------------------------------------------------------------- //

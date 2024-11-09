@@ -47,9 +47,9 @@ const Component = props => {
   // render
 
   return (
-    <Dropout.Component {...props} caption={current?.caption || value} >
+    <Dropout {...props} caption={current?.caption || value} >
       {children}
-    </Dropout.Component>
+    </Dropout>
   );
 };
 

@@ -1,18 +1,10 @@
 import {useRef} from "react"
-import * as gCFG from "@lib-react-bricks/src/common/gui/config"
-
-// -------------------------------------------------------------------------- //
-// Configuration.
-// -------------------------------------------------------------------------- //
-
-const cfg = gCFG.createConfig({postfix: "container"});
-gCFG.applyPackage(cfg, gCFG.propPackageValueBase);
 
 // -------------------------------------------------------------------------- //
 // Layout - to use as a universal container for the contents.
 // -------------------------------------------------------------------------- //
 
-const Component = props => {
+export const Container = props => {
 
   // initial props
 
@@ -30,8 +22,5 @@ const Component = props => {
     </div>
   );
 };
-
-Component.propTypes = cfg.types;
-export const Container = {cfg, Component}
 
 // -------------------------------------------------------------------------- //

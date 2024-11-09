@@ -9,7 +9,6 @@ export {Container}        from "./basics/container";                          //
 export {Dropout}          from "./basics/dropout";                            // - to render the content of the reveal.
 export {Empty}            from "./basics/empty";                              // - to use in place where the syntax requires component.
 export {List}             from "./basics/list";                               // - to generate a gui for an item in an source data by default.
-export {Text}             from "./basics/text";                               // - to render only read value (as text).
 
 // - controls
 
@@ -25,6 +24,7 @@ export {Advisor}          from "./fields/advisor";                            //
 export {Paragraph}        from "./fields/paragraph";                          // - to display and edit multiline text (paragraph).
 export {Select}           from "./fields/select";                             // - to select one option from the source list.
 export {Switcher}         from "./fields/switcher";                           // - to select one option from the source list (alt mode \ enum).
+export {Text}             from "./fields/text";                               // - to render value as only read text.
 
 // - partials
 
