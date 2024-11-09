@@ -1,1 +1,0 @@
-Movies (or animations) of general applications used.

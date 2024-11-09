@@ -1,1 +1,0 @@
-Folder for connecting external libraries and creating a universal application interface.

@@ -6,7 +6,7 @@ export const produceEntries = (count, func) => Array.from(new Array(count), func
 
 export const props = {
   
-  dropout: { reveals: true, },
+  dropout: { shown: true, },
   list: {
     length: 5,
     src: produceEntries(5, (v, i) => { 

@@ -1,4 +1,4 @@
-import {GUI} from "@lib-react-bricks/src/gui"
+import {GUI} from "@lib-react-bricks/src/common/gui"
 import {props} from "./config";
 
 // -------------------------------------------------------------------------- //
@@ -9,7 +9,7 @@ export const Common = () => {
   
   const fsComponents = {} 
   for (let key in GUI.Common)
-    fsComponents[key] = GUI.HOCs.withState("value")(GUI.Common[key]);
+    fsComponents[key] = GUI.Native.HOCs.withState("value")(GUI.Common[key]);
 
   // render 
   return (
@@ -36,10 +36,8 @@ export const Common = () => {
       <fsComponents.Switcher  {...props.switcher}/> 
 
       {/* partials */}
-      <fsComponents.Slider   {...props.slider}/>
+      {/* <fsComponents.Slider   {...props.slider}/> */}
       
-      <GUI.Locale.LAdvisor value={0}/>
-      <GUI.Locale.LParagraph value={0}/>
     </>
   );
 };

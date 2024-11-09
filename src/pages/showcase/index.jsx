@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
 import { Common } from "./common";
-import { Widgets } from './widgets';
-import { Workflows } from './workflows';
+// import { Widgets } from './widgets';
+// import { Workflows } from './workflows';
 import "./index.css"
 
 // -------------------------------------------------------------------------- //

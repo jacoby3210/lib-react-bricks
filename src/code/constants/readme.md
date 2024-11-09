@@ -1,1 +1,0 @@
-Placing persistent application data.
