@@ -1,19 +1,10 @@
 import React, { useRef, useEffect } from 'react';
-import * as gCFG from "@lib-react-bricks/src/common/gui/config"
-
-// -------------------------------------------------------------------------- //
-// Configuration.
-// -------------------------------------------------------------------------- //
-
-const cfg = gCFG.createConfig({postfix: "swing"});
-gCFG.applyPackage(cfg, gCFG.propPackageOrientationBase, {axis:false});
-gCFG.applyPackage(cfg, gCFG.propPackageValueNumber, {value: 0});
 
 // -------------------------------------------------------------------------- //
 // Layout - to control the increase/decrease of the value.
 // -------------------------------------------------------------------------- //
 
-const Component = (props) => {
+export const Swing = (props) => {
 
   // initial data
 
@@ -68,8 +59,5 @@ const Component = (props) => {
     </>
   );
 };
-
-Component.propTypes = cfg.types;
-export const Swing = { cfg, Component };
 
 // -------------------------------------------------------------------------- //

@@ -20,7 +20,6 @@ export const Common = () => {
       <fsComponents.Dropout  {...props.dropout}>{"Its Popup!"}</fsComponents.Dropout>
       <fsComponents.Empty/>
       <fsComponents.List {...props.list}/>
-      <fsComponents.Text {...props.text}/>
 
       {/* controls */}
       <fsComponents.CheckBox  value={false}/>
@@ -35,6 +34,7 @@ export const Common = () => {
       <fsComponents.Paragraph {...props.paragraph}/>
       <fsComponents.Select    {...props.select}/>
       <fsComponents.Switcher  {...props.switcher}/> 
+      <fsComponents.Text {...props.text}/>
 
       {/* partials */}
       {/* <fsComponents.Slider   {...props.slider}/> */}

@@ -11,12 +11,12 @@ export const withValueText = (WrappedComponent) => {
     // initial data
 
     const {
-      valueForbiddenChars: forbidden, 
-      valueLengthMax: max,
-      valueLengthMin: min,
-      value,
-      whenValueChange,
-      whenValueModify,
+      valueForbiddenChars: forbidden = "", 
+      valueLengthMax: max = 100,
+      valueLengthMin: min = 0,
+      value = "",
+      whenValueChange = (next, prev) => next, 
+      whenValueModify = (m) => m,
     } = props;
 
     // supporting methods

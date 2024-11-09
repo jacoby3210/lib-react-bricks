@@ -1,22 +1,14 @@
-import * as gCFG from "@lib-react-bricks/src/common/gui/config"
-
-// -------------------------------------------------------------------------- //
-// Configuration.
-// -------------------------------------------------------------------------- //
-
-const cfg = gCFG.createConfig({postfix: "checkbox"});
-gCFG.applyPackage(cfg, gCFG.propPackageValueBoolean, {value: false});
-
 // -------------------------------------------------------------------------- //
 // Layout - to provides an advanced version of the classic checkbox.
 // -------------------------------------------------------------------------- //
 
-const Component = props => {
+export const CheckBox = props => {
 
   // initial data
 
   const {
     id,
+    className,
     children,
     onChange = (evt) => {},
     value,
@@ -36,7 +28,7 @@ const Component = props => {
 
   return (
     <input 
-      {...attributes}
+      className={className}
       checked={value} 
       type="checkbox" 
       value={value}
@@ -44,8 +36,5 @@ const Component = props => {
     />
   );
 };
-
-Component.propTypes = cfg.types;
-export const CheckBox = {cfg, Component};
 
 // -------------------------------------------------------------------------- //

@@ -1,31 +1,18 @@
 import React, { useCallback, useRef, useState } from 'react';
-import * as gCFG from "@lib-react-bricks/src/common/gui/config"
-
-// -------------------------------------------------------------------------- //
-// Configuration.
-// -------------------------------------------------------------------------- //
-
-function filter(item) {
-  return item.caption != this.value && item.caption.includes(this.value);
-}
-
-const cfg = gCFG.createConfig({postfix: "advisor"});
-gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {filter});
-gCFG.applyPackage(cfg, gCFG.propPackageValueText, {value: ""});
 
 // -------------------------------------------------------------------------- //
 // Layout - to show text line field with autocomplete suggestions.
 // -------------------------------------------------------------------------- //
 
-export const Component = props => {
+export const Container = props => {
   
   // initial data
 	
   const {
-    children, rootRef, onKeyDown, onMouseDown,
-    cursorIndexState, setCursorIndexState, 
-    revealsState, setRevealsState,
-		value, whenValueChange, whenValueModify,
+    className, children, onKeyDown, onMouseDown,
+    setCursorIndexState, 
+    shownState, setShownState,
+		value, whenValueChange,
 	} = props;
 
 	// hooks
@@ -40,20 +27,23 @@ export const Component = props => {
   );
   
 	const handleFocus =  useCallback(
-    (evt) => {setCursorIndexState(0); setRevealsState(true);},
-    [revealsState]
+    (evt) => {setCursorIndexState(0); setShownState(true);},
+    [shownState]
   )
 
 	// render 
   
-  const className = (postfix) => ({className: `${cfg.CSS_CLASS_DEFAULT}-${postfix}`})
-	const inputProps  = {...className(`input`), onChange: handleChange, onKeyDown, value};
-	const listProps = {...className(`list`), onMouseDown,} 
+	const inputProps  = {
+    className:`${className}-input`, 
+    onChange: handleChange, 
+    onKeyDown, value
+  };
+	const listProps = {className:`${className}-list`, onMouseDown,} 
 
 	return (
 		<>
       {
-        revealsState 
+        shownState 
         ? <>
             <input autoFocus ref={inputRef} {...inputProps} />
             <div {...listProps}>
@@ -89,7 +79,6 @@ const Template = (props) => {
 	)
 };
 
-Component.propTypes = cfg.types;
-export const Advisor = {cfg, Component, Template}
+export const Advisor = {Container, Template}
 
 // -------------------------------------------------------------------------- //

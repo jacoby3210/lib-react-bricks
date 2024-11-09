@@ -1,20 +1,11 @@
 import React, {useEffect, useRef, useState } from 'react';
-import * as gCFG from "@lib-react-bricks/src/common/gui/config"
 import {Dropout} from '@lib-react-bricks/src/common/gui/layouts/basics/dropout'
-
-// -------------------------------------------------------------------------- //
-// Configuration.
-// -------------------------------------------------------------------------- //
-
-const cfg = gCFG.createConfig({postfix: "select"});
-gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {});
-gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: ""});
 
 // -------------------------------------------------------------------------- //
 // Layout - to select one option from the source list.
 // -------------------------------------------------------------------------- //
 
-const Component = props => {
+const Container = props => {
 
   // initial data
 
@@ -77,7 +68,6 @@ const Template = props => {
   );
 }
 
-Component.propTypes = cfg.types;
-export const Select ={cfg, Component, Template }
+export const Select ={Container, Template}
 
 // -------------------------------------------------------------------------- //

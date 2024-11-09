@@ -11,9 +11,9 @@ export const withValueBase = (WrappedComponent) => {
     // initial data
 
     const {
-      value,
-      whenValueChange,
-      whenValueModify,
+      value = value,
+      whenValueChange = (next, prev) => next, 
+      whenValueModify = (m) => m,
     } = props;
 
     // input handling

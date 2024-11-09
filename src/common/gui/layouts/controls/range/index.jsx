@@ -1,20 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import * as gCFG from "@lib-react-bricks/src/common/gui/config"
-import * as code from './code';
-
-// -------------------------------------------------------------------------- //
-// Configuration.
-// -------------------------------------------------------------------------- //
-
-const cfg = gCFG.createConfig({postfix: "range"});
-gCFG.applyPackage(cfg, gCFG.propPackageValueNumber, {value: 0});
-gCFG.applyPackage(cfg, gCFG.propPackageOrientationBase, {axis:false});
+import * as code from './utils';
 
 // -------------------------------------------------------------------------- //
 // Layout - to select a value from the suggested numeric range.
 // -------------------------------------------------------------------------- //
 
-const Component = props => {
+export const Range = props => {
   
   // initial data
 
@@ -96,8 +87,5 @@ const Component = props => {
     </div>
   );
 };
-
-Component.propTypes = cfg.types;
-export const Range = {cfg, Component};
 
 // -------------------------------------------------------------------------- //

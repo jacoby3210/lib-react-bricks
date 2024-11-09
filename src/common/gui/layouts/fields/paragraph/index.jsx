@@ -1,18 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import * as gCFG from "@lib-react-bricks/src/common/gui/config"
-
-// -------------------------------------------------------------------------- //
-// Configuration.
-// -------------------------------------------------------------------------- //
-
-const cfg = gCFG.createConfig({postfix: "paragraph"});
-gCFG.applyPackage(cfg, gCFG.propPackageValueText, {value: ""});
 
 // -------------------------------------------------------------------------- //
 // Layout - to display and edit multiline text (paragraph).
 // -------------------------------------------------------------------------- //
 
-export const Component = props => {
+export const Paragraph = props => {
 	
   // initial data
 
@@ -40,8 +32,5 @@ export const Component = props => {
 
 	return (<textarea  {...paragraphProps} />);
 };
-
-Component.propTypes = cfg.types;
-export const Paragraph = {cfg, Component}
 
 // -------------------------------------------------------------------------- //

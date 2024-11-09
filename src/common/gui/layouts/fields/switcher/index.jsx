@@ -1,19 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import * as gCFG from "@lib-react-bricks/src/common/gui/config"
-
-// -------------------------------------------------------------------------- //
-// Configuration.
-// -------------------------------------------------------------------------- //
-
-const cfg = gCFG.createConfig({postfix: "switcher"});
-gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {});
-gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: 0});
 
 // -------------------------------------------------------------------------- //
 // Layout - to select one option from the source list  (alt mode \ enum).
 // -------------------------------------------------------------------------- //
 
-export const Component = props => {
+export const Switcher = props => {
 
   // initial data
 
@@ -47,8 +38,5 @@ export const Component = props => {
     </>
   );
 };
-
-Component.propTypes = cfg.types;
-export const Switcher = {cfg, Component}
 
 // -------------------------------------------------------------------------- //

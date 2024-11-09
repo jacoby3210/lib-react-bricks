@@ -13,10 +13,10 @@ export const withRepeat = (TemplateComponent, WrappedComponent = null) => {
     // initial data
 
     const {
-      first, 
-      length, 
+      first = 0, 
+      length = 0, 
       src = [], 
-      filter
+      filter = function(item){return true;},
     } = props;
     
     const srcArray = Array.isArray(src) ? src : Object.values(src);

@@ -1,13 +1,3 @@
-import * as gCFG from "@lib-react-bricks/src/common/gui/config"
-
-// -------------------------------------------------------------------------- //
-// Configuration.
-// -------------------------------------------------------------------------- //
-
-const cfg = gCFG.createConfig({postfix: "toggle"});
-gCFG.applyPackage(cfg, gCFG.propPackageSourceData, {});
-gCFG.applyPackage(cfg, gCFG.propPackageValueBase, {value: null});
-
 // -------------------------------------------------------------------------- //
 // Template - to output multiple radio buttons as a single component.  
 // -------------------------------------------------------------------------- //
@@ -18,7 +8,6 @@ const Template = (props) => {
   
   const {common, index, item} = props;
   const {className, ...attributes} = common;
-
 
   // input handling
 
@@ -44,7 +33,6 @@ const Template = (props) => {
   );
 }
 
-Template.propTypes = cfg.types;
-export const Toggle = {cfg, Template};
+export const Toggle = {Template};
 
 // -------------------------------------------------------------------------- //

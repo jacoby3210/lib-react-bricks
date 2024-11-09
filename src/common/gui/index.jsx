@@ -16,25 +16,26 @@ const Empty     = HOCs.withMerge("rc-empty")
   (Layouts.Empty);
 
   
-const CheckBox  = HOCs.withMerge("rc-checkbox", Layouts.CheckBox.cfg.values)
-  (HOCs.withValueBoolean(Layouts.CheckBox.Component));
-const Clicker   = HOCs.withMerge("rc-clicker", Layouts.Clicker.cfg.values)  
-  (HOCs.withValueDigit(Layouts.Clicker.Component));
-const Range     = HOCs.withMerge("rc-range", Layouts.Range.cfg.values)    
-  (HOCs.withValueDigit(HOCs.withDirection(Layouts.Range.Component)));
-const Swing     = HOCs.withMerge("rc-swing", Layouts.Swing.cfg.values)    
-  (HOCs.withValueDigit(HOCs.withContainer(Layouts.Swing.Component)));
-const Toggle    = HOCs.withMerge("rc-toggle", Layouts.Toggle.cfg.values) 
+const CheckBox  = HOCs.withMerge("rc-checkbox", {value: false})
+  (HOCs.withValueBoolean(Layouts.CheckBox));
+const Clicker   = HOCs.withMerge("rc-clicker", {value: 0})  
+  (HOCs.withValueDigit(Layouts.Clicker));
+const Range     = HOCs.withMerge("rc-range", {axis:false, value: 0})    
+  (HOCs.withValueDigit(HOCs.withDirection(Layouts.Range)));
+const Swing     = HOCs.withMerge("rc-swing", {axis:false, value: 0})    
+  (HOCs.withValueDigit(HOCs.withContainer(Layouts.Swing)));
+const Toggle    = HOCs.withMerge("rc-toggle", {value: null}) 
   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Layouts.Toggle.Template))));
 
-const Advisor   = HOCs.withMerge("rc-checkbox", Layouts.Advisor.cfg.values) 
-  (HOCs.withValueText(HOCs.withReveals(HOCs.withCursor(HOCs.withRepeat(Layouts.Advisor.Template, Layouts.Advisor.Component)))));
-const Paragraph = HOCs.withMerge("rc-paragraph", Layouts.Paragraph.cfg.values)
-  (HOCs.withValueText(Layouts.Paragraph.Component));
-const Select    = HOCs.withMerge("rc-select", Layouts.Select.cfg.values)
-  (HOCs.withValueBase(HOCs.withReveals(HOCs.withContainer(HOCs.withRepeat(Layouts.Select.Template, Layouts.Select.Component)))));
-const Switcher  = HOCs.withMerge("rc-switcher", Layouts.Switcher.cfg.values)
-  (HOCs.withValueBase(HOCs.withContainer(Layouts.Switcher.Component)));
+const filter = function (item) {return item.caption != this.value && item.caption.includes(this.value);}
+const Advisor   = HOCs.withMerge("rc-advisor", {filter, value: ""}) 
+  (HOCs.withValueText(HOCs.withContainer(HOCs.withReveals(HOCs.withCursor(HOCs.withRepeat(Layouts.Advisor.Template, Layouts.Advisor.Container))))));
+const Paragraph = HOCs.withMerge("rc-paragraph", {})
+  (HOCs.withValueText(Layouts.Paragraph));
+const Select    = HOCs.withMerge("rc-select", {})
+  (HOCs.withValueBase(HOCs.withReveals(HOCs.withContainer(HOCs.withRepeat(Layouts.Select.Template, Layouts.Select.Container)))));
+const Switcher  = HOCs.withMerge("rc-switcher", {})
+  (HOCs.withValueBase(HOCs.withContainer(Layouts.Switcher)));
 const Text      = HOCs.withMerge("rc-text")
   (Layouts.Text);
 
