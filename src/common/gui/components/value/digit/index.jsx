@@ -11,13 +11,13 @@ export const withValueDigit = (WrappedComponent) => {
     // initial data
 
     const {
-      valueMode: mode,
-      valueRangeMax: max,
-      valueRangeMin: min,
-      valueStep: step,
-      value,
-      whenValueChange,
-      whenValueModify,
+      valueMode: mode = false,
+      valueRangeMax: max = 100,
+      valueRangeMin: min = 0,
+      valueStep: step = 1,
+      value = 0,
+      whenValueChange = (next, prev) => next, 
+      whenValueModify = (m) => m,
     } = props;
 
     // supporting methods
@@ -49,6 +49,11 @@ export const withValueDigit = (WrappedComponent) => {
 
     const updateProps = {
       ...props,
+      valueMode: mode,
+      valueRangeMax: max,
+      valueRangeMin: min,
+      valueStep: step,
+      value,
       whenValueChange: handleValueChange,
       whenValueModify: handleValueModify,
     };

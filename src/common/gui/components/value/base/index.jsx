@@ -11,7 +11,7 @@ export const withValueBase = (WrappedComponent) => {
     // initial data
 
     const {
-      value = value,
+      value = null,
       whenValueChange = (next, prev) => next, 
       whenValueModify = (m) => m,
     } = props;
@@ -32,6 +32,7 @@ export const withValueBase = (WrappedComponent) => {
 
     const updateProps = {
       ...props,
+      value,
       whenValueChange: handleValueChange,
       whenValueModify: handleValueModify,
     };

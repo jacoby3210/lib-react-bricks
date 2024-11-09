@@ -11,9 +11,9 @@ export const withValueBoolean = (WrappedComponent) => {
     // initial data
 
     const {
-      value = false,                                    // current value.
-      whenValueChange= (next, prev) => next,           // callback to handle the value state update.
-      whenValueToggle= (prev) => !prev,                // callback to modify the value state by coeff.
+      value = false,
+      whenValueChange= (next, prev) => next,
+      whenValueToggle= (prev) => !prev,
     } = props;
 
     // input handling
@@ -32,6 +32,7 @@ export const withValueBoolean = (WrappedComponent) => {
 
     const updateProps = {
       ...props,
+      value,
       whenValueChange: handleValueChange,
       handleValueToggle: handleValueToggle,
     };

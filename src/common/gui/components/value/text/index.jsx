@@ -45,6 +45,10 @@ export const withValueText = (WrappedComponent) => {
   
     const updateProps = {
       ...props,
+      valueForbiddenChars: forbidden, 
+      valueLengthMax: max,
+      valueLengthMin: min,
+      value,
       whenValueChange: handleValueChange,
       whenValueModify: handleValueModify,
     };
