@@ -6,6 +6,8 @@ import * as Layouts from "./layouts"
 // prepare api
 // -------------------------------------------------------------------------- //
 
+const Button = HOCs.withMerge("rc-button")
+  (Layouts.Button)
 const Container = HOCs.withMerge("rc-container") 
   (Layouts.Container);
 const Dropout   = HOCs.withMerge("rc-dropout", {shown: false}) 
@@ -46,7 +48,7 @@ const Text      = HOCs.withMerge("rc-text")
 export const GUI = {
   Native: {HOCs, Layouts},    
   Common: {
-    Container, Dropout, Empty, List, Text,
+    Button, Container, Dropout, Empty, List, Text,
     CheckBox, Clicker, Range, Swing, Toggle,
     Advisor, Paragraph, Select, Switcher,
     // Slider, 
