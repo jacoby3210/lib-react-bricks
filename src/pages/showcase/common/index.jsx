@@ -13,7 +13,7 @@ export const Common = () => {
 
   // render 
   return (
-    <>
+    <div id="common">
     
       {/* basics */}
       <GUI.Common.Button {...props.button}/>
@@ -37,7 +37,7 @@ export const Common = () => {
       <fsComponents.Switcher  {...props.switcher}/> 
       <fsComponents.Text      {...props.text}/>
 
-    </>
+    </div>
   );
 };
 

@@ -36,16 +36,16 @@ export const Widgets = () => {
       </>
     ),
 
-    AccordionExample: GUI.Native.HOCs.withState("value")(GUI.Widgets.Accordion),
-    CheckListExample: GUI.Native.HOCs.withState("value")(GUI.Widgets.CheckList),
+    Accordion: GUI.Native.HOCs.withState("value")(GUI.Widgets.Accordion),
+    CheckList: GUI.Native.HOCs.withState("value")(GUI.Widgets.CheckList),
     Inspector:        GUI.Native.HOCs.withState("value")(GUI.Widgets.Inspector)
-    // MenuExample:      GUI.Native.HOCs.withState("value")(GUI.Widgets.Menu),
+    // Menu:      GUI.Native.HOCs.withState("value")(GUI.Widgets.Menu),
   }
   
 	// render 
 
 	return (
-		<>
+		<div id="widgets">
 
       <fsComponents.BrowserExample value={0}/>
       <fsComponents.NavigatorExample value={0}/>
@@ -54,14 +54,13 @@ export const Widgets = () => {
 			<GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
 			<TestAreaForScroll />  
       
-      <fsComponents.AccordionExample  {...props.accordion}/>
-      <fsComponents.AccordionExample  {...props.accordionSingle}/>
-      <fsComponents.CheckListExample  {...props.checklist}/>
-      {/* <fsComponents.MenuExample       {...props.menu}/> */}
-
+      <fsComponents.Accordion  {...props.accordion}/>
+      <fsComponents.Accordion  {...props.accordionSingle}/>
+      <fsComponents.CheckList  {...props.checklist}/>
       <fsComponents.Inspector {...props.inspector}/>
+      {/* <fsComponents.Menu       {...props.menu}/> */}
 
-		</>
+		</div>
 	);
 };
 
