@@ -46,8 +46,8 @@ const Navigator = HOCs.withMerge("rc-navigator")
   (HOCs.withValueDigit(HOCs.withContainer(Widgets.Navigator)));
   const Paginator = HOCs.withMerge("paginator")
     (HOCs.withValueDigit(HOCs.withContainer(HOCs.withRepeat(Widgets.Browser.Template, Widgets.Paginator.Container))));
-// const Scroll = HOCs.withMerge("rc-scroll")
-//  ( HOCs.withState("value")(HOCs.withValueDigit(HOCs.withDirection(HOCs.withContainer(Widgets.Scroll.Component)))));
+const Scroll = HOCs.withMerge("rc-scroll", {mode:"smootn", target: null, value: 0.0})
+ (HOCs.withState("value")(HOCs.withValueDigit(HOCs.withDirection(HOCs.withContainer(Widgets.Scroll)))));
 
 // -------------------------------------------------------------------------- //
 // external module api
@@ -59,10 +59,9 @@ export const GUI = {
     Button, Container, Dropout, Empty, List, Text,
     CheckBox, Clicker, Range, Swing, Toggle,
     Advisor, Paragraph, Select, Switcher,
-    // Slider, 
   },
   Widgets: {
-    Browser, Navigator, Paginator, // Scroll, Slider, 
+    Browser, Navigator, Paginator, Scroll, // Slider, 
     // Accordion, CheckList, Menu, Inspector,
   }
 }

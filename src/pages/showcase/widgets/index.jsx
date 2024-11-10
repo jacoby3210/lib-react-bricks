@@ -50,10 +50,10 @@ export const Widgets = () => {
       <fsComponents.NavigatorExample value={0}/>
       <fsComponents.PaginatorExample value={0}/>
 
-			{/* <GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
+			<GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
 			<TestAreaForScroll />  
       
-      <fsComponents.AccordionExample  {...props.accordion}/>
+      {/* <fsComponents.AccordionExample  {...props.accordion}/>
       <fsComponents.AccordionExample  {...props.accordionSingle}/>
       <fsComponents.CheckListExample  {...props.checklist}/>
       <fsComponents.MenuExample       {...props.menu}/> */}

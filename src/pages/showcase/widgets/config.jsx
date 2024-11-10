@@ -34,7 +34,7 @@ export const props = {
     length: 10,
 		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
 	},
-  scroll: {  valueStep: 0.01, value: 0.5 },
+  scroll: {axis: false,  valueStep: 0.01, value: 0.5 },
   
   accordion: {
     src: produceEntries(5, (v, i) => { return { caption: `Option #${i}`, content: i } }),
