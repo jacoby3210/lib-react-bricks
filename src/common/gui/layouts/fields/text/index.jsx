@@ -2,7 +2,7 @@
 // Layout - to render value as only read text..
 // -------------------------------------------------------------------------- //
 
-export const Text  = ({className, children, value}) => 
-  (<span className={className}>{value||children}</span>);
+export const Text  = ({className, value}) => 
+  (<span className={className}>{value}</span>);
 
 // -------------------------------------------------------------------------- //
