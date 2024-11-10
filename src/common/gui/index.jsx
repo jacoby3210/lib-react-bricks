@@ -55,9 +55,8 @@ const CheckList = HOCs.withMerge("rc-checklist")
   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.CheckList.Template))));
 const Inspector = HOCs.withMerge("rc-inspector")
   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Inspector.Template))));
-
-// const Menu = HOCs.withMerge(Widgets.Menu.cfg.values)
-//   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Menu.Template))));
+const Menu = HOCs.withMerge("rc-menu")
+  (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Menu.Template))));
 
 // -------------------------------------------------------------------------- //
 // external module api
@@ -72,7 +71,7 @@ export const GUI = {
   },
   Widgets: {
     Browser, Navigator, Paginator, Scroll, // Slider, 
-    Accordion, CheckList, Inspector, // Menu,
+    Accordion, CheckList, Inspector, Menu,
   }
 }
 

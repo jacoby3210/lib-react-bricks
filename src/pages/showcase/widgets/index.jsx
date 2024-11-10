@@ -38,8 +38,8 @@ export const Widgets = () => {
 
     Accordion: GUI.Native.HOCs.withState("value")(GUI.Widgets.Accordion),
     CheckList: GUI.Native.HOCs.withState("value")(GUI.Widgets.CheckList),
-    Inspector:        GUI.Native.HOCs.withState("value")(GUI.Widgets.Inspector)
-    // Menu:      GUI.Native.HOCs.withState("value")(GUI.Widgets.Menu),
+    Inspector: GUI.Native.HOCs.withState("value")(GUI.Widgets.Inspector),
+    Menu:      GUI.Native.HOCs.withState("value")(GUI.Widgets.Menu),
   }
   
 	// render 
@@ -57,8 +57,8 @@ export const Widgets = () => {
       <fsComponents.Accordion  {...props.accordion}/>
       <fsComponents.Accordion  {...props.accordionSingle}/>
       <fsComponents.CheckList  {...props.checklist}/>
-      <fsComponents.Inspector {...props.inspector}/>
-      {/* <fsComponents.Menu       {...props.menu}/> */}
+      <fsComponents.Inspector  {...props.inspector}/>
+      <fsComponents.Menu       {...props.menu}/>
 
 		</div>
 	);
