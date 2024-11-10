@@ -37,7 +37,7 @@ export const Widgets = () => {
     ),
 
     AccordionExample: GUI.Native.HOCs.withState("value")(GUI.Widgets.Accordion),
-    // CheckListExample: GUI.Native.HOCs.withState("value")(GUI.Widgets.CheckList),
+    CheckListExample: GUI.Native.HOCs.withState("value")(GUI.Widgets.CheckList),
     // MenuExample:      GUI.Native.HOCs.withState("value")(GUI.Widgets.Menu),
   }
   
@@ -53,10 +53,10 @@ export const Widgets = () => {
 			<GUI.Widgets.Scroll {...props.scroll} target={areaRef}  />
 			<TestAreaForScroll />  
       
-       <fsComponents.AccordionExample  {...props.accordion}/>
+      <fsComponents.AccordionExample  {...props.accordion}/>
       <fsComponents.AccordionExample  {...props.accordionSingle}/>
-     {/* <fsComponents.CheckListExample  {...props.checklist}/>
-      <fsComponents.MenuExample       {...props.menu}/> */}
+      <fsComponents.CheckListExample  {...props.checklist}/>
+      {/* <fsComponents.MenuExample       {...props.menu}/> */}
 
 		</>
 	);

@@ -6,7 +6,7 @@ import * as Widgets from "./widgets"
 // prepare api
 // -------------------------------------------------------------------------- //
 
-const Button = HOCs.withMerge("rc-button")
+const Button    = HOCs.withMerge("rc-button")
   (Layouts.Button)
 const Container = HOCs.withMerge("rc-container") 
   (Layouts.Container);
@@ -40,19 +40,19 @@ const Switcher  = HOCs.withMerge("rc-switcher", {})
 const Text      = HOCs.withMerge("rc-text")
   (Layouts.Text);
 
-const Browser = HOCs.withMerge("rc-browser")
+const Browser   = HOCs.withMerge("rc-browser")
   (HOCs.withValueDigit(HOCs.withContainer(HOCs.withRepeat(Widgets.Browser.Template))));
 const Navigator = HOCs.withMerge("rc-navigator")
   (HOCs.withValueDigit(HOCs.withContainer(Widgets.Navigator)));
-  const Paginator = HOCs.withMerge("rc-paginator")
+const Paginator = HOCs.withMerge("rc-paginator")
     (HOCs.withValueDigit(HOCs.withContainer(HOCs.withRepeat(Widgets.Browser.Template, Widgets.Paginator.Container))));
-const Scroll = HOCs.withMerge("rc-scroll", {mode:"smootn", target: null, value: 0.0})
+const Scroll    = HOCs.withMerge("rc-scroll", {mode:"smootn", target: null, value: 0.0})
  (HOCs.withState("value")(HOCs.withValueDigit(HOCs.withDirection(HOCs.withContainer(Widgets.Scroll)))));
 
- const Accordion = HOCs.withMerge("rc-accordion")
+const Accordion = HOCs.withMerge("rc-accordion")
   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Accordion.Template, Widgets.Accordion.Container))));
-// const CheckList = HOCs.withMerge(Widgets.CheckList.cfg.values)
-//   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.CheckList.Template))));
+const CheckList = HOCs.withMerge("rc-checklist")
+  (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.CheckList.Template))));
 
 // const Inspector = HOCs.withMerge(Widgets.Inspector.cfg.values)
 //   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Inspector.Template))));
@@ -72,7 +72,7 @@ export const GUI = {
   },
   Widgets: {
     Browser, Navigator, Paginator, Scroll, // Slider, 
-    Accordion, // CheckList, Menu, Inspector,
+    Accordion, CheckList, // Menu, Inspector,
   }
 }
 

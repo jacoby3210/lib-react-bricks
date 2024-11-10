@@ -43,7 +43,7 @@ export const props = {
     value: [],
 	},
   checklist: {
-    src: produceEntries(5, (v, i) => { return {id: i, caption: `Option #${i}`, content: i } }),
+    src: produceEntries(5, (v, i) => { return {id: i, label: `Option #${i}`, text: `Option #${i}`, content: i } }),
     value: [],
   },
   menu: {

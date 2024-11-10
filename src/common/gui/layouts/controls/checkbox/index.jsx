@@ -28,6 +28,7 @@ export const CheckBox = props => {
 
   return (
     <input 
+      id={id}
       className={className}
       checked={value} 
       type="checkbox" 
