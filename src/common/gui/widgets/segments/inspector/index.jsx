@@ -33,7 +33,7 @@ export const Template = props => {
   console.log(item.props.src)
 
   const valueProps = {
-    src: Array.isArray(value) ? value : common?.src,
+    src: Array.isArray(value) ? value : item.props?.src,
     whenValueChange, whenValueModify, value
   };
 
