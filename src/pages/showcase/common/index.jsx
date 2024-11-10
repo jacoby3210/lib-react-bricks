@@ -35,11 +35,8 @@ export const Common = () => {
       <fsComponents.Paragraph {...props.paragraph}/>
       <fsComponents.Select    {...props.select}/>
       <fsComponents.Switcher  {...props.switcher}/> 
-      <fsComponents.Text {...props.text}/>
+      <fsComponents.Text      {...props.text}/>
 
-      {/* partials */}
-      {/* <fsComponents.Slider   {...props.slider}/> */}
-      
     </>
   );
 };
