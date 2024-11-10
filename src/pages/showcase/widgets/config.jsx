@@ -20,6 +20,7 @@ const src = [
   sig("isPlayable", "bool",      {},                GUI.Common.CheckBox),
   sig("type",       "enum",      {src:switcherSrc}, GUI.Common.Switcher),
   sig("tooltip",    "text",      {},                GUI.Common.Paragraph),
+  sig("skills",     "array",     {},                GUI.Common.List)
 ];
 
 // -------------------------------------------------------------------------- //
@@ -84,7 +85,8 @@ export const props = {
       note: 2,
       isPlayable: true,
       type: 1,
-      tooltip: "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      tooltip: "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      skills: produceEntries(5, (v, i) => { return {id: i, name: `Option #${i}`, text: "12345"}}),
     },
   },
 

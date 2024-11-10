@@ -31,7 +31,10 @@ export const Template = props => {
 
   // render
 
-  const valueProps = {whenValueChange, whenValueModify, value};
+  const valueProps = {
+    src: Array.isArray(value) ? value : common?.src,
+    whenValueChange, whenValueModify, value
+  };
 
   return (
     <div name={item.caption} type={item.datatype}>
