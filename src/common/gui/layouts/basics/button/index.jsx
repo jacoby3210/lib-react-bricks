@@ -21,8 +21,8 @@ export const Button = props => {
 
   // input handling
 
-  const handleClick = action ? (evt) => {
-    if(action) dispatch(action()) 
+  const handleClick = (evt) => {
+    if(action) dispatch(action());
     if(onClick) onClick(evt);
   }
 

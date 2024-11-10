@@ -16,6 +16,7 @@ export const Common = () => {
     <>
     
       {/* basics */}
+      <GUI.Common.Button {...props.button}/>
       <fsComponents.Container/>
       <fsComponents.Dropout  {...props.dropout}>{"Its Popup!"}</fsComponents.Dropout>
       <fsComponents.Empty/>
