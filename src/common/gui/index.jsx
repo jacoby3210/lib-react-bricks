@@ -44,7 +44,7 @@ const Browser = HOCs.withMerge("rc-browser")
   (HOCs.withValueDigit(HOCs.withContainer(HOCs.withRepeat(Widgets.Browser.Template))));
 const Navigator = HOCs.withMerge("rc-navigator")
   (HOCs.withValueDigit(HOCs.withContainer(Widgets.Navigator)));
-  const Paginator = HOCs.withMerge("paginator")
+  const Paginator = HOCs.withMerge("rc-paginator")
     (HOCs.withValueDigit(HOCs.withContainer(HOCs.withRepeat(Widgets.Browser.Template, Widgets.Paginator.Container))));
 const Scroll = HOCs.withMerge("rc-scroll", {mode:"smootn", target: null, value: 0.0})
  (HOCs.withState("value")(HOCs.withValueDigit(HOCs.withDirection(HOCs.withContainer(Widgets.Scroll)))));
