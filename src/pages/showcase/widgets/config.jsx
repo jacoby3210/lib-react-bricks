@@ -1,8 +1,31 @@
+import {GUI} from '/src/common/gui'
+
 // -------------------------------------------------------------------------- //
 // Constants.
 // -------------------------------------------------------------------------- //
 
-export const produceEntries = (count, func) => Array.from(new Array(count), func);
+const produceEntries = (count, func) => Array.from(new Array(count), func);
+const sig = (caption, datatype, props, Render) => 
+  ({caption, datatype, props, Render})
+
+const selectSrc = produceEntries(5, (v, i) => ({ id: i, caption: `label-${i}`}))
+const switcherSrc = produceEntries(5, (v, i) => ({ id: i, caption: `label-${i}`}))
+
+const src = [
+  sig("id",         "noedit",    {},                GUI.Common.Text),
+  sig("label",      "string",    {},                GUI.Common.Advisor),
+  sig("name",       "reference", {src:  selectSrc}, GUI.Common.Select),
+  sig("desc",       "reference", {src:  selectSrc}, GUI.Common.Select),
+  sig("note",       "reference", {src:  selectSrc}, GUI.Common.Select),
+  sig("isPlayable", "bool",      {},                GUI.Common.CheckBox),
+  sig("type",       "enum",      {src:switcherSrc}, GUI.Common.Switcher),
+  sig("tooltip",    "text",      {},                GUI.Common.Paragraph),
+];
+
+// -------------------------------------------------------------------------- //
+// Properties.
+// -------------------------------------------------------------------------- //
+
 export const props = {
 
 	browser: {
@@ -50,6 +73,21 @@ export const props = {
     src: produceEntries(5, (v, i) => { return {id: i, caption: `Option #${i}`, type: i % 2 == 0}}),
     value: [],
   },
+
+  inspector: {
+    src,
+    value: {
+      id: 0, 
+      label: "label-0", 
+      name: 0, 
+      desc: 1, 
+      note: 2,
+      isPlayable: true,
+      type: 1,
+      tooltip: "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+  },
+
 };
 
 // -------------------------------------------------------------------------- //

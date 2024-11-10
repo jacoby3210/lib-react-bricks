@@ -13,19 +13,18 @@ import "./index.css"
 const ShowcasePage = props => {
 
   // initial data
+
   const {id, ...attributes} = props;
     
   // render
+  
   return (
     <section id={id} {...attributes}>
       {"Its alive"}
       <div>
         <Common/>
         <Widgets/>
-        {/* <Workflows/> */}
       </div>
-      {/* <ExamplePart3/> */}
-      {/* <ExamplePart4/> */}
     </section>
   );
 }

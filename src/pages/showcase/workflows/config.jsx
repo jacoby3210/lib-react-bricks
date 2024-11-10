@@ -30,7 +30,6 @@ const src = [
   sig("isPlayable", "bool",      {},                GUI.Common.CheckBox),
   sig("type",       "enum",      {src:switcherSrc}, GUI.Common.Switcher),
   sig("tooltip",    "text",      {},                GUI.Common.Paragraph),
-
 ];
 
 export const props = {

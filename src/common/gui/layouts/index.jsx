@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------- //
-// Defining the basic layout of components to form a graphical user interface.
+// Define the layout of components in a graphical user interface.
 // -------------------------------------------------------------------------- //
 
 // - basics

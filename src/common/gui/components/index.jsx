@@ -1,7 +1,6 @@
 
 // -------------------------------------------------------------------------- //
-// Feature set for graphical user interface components
-// Designed for use in conjunction with layouts.
+// Basic GUI capabilities encapsulated as HOCs.
 // -------------------------------------------------------------------------- //
 
 // content - modifies and tracks the html layouts of the component.
