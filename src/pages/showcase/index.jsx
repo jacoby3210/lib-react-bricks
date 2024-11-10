@@ -1,8 +1,7 @@
 
 import React, { useState } from 'react';
 import { Common } from "./common";
-// import { Widgets } from './widgets';
-// import { Workflows } from './workflows';
+import { Widgets } from './widgets';
 import "./index.css"
 
 // -------------------------------------------------------------------------- //
@@ -22,7 +21,7 @@ const ShowcasePage = props => {
       {"Its alive"}
       <div>
         <Common/>
-        {/* <Widgets/> */}
+        <Widgets/>
         {/* <Workflows/> */}
       </div>
       {/* <ExamplePart3/> */}

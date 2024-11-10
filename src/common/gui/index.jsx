@@ -1,6 +1,6 @@
 import * as HOCs    from "./components"
 import * as Layouts from "./layouts"
-// import * as Widgets from "./widgets"
+import * as Widgets from "./widgets"
 
 // -------------------------------------------------------------------------- //
 // prepare api
@@ -16,7 +16,6 @@ const List      = HOCs.withMerge("rc-list")
   (HOCs.withRepeat(Layouts.List.Template, Layouts.List.Container))
 const Empty     = HOCs.withMerge("rc-empty")
   (Layouts.Empty);
-
   
 const CheckBox  = HOCs.withMerge("rc-checkbox", {value: false})
   (HOCs.withValueBoolean(Layouts.CheckBox));
@@ -41,6 +40,15 @@ const Switcher  = HOCs.withMerge("rc-switcher", {})
 const Text      = HOCs.withMerge("rc-text")
   (Layouts.Text);
 
+const Browser = HOCs.withMerge("rc-browser")
+  (HOCs.withValueDigit(HOCs.withContainer(HOCs.withRepeat(Widgets.Browser.Template))));
+const Navigator = HOCs.withMerge("rc-navigator")
+  (HOCs.withValueDigit(HOCs.withContainer(Widgets.Navigator)));
+  const Paginator = HOCs.withMerge("paginator")
+    (HOCs.withValueDigit(HOCs.withContainer(HOCs.withRepeat(Widgets.Browser.Template, Widgets.Paginator.Container))));
+// const Scroll = HOCs.withMerge("rc-scroll")
+//  ( HOCs.withState("value")(HOCs.withValueDigit(HOCs.withDirection(HOCs.withContainer(Widgets.Scroll.Component)))));
+
 // -------------------------------------------------------------------------- //
 // external module api
 // -------------------------------------------------------------------------- //
@@ -54,7 +62,7 @@ export const GUI = {
     // Slider, 
   },
   Widgets: {
-    // Browser, Navigator, Paginator, Scroll, Slider, 
+    Browser, Navigator, Paginator, // Scroll, Slider, 
     // Accordion, CheckList, Menu, Inspector,
   }
 }
