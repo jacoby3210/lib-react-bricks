@@ -23,6 +23,22 @@ const src = [
   sig("skills",     "array",     {},                GUI.Common.List)
 ];
 
+const srcMenuSecondLine = [
+  sig("entry-0",    "button",    {},                GUI.Common.Button),
+  sig("entry-1",    "menu",      {},                GUI.Widgets.Menu),
+  sig("entry-2",    "menu",      {},                GUI.Widgets.Menu),
+  sig("entry-3",    "button",    {},                GUI.Common.Button),
+  sig("entry-4",    "menu",      {},                GUI.Widgets.Menu),
+];
+
+const srcMenuFirstLine = [
+  sig("entry-0",    "button",    {},                        GUI.Common.Button),
+  sig("entry-1",    "menu",      {src:srcMenuSecondLine},   GUI.Widgets.Menu),
+  sig("entry-2",    "menu",      {src:srcMenuSecondLine},   GUI.Widgets.Menu),
+  sig("entry-3",    "button",    {},                        GUI.Common.Button),
+  sig("entry-4",    "menu",      {src:srcMenuSecondLine},   GUI.Widgets.Menu),
+];
+console.log(1, srcMenuFirstLine[2].props.src)
 // -------------------------------------------------------------------------- //
 // Properties.
 // -------------------------------------------------------------------------- //
@@ -32,25 +48,30 @@ export const props = {
 	browser: {
 		src: produceEntries(5, (v, i) => { return { caption: `Option #${i}`, id: i } }),
 	},
+
 	viewForBrowser: {
 		length: 10,
 		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
 	},
+
 	navigator: {
     value:0, 
     valueMode: true, 
     valueRangeMax: 250,
   },
+
 	viewForNavigator: {
 		length: 1,
 		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
 	},
+
 	paginator: {
     valueRangeMax: 250,
     valueStep: 10,
 		src: produceEntries(25, (v, i) => { return { caption: `Option #${i}`, id: i } }),
 		value: 0,
 	},
+
 	viewForPaginator: {
     length: 10,
 		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
@@ -61,17 +82,15 @@ export const props = {
     src: produceEntries(5, (v, i) => { return { caption: `Option #${i}`, content: i } }),
     value: [],
   },
+
   accordionSingle: {
     mode: "single",
     src: produceEntries(5, (v, i) => { return { caption: `Option #${i}`, content: i } }),
     value: [],
 	},
+
   checklist: {
     src: produceEntries(5, (v, i) => { return {id: i, label: `Option #${i}`, text: `Option #${i}`, content: i } }),
-    value: [],
-  },
-  menu: {
-    src: produceEntries(5, (v, i) => { return {id: i, caption: `Option #${i}`, type: i % 2 == 0}}),
     value: [],
   },
 
@@ -89,7 +108,11 @@ export const props = {
       skills: produceEntries(5, (v, i) => { return {id: i, name: `Option #${i}`, text: "12345"}}),
     },
   },
-
+  
+  menu: {
+    src: srcMenuFirstLine,
+    value: [],
+  },
 };
 
 // -------------------------------------------------------------------------- //

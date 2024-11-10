@@ -24,18 +24,19 @@ const Template = props => {
   // render
   
   const dropoutProps = {
-    label: item.caption, 
+    caption: item.caption, 
     shownState, 
     setShownState, 
     ...common
   }
-
+  if(item.datatype == "menu") console.log(3, item.props.src)
+  
   return (
-    item.type 
-    ? <Button>{item.caption}</Button>
-    : <Dropout {...dropoutProps} {...attributes}>
-      {item.caption}
+    item.datatype == "menu"
+    ? <Dropout {...dropoutProps}>
+      <item.Render {...common} src={item.props.src}/>
     </Dropout>
+    : <item.Render label={item.caption}/>
 	);
 }
 

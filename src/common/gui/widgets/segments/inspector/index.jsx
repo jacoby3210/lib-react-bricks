@@ -30,6 +30,7 @@ export const Template = props => {
     common.whenValueChange({...common.value, [item.caption]: value + increment});
 
   // render
+  console.log(item.props.src)
 
   const valueProps = {
     src: Array.isArray(value) ? value : common?.src,
