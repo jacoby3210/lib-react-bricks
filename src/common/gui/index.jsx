@@ -49,6 +49,16 @@ const Navigator = HOCs.withMerge("rc-navigator")
 const Scroll = HOCs.withMerge("rc-scroll", {mode:"smootn", target: null, value: 0.0})
  (HOCs.withState("value")(HOCs.withValueDigit(HOCs.withDirection(HOCs.withContainer(Widgets.Scroll)))));
 
+ const Accordion = HOCs.withMerge("rc-accordion")
+  (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Accordion.Template, Widgets.Accordion.Container))));
+// const CheckList = HOCs.withMerge(Widgets.CheckList.cfg.values)
+//   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.CheckList.Template))));
+
+// const Inspector = HOCs.withMerge(Widgets.Inspector.cfg.values)
+//   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Inspector.Template))));
+// const Menu = HOCs.withMerge(Widgets.Menu.cfg.values)
+//   (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Widgets.Menu.Template))));
+
 // -------------------------------------------------------------------------- //
 // external module api
 // -------------------------------------------------------------------------- //
@@ -62,7 +72,7 @@ export const GUI = {
   },
   Widgets: {
     Browser, Navigator, Paginator, Scroll, // Slider, 
-    // Accordion, CheckList, Menu, Inspector,
+    Accordion, // CheckList, Menu, Inspector,
   }
 }
 

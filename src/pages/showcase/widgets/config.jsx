@@ -4,10 +4,7 @@
 
 export const produceEntries = (count, func) => Array.from(new Array(count), func);
 export const props = {
-  accordionSingle: {
-    src: produceEntries(5, (v, i) => { return { caption: `Option #${i}`, content: i } }),
-    value: [],
-	},
+
 	browser: {
 		src: produceEntries(5, (v, i) => { return { caption: `Option #${i}`, id: i } }),
 	},
@@ -40,6 +37,11 @@ export const props = {
     src: produceEntries(5, (v, i) => { return { caption: `Option #${i}`, content: i } }),
     value: [],
   },
+  accordionSingle: {
+    mode: "single",
+    src: produceEntries(5, (v, i) => { return { caption: `Option #${i}`, content: i } }),
+    value: [],
+	},
   checklist: {
     src: produceEntries(5, (v, i) => { return {id: i, caption: `Option #${i}`, content: i } }),
     value: [],
