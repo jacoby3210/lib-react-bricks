@@ -42,7 +42,8 @@ export const withCursor = (WrappedComponent) => {
 
     const updateProps = { 
       cursorIndexState, setCursorIndexState,
-      onKeyDown: handleKeyDown, onMouseDown: handleMouseDown,
+      onKeyDown: handleKeyDown, 
+      onMouseDown: handleMouseDown,
       ...props,
     };
 

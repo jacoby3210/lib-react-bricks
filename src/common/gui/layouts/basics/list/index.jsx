@@ -10,7 +10,11 @@ const Container = props => {
 
   // render 
   
-  return (<ul className={className}>{children}</ul>);
+  return (
+    <ul className={className}>
+      {children}
+    </ul>
+  );
 
 }
 
@@ -22,7 +26,11 @@ const Template = props => {
 
   // render 
   
-  return (<li id={item.id} name={item.name} {...attributes}>{item?.text}</li>);
+  return (
+    <li id={item.id} name={item.label} {...attributes}>
+      {item?.text}
+    </li>
+  );
 
 };
   
