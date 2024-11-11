@@ -13,7 +13,7 @@ export const Range = props => {
     id, className, children,
     axis, axisProps, 
     value, valueMode, 
-    valueRangeMax: max, valueRangeMin: min, valueSpeed: speed, valueStep: step,
+    max: max, min: min, valueSpeed: speed, step: step,
     whenValueChange, whenValueModify,
   } = props;
 

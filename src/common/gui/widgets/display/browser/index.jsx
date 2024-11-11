@@ -18,7 +18,7 @@ const Template = props =>{
 
   return <button 
     className= {`rc-browser-button`} 
-    onClick= {()=> common.whenValueChange(index * common.valueStep)}
+    onClick= {()=> common.whenValueChange(index * common.step)}
     {...item}
   >
     {item?.caption}

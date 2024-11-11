@@ -11,9 +11,9 @@ export const withValueText = (WrappedComponent) => {
     // initial data
 
     const {
-      valueForbiddenChars: forbidden = "", 
-      valueLengthMax: max = 100,
-      valueLengthMin: min = 0,
+      forbidden = "", 
+      max = 100,
+      min = 0,
       value = "",
       whenValueChange = (next, prev) => next, 
       whenValueModify = (m) => m,
@@ -45,9 +45,9 @@ export const withValueText = (WrappedComponent) => {
   
     const updateProps = {
       ...props,
-      valueForbiddenChars: forbidden, 
-      valueLengthMax: max,
-      valueLengthMin: min,
+      forbidden, 
+      max,
+      min,
       value,
       whenValueChange: handleValueChange,
       whenValueModify: handleValueModify,

@@ -57,7 +57,7 @@ export const props = {
 	navigator: {
     value:0, 
     valueMode: true, 
-    valueRangeMax: 250,
+    max: 250,
   },
 
 	viewForNavigator: {
@@ -66,8 +66,8 @@ export const props = {
 	},
 
 	paginator: {
-    valueRangeMax: 250,
-    valueStep: 10,
+    max: 250,
+    step: 10,
 		src: produceEntries(25, (v, i) => { return { caption: `Option #${i}`, id: i } }),
 		value: 0,
 	},
@@ -76,7 +76,7 @@ export const props = {
     length: 10,
 		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
 	},
-  scroll: {axis: false,  valueStep: 0.01, value: 0.5 },
+  scroll: {axis: false,  step: 0.01, value: 0.5 },
   
   accordion: {
     src: produceEntries(5, (v, i) => { return { caption: `Option #${i}`, content: i } }),

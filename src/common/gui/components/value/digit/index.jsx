@@ -12,9 +12,9 @@ export const withValueDigit = (WrappedComponent) => {
 
     const {
       valueMode: mode = false,
-      valueRangeMax: max = 100,
-      valueRangeMin: min = 0,
-      valueStep: step = 1,
+      max = 100,
+      min = 0,
+      step = 1,
       value = 0,
       whenValueChange = (next, prev) => next, 
       whenValueModify = (m) => m,
@@ -50,9 +50,9 @@ export const withValueDigit = (WrappedComponent) => {
     const updateProps = {
       ...props,
       valueMode: mode,
-      valueRangeMax: max,
-      valueRangeMin: min,
-      valueStep: step,
+      max,
+      min,
+      step,
       value,
       whenValueChange: handleValueChange,
       whenValueModify: handleValueModify,

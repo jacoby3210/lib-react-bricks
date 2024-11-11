@@ -40,7 +40,7 @@ export const Scroll = props => {
 
 	// render
 
-	const sliderProps = {valueRangeMin: 0.0, valueRangeMax: 1.0, value, whenValueChange}
+	const sliderProps = {min: 0.0, max: 1.0, value, whenValueChange}
   return (
     <>
       <Range {...props}  {...sliderProps} />

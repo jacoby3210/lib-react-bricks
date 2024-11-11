@@ -10,7 +10,7 @@ export const Navigator = props => {
 
 	const {
     className,
-		value, valueMode, valueRangeMax, valueStep, 
+		value, valueMode, max, step, 
 		whenValueChange, whenValueModify,
 	} = props;
 
@@ -23,18 +23,18 @@ export const Navigator = props => {
 	}
 	const btnPrevProps = {
 		className: `${className.split(" ")[0]}-first`,
-		onClick: () => { whenValueModify(- valueStep); },
+		onClick: () => { whenValueModify(- step); },
 		disabled: value === 0 && !valueMode,
 	}
 	const btnNextProps = {
 		className: `${className.split(" ")[0]}-next`,
-		onClick: () => {whenValueModify(valueStep)},
-		disabled: value === valueRangeMax - valueStep && !valueMode,
+		onClick: () => {whenValueModify(step)},
+		disabled: value === max - step && !valueMode,
 	}
 	const btnLastProps = {
 		className: `${className.split(" ")[0]}-last`,
-		onClick: () => {whenValueChange(valueRangeMax - valueStep);},
-		disabled: value === valueRangeMax - valueStep,
+		onClick: () => {whenValueChange(max - step);},
+		disabled: value === max - step,
 	}
 
 	return (

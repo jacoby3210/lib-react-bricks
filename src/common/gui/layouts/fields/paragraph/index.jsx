@@ -10,7 +10,7 @@ export const Paragraph = props => {
 
 	const {
     children, rootRef,
-		value, valueForbiddenChars, valueLengthMax, valueLengthMin, 
+		value, forbidden, max, min, 
     whenValueChange, whenValueModify,
     ...attributes
 	} = props;

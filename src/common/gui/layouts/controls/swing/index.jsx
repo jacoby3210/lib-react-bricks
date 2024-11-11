@@ -10,7 +10,7 @@ export const Swing = (props) => {
 
   const {
     className,
-    valueRangeMax, valueRangeMin, valueStep,
+    max, min, step,
     whenValueChange, whenValueModify,
   } = props;
   const isButtonStart = (btn) => btn.classList.contains(`${className}-start`);
@@ -27,7 +27,7 @@ export const Swing = (props) => {
   // input handling
 
   const onDoubleClick = (evt) => {
-    const next = isButtonStart(evt.target) ? valueRangeMin : valueRangeMax;
+    const next = isButtonStart(evt.target) ? min : max;
     whenValueChange(next);
   };
 
@@ -35,7 +35,7 @@ export const Swing = (props) => {
   
   const onMouseDown = (evt) => {
     if (evt.detail !== 1) return;
-    const normStep = valueStep * (isButtonStart(evt.target) ? -1 : 1);
+    const normStep = step * (isButtonStart(evt.target) ? -1 : 1);
     const fn = () => onMouseDownSlice(normStep);
     fn();
     timeoutRef.current = setInterval(fn, 100);

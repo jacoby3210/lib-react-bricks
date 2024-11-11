@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import {Browser}    from '@lib-react-bricks/src/common/gui/widgets/display/browser'
 import {Navigator}  from '@lib-react-bricks/src/common/gui/widgets/display/navigator'
 
 // -------------------------------------------------------------------------- //

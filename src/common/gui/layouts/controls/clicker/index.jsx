@@ -10,14 +10,14 @@ export const Clicker = props => {
     id,
     className,
     children,
-    value, valueMode, valueRangeMax, valueRangeMin, valueSpeed, valueStep,
+    value, valueMode, max, min, valueSpeed, step,
     whenValueChange,
     whenValueModify,
   } = props;
 
   // input handling
 
-  const handleClick = () => whenValueModify(valueStep);
+  const handleClick = () => whenValueModify(step);
 
   // render 
   
@@ -25,7 +25,7 @@ export const Clicker = props => {
     <div 
       id={id} className={className}
       onClick={handleClick} 
-      data-cost={valueStep} 
+      data-cost={step} 
       data-value={value}
     >
       {value}

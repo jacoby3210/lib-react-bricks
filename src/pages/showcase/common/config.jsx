@@ -21,9 +21,9 @@ export const props = {
   text: {value: "ttttttttttttttttttt"},
 
   clicker:          {value: 0,},
-  rangeHorizontal:  { axis: true, valueRangeMin: 0, valueRangeMax: 10, valueStep: 0.0001, value: 5 },
-  rangeVertical:    { valueRangeMax: 50, valueRangeMin: 0, valueStep: 0.1, value: 5 },
-  swing:            { valueRangeMax: 50, valueRangeMin: 0, valueStep: 0.5, value: 5 },
+  rangeHorizontal:  { axis: true, min: 0, max: 10, step: 0.0001, value: 5 },
+  rangeVertical:    { max: 50, min: 0, step: 0.1, value: 5 },
+  swing:            { max: 50, min: 0, step: 0.5, value: 5 },
   toggle:           {src: produceEntries(5, (v, i) => {return {label: `Option #${i}`, value: i}}),},
 
   advisor: {
@@ -53,7 +53,7 @@ export const props = {
   },
 
     
-  slider: { value: 5, valueRangeMax: 50, valueRangeMin: 0, valueStep: 0.5,},
+  slider: { value: 5, max: 50, min: 0, step: 0.5,},
 
 };
 
