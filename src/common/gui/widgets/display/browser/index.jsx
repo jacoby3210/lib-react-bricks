@@ -9,6 +9,7 @@ const Template = props =>{
 	// initial data
 
   const {common, item, index} = props;
+  const {className} = common;
 
   // hooks
 
@@ -17,7 +18,7 @@ const Template = props =>{
 	// render
 
   return <button 
-    className= {`rc-browser-button`} 
+    className= {`${className.split(" ")[0]}-button`} 
     onClick= {()=> common.whenValueChange(index * common.step)}
     {...item}
   >

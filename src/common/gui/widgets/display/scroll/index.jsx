@@ -40,11 +40,11 @@ export const Scroll = props => {
 
 	// render
 
-	const sliderProps = {min: 0.0, max: 1.0, value, whenValueChange}
+	const updateProps = {...props, min: 0.0, max: 1.0, value, whenValueChange}
   return (
     <>
-      <Range {...props}  {...sliderProps} />
-      <Swing {...props}  {...sliderProps} />
+      <Range {...updateProps} />
+      <Swing {...updateProps} />
     </>
   );
 
