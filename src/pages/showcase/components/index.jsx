@@ -2,21 +2,21 @@ import {GUI} from "@lib-react-bricks/src/common/gui"
 import {props} from "./config";
 
 // -------------------------------------------------------------------------- //
-// React Component  
+// Showcase Page - components.   
 // -------------------------------------------------------------------------- //
 
-export const Common = () => {
+export const Components = () => {
   
   const fsComponents = {} 
-  for (let key in GUI.Common)
-    fsComponents[key] = GUI.Native.HOCs.withState("value")(GUI.Common[key]);
+  for (let key in GUI.Components)
+    fsComponents[key] = GUI.Native.HOCs.withState("value")(GUI.Components[key]);
 
   // render 
   return (
     <div id="common">
     
       {/* basics */}
-      <GUI.Common.Button {...props.button}/>
+      <GUI.Components.Button {...props.button}/>
       <fsComponents.Container/>
       <fsComponents.Dropout  {...props.dropout}>{"Its Popup!"}</fsComponents.Dropout>
       <fsComponents.Empty/>

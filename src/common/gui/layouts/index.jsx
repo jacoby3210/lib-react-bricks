@@ -1,33 +1,19 @@
 // -------------------------------------------------------------------------- //
-// Define the layout of components in a graphical user interface.
+// Widget - gui components with inbuilt functionality.
 // -------------------------------------------------------------------------- //
 
-// - basics
+// display
 
-export {Button}           from "./basics/button";                             // - to represent a button that calls an action from store.
-export {Container}        from "./basics/container";                          // - to use as a universal container for the contents.
-export {Dropout}          from "./basics/dropout";                            // - to render the content of the reveal.
-export {Empty}            from "./basics/empty";                              // - to use in place where the syntax requires component.
-export {List}             from "./basics/list";                               // - to generate a gui for an item in an source data by default.
+export {Browser}        from "./display/browser"                              // - to switch of displayed content in the view by special id.
+export {Navigator}      from "./display/navigator"                            // - to switch of displayed content in the view by linear order.
+export {Paginator}      from "./display/paginator"                            // - to switch of displayed content in the view by the page index. 
+export {Scroll}         from "./display/scroll";                              // - to scroll the content in the element.
 
-// - controls
+// segments
 
-export {CheckBox}         from "./controls/checkbox";                         // - to provide an advanced version of the classic checkbox.
-export {Clicker}          from "./controls/clicker";                          // - to track the user's clicks and display the total value.
-export {Range}            from "./controls/range";                            // - to select a value from the suggested numeric range.
-export {Swing}            from "./controls/swing";                            // - to control the increase/decrease of the value
-export {Toggle}           from "./controls/toggle";                           // - to output multiple radio buttons as a single component.
-
-// - fields
-
-export {Advisor}          from "./fields/advisor";                            // - to show text line field with autocomplete suggestions.
-export {Paragraph}        from "./fields/paragraph";                          // - to display and edit multiline text (paragraph).
-export {Select}           from "./fields/select";                             // - to select one option from the source list.
-export {Switcher}         from "./fields/switcher";                           // - to select one option from the source list (alt mode \ enum).
-export {Text}             from "./fields/text";                               // - to render value as only read text.
-
-// - partials
-
-// export {Slider}           from "./partials/slider";                           // - unites the separate Range and Swing layouts into a Slider.
+export {Accordion}      from "./segments/accordion"                           // - represents list of headers and their associated ui blocks.
+export {CheckList}      from "./segments/checklist"                           // - to display the add/remove tags interface.
+export {Inspector}      from "./segments/inspector";                          // - to generate form to view/edit objects c JS (basic)
+export {Menu}           from "./segments/menu"                                // - to display desktop application menu.
 
 // -------------------------------------------------------------------------- //

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState } from 'react';
-import {Dropout} from '@lib-react-bricks/src/common/gui/layouts/basics/dropout'
+import {Dropout} from '@lib-react-bricks/src/common/gui/components'
 
 // -------------------------------------------------------------------------- //
 // Layout - to select one option from the source list.

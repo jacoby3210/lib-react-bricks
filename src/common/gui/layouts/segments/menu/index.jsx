@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import {Button, Dropout} from "@lib-react-bricks/src/common/gui/layouts"
+import {Button, Dropout} from "@lib-react-bricks/src/common/gui/components"
 
 // -------------------------------------------------------------------------- //
 // Widget - to display desktop application menu. 

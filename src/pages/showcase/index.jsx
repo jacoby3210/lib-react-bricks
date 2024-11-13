@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { Common } from "./common";
-import { Widgets } from './widgets';
+import { Components } from "./components";
+import { Layouts } from './layouts';
 import "./index.css"
 
 // -------------------------------------------------------------------------- //
@@ -22,8 +22,8 @@ const ShowcasePage = props => {
     <section id={id} {...attributes}>
       {"Its alive"}
       <div>
-        <Common/>
-        <Widgets/>
+        <Components/>
+        <Layouts/>
       </div>
     </section>
   );

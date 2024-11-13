@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import {CheckBox} from "@lib-react-bricks/src/common/gui/layouts"
+import {CheckBox} from "@lib-react-bricks/src/common/gui/components"
 
 // -------------------------------------------------------------------------- //
 // Widget - to display the add/remove tags interface. 

@@ -1,26 +1,29 @@
-
 // -------------------------------------------------------------------------- //
-// Basic GUI capabilities encapsulated as HOCs.
+// Defining the basic components for the graphical user interface.
 // -------------------------------------------------------------------------- //
 
-// content - modifies and tracks the html layouts of the component.
+// - basics
 
-export {withContainer}          from "./content/container"                    // - to wrap base component into ui block (<div>).
-export {withCursor}             from "./content/cursor";                      // - to navigate through the direct children of an element.
-export {withRepeat}             from "./content/repeat";                      // - to create a list of recurring components.
-export {withReveals}            from "./content/reveals";                     // - to reveal child components.
+export {Button}           from "./basics/button";                             // - to represent a button that calls an action from store.
+export {Container}        from "./basics/container";                          // - to use as a universal container for the contents.
+export {Dropout}          from "./basics/dropout";                            // - to render the content of the reveal.
+export {Empty}            from "./basics/empty";                              // - to use in place where the syntax requires component.
+export {List}             from "./basics/list";                               // - to generate a gui for an item in an source data by default.
 
-// props - modifies and tracks the properties of the component.
+// - controls
 
-export {withDirection}          from "./props/direction";                     // - to support a component with vertical / horizontal direction.
-export {withMerge}              from "./props/merge";                         // - to smartly merge the component's default and passed properties.
-export {withState}              from "./props/state";                         // - to create a managed state of the wrapped component.
+export {CheckBox}         from "./controls/checkbox";                         // - to provide an advanced version of the classic checkbox.
+export {Clicker}          from "./controls/clicker";                          // - to track the user's clicks and display the total value.
+export {Range}            from "./controls/range";                            // - to select a value from the suggested numeric range.
+export {Swing}            from "./controls/swing";                            // - to control the increase/decrease of the value
+export {Toggle}           from "./controls/toggle";                           // - to output multiple radio buttons as a single component.
 
-// value 
+// - fields
 
-export {withValueBase}          from "./value/base";                          // - to handle a change in the value of a component (variant type).
-export {withValueBoolean}       from "./value/boolean";                       // - to handle a change in the value of a component (variant type).
-export {withValueDigit}         from "./value/digit";                         // - to handle a change in the value of a component (digit type).
-export {withValueText}          from "./value/text";                          // - to handle a change in the value of a component (text type).
+export {Advisor}          from "./fields/advisor";                            // - to show text line field with autocomplete suggestions.
+export {Paragraph}        from "./fields/paragraph";                          // - to display and edit multiline text (paragraph).
+export {Select}           from "./fields/select";                             // - to select one option from the source list.
+export {Switcher}         from "./fields/switcher";                           // - to select one option from the source list (alt mode \ enum).
+export {Text}             from "./fields/text";                               // - to render value as only read text.
 
 // -------------------------------------------------------------------------- //
