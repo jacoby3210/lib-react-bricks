@@ -38,7 +38,7 @@ const srcMenuFirstLine = [
   sig("entry-3",    "button",    {},                        GUI.Components.Button),
   sig("entry-4",    "menu",      {src:srcMenuSecondLine},   GUI.Layouts.Menu),
 ];
-console.log(1, srcMenuFirstLine[2].props.src)
+
 // -------------------------------------------------------------------------- //
 // Properties.
 // -------------------------------------------------------------------------- //

@@ -63,15 +63,51 @@ const Menu = HOCs.withMerge("rc-menu")
 // -------------------------------------------------------------------------- //
 
 export const GUI = {
-  Native: {HOCs, Components, Layouts},    
+
+  Native: {
+    
+    HOCs, 
+    Components, 
+    Layouts
+  
+  }, 
+
   Components: {
-    Button, Container, Dropout, Empty, List, Text,
-    CheckBox, Clicker, Range, Swing, Toggle,
-    Advisor, Paragraph, Select, Switcher,
+  
+    Button, 
+    Container, 
+    Dropout, 
+    Empty, 
+    List, 
+    
+    CheckBox, 
+    Clicker, 
+    Range, 
+    Swing, 
+    Toggle,
+    
+    Advisor, 
+    Paragraph, 
+    Select, 
+    Switcher,
+    Text,
+  
   },
+
   Layouts: {
-    Browser, Navigator, Paginator, Scroll, // Slider, 
-    Accordion, CheckList, Inspector, Menu, // Tree,
+
+    Browser, 
+    Navigator, 
+    Paginator, 
+    Scroll, 
+    // Slider, 
+    
+    Accordion, 
+    CheckList, 
+    Inspector, 
+    Menu, 
+    // Tree,
+  
   }
 }
 

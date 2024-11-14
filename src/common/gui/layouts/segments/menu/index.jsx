@@ -29,7 +29,6 @@ const Template = props => {
     setShownState, 
     ...common
   }
-  if(item.datatype == "menu") console.log(3, item.props.src)
   
   return (
     item.datatype == "menu"
