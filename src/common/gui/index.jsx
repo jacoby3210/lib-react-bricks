@@ -1,3 +1,4 @@
+import { compose }      from 'redux'; 
 import * as HOCs        from "./advanced"
 import * as Components  from "./components"
 import * as Layouts     from "./layouts"
@@ -6,109 +7,109 @@ import * as Layouts     from "./layouts"
 // prepare api
 // -------------------------------------------------------------------------- //
 
-const Button    = HOCs.withMerge("rc-button")
-  (Components.Button)
-const Container = HOCs.withMerge("rc-container") 
-  (Components.Container);
-const Dropout   = HOCs.withMerge("rc-dropout", {shown: false}) 
-  (HOCs.withContainer(HOCs.withReveals(Components.Dropout)));
-const List      = HOCs.withMerge("rc-list")
-  (HOCs.withRepeat(Components.List.Template, Components.List.Container))
-const Empty     = HOCs.withMerge("rc-empty")
-  (Components.Empty);
-  
-const CheckBox  = HOCs.withMerge("rc-checkbox", {value: false})
-  (HOCs.withValueBoolean(Components.CheckBox));
-const Clicker   = HOCs.withMerge("rc-clicker", {value: 0})  
-  (HOCs.withValueDigit(Components.Clicker));
-const Range     = HOCs.withMerge("rc-range", {axis:false, value: 0})    
-  (HOCs.withValueDigit(HOCs.withDirection(Components.Range)));
-const Swing     = HOCs.withMerge("rc-swing", {axis:false, value: 0})    
-  (HOCs.withValueDigit(HOCs.withContainer(Components.Swing)));
-const Toggle    = HOCs.withMerge("rc-toggle", {value: null}) 
-  (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Components.Toggle.Template))));
+const { 
+  withDirection, withMerge, withState, 
+  withContainer, withCursor, withReveals, withRepeat, 
+  withValueBase, withValueBoolean, withValueDigit, withValueText
+} = HOCs;
 
-const filter = function (item) {return item.caption != this.value && item.caption.includes(this.value);}
-const Advisor   = HOCs.withMerge("rc-advisor", {filter, value: ""}) 
-  (HOCs.withValueText(HOCs.withContainer(HOCs.withReveals(HOCs.withCursor(HOCs.withRepeat(Components.Advisor.Template, Components.Advisor.Container))))));
-const Paragraph = HOCs.withMerge("rc-paragraph", {})
-  (HOCs.withValueText(Components.Paragraph));
-const Select    = HOCs.withMerge("rc-select", {})
-  (HOCs.withValueBase(HOCs.withReveals(HOCs.withContainer(HOCs.withRepeat(Components.Select.Template, Components.Select.Container)))));
-const Switcher  = HOCs.withMerge("rc-switcher", {})
-  (HOCs.withValueBase(HOCs.withContainer(Components.Switcher)));
-const Text      = HOCs.withMerge("rc-text")
-  (Components.Text);
-
-const Browser   = HOCs.withMerge("rc-browser")
-  (HOCs.withValueDigit(HOCs.withContainer(HOCs.withRepeat(Layouts.Browser.Template))));
-const Navigator = HOCs.withMerge("rc-navigator")
-  (HOCs.withValueDigit(HOCs.withContainer(Layouts.Navigator)));
-const Paginator = HOCs.withMerge("rc-paginator")
-    (HOCs.withValueDigit(HOCs.withContainer(HOCs.withRepeat(Layouts.Browser.Template, Layouts.Paginator.Container))));
-const Scroll    = HOCs.withMerge("rc-scroll", {mode:"smootn", target: null, value: 0.0})
- (HOCs.withState("value")(HOCs.withValueDigit(HOCs.withDirection(HOCs.withContainer(Layouts.Scroll)))));
-
-const Accordion = HOCs.withMerge("rc-accordion")
-  (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Layouts.Accordion.Template, Layouts.Accordion.Container))));
-const CheckList = HOCs.withMerge("rc-checklist")
-  (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Layouts.CheckList.Template))));
-const Inspector = HOCs.withMerge("rc-inspector")
-  (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Layouts.Inspector.Template))));
-const Menu = HOCs.withMerge("rc-menu")
-  (HOCs.withValueBase(HOCs.withContainer(HOCs.withRepeat(Layouts.Menu.Template))));
-
-// -------------------------------------------------------------------------- //
-// external module api
-// -------------------------------------------------------------------------- //
+const filter = function (item) {
+  return item.caption != this.value && item.caption.includes(this.value);
+};
 
 export const GUI = {
 
-  Native: {
-    
+  Native: { 
     HOCs, 
     Components, 
-    Layouts
-  
-  }, 
+    Layouts 
+  },
 
   Components: {
-  
-    Button, 
-    Container, 
-    Dropout, 
-    Empty, 
-    List, 
-    
-    CheckBox, 
-    Clicker, 
-    Range, 
-    Swing, 
-    Toggle,
-    
-    Advisor, 
-    Paragraph, 
-    Select, 
-    Switcher,
-    Text,
-  
+    Button: 
+      withMerge("rc-button")
+      (Components.Button),
+    Container: 
+      withMerge("rc-container")
+      (Components.Container),
+    Dropout: 
+      withMerge("rc-dropout", { shown: false })
+      (compose(withContainer, withReveals)(Components.Dropout)),
+    List: 
+      withMerge("rc-list")
+      (withRepeat(Components.List.Template, Components.List.Container)),
+    Empty: 
+      withMerge("rc-empty")
+      (Components.Empty),
+
+    CheckBox: 
+      withMerge("rc-checkbox", { value: false })
+      (compose(withValueBoolean)(Components.CheckBox)),
+    Clicker: 
+      withMerge("rc-clicker", { value: 0 })
+      (withValueDigit(Components.Clicker)),
+    Range: 
+      withMerge("rc-range", { axis: false, value: 0 })
+      (compose(withValueDigit, withDirection)(Components.Range)),
+    Swing: 
+      withMerge("rc-swing", { axis: false, value: 0 })
+      (compose(withValueDigit, withContainer)(Components.Swing)),
+    Toggle: 
+      withMerge("rc-toggle", { value: null })
+      (compose(withValueBase, withContainer, withRepeat)(Components.Toggle.Template)),
+
+    Advisor: 
+      withMerge("rc-advisor", { filter, value: "" })(
+      compose(withValueText, withContainer, withReveals, withCursor, withRepeat)(
+        Components.Advisor.Template,
+        Components.Advisor.Container
+      )
+    ),
+    Paragraph: 
+      withMerge("rc-paragraph", {})
+      (withValueText(Components.Paragraph)),
+    Select: 
+      withMerge("rc-select", {})
+      (compose(withValueBase, withReveals, withContainer, withRepeat)(
+        Components.Select.Template, Components.Select.Container
+      )),
+    Switcher: 
+      withMerge("rc-switcher", {})
+      (compose(withValueBase, withContainer)(Components.Switcher)),
+    Text: 
+      withMerge("rc-text")(Components.Text)
   },
 
   Layouts: {
 
-    Browser, 
-    Navigator, 
-    Paginator, 
-    Scroll, 
-    // Slider, 
-    
-    Accordion, 
-    CheckList, 
-    Inspector, 
-    Menu, 
-    // Tree,
-  
+    Browser: 
+      withMerge("rc-browser")
+      (compose(withValueDigit, withContainer, withRepeat)(Layouts.Browser.Template)),
+    Navigator: 
+      withMerge("rc-navigator")
+      (compose(withValueDigit, withContainer)(Layouts.Navigator)),
+    Paginator: 
+      withMerge("rc-paginator")
+      (compose(withValueDigit, withContainer, withRepeat)(
+        Layouts.Browser.Template, Layouts.Paginator.Container
+      )),
+    Scroll: 
+      withMerge("rc-scroll", { mode: "smooth", target: null, value: 0.0 })
+      (compose(withState("value"), withValueDigit, withDirection, withContainer)(Layouts.Scroll)),
+
+    Accordion: 
+      withMerge("rc-accordion")
+      (compose(withValueBase, withContainer, withRepeat)(Layouts.Accordion.Template, Layouts.Accordion.Container)),
+    CheckList: withMerge("rc-checklist")
+      (compose(withValueBase, withContainer, withRepeat)(Layouts.CheckList.Template)),
+    Inspector: 
+      withMerge("rc-inspector")
+      (compose(withValueBase, withContainer, withRepeat)(Layouts.Inspector.Template)),
+    Menu: 
+      withMerge("rc-menu")
+      (compose(withValueBase, withContainer, withRepeat)(Layouts.Menu.Template)),
+      
   }
-}
+};
 
 // -------------------------------------------------------------------------- //
