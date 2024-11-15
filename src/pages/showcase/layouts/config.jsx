@@ -4,40 +4,46 @@ import {GUI} from '/src/common/gui'
 // Constants.
 // -------------------------------------------------------------------------- //
 
-const produceEntries = (count, func) => Array.from(new Array(count), func);
+const produceEntries = (count, func = (_, i) => i) => Array.from({ length: count }, func);
 const sig = (caption, datatype, props, Render) => 
   ({caption, datatype, props, Render})
 
-const selectSrc = produceEntries(5, (v, i) => ({ id: i, caption: `label-${i}`}))
-const switcherSrc = produceEntries(5, (v, i) => ({ id: i, caption: `label-${i}`}))
+const select = {src: produceEntries(5, (v, i) => ({ id: i, caption: `label-${i}`}))}
+const switcher = {src: produceEntries(5, (v, i) => ({ id: i, caption: `label-${i}`}))}
 
 const src = [
   sig("id",         "noedit",    {},                GUI.Components.Text),
   sig("label",      "string",    {},                GUI.Components.Advisor),
-  sig("name",       "reference", {src:  selectSrc}, GUI.Components.Select),
-  sig("desc",       "reference", {src:  selectSrc}, GUI.Components.Select),
-  sig("note",       "reference", {src:  selectSrc}, GUI.Components.Select),
+  sig("name",       "reference", select,            GUI.Components.Select),
+  sig("desc",       "reference", select,            GUI.Components.Select),
+  sig("note",       "reference", select,            GUI.Components.Select),
   sig("isPlayable", "bool",      {},                GUI.Components.CheckBox),
-  sig("type",       "enum",      {src:switcherSrc}, GUI.Components.Switcher),
+  sig("type",       "enum",      {switcher},        GUI.Components.Switcher),
   sig("tooltip",    "text",      {},                GUI.Components.Paragraph),
   sig("skills",     "array",     {},                GUI.Components.List)
 ];
 
-const srcMenuSecondLine = [
-  sig("entry-0",    "button",    {},                GUI.Components.Button),
-  sig("entry-1",    "menu",      {},                GUI.Layouts.Menu),
-  sig("entry-2",    "menu",      {},                GUI.Layouts.Menu),
-  sig("entry-3",    "button",    {},                GUI.Components.Button),
-  sig("entry-4",    "menu",      {},                GUI.Layouts.Menu),
-];
+const menuSecondLine = {
+  src:
+    [
+      sig("entry-0",    "button",    {},            GUI.Components.Button),
+      sig("entry-1",    "menu",      {},            GUI.Layouts.Menu),
+      sig("entry-2",    "menu",      {},            GUI.Layouts.Menu),
+      sig("entry-3",    "button",    {},            GUI.Components.Button),
+      sig("entry-4",    "menu",      {},            GUI.Layouts.Menu),
+    ]
+};
 
-const srcMenuFirstLine = [
-  sig("entry-0",    "button",    {},                        GUI.Components.Button),
-  sig("entry-1",    "menu",      {src:srcMenuSecondLine},   GUI.Layouts.Menu),
-  sig("entry-2",    "menu",      {src:srcMenuSecondLine},   GUI.Layouts.Menu),
-  sig("entry-3",    "button",    {},                        GUI.Components.Button),
-  sig("entry-4",    "menu",      {src:srcMenuSecondLine},   GUI.Layouts.Menu),
-];
+const menuFirstLine = {
+  src:
+    [
+      sig("entry-0",    "button",    {},                GUI.Components.Button),
+      sig("entry-1",    "menu",      {menuSecondLine},  GUI.Layouts.Menu),
+      sig("entry-2",    "menu",      {menuSecondLine},  GUI.Layouts.Menu),
+      sig("entry-3",    "button",    {},                GUI.Components.Button),
+      sig("entry-4",    "menu",      {menuSecondLine},  GUI.Layouts.Menu),
+    ]}
+;
 
 // -------------------------------------------------------------------------- //
 // Properties.
@@ -109,10 +115,7 @@ export const props = {
     },
   },
   
-  menu: {
-    src: srcMenuFirstLine,
-    value: [],
-  },
+  menu: {... menuFirstLine, value: [],},
 };
 
 // -------------------------------------------------------------------------- //

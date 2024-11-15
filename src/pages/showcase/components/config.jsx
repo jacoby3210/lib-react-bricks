@@ -2,7 +2,7 @@
 // Constants && component properties.
 // -------------------------------------------------------------------------- //
 
-const produceEntries = (count, func) => Array.from(new Array(count), func);
+const produceEntries = (count, func = (_, i) => i) => Array.from({ length: count }, func);
 
 export const props = {
   button: {label: "button"},
