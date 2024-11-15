@@ -23,7 +23,7 @@ const ShowcasePage = props => {
       {"Its alive"}
       <div>
         <Components/>
-        {/* <Layouts/> */}
+        <Layouts/>
       </div>
     </section>
   );

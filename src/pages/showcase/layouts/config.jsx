@@ -12,36 +12,36 @@ const select = {src: produceEntries(5, (v, i) => ({ id: i, caption: `label-${i}`
 const switcher = {src: produceEntries(5, (v, i) => ({ id: i, caption: `label-${i}`}))}
 
 const src = [
-  sig("id",         "noedit",    {},                GUI.Components.Text),
-  sig("label",      "string",    {},                GUI.Components.Advisor),
-  sig("name",       "reference", select,            GUI.Components.Select),
-  sig("desc",       "reference", select,            GUI.Components.Select),
-  sig("note",       "reference", select,            GUI.Components.Select),
-  sig("isPlayable", "bool",      {},                GUI.Components.CheckBox),
-  sig("type",       "enum",      {switcher},        GUI.Components.Switcher),
-  sig("tooltip",    "text",      {},                GUI.Components.Paragraph),
-  sig("skills",     "array",     {},                GUI.Components.List)
+  sig("id",         "noedit",     {},            GUI.Components.Text),
+  sig("label",      "string",     {},            GUI.Components.Advisor),
+  sig("name",       "reference",  select,        GUI.Components.Select),
+  sig("desc",       "reference",  select,        GUI.Components.Select),
+  sig("note",       "reference",  select,        GUI.Components.Select),
+  sig("isPlayable", "bool",       {},            GUI.Components.CheckBox),
+  sig("type",       "enum",       switcher,      GUI.Components.Switcher),
+  sig("tooltip",    "text",       {},            GUI.Components.Paragraph),
+  sig("skills",     "array",      {},            GUI.Components.List)
 ];
 
 const menuSecondLine = {
   src:
     [
-      sig("entry-0",    "button",    {},            GUI.Components.Button),
-      sig("entry-1",    "menu",      {},            GUI.Layouts.Menu),
-      sig("entry-2",    "menu",      {},            GUI.Layouts.Menu),
-      sig("entry-3",    "button",    {},            GUI.Components.Button),
-      sig("entry-4",    "menu",      {},            GUI.Layouts.Menu),
+      sig("entry-0",    "button", {},            GUI.Components.Button),
+      sig("entry-1",    "menu",   {},            GUI.Layouts.Menu),
+      sig("entry-2",    "menu",   {},            GUI.Layouts.Menu),
+      sig("entry-3",    "button", {},            GUI.Components.Button),
+      sig("entry-4",    "menu",   {},            GUI.Layouts.Menu),
     ]
 };
 
 const menuFirstLine = {
   src:
     [
-      sig("entry-0",    "button",    {},                GUI.Components.Button),
-      sig("entry-1",    "menu",      {menuSecondLine},  GUI.Layouts.Menu),
-      sig("entry-2",    "menu",      {menuSecondLine},  GUI.Layouts.Menu),
-      sig("entry-3",    "button",    {},                GUI.Components.Button),
-      sig("entry-4",    "menu",      {menuSecondLine},  GUI.Layouts.Menu),
+      sig("entry-0",    "button", {},            GUI.Components.Button),
+      sig("entry-1",    "menu",   menuSecondLine,GUI.Layouts.Menu),
+      sig("entry-2",    "menu",   menuSecondLine,GUI.Layouts.Menu),
+      sig("entry-3",    "button", {},            GUI.Components.Button),
+      sig("entry-4",    "menu",   menuSecondLine,GUI.Layouts.Menu),
     ]}
 ;
 

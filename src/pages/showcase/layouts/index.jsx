@@ -58,7 +58,7 @@ export const Layouts = () => {
       <fsComponents.Accordion  {...props.accordionSingle}/>
       <fsComponents.CheckList  {...props.checklist}/>
       <fsComponents.Inspector  {...props.inspector}/>
-      <fsComponents.Menu       {...props.menu}/>
+      {/* <fsComponents.Menu       {...props.menu}/> */}
 
 		</div>
 	);
