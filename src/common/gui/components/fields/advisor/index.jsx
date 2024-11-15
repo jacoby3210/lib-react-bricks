@@ -33,8 +33,8 @@ const Controller = props => {
   // initial data
 	
   const {
-    className, children, onKeyDown, onMouseDown,
-    setCursorIndexState, 
+    className, 
+    onKeyDown, 
     shownState, setShownState,
 		value, whenValueChange,
 	} = props;
@@ -56,7 +56,7 @@ const Controller = props => {
   )
 
   const handleKeyDown = useCallback(
-    (evt) => {console.log(9)},
+    (evt) => {onKeyDown(evt)},
     [shownState]
   )
 	// render 
@@ -68,7 +68,6 @@ const Controller = props => {
     onKeyDown: handleKeyDown, 
     value
   };
-	const listProps = {className:`${className}-list`, onMouseDown,} 
 
 	return (<input ref={inputRef} {...inputProps} />);
 };

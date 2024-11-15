@@ -24,7 +24,7 @@ export const withRepeat = (WrappedComponent) => {
     } = props;
     
     const srcArray = matchingItems ? matchingItems : src;
-
+    
     // render
 
     const componentList = useMemo(

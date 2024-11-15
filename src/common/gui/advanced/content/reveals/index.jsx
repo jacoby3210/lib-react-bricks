@@ -11,7 +11,9 @@ export const withReveals = (WrappedComponent) => {
     // initial data
 
     const { 
-      shown 
+      children,
+      shown,
+      Controller,
     } = props;
 
     // input handling
@@ -45,7 +47,14 @@ export const withReveals = (WrappedComponent) => {
     // render
     
     const updateProps = { shownState, setShownState, ...props };
-    return <WrappedComponent {...updateProps} />;
+    return (
+      shownState 
+        ? <>
+            <Controller {...updateProps}/>
+            <WrappedComponent {...props}/>
+          </>
+        : <Controller {...updateProps}/>
+    );
   };
   
 };

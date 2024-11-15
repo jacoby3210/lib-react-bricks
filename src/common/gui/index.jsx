@@ -61,9 +61,8 @@ export const GUI = {
 
     Advisor: 
       withMerge("rc-advisor", { filter, value: "", ... Components.Advisor })(
-      compose(withFilter, withValueText, withContainer, withReveals, withCursor, withRepeat)(
-        Components.Advisor.Container
-      )
+      compose(withContainer, withFilter, withValueText, withCursor, withReveals, withRepeat)
+      (Components.Advisor.Container)
     ),
     // Paragraph: 
     //   withMerge("rc-paragraph", {})
@@ -82,32 +81,32 @@ export const GUI = {
 
   Layouts: {
 
-    Browser: 
-      withMerge("rc-browser")
-      (compose(withValueDigit, withContainer, withRepeat)(Layouts.Browser.Template)),
-    Navigator: 
-      withMerge("rc-navigator")
-      (compose(withValueDigit, withContainer)(Layouts.Navigator)),
-    Paginator: 
-      withMerge("rc-paginator")
-      (compose(withValueDigit, withContainer, withRepeat)(
-        Layouts.Browser.Template, Layouts.Paginator.Container
-      )),
-    Scroll: 
-      withMerge("rc-scroll", { mode: "smooth", target: null, value: 0.0 })
-      (compose(withState("value"), withValueDigit, withDirection, withContainer)(Layouts.Scroll)),
+    // Browser: 
+    //   withMerge("rc-browser")
+    //   (compose(withValueDigit, withContainer, withRepeat)(Layouts.Browser.Template)),
+    // Navigator: 
+    //   withMerge("rc-navigator")
+    //   (compose(withValueDigit, withContainer)(Layouts.Navigator)),
+    // Paginator: 
+    //   withMerge("rc-paginator")
+    //   (compose(withValueDigit, withContainer, withRepeat)(
+    //     Layouts.Browser.Template, Layouts.Paginator.Container
+    //   )),
+    // Scroll: 
+    //   withMerge("rc-scroll", { mode: "smooth", target: null, value: 0.0 })
+    //   (compose(withState("value"), withValueDigit, withDirection, withContainer)(Layouts.Scroll)),
 
-    Accordion: 
-      withMerge("rc-accordion")
-      (compose(withValueBase, withContainer, withRepeat)(Layouts.Accordion.Template, Layouts.Accordion.Container)),
-    CheckList: withMerge("rc-checklist")
-      (compose(withValueBase, withContainer, withRepeat)(Layouts.CheckList.Template)),
-    Inspector: 
-      withMerge("rc-inspector")
-      (compose(withValueBase, withContainer, withRepeat)(Layouts.Inspector.Template)),
-    Menu: 
-      withMerge("rc-menu")
-      (compose(withValueBase, withContainer, withRepeat)(Layouts.Menu.Template)),
+    // Accordion: 
+    //   withMerge("rc-accordion")
+    //   (compose(withValueBase, withContainer, withRepeat)(Layouts.Accordion.Template, Layouts.Accordion.Container)),
+    // CheckList: withMerge("rc-checklist")
+    //   (compose(withValueBase, withContainer, withRepeat)(Layouts.CheckList.Template)),
+    // Inspector: 
+    //   withMerge("rc-inspector")
+    //   (compose(withValueBase, withContainer, withRepeat)(Layouts.Inspector.Template)),
+    // Menu: 
+    //   withMerge("rc-menu")
+    //   (compose(withValueBase, withContainer, withRepeat)(Layouts.Menu.Template)),
 
   }
 };
