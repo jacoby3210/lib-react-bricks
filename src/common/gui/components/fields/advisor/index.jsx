@@ -1,10 +1,34 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 
 // -------------------------------------------------------------------------- //
 // Layout - to show text line field with autocomplete suggestions.
 // -------------------------------------------------------------------------- //
 
-export const Container = props => {
+const Container = props => {
+  
+  // initial data
+	
+  const {
+    className, 
+    children, 
+    onKeyDown,
+    onMouseDown,
+	} = props;
+
+	const listProps = {className:`${className}-list`, onMouseDown, onKeyDown} 
+
+	return (
+    <div {...listProps}>
+      {children}
+    </div>
+  );
+};
+
+// -------------------------------------------------------------------------- //
+// Layout - to show text line field with autocomplete suggestions.
+// -------------------------------------------------------------------------- //
+
+const Controller = props => {
   
   // initial data
 	
@@ -27,33 +51,26 @@ export const Container = props => {
   );
   
 	const handleFocus =  useCallback(
-    (evt) => {setCursorIndexState(0); setShownState(true);},
+    (evt) => {setShownState(true);},
     [shownState]
   )
 
+  const handleKeyDown = useCallback(
+    (evt) => {console.log(9)},
+    [shownState]
+  )
 	// render 
-  
-	const inputProps  = {
+
+  const inputProps  = {
     className:`${className}-input`, 
     onChange: handleChange, 
-    onKeyDown, value
+    onFocus: handleFocus,
+    onKeyDown: handleKeyDown, 
+    value
   };
 	const listProps = {className:`${className}-list`, onMouseDown,} 
 
-	return (
-		<>
-      {
-        shownState 
-        ? <>
-            <input autoFocus ref={inputRef} {...inputProps} />
-            <div {...listProps}>
-			        {children}
-            </div>
-          </> 
-        : <input onFocus={handleFocus} {...inputProps} />
-      }
-    </>	
-  );
+	return (<input ref={inputRef} {...inputProps} />);
 };
 
 // -------------------------------------------------------------------------- //
@@ -66,6 +83,7 @@ const Template = (props) => {
 
   const {common, item, index} = props;
   const {className, cursorIndexState} = common;
+  const {caption} = item;
 
 	// render 
 
@@ -73,13 +91,14 @@ const Template = (props) => {
 		<option 
       className={`${className.split(" ")[0]}-option`} 
       cursor={cursorIndexState == index ? "true" : null}
-			value={item.caption}
+			value={caption}
 		>
-			{item.caption}
+			{caption}
 		</option>
 	)
 };
 
-export const Advisor = {Container, Template}
+export const Advisor = {Controller, Container, Template,
+}
 
 // -------------------------------------------------------------------------- //

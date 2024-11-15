@@ -6,7 +6,7 @@ import React, { memo, useMemo } from 'react';
 // Supports the ability to output the result of applying a filter to the srс.
 // -------------------------------------------------------------------------- //
 
-export const withRepeat = (TemplateComponent, WrappedComponent = null) => {
+export const withRepeat = (WrappedComponent) => {
 
   return (props) => {
   
@@ -19,6 +19,7 @@ export const withRepeat = (TemplateComponent, WrappedComponent = null) => {
       matchingItems, 
       nonMatchingItems,
       cursorIndexState,
+      Template,
       value
     } = props;
     
@@ -31,7 +32,7 @@ export const withRepeat = (TemplateComponent, WrappedComponent = null) => {
         srcArray
           .slice(first, first + (length ? length : srcArray.length ))
           .map((item, index) => (
-            <TemplateComponent
+            <Template
               key={item.id || index}
               common={props}
               item={item}
