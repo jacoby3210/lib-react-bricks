@@ -16,11 +16,11 @@ export const Components = () => {
     <div id="common">
     
       {/* basics */}
-      {/* <GUI.Components.Button {...props.button}/> */}
-      {/* <fsComponents.Container/> */}
+      <GUI.Components.Button {...props.button}/>
+      <fsComponents.Container/>
       {/* <fsComponents.Dropout  {...props.dropout}>{"Its Popup!"}</fsComponents.Dropout> */}
-      {/* <fsComponents.Empty/> */}
-      {/* <fsComponents.List {...props.list}/> */}
+      <fsComponents.Empty/>
+      <fsComponents.List {...props.list}/>
 
       {/* controls */}
       {/* <fsComponents.CheckBox  value={false}/> */}
