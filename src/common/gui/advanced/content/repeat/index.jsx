@@ -16,38 +16,34 @@ export const withRepeat = (TemplateComponent, WrappedComponent = null) => {
       first = 0, 
       length = 0, 
       src = [], 
-      filter = function(item){return true;},
+      matchingItems, 
+      nonMatchingItems,
+      cursorIndexState,
+      value
     } = props;
     
-    const srcArray = Array.isArray(src) ? src : Object.values(src);
+    const srcArray = matchingItems ? matchingItems : src;
 
-    const [matchingItems, nonMatchingItems] = useMemo(() => {
-      const matching = filter ? srcArray.filter(filter, props) : srcArray;
-      const notMatching = srcArray.filter((item) => !matching.includes(item));
-      return [matching, notMatching];
-    }, [filter, srcArray]);
-    
     // render
 
-    const updateProps = { ...props, matchingItems, nonMatchingItems}
     const componentList = useMemo(
       () =>
-        matchingItems
-          .slice(first, first + (length ? length : matchingItems.length ))
+        srcArray
+          .slice(first, first + (length ? length : srcArray.length ))
           .map((item, index) => (
             <TemplateComponent
               key={item.id || index}
-              common={updateProps}
+              common={props}
               item={item}
               index={index}
             />
         )
       ),
-      [matchingItems, first, length]
+      [srcArray, first, length, value, cursorIndexState]
     );
       
     return WrappedComponent 
-      ? (<WrappedComponent {...updateProps}>{componentList}</WrappedComponent>)
+      ? (<WrappedComponent {...props}>{componentList}</WrappedComponent>)
       : (<>{componentList}</>)
     ;
   };

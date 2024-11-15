@@ -8,8 +8,8 @@ import * as Layouts     from "./layouts"
 // -------------------------------------------------------------------------- //
 
 const { 
-  withDirection, withMerge, withState, 
-  withContainer, withCursor, withReveals, withRepeat, 
+  withContainer, withCursor,  withReveals, withRepeat, 
+  withDirection, withFilter, withMerge, withState, 
   withValueBase, withValueBoolean, withValueDigit, withValueText
 } = HOCs;
 
@@ -26,9 +26,11 @@ export const GUI = {
   },
 
   Components: {
+
     Button: 
       withMerge("rc-button")
       (Components.Button),
+
     Container: 
       withMerge("rc-container")
       (Components.Container),
@@ -37,7 +39,7 @@ export const GUI = {
       (compose(withContainer, withReveals)(Components.Dropout)),
     List: 
       withMerge("rc-list")
-      (withRepeat(Components.List.Template, Components.List.Container)),
+      (compose(withFilter, withRepeat)(Components.List.Template, Components.List.Container)),
     Empty: 
       withMerge("rc-empty")
       (Components.Empty),
@@ -60,7 +62,7 @@ export const GUI = {
 
     Advisor: 
       withMerge("rc-advisor", { filter, value: "" })(
-      compose(withValueText, withContainer, withReveals, withCursor, withRepeat)(
+      compose(withFilter, withValueText, withContainer, withReveals, withCursor, withRepeat)(
         Components.Advisor.Template,
         Components.Advisor.Container
       )
@@ -108,7 +110,7 @@ export const GUI = {
     Menu: 
       withMerge("rc-menu")
       (compose(withValueBase, withContainer, withRepeat)(Layouts.Menu.Template)),
-      
+
   }
 };
 

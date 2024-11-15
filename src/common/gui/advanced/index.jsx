@@ -13,6 +13,7 @@ export {withReveals}            from "./content/reveals";                     //
 // props - modifies and tracks the properties of the component.
 
 export {withDirection}          from "./props/direction";                     // - to support a component with vertical / horizontal direction.
+export {withFilter}             from "./props/filter";                        // -
 export {withMerge}              from "./props/merge";                         // - to smartly merge the component's default and passed properties.
 export {withState}              from "./props/state";                         // - to create a managed state of the wrapped component.
 

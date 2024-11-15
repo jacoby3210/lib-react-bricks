@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 // -------------------------------------------------------------------------- //
 // Layout - to show text line field with autocomplete suggestions.
@@ -65,13 +65,14 @@ const Template = (props) => {
 	// initial data
 
   const {common, item, index} = props;
+  const {className, cursorIndexState} = common;
 
 	// render 
-	
+
   return (
 		<option 
-      className={`${common.className.split(" ")[0]}-option`} 
-      cursor={common.cursorIndexState == index ? "true" : null}
+      className={`${className.split(" ")[0]}-option`} 
+      cursor={cursorIndexState == index ? "true" : null}
 			value={item.caption}
 		>
 			{item.caption}
