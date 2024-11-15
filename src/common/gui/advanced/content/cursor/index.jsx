@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 // -------------------------------------------------------------------------- //
 // A feature - to navigate through the direct children of an element.
@@ -18,19 +18,27 @@ export const withCursor = (WrappedComponent) => {
     // hooks
 
     const [cursorIndexState, setCursorIndexState] = useState(0);
+    const [selectedValue, setSelectedValue] = useState(null);
+
+    useEffect(() => {
+      if (selectedValue !== null) {
+        whenValueChange(selectedValue);
+      }
+    }, [selectedValue, whenValueChange]);
 
     // input handling
     
+    
     const handleKeyDown = useCallback(
       (evt) => {
-        if (evt.key === 'ArrowDown') 
-          setCursorIndexState((prev) => Math.min(prev + 1, matchingItems.length - 1));
-        else if (evt.key === 'ArrowUp') 
-          setCursorIndexState((prev) => Math.max(prev - 1, 0)); 
-        else if (evt.key === 'Enter') 
-          whenValueChange(matchingItems[cursorIndexState]?.caption);
+        setCursorIndexState((prev) => {
+          if (evt.key === 'ArrowDown') return Math.min(prev + 1, matchingItems.length - 1);
+          if (evt.key === 'ArrowUp') return Math.max(prev - 1, 0);
+          if (evt.key === 'Enter') setSelectedValue(matchingItems[prev]?.caption);
+          return prev;
+        });
       },
-      [matchingItems, whenValueChange, cursorIndexState,]
+      [matchingItems]
     );
 
     const handleMouseDown = useCallback(
