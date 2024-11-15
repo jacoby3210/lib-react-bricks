@@ -15,7 +15,7 @@ export const withReveals = (WrappedComponent) => {
       shown,
       Controller,
     } = props;
-
+    
     // input handling
 
     const closePopup = useCallback(() => setShownState(false), []);
@@ -52,6 +52,7 @@ export const withReveals = (WrappedComponent) => {
         ? <>
             <Controller {...updateProps}/>
             <WrappedComponent {...props}/>
+            {children}
           </>
         : <Controller {...updateProps}/>
     );

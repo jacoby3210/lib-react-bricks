@@ -16,7 +16,6 @@ const Container = props => {
     value, whenValueChange, whenValueModify
   } = props;
 
-  const current = src?.find(item => item.id == value);
 
   // input handling
 
@@ -45,6 +44,38 @@ const Container = props => {
 };
 
 // -------------------------------------------------------------------------- //
+// Layout - to show text line field with autocomplete suggestions.
+// -------------------------------------------------------------------------- //
+
+const Controller = props => {
+  
+  // initial data
+
+  const {className, children, caption, setShownState, matchingItems, value} = props;
+  const cssPrefix = `button`; 
+  const currentItem = matchingItems?.find(item => item.id == value);
+  
+  // hooks 
+  
+  const onClick = (evt) => {
+    evt.stopPropagation();
+    setShownState(prev => !prev);
+  }
+
+  // render
+
+  return (
+    <button className={cssPrefix} onClick={onClick}>
+      <span className={`${cssPrefix}-caption`}>{currentItem?.caption || value}</span>
+      <span className={`${cssPrefix}-arrow`}>
+        <i className={'fa-solid fa-chevron-down'}></i>
+      </span>
+      <span className={`${cssPrefix}-caption`}/>
+    </button>
+  );
+}
+
+// -------------------------------------------------------------------------- //
 // Template - to create a gui by metadata.
 // -------------------------------------------------------------------------- //
 
@@ -68,6 +99,6 @@ const Template = props => {
   );
 }
 
-export const Select ={Container, Template}
+export const Select ={Container, Controller, Template}
 
 // -------------------------------------------------------------------------- //

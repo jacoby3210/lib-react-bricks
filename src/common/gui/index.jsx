@@ -35,7 +35,8 @@ export const GUI = {
       (Components.Container),
     Dropout: 
       withMerge("rc-dropout", { shown: false, ... Components.Dropout })
-      (compose(withContainer, withReveals)(Components.Dropout)),
+      (compose(withContainer, withReveals)
+      (Components.Empty)),
     List: 
       withMerge("rc-list", {... Components.List})
       (compose(withFilter, withRepeat)
@@ -57,27 +58,26 @@ export const GUI = {
       withMerge("rc-swing", { axis: false, value: 0 })
       (compose(withValueDigit, withContainer)(Components.Swing)),
     Toggle: 
-      withMerge("rc-toggle", { value: null })
-      (compose(withValueBase, withContainer, withRepeat)(Components.Toggle.Template)),
+      withMerge("rc-toggle", { value: null , ... Components.Toggle})
+      (compose(withValueBase, withContainer, withRepeat)(Components.Container)),
 
     Advisor: 
       withMerge("rc-advisor", { filter, value: "", ... Components.Advisor })(
       compose(withContainer, withFilter, withValueText, withCursor, withReveals, withRepeat)
       (Components.Advisor.Container)
     ),
-    // Paragraph: 
-    //   withMerge("rc-paragraph", {})
-    //   (withValueText(Components.Paragraph)),
-    // Select: 
-    //   withMerge("rc-select", {})
-    //   (compose(withValueBase, withReveals, withContainer, withRepeat)(
-    //     Components.Select.Template, Components.Select.Container
-    //   )),
-    // Switcher: 
-    //   withMerge("rc-switcher", {})
-    //   (compose(withValueBase, withContainer)(Components.Switcher)),
-    // Text: 
-    //   withMerge("rc-text")(Components.Text)
+    Paragraph: 
+      withMerge("rc-paragraph", {})
+      (withValueText(Components.Paragraph)),
+    Select: 
+      withMerge("rc-select", {shown: false, ... Components.Select})
+      (compose(withContainer, withValueBase, withFilter, withReveals, withRepeat)
+      (Components.Select.Container)),
+    Switcher: 
+      withMerge("rc-switcher", {})
+      (compose(withValueBase, withContainer)(Components.Switcher)),
+    Text: 
+      withMerge("rc-text")(Components.Text)
   },
 
   Layouts: {
