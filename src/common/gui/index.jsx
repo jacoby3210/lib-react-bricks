@@ -108,7 +108,7 @@ export const GUI = {
       (compose(withValueBase, withContainer, withRepeat)(Layouts.Inspector.Container)),
     Menu: 
       withMerge("rc-menu", {... Layouts.Menu})
-      (compose(withValueBase, withContainer, withRepeat)(Components.Container)),
+      (compose(withValueBase, withContainer,  withReveals, withRepeat)(Components.Container)),
 
   }
 };
