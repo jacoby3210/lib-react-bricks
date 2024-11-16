@@ -12,8 +12,8 @@ const Controller = props => {
   // input handling
 
   const onClick = (evt) => {
-      evt.stopPropagation();
-      setShownState(prev => !prev);
+    evt.stopPropagation();
+    setShownState(prev => !prev);
   }
 
   // render

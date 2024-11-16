@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 // -------------------------------------------------------------------------- //
 // A feature - to reveals child components.
+// WrappedComponent hides by default when clicked inside.
+// To prevent this behaviour, the click event inside should not bubble.
 // -------------------------------------------------------------------------- //
 
 export const withReveals = (WrappedComponent) => {
@@ -20,7 +22,9 @@ export const withReveals = (WrappedComponent) => {
 
     const closePopup = useCallback(() => setShownState(false), []);
 
-    const handleMouseDown = useCallback((evt) => closePopup(), [closePopup]);
+    const handleClick = useCallback((evt) =>{ 
+      closePopup();
+    }, [closePopup]);
 
     const handleKeyDown = useCallback(
       (evt) => {if (evt.key === 'Enter') closePopup();}, 
@@ -35,14 +39,14 @@ export const withReveals = (WrappedComponent) => {
     
     useEffect(() => {
       if (shownState) {
-        document.addEventListener('mousedown', handleMouseDown);
+        document.addEventListener('click', handleClick);
         document.addEventListener('keydown', handleKeyDown);
       }
       return () => {
-        document.removeEventListener('mousedown', handleMouseDown);
+        document.removeEventListener('click', handleClick);
         document.removeEventListener('keydown', handleKeyDown);
       };
-    }, [shownState, handleMouseDown, handleKeyDown]);
+    }, [shownState, handleClick, handleKeyDown]);
 
     // render
     
