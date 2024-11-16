@@ -4,44 +4,42 @@ import React, { useState, useCallback } from 'react';
 // A feature - to support a component with vertical / horizontal direction.
 // -------------------------------------------------------------------------- //
 
-export const withDirection = (WrappedComponent) => {
+export const withDirection = (WrappedComponent) => (props) => {
 
-  return (props) => {
+  // initial data
 
-    // initial data
+  const horizontalProps = {
+    axis: "horizontal",
+    cursor: "clientX",
+    elementSize: "offsetWidth",
+    rectOffset: "x",
+    rectSize: "width",
+    scrollDirect: "left",
+    scrollOffset: "scrollLeft",
+    scrollSize: "scrollWidth",
+  }
   
-    const horizontalProps = {
-      axis: "horizontal",
-      cursor: "clientX",
-      elementSize: "offsetWidth",
-      rectOffset: "x",
-      rectSize: "width",
-      scrollDirect: "left",
-      scrollOffset: "scrollLeft",
-      scrollSize: "scrollWidth",
-    }
-    
-    const verticalProps = {
-      axis: "vertical",
-      cursor: "clientY",
-      elementSize: "offsetHeight",
-      rectOffset: "y",
-      rectSize: "height",
-      scrollDirect: "top",
-      scrollOffset: "scrollTop",
-      scrollSize: "scrollHeight",
-    }
+  const verticalProps = {
+    axis: "vertical",
+    cursor: "clientY",
+    elementSize: "offsetHeight",
+    rectOffset: "y",
+    rectSize: "height",
+    scrollDirect: "top",
+    scrollOffset: "scrollTop",
+    scrollSize: "scrollHeight",
+  }
 
-    const {
-      axis = true
-    } = props;
-    const axisProps = axis ? horizontalProps : verticalProps;
+  const {
+    axis = true
+  } = props;
+  const axisProps = axis ? horizontalProps : verticalProps;
 
-	  // render 
+  // render 
 
-    const updateProps = {...props, axisProps};
-    return <WrappedComponent {...updateProps} />;
-  };
+  const updateProps = {...props, axisProps};
+  return <WrappedComponent {...updateProps} />;
+  
 };
 
 // -------------------------------------------------------------------------- //

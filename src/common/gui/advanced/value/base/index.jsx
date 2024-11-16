@@ -4,41 +4,39 @@ import React, { useCallback } from 'react';
 // A feature - to handle a change in the value of a component (variant type).
 // -------------------------------------------------------------------------- //
 
-export const withValueBase = (WrappedComponent) => {
+export const withValueBase = (WrappedComponent) => (props) => {
 
-  return (props) => {
+  // initial data
 
-    // initial data
+  const {
+    value = null,
+    whenValueChange = (next, prev) => next, 
+    whenValueModify = (m) => m,
+  } = props;
 
-    const {
-      value = null,
-      whenValueChange = (next, prev) => next, 
-      whenValueModify = (m) => m,
-    } = props;
+  // input handling
 
-    // input handling
+  const handleValueChange = useCallback(
+    (next) => whenValueChange(next, value),
+    [whenValueChange]
+  );
 
-    const handleValueChange = useCallback(
-      (next) => whenValueChange(next, value),
-      [whenValueChange]
-    );
+  const handleValueModify = useCallback(
+    (increment) => whenValueModify(increment),
+    [handleValueChange]
+  );
 
-    const handleValueModify = useCallback(
-      (increment) => whenValueModify(increment),
-      [handleValueChange]
-    );
+// render
 
-	// render
-
-    const updateProps = {
-      ...props,
-      value,
-      whenValueChange: handleValueChange,
-      whenValueModify: handleValueModify,
-    };
-
-    return <WrappedComponent {...updateProps} />;
+  const updateProps = {
+    ...props,
+    value,
+    whenValueChange: handleValueChange,
+    whenValueModify: handleValueModify,
   };
+
+  return <WrappedComponent {...updateProps} />;
+
 };
 
 // -------------------------------------------------------------------------- //

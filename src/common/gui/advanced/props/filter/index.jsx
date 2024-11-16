@@ -1,20 +1,17 @@
 import React, { memo, useMemo } from 'react';
 
 // -------------------------------------------------------------------------- //
-// A feature - to create a list of recurring items,
-// based on wrapped component and an array of source data.
-// Supports the ability to output the result of applying a filter to the srс.
+// A feature - to apply a filter to the srс.
 // -------------------------------------------------------------------------- //
 
-export const withFilter = (WrappedComponent) => {
-
-  // initial data
-  return (props) => {
-
+export const withFilter = (WrappedComponent) => (props) => {
+  
+    // initial data
+    
     const {
-      src = [], 
       filter = function(item){return true;},
-      value,
+      src = [], 
+      value = null,
     } = props;
     
     const srcArray = Array.isArray(src) ? src : Object.values(src);
@@ -29,7 +26,7 @@ export const withFilter = (WrappedComponent) => {
 
     const updateProps = { ...props, matchingItems, nonMatchingItems}
     return <WrappedComponent {...updateProps}/>;
-  }
+
 };
 
 // -------------------------------------------------------------------------- //

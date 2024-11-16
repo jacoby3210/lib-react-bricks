@@ -6,48 +6,45 @@ import React, { memo, useMemo } from 'react';
 // Supports the ability to output the result of applying a filter to the srс.
 // -------------------------------------------------------------------------- //
 
-export const withRepeat = (WrappedComponent) => {
-
-  return (props) => {
+export const withRepeat = (WrappedComponent) => (props) => {
   
-    // initial data
+  // initial data
 
-    const {
-      first = 0, 
-      length = 0, 
-      src = [], 
-      matchingItems, 
-      nonMatchingItems,
-      cursorIndexState,
-      Template,
-      value
-    } = props;
-    
-    const srcArray = matchingItems ? matchingItems : src;
-    
-    // render
+  const {
+    first = 0, 
+    length = 0, 
+    src = [], 
+    matchingItems, 
+    nonMatchingItems,
+    cursorIndexState,
+    Template,
+    value
+  } = props;
+  
+  const srcArray = matchingItems ? matchingItems : src;
+  
+  // render
 
-    const componentList = useMemo(
-      () =>
-        srcArray
-          .slice(first, first + (length ? length : srcArray.length ))
-          .map((item, index) => (
-            <Template
-              key={item.id || index}
-              common={props}
-              item={item}
-              index={index}
-            />
-        )
-      ),
-      [srcArray, first, length, value, cursorIndexState]
-    );
-      
-    return WrappedComponent 
-      ? (<WrappedComponent {...props}>{componentList}</WrappedComponent>)
-      : (<>{componentList}</>)
-    ;
-  };
+  const componentList = useMemo(
+    () =>
+      srcArray
+        .slice(first, first + (length ? length : srcArray.length ))
+        .map((item, index) => (
+          <Template
+            key={item.id || index}
+            common={props}
+            item={item}
+            index={index}
+          />
+      )
+    ),
+    [srcArray, first, length, value, cursorIndexState]
+  );
+    
+  return WrappedComponent 
+    ? (<WrappedComponent {...props}>{componentList}</WrappedComponent>)
+    : (<>{componentList}</>)
+  ;
 };
 
 // -------------------------------------------------------------------------- //

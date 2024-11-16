@@ -4,62 +4,59 @@ import React, { useCallback } from 'react';
 // A feature - to handle a change in the value of a component (numeric type).
 // -------------------------------------------------------------------------- //
 
-export const withValueDigit = (WrappedComponent) => {
-  
-  return (props) => {
+export const withValueDigit = (WrappedComponent) => (props) => {
 
-    // initial data
+  // initial data
 
-    const {
-      valueMode: mode = false,
-      max = 100,
-      min = 0,
-      step = 1,
-      value = 0,
-      whenValueChange = (next, prev) => next, 
-      whenValueModify = (m) => m,
-    } = props;
+  const {
+    valueMode: mode = false,
+    max = 100,
+    min = 0,
+    step = 1,
+    value = 0,
+    whenValueChange = (next, prev) => next, 
+    whenValueModify = (m) => m,
+  } = props;
 
-    // supporting methods
+  // supporting methods
 
-    const getDecimalPlaces = (num) => {
-      const decimalPart = num.toString().split('.')[1];
-      return decimalPart ? decimalPart.length : 0;
-    };
-
-    const calculateNormalizedValue = (next) => {
-      const wrappedValue = mode ? (next + max) % max : Math.max(Math.min(next, max));
-      const steppedValue = Math.round(wrappedValue / step) * step;
-      return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
-    };
-
-    // input handling
-
-    const handleValueChange = useCallback(
-      (next) => whenValueChange(calculateNormalizedValue(next)),
-      [min, max, step, mode, whenValueChange]
-    );
-
-    const handleValueModify = useCallback(
-      (increment) => {handleValueChange(calculateNormalizedValue(value + increment))},
-      [whenValueModify, value]
-    );
-
-	// render
-
-    const updateProps = {
-      ...props,
-      valueMode: mode,
-      max,
-      min,
-      step,
-      value,
-      whenValueChange: handleValueChange,
-      whenValueModify: handleValueModify,
-    };
-
-    return <WrappedComponent {...updateProps} />;
+  const getDecimalPlaces = (num) => {
+    const decimalPart = num.toString().split('.')[1];
+    return decimalPart ? decimalPart.length : 0;
   };
+
+  const calculateNormalizedValue = (next) => {
+    const wrappedValue = mode ? (next + max) % max : Math.max(Math.min(next, max));
+    const steppedValue = Math.round(wrappedValue / step) * step;
+    return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
+  };
+
+  // input handling
+
+  const handleValueChange = useCallback(
+    (next) => whenValueChange(calculateNormalizedValue(next)),
+    [min, max, step, mode, whenValueChange]
+  );
+
+  const handleValueModify = useCallback(
+    (increment) => {handleValueChange(calculateNormalizedValue(value + increment))},
+    [whenValueModify, value]
+  );
+
+// render
+
+  const updateProps = {
+    ...props,
+    valueMode: mode,
+    max,
+    min,
+    step,
+    value,
+    whenValueChange: handleValueChange,
+    whenValueModify: handleValueModify,
+  };
+
+  return <WrappedComponent {...updateProps} />;
 };
 
 // -------------------------------------------------------------------------- //
