@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 
 // -------------------------------------------------------------------------- //
 // A feature - to transfer common properties to multiple components.
@@ -13,6 +13,7 @@ export const withUnion = (...components) => (props) => {
     packages = [],
     ...commonProps
   } = props;
+  const {value} = props;
 
   // render
   
@@ -27,7 +28,7 @@ export const withUnion = (...components) => (props) => {
           />
       )
     ),
-    []
+    [value]
   );
 
   return (<>{children}</>);

@@ -28,7 +28,7 @@ export const Components = () => {
       <fsComponents.Range     {...props.rangeHorizontal} />
       <fsComponents.Range     {...props.rangeVertical} />
       <fsComponents.Swing     {...props.swing} />
-      <fsComponents.Bar    {...props.bar}/>
+      <fsComponents.Bar       {...props.bar}/>
 
       {/* fields */}
       <fsComponents.Advisor   {...props.advisor}/>
