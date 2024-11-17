@@ -51,37 +51,49 @@ const menuFirstLine = {
 
 export const props = {
 
-	browser: {
-		src: produceEntries(5, (v, i) => { return { caption: `Option #${i}`, id: i } }),
-	},
-
-	viewForBrowser: {
-		length: 10,
-		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
-	},
-
-	navigator: {
+  browser: {
     value:0, 
+    packages: [
+      { // browser
+        src: produceEntries(5, (v, i) => ({caption: `Option #${i}`, id: i}))
+      },
+      { // list
+        first:  (props) => props.value * 10,
+        length: 10,
+        src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
+      },
+    ]
+	},
+
+  catalog: {
+    max: 250,
+    step: 1,
+		value: 0,
+    first: (props) => props.value,
+    packages: [
+      { // paginator
+        length: 10, 
+        src: produceEntries(250, (v, i) => { return { caption: `Option #${i}`, id: i} })
+      },
+      { // list
+        first:  (props) => props.value * 10,
+        length: 10,
+        src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}`} })
+      },   
+    ]
+	},
+
+	gallery: {
     valueMode: true, 
     max: 250,
-  },
-
-	viewForNavigator: {
-		length: 1,
+    value:0, 
+    first: (props) => props.value,
+    length: 1,
 		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
 	},
 
-	paginator: {
-    max: 250,
-    step: 10,
-		src: produceEntries(25, (v, i) => { return { caption: `Option #${i}`, id: i } }),
-		value: 0,
-	},
 
-	viewForPaginator: {
-    length: 10,
-		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
-	},
+
   scroll: {axis: false,  step: 0.01, value: 0.5 },
   
   accordion: {

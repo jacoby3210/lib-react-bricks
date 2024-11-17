@@ -113,4 +113,16 @@ export const GUI = {
   }
 };
 
+GUI.Templates = {
+  Browser:
+    withMerge("rc-browser", {})
+    (HOCs.withUnion(GUI.Layouts.Display, GUI.Components.List)),
+  Catalog:
+    withMerge("rc-catalog", {})
+    (HOCs.withUnion(GUI.Layouts.Paginator, GUI.Components.List)),
+  Gallery:
+    withMerge("rc-gallery", {})
+    (HOCs.withUnion(GUI.Layouts.Navigator, GUI.Components.List)),
+}
+
 // -------------------------------------------------------------------------- //

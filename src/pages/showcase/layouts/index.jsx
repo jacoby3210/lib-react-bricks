@@ -17,29 +17,31 @@ export const Layouts = () => {
 		</div>;
 
   const fsComponents = {
-    BrowserExample: GUI.Native.HOCs.withState("value")(
-      (exampleProps) => <>
-        <GUI.Layouts.Display    {...props.browser} {...exampleProps}/>
-        <GUI.Components.List    {...props.viewForBrowser} first={exampleProps.value * 10}/>
-      </>
-    ),
-    NavigatorExample: GUI.Native.HOCs.withState("value")(
-      (exampleProps) => <>
-        <GUI.Layouts.Navigator  {...props.navigator} {...exampleProps}/>
-        <GUI.Components.List    {...props.viewForNavigator} first={exampleProps.value}/>
-      </>
-    ),
-    PaginatorExample: GUI.Native.HOCs.withState("value")(
-      (exampleProps) => <>
-        <GUI.Layouts.Paginator  {...props.paginator} {...exampleProps}/>
-        <GUI.Components.List    {...props.viewForPaginator} first={exampleProps.value}/> 
-      </>
-    ),
 
-    Accordion: GUI.Native.HOCs.withState("value")(GUI.Layouts.Accordion),
-    CheckList: GUI.Native.HOCs.withState("value")(GUI.Layouts.CheckList),
-    Inspector: GUI.Native.HOCs.withState("value")(GUI.Layouts.Inspector),
-    Menu:      GUI.Native.HOCs.withState("value")(GUI.Layouts.Menu),
+    Browser: 
+      GUI.Native.HOCs.withState("value")
+      (GUI.Templates.Browser),
+
+    Catalog: 
+      GUI.Native.HOCs.withState("value")
+      (GUI.Templates.Catalog),
+      
+    Gallery: 
+      GUI.Native.HOCs.withState("value")
+      (GUI.Templates.Gallery),
+
+    // Accordion: 
+      // GUI.Native.HOCs.withState("value")
+      // (GUI.Layouts.Accordion),
+    // CheckList: 
+      // GUI.Native.HOCs.withState("value")
+      // (GUI.Layouts.CheckList),
+    // Inspector: 
+      // GUI.Native.HOCs.withState("value")
+      // (GUI.Layouts.Inspector),
+    // Menu:      
+      // GUI.Native.HOCs.withState("value")
+      // (GUI.Layouts.Menu),
   }
   
 	// render 
@@ -47,18 +49,18 @@ export const Layouts = () => {
 	return (
 		<div id="Layouts">
 
-      <fsComponents.BrowserExample value={0}/>
-      <fsComponents.NavigatorExample value={0}/>
-      <fsComponents.PaginatorExample value={0}/>
+      <fsComponents.Browser {...props.browser}/>
+      <fsComponents.Catalog {...props.catalog}/>
+      <fsComponents.Gallery {...props.gallery}/>
 
-			<GUI.Layouts.Scroll {...props.scroll} target={areaRef}  />
-			<TestAreaForScroll />  
-      
+			{/* <GUI.Layouts.Scroll {...props.scroll} target={areaRef}  /> */}
+			{/* <TestAreaForScroll />   */}
+{/*       
       <fsComponents.Accordion  {...props.accordion}/>
       <fsComponents.Accordion  {...props.accordionSingle}/>
       <fsComponents.CheckList  {...props.checklist}/>
       <fsComponents.Inspector  {...props.inspector}/>
-      <fsComponents.Menu       {...props.menu}/>
+      <fsComponents.Menu       {...props.menu}/> */}
 
 		</div>
 	);
