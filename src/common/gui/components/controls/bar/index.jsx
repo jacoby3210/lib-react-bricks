@@ -33,6 +33,6 @@ const Template = (props) => {
   );
 }
 
-export const Toggle = {Template};
+export const Bar = {Template};
 
 // -------------------------------------------------------------------------- //

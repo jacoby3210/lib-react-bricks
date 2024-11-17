@@ -45,6 +45,9 @@ export const GUI = {
       withMerge("rc-empty")
       (Components.Empty),
 
+    Bar: 
+      withMerge("rc-bar", { value: null , ... Components.Bar})
+      (compose(withValueBase, withContainer, withRepeat)(Components.Container)),
     CheckBox: 
       withMerge("rc-checkbox", { value: false })
       (compose(withValueBoolean)(Components.CheckBox)),
@@ -57,9 +60,6 @@ export const GUI = {
     Swing: 
       withMerge("rc-swing", { axis: false, value: 0 })
       (compose(withValueDigit, withContainer)(Components.Swing)),
-    Toggle: 
-      withMerge("rc-toggle", { value: null , ... Components.Toggle})
-      (compose(withValueBase, withContainer, withRepeat)(Components.Container)),
 
     Advisor: 
       withMerge("rc-advisor", { filter, value: "", ... Components.Advisor })(
