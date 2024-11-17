@@ -3,13 +3,13 @@
 // Advanced GUI features implemented as HOCs.
 // -------------------------------------------------------------------------- //
 
-// content - modifies and tracks the html layouts of the component.
+// markup - modifies and tracks the html markup of the component.
 
-export {withContainer}          from "./content/container"                    // - to wrap base component into ui block (<div>).
-export {withCursor}             from "./content/cursor";                      // - to navigate through the direct children of an element.
-export {withRepeat}             from "./content/repeat";                      // - to create a list of recurring components.
-export {withReveals}            from "./content/reveals";                     // - to reveal child components.
-export {withUnion}              from "./content/union";                       // - to transfer common properties to multiple components.
+export {withContainer}          from "./markup/container"                     // - to wrap base component into ui block (<div>).
+export {withCursor}             from "./markup/cursor";                       // - to navigate through the direct children of an element.
+export {withRepeat}             from "./markup/repeat";                       // - to create a list of recurring components.
+export {withReveals}            from "./markup/reveals";                      // - to reveal child components.
+export {withUnion}              from "./markup/union";                        // - to transfer common properties to multiple components.
 
 // props - modifies and tracks the properties of the component.
 
