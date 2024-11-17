@@ -21,14 +21,24 @@ export const withRepeat = (WrappedComponent) => (props) => {
     value
   } = props;
   
-  const srcArray = matchingItems ? matchingItems : src;
+  // hooks
+
+  const _first = useMemo(
+    () => (typeof first === "function" ? first(props) : first), 
+    [first, props]
+  );
+
+  const _src = useMemo(
+    () => matchingItems ? matchingItems : (Array.isArray(src) ? src : Object.values(src)),
+    [matchingItems, src]
+  )
   
   // render
 
-  const componentList = useMemo(
+  const children = useMemo(
     () =>
-      srcArray
-        .slice(first, first + (length ? length : srcArray.length ))
+      _src
+        .slice(_first, _first + (length ? length : _src.length ))
         .map((item, index) => (
           <Template
             key={item.id || index}
@@ -38,12 +48,12 @@ export const withRepeat = (WrappedComponent) => (props) => {
           />
       )
     ),
-    [srcArray, first, length, value, cursorIndexState]
+    [_src, _first, first, length, value, cursorIndexState]
   );
     
   return WrappedComponent 
-    ? (<WrappedComponent {...props}>{componentList}</WrappedComponent>)
-    : (<>{componentList}</>)
+    ? (<WrappedComponent {...props}>{children}</WrappedComponent>)
+    : (<>{children}</>)
   ;
 };
 
