@@ -9,6 +9,7 @@ export {withContainer}          from "./content/container"                    //
 export {withCursor}             from "./content/cursor";                      // - to navigate through the direct children of an element.
 export {withRepeat}             from "./content/repeat";                      // - to create a list of recurring components.
 export {withReveals}            from "./content/reveals";                     // - to reveal child components.
+export {withUnion}              from "./content/union";                       // - to transfer common properties to multiple components.
 
 // props - modifies and tracks the properties of the component.
 
