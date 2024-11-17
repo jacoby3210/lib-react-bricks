@@ -26,6 +26,6 @@ const Template = props =>{
   </button>;
 }
 
-export const Browser = {Template}
+export const Display = {Template}
 
 // -------------------------------------------------------------------------- //

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import {Navigator}  from '@lib-react-bricks/src/common/gui/layouts/display/navigator'
+import {Navigator}  from '@lib-react-bricks/src/common/gui/layouts/content/navigator'
 
 // -------------------------------------------------------------------------- //
 // Widget - to switch of displayed content in the view by the page index. 

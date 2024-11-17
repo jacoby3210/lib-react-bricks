@@ -82,15 +82,15 @@ export const GUI = {
 
   Layouts: {
 
-    Browser: 
-      withMerge("rc-browser", {... Layouts.Browser})
+    Display: 
+      withMerge("rc-display", {... Layouts.Display})
       (compose(withValueDigit, withContainer, withRepeat)
       (Components.Container)),
     Navigator: 
       withMerge("rc-navigator")
       (compose(withValueDigit, withContainer)(Layouts.Navigator)),
     Paginator: 
-      withMerge("rc-paginator", {... Layouts.Browser})
+      withMerge("rc-paginator", {... Layouts.Display})
       (compose(withValueDigit, withContainer, withRepeat)
       (Layouts.Paginator.Container)),
     Scroll: 

@@ -19,7 +19,7 @@ export const Layouts = () => {
   const fsComponents = {
     BrowserExample: GUI.Native.HOCs.withState("value")(
       (exampleProps) => <>
-        <GUI.Layouts.Browser    {...props.browser} {...exampleProps}/>
+        <GUI.Layouts.Display    {...props.browser} {...exampleProps}/>
         <GUI.Components.List    {...props.viewForBrowser} first={exampleProps.value * 10}/>
       </>
     ),

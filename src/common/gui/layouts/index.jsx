@@ -4,10 +4,10 @@
 
 // display
 
-export {Browser}        from "./display/browser"                              // - to switch of displayed content in the view by special id.
-export {Navigator}      from "./display/navigator"                            // - to switch of displayed content in the view by linear order.
-export {Paginator}      from "./display/paginator"                            // - to switch of displayed content in the view by the page index. 
-export {Scroll}         from "./display/scroll";                              // - to scroll the content in the element.
+export {Display}        from "./content/display"                              // - to switch of displayed content in the view by special id.
+export {Navigator}      from "./content/navigator"                            // - to switch of displayed content in the view by linear order.
+export {Paginator}      from "./content/paginator"                            // - to switch of displayed content in the view by the page index. 
+export {Scroll}         from "./content/scroll";                              // - to scroll the content in the element.
 
 // segments
 
