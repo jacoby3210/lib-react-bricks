@@ -33,8 +33,8 @@ export const props = {
   select: {
     length: 5,
     src: produceEntries(5, (v, i) => ({ 
-      caption: `Option #${i}`, 
       id: i,
+      label: `Option #${i}`, 
       onMouseDown: (e) => {
         console.log(`Option #${i}`); 
         return false;

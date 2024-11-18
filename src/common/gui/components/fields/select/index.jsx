@@ -1,5 +1,4 @@
-import React, {useEffect, useRef, useState } from 'react';
-import {Dropout} from '@lib-react-bricks/src/common/gui/components'
+import React, {useCallback, useEffect, useRef, useState } from 'react';
 
 // -------------------------------------------------------------------------- //
 // Layout - to select one option from the source list.
@@ -13,34 +12,34 @@ const Container = props => {
     children, 
     rootRef, 
     src, 
-    value, whenValueChange, whenValueModify
+    value, 
+    whenValueChange, 
+    whenValueModify
   } = props;
-
 
   // input handling
 
-  const handleClick = (e) => {
-    const el = e.target.closest("option");
-    if(el) whenValueChange(el.value)
-  }
+  const handleClick = useCallback(
+    (e) => {
+      const el = e.target.closest("option");
+      if(el) whenValueChange(el.value)
+    },
+    [whenValueChange]
+  );
 
   // hooks 
 
   useEffect(() => {
     const select = rootRef.current;
-    if (select) {select.addEventListener('mousedown', handleClick);}
+    if (select) select.addEventListener('mousedown', handleClick);
     return () => {
-      if (select) {select.removeEventListener('mousedown', handleClick);}
+      if (select) select.removeEventListener('mousedown', handleClick);
     };
-  }, []);
+  }, [rootRef, handleClick]);
 
   // render
 
-  return (
-    <Dropout {...props} caption={current?.caption || value} >
-      {children}
-    </Dropout>
-  );
+  return (<>{children}</>);
 };
 
 // -------------------------------------------------------------------------- //
@@ -51,10 +50,11 @@ const Controller = props => {
   
   // initial data
 
-  const {className, children, caption, setShownState, matchingItems, value} = props;
+  const {className, children, label, setShownState, matchingItems, value} = props;
   const cssPrefix = `button`; 
   const currentItem = matchingItems?.find(item => item.id == value);
-  
+  const displayValue = currentItem?.label || value;
+
   // hooks 
   
   const onClick = (evt) => {
@@ -66,11 +66,10 @@ const Controller = props => {
 
   return (
     <button className={cssPrefix} onClick={onClick}>
-      <span className={`${cssPrefix}-caption`}>{currentItem?.caption || value}</span>
-      <span className={`${cssPrefix}-arrow`}>
+      <span className={`${cssPrefix}-label`}>{displayValue}</span>
+      <span className={`${cssPrefix}-sprite`}>
         <i className={'fa-solid fa-chevron-down'}></i>
       </span>
-      <span className={`${cssPrefix}-caption`}/>
     </button>
   );
 }
@@ -94,7 +93,7 @@ const Template = props => {
       onMouseDown={item?.onMouseDown} 
       value={item?.value}
     >
-      {item.caption}
+      {item.label||item.value}
     </option>
   );
 }
