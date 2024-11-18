@@ -1,3 +1,5 @@
+import React, {useCallback} from 'react';
+
 // -------------------------------------------------------------------------- //
 // Contains helper code that ensures the component's operation.
 // -------------------------------------------------------------------------- //
@@ -6,25 +8,26 @@ const Controller = props => {
 
   // initial data
   
-  const {className, children, caption, setShownState, ...attributes} = props;
+  const {className, children, label, setShownState, ...attributes} = props;
   const cssPrefix = `button`; 
 
   // input handling
 
-  const onClick = (evt) => {
-    evt.stopPropagation();
-    setShownState(prev => !prev);
-  }
+  const onClick = useCallback(
+    (evt) => {
+      evt.stopPropagation();
+      setShownState(prev => !prev);
+    }, [setShownState]
+  );
 
   // render
 
   return (
     <button className={cssPrefix} onClick={onClick}>
-      <span className={`${cssPrefix}-caption`}>{caption || children}</span>
-      <span className={`${cssPrefix}-arrow`}>
+      <span className={`${cssPrefix}-label`}>{label || children}</span>
+      <span className={`${cssPrefix}-sprite`}>
         <i className={'fa-solid fa-chevron-down'}></i>
       </span>
-      <span className={`${cssPrefix}-caption`}/>
     </button>
   );
 }
