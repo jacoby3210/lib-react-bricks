@@ -29,16 +29,16 @@ export const withCursor = (WrappedComponent) => (props) => {
   const handleKeyDown = useCallback(
     (evt) => {
       setCursorIndexState((prev) => {
-        if (evt.key === 'ArrowDown') return Math.min(prev + 1, matchingItems.length - 1);
-        if (evt.key === 'ArrowUp') return Math.max(prev - 1, 0);
-        if (evt.key === 'Enter') setSelectedValue(matchingItems[prev]?.value);
+        if (evt.key === 'ArrowDown')  return Math.min(prev + 1, matchingItems.length - 1);
+        if (evt.key === 'ArrowUp')    return Math.max(prev - 1, 0);
+        if (evt.key === 'Enter')      setSelectedValue(matchingItems[prev]?.value);
         return prev;
       });
     },
     [matchingItems]
   );
 
-  const handleMouseDown = useCallback(
+  const handleClick = useCallback(
     (evt) => whenValueChange(evt.target.value),
     [whenValueChange]
   );
@@ -48,7 +48,7 @@ export const withCursor = (WrappedComponent) => (props) => {
   const updateProps = { 
     cursorIndexState, setCursorIndexState,
     onKeyDown: handleKeyDown, 
-    onMouseDown: handleMouseDown,
+    onClick: handleClick,
     ...props,
   };
 

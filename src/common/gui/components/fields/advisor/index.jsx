@@ -50,6 +50,11 @@ const Controller = props => {
     [whenValueChange]
   );
   
+	const handleClick =  useCallback(
+    (evt) => {evt.stopPropagation();},
+    [shownState]
+  )
+  
 	const handleFocus =  useCallback(
     (evt) => {setShownState(true);},
     [shownState]
@@ -59,11 +64,13 @@ const Controller = props => {
     (evt) => {onKeyDown(evt)},
     [shownState]
   )
+
 	// render 
 
   const inputProps  = {
     className:`${className}-input`, 
     onChange: handleChange, 
+    onClick: handleClick,
     onFocus: handleFocus,
     onKeyDown: handleKeyDown, 
     value
@@ -82,7 +89,7 @@ const Template = (props) => {
 
   const {common, item, index} = props;
   const {className, cursorIndexState} = common;
-  const {caption} = item;
+  const {value} = item;
 
 	// render 
 
@@ -90,9 +97,9 @@ const Template = (props) => {
 		<option 
       className={`${className.split(" ")[0]}-option`} 
       cursor={cursorIndexState == index ? "true" : null}
-			value={caption}
+			value={value}
 		>
-			{caption}
+			{value}
 		</option>
 	)
 };
