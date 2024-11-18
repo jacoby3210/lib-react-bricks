@@ -12,6 +12,8 @@ const Container = props => {
     children, 
     rootRef, 
     src, 
+    cursorIndexState,
+    setCursorIndexState,
     value, 
     whenValueChange, 
     whenValueModify
@@ -22,7 +24,9 @@ const Container = props => {
   const handleClick = useCallback(
     (e) => {
       const el = e.target.closest("option");
-      if(el) whenValueChange(el.value)
+      if(el) whenValueChange(el.value);
+    console.log(el.value)
+
     },
     [whenValueChange]
   );
@@ -31,11 +35,12 @@ const Container = props => {
 
   useEffect(() => {
     const select = rootRef.current;
+    setCursorIndexState(value);
     if (select) select.addEventListener('mousedown', handleClick);
     return () => {
       if (select) select.removeEventListener('mousedown', handleClick);
     };
-  }, [rootRef, handleClick]);
+  }, [rootRef, handleClick, value]);
 
   // render
 
@@ -82,18 +87,25 @@ const Template = props => {
   
   // initial data
 
-  const {common, item} = props;
-  const {className, whenValueChange, whenValueModify, ...attributes} = common;
+  const {
+    common, 
+    item
+  } = props;
+  const {
+    className, 
+    cursorIndexState,
+  } = common;
   
   // render
 
   return (
     <option 
       className={`${className.split(" ")[0]}-option`} 
+      cursor={cursorIndexState == item.id ? "true" : null}
       onMouseDown={item?.onMouseDown} 
-      value={item?.value}
+      value={item?.id}
     >
-      {item.label||item.value}
+      {item.label||item.id}
     </option>
   );
 }

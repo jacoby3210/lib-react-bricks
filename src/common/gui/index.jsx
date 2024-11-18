@@ -71,7 +71,7 @@ export const GUI = {
       (withValueText(Components.Paragraph)),
     Select: 
       withMerge("rc-select", {shown: false, ... Components.Select})
-      (compose(withContainer, withValueBase, withFilter, withReveals, withRepeat)
+      (compose(withContainer, withValueBase, withFilter, withCursor, withReveals, withRepeat)
       (Components.Select.Container)),
     Switcher: 
       withMerge("rc-switcher", {})
