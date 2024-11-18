@@ -14,7 +14,7 @@ const {
 } = HOCs;
 
 const filter = function (item) {
-  return item.caption != this.value && item.caption.includes(this.value);
+  return item.caption != this.value && item.value.includes(this.value);
 };
 
 export const GUI = {

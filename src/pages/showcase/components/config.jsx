@@ -26,11 +26,7 @@ export const props = {
   rangeVertical:    { max: 50, min: 0, step: 0.1, value: 5 },
   swing:            { max: 50, min: 0, step: 0.5, value: 5 },
 
-  advisor: {
-    src: produceEntries(5, (v, i) => {
-      return {caption: `Option #${i}`, value: i}
-    }),
-  },
+  advisor: {src: produceEntries(5, (v, i) => ({value: `Option #${i}`})),},
   paragraph: {
     value: "long long long long long long long long long long long long long long long long long long string",
   },
