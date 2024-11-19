@@ -12,8 +12,12 @@ export const Range = props => {
   const {
     id, className, children,
     axis, axisProps, 
-    value, valueMode, 
-    max: max, min: min, valueSpeed: speed, step: step,
+    modular, 
+    value, 
+    max, 
+    min, 
+    valueSpeed: speed, 
+    step,
     whenValueChange, whenValueModify,
   } = props;
 

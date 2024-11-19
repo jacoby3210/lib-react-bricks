@@ -10,7 +10,12 @@ export const Clicker = props => {
     id,
     className,
     children,
-    value, valueMode, max, min, valueSpeed, step,
+    modular, 
+    max, 
+    min, 
+    step,
+    valueSpeed, 
+    value, 
     whenValueChange,
     whenValueModify,
   } = props;

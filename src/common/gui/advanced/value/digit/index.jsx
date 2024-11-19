@@ -9,7 +9,7 @@ export const withValueDigit = (WrappedComponent) => (props) => {
   // initial data
 
   const {
-    valueMode: mode = false,
+    modular = false,
     max = 100,
     min = 0,
     step = 1,
@@ -26,7 +26,7 @@ export const withValueDigit = (WrappedComponent) => (props) => {
   };
 
   const calculateNormalizedValue = (next) => {
-    const wrappedValue = mode ? (next + max) % max : Math.max(Math.min(next, max));
+    const wrappedValue = modular ? (next + max) % max : Math.max(Math.min(next, max));
     const steppedValue = Math.round(wrappedValue / step) * step;
     return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
   };
@@ -35,7 +35,7 @@ export const withValueDigit = (WrappedComponent) => (props) => {
 
   const handleValueChange = useCallback(
     (next) => whenValueChange(calculateNormalizedValue(next)),
-    [min, max, step, mode, whenValueChange]
+    [min, max, step, modular, whenValueChange]
   );
 
   const handleValueModify = useCallback(
@@ -47,7 +47,7 @@ export const withValueDigit = (WrappedComponent) => (props) => {
 
   const updateProps = {
     ...props,
-    valueMode: mode,
+    modular,
     max,
     min,
     step,

@@ -10,8 +10,12 @@ export const Navigator = props => {
 
 	const {
     className,
-		value, valueMode, max, step, 
-		whenValueChange, whenValueModify,
+    modular, 
+    max, 
+    step, 
+		value, 
+		whenValueChange, 
+    whenValueModify,
 	} = props;
 
 	// render
@@ -24,12 +28,12 @@ export const Navigator = props => {
 	const btnPrevProps = {
 		className: `${className.split(" ")[0]}-first`,
 		onClick: () => { whenValueModify(- step); },
-		disabled: value === 0 && !valueMode,
+		disabled: value === 0 && !modular,
 	}
 	const btnNextProps = {
 		className: `${className.split(" ")[0]}-next`,
 		onClick: () => {whenValueModify(step)},
-		disabled: value === max - step && !valueMode,
+		disabled: value === max - step && !modular,
 	}
 	const btnLastProps = {
 		className: `${className.split(" ")[0]}-last`,
