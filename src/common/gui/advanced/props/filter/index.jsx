@@ -14,13 +14,16 @@ export const withFilter = (WrappedComponent) => (props) => {
       value = null,
     } = props;
     
-    const srcArray = Array.isArray(src) ? src : Object.values(src);
+    const srcMemo = useMemo(
+      () => Array.isArray(src) ? src : Object.values(src),
+      [src]
+    )
 
     const [matchingItems, nonMatchingItems] = useMemo(() => {
-      const matching = filter ? srcArray.filter(filter, props) : srcArray;
-      const notMatching = srcArray.filter((item) => !matching.includes(item));
+      const matching = filter ? srcMemo.filter(filter, props) : srcMemo;
+      const notMatching = srcMemo.filter((item) => !matching.includes(item));
       return [matching, notMatching];
-    }, [filter, srcArray, value]);
+    }, [filter, srcMemo, value]);
     
     // render
 

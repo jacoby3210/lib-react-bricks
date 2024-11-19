@@ -5,7 +5,7 @@ import { mergeProps } from 'react-aria';
 // A feature to smartly merge default properties and passed properties.
 // -------------------------------------------------------------------------- //
 
-export const withMerge = (className, defaultProps={}) => (WrappedComponent) => {
+export const withMerge = (className, defaultProps = {}) => (WrappedComponent) => {
   
   // initial data
   

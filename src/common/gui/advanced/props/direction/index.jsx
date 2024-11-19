@@ -30,10 +30,7 @@ export const withDirection = (WrappedComponent) => (props) => {
     scrollSize: "scrollHeight",
   }
 
-  const {
-    axis = true
-  } = props;
-  const axisProps = axis ? horizontalProps : verticalProps;
+  const axisProps = props?.axis ? horizontalProps : verticalProps;
 
   // render 
 
