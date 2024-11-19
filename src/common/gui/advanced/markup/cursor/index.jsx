@@ -18,11 +18,14 @@ export const withCursor = (WrappedComponent) => (props) => {
   const [cursorIndexState, setCursorIndexState] = useState(0);
   const [selectedValue, setSelectedValue] = useState(null);
 
-  useEffect(() => {
-    if (selectedValue !== null) {
-      whenValueChange(selectedValue);
-    }
-  }, [selectedValue, whenValueChange]);
+  useEffect(
+    () => {
+      if (selectedValue !== null) {
+        whenValueChange(selectedValue);
+      }
+    },
+    [selectedValue, whenValueChange]
+  );
 
   // input handling
   
@@ -47,7 +50,8 @@ export const withCursor = (WrappedComponent) => (props) => {
   // render
 
   const updateProps = { 
-    cursorIndexState, setCursorIndexState,
+    cursorIndexState, 
+    setCursorIndexState,
     onKeyDown: handleKeyDown, 
     onClick: handleClick,
     ...props,

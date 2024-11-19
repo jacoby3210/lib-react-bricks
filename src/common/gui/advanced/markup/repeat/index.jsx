@@ -15,7 +15,6 @@ export const withRepeat = (WrappedComponent) => (props) => {
     length = 0, 
     src = [], 
     matchingItems, 
-    nonMatchingItems,
     cursorIndexState,
     Template,
     value
@@ -23,22 +22,28 @@ export const withRepeat = (WrappedComponent) => (props) => {
   
   // hooks
 
-  const _first = useMemo(
-    () => (typeof first === "function" ? first(props) : first), 
-    [first, props]
-  );
-
-  const _src = useMemo(
+  const srcMemo = useMemo(
     () => matchingItems ? matchingItems : (Array.isArray(src) ? src : Object.values(src)),
     [matchingItems, src]
   )
+  
+  const firstMemo = useMemo(
+    () => (typeof first === "function" ? first(props) : first), 
+    [first, value]
+  );
+
+  const lengthMemo = useMemo(
+    () => (length === -1 ? srcMemo.length : Math.max(srcMemo.length, length)), 
+    [length, srcMemo]
+  );
+
   
   // render
 
   const children = useMemo(
     () =>
-      _src
-        .slice(_first, _first + (length ? length : _src.length ))
+      srcMemo
+        .slice(firstMemo, firstMemo + lengthMemo)
         .map((item, index) => (
           <Template
             key={item.id || index}
@@ -48,7 +53,7 @@ export const withRepeat = (WrappedComponent) => (props) => {
           />
       )
     ),
-    [_src, _first, first, length, value, cursorIndexState]
+    [srcMemo, firstMemo, lengthMemo, value, cursorIndexState]
   );
     
   return WrappedComponent 

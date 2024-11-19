@@ -10,8 +10,8 @@ export const withContainer = (WrappedComponent) => (props) => {
   
   const {
     id, 
-    className, 
     children, 
+    className = "rc-container", 
     value = "none"
   } = props;
 

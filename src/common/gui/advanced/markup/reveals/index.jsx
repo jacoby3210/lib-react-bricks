@@ -20,9 +20,10 @@ export const withReveals = (WrappedComponent) => (props) => {
 
   const closePopup = useCallback(() => setShownState(false), []);
 
-  const handleClick = useCallback((evt) =>{ 
-    closePopup();
-  }, [closePopup]);
+  const handleClick = useCallback(
+    (evt) => closePopup(), 
+    [closePopup]
+  );
 
   const handleKeyDown = useCallback(
     (evt) => {if (evt.key === 'Enter') closePopup();}, 
@@ -35,16 +36,19 @@ export const withReveals = (WrappedComponent) => (props) => {
 
   useEffect(() => {setShownState(shown);}, [shown]);
   
-  useEffect(() => {
-    if (shownState) {
-      document.addEventListener('click', handleClick);
-      document.addEventListener('keydown', handleKeyDown);
-    }
-    return () => {
-      document.removeEventListener('click', handleClick);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [shownState, handleClick, handleKeyDown]);
+  useEffect(
+    () => {
+      if (shownState) {
+        document.addEventListener('click', handleClick);
+        document.addEventListener('keydown', handleKeyDown);
+      }
+      return () => {
+        document.removeEventListener('click', handleClick);
+        document.removeEventListener('keydown', handleKeyDown);
+      };
+    }, 
+    [shownState, handleClick, handleKeyDown]
+  );
 
   // render
   

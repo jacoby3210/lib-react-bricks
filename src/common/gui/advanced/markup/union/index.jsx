@@ -7,17 +7,17 @@ import React, {useMemo} from 'react';
 export const withUnion = (...components) => (props) => {
   
   // initial data
-
   
   const {
     packages = [],
     ...commonProps
   } = props;
+
   const {value} = props;
 
   // render
   
-  const children = useMemo(
+  const childrenMemo = useMemo(
     () =>
       Object.values(components).map(
         (Component, index) => (
@@ -31,7 +31,11 @@ export const withUnion = (...components) => (props) => {
     [value]
   );
 
-  return (<>{children}</>);
+  return (
+    <>
+      {childrenMemo}
+    </>
+  );
 };
 
 // -------------------------------------------------------------------------- //
