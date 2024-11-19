@@ -33,7 +33,7 @@ export const withRepeat = (WrappedComponent) => (props) => {
   );
 
   const lengthMemo = useMemo(
-    () => (length === -1 ? srcMemo.length : Math.max(srcMemo.length, length)), 
+    () => (length === -1 ? srcMemo.length : Math.min(srcMemo.length, length)), 
     [length, srcMemo]
   );
 
