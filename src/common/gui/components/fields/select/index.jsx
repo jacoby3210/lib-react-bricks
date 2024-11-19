@@ -25,8 +25,6 @@ const Container = props => {
     (e) => {
       const el = e.target.closest("option");
       if(el) whenValueChange(el.value);
-    console.log(el.value)
-
     },
     [whenValueChange]
   );
@@ -44,7 +42,11 @@ const Container = props => {
 
   // render
 
-  return (<>{children}</>);
+  return (
+    <div>
+      {children}
+    </div>
+    );
 };
 
 // -------------------------------------------------------------------------- //
@@ -55,7 +57,15 @@ const Controller = props => {
   
   // initial data
 
-  const {className, children, label, setShownState, matchingItems, value} = props;
+  const {
+    className, 
+    children, 
+    label, 
+    onKeyDown,
+    setShownState, 
+    matchingItems, 
+    value
+  } = props;
   const cssPrefix = `button`; 
   const currentItem = matchingItems?.find(item => item.id == value);
   const displayValue = currentItem?.label || value;
@@ -69,8 +79,9 @@ const Controller = props => {
 
   // render
 
+  const updateProps = {className:cssPrefix, onClick, onKeyDown}
   return (
-    <button className={cssPrefix} onClick={onClick}>
+    <button {...updateProps}>
       <span className={`${cssPrefix}-label`}>{displayValue}</span>
       <span className={`${cssPrefix}-sprite`}>
         <i className={'fa-solid fa-chevron-down'}></i>

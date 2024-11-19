@@ -31,9 +31,10 @@ export const withCursor = (WrappedComponent) => (props) => {
       setCursorIndexState((prev) => {
         if (evt.key === 'ArrowDown')  return Math.min(prev + 1, matchingItems.length - 1);
         if (evt.key === 'ArrowUp')    return Math.max(prev - 1, 0);
-        if (evt.key === 'Enter')      setSelectedValue(matchingItems[prev]?.value);
+        if (evt.key === 'Enter')      setSelectedValue(matchingItems[prev]?.id);
         return prev;
       });
+      evt.preventDefault();
     },
     [matchingItems]
   );
