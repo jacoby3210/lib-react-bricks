@@ -10,15 +10,15 @@ export const Range = props => {
   // initial data
 
   const {
-    id, className, children,
+    id, className, 
+    children,
     axis, axisProps, 
-    modular, 
     value, 
     max, 
     min, 
-    valueSpeed: speed, 
     step,
-    whenValueChange, whenValueModify,
+    whenValueChange, 
+    whenValueModify,
   } = props;
 
   // supporting methods
