@@ -36,7 +36,6 @@ export const withRepeat = (WrappedComponent) => (props) => {
     () => (length === -1 ? srcMemo.length : Math.min(srcMemo.length, length)), 
     [length, srcMemo]
   );
-
   
   // render
 

@@ -10,10 +10,11 @@ export const Switcher = props => {
 
   const {
     className,
+    matchingItems,
     max,
     min,
     modular,
-    src, 
+    src,
     step,
     value, 
     whenValueChange, 
