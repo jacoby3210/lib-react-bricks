@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 // -------------------------------------------------------------------------- //
 // Layout - to select one option from the source list  (alt mode \ enum).
@@ -9,7 +9,10 @@ export const Switcher = props => {
   // initial data
 
   const {
-    rounded,
+    className,
+    max,
+    min,
+    modular,
     src, 
     value, 
     whenValueChange, 
@@ -20,17 +23,36 @@ export const Switcher = props => {
   
   // input handling
 
-  const handlePrevClick = () => {
-    if(value !== 0) whenValueModify(-1);
-    else if(rounded) whenValueChange(src.length - 1);
-  };
+  const handlePrevClick = useCallback(
+    () => {
+      console.log(value)
+      if(value !== 0) whenValueModify(-1);
+      else if(modular) whenValueChange(src.length - 1);
+    }, 
+    []
+  );
 
-  const handleNextClick = () => {
-    if(value !== src.length - 1) whenValueModify(1);
-    else if(rounded) whenValueChange(0);
-  };
+  const handleNextClick = useCallback(
+    () => {
+      console.log(value)
+      if(value !== src.length - 1) whenValueModify(1);
+      else if(modular) whenValueChange(0);
+    },
+    []
+  )
 
   // render
+
+  const btnPrevProps = {
+		className: `${className.split(" ")[0]}-first`,
+		onClick: () => { whenValueModify(- step); },
+		disabled: value === min && !modular,
+	}
+  const btnNextProps = {
+		className: `${className.split(" ")[0]}-first`,
+		onClick: () => { whenValueModify(- step); },
+		disabled: value === max && !modular,
+	}
 
   return (
     <>
