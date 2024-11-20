@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 // -------------------------------------------------------------------------- //
 // A feature - to handle a change in the value of a component (numeric type).
@@ -31,11 +31,23 @@ export const withValueDigit = (WrappedComponent) => (props) => {
     return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
   };
 
+  // hooks
+  
+  const maxMemo = useMemo(
+    () => (typeof max === "function" ? max(props) : max), 
+    [max, value]
+  );
+
+  const minMemo = useMemo(
+    () => (typeof min === "function" ? min(props) : min), 
+    [min, value]
+  );
+
   // input handling
 
   const handleValueChange = useCallback(
     (next) => whenValueChange(calculateNormalizedValue(next)),
-    [min, max, step, modular, whenValueChange]
+    [maxMemo, minMemo, step, modular, whenValueChange]
   );
 
   const handleValueModify = useCallback(
@@ -48,8 +60,8 @@ export const withValueDigit = (WrappedComponent) => (props) => {
   const updateProps = {
     ...props,
     modular,
-    max,
-    min,
+    max: maxMemo,
+    min: minMemo,
     step,
     value,
     whenValueChange: handleValueChange,
