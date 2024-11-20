@@ -21,22 +21,28 @@ export const Switcher = props => {
     whenValueModify,
   } = props;
 
+
   // hooks
+  
+  const currentIndex = useRef(0)
+  const displayText = src[currentIndex.current]?.caption || "Not Found"; 
   
   // input handling
 
   const handlePrevClick = useCallback(
     () => {
-      if(value !== 0) whenValueModify(-1);
-      else if(modular) whenValueChange(src.length - 1);
+      if(modular) currentIndex.current = (currentIndex.current - 1) % max;
+      else currentIndex.current = Math.max(currentIndex.current - 1, 0);
+      whenValueChange(src[currentIndex.current].id);
     }, 
-    [value, whenValueChange, whenValueModify]
+    [currentIndex, value, whenValueChange, whenValueModify]
   );
 
   const handleNextClick = useCallback(
     () => {
-      if(value !== src.length - 1) whenValueModify(1);
-      else if(modular) whenValueChange(0);
+      if(modular) currentIndex.current = (currentIndex.current + 1) % max;
+      else currentIndex.current = Math.min(currentIndex.current + 1, max);
+      whenValueChange(src[currentIndex.current].id);
     },
     [value, whenValueChange, whenValueModify]
   )
@@ -58,7 +64,7 @@ export const Switcher = props => {
   return (
     <>
       <button {... btnPrevProps}>←</button>
-      <span>{src[value]?.caption || "Not Found"}</span>
+      <span>{displayText}</span>
       <button {... btnNextProps}>→</button>
     </>
   );

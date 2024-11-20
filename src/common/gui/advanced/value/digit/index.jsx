@@ -26,7 +26,6 @@ export const withValueDigit = (WrappedComponent) => (props) => {
   };
 
   const calculateNormalizedValue = (next) => {
-    console.log(1, maxMemo, next)
     const wrappedValue = modular ? (next + maxMemo) % maxMemo : Math.max(Math.min(next, maxMemo));
     const steppedValue = Math.round(wrappedValue / step) * step;
     return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
