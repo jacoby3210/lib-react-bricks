@@ -11,12 +11,9 @@ const Container = props => {
   const {
     children, 
     rootRef, 
-    src, 
-    cursorIndexState,
     setCursorIndexState,
     value, 
     whenValueChange, 
-    whenValueModify
   } = props;
 
   // input handling

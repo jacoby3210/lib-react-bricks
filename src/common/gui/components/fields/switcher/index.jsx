@@ -11,7 +11,9 @@ export const Switcher = props => {
   const {
     rounded,
     src, 
-    value, whenValueChange, whenValueModify,
+    value, 
+    whenValueChange, 
+    whenValueModify,
   } = props;
 
   // hooks

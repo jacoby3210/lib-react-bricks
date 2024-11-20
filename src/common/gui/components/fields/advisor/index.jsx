@@ -35,8 +35,10 @@ const Controller = props => {
   const {
     className, 
     onKeyDown, 
-    shownState, setShownState,
-		value, whenValueChange,
+    shownState, 
+    setShownState,
+		value, 
+    whenValueChange,
 	} = props;
 
 	// hooks

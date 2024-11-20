@@ -9,9 +9,14 @@ export const Paragraph = props => {
   // initial data
 
 	const {
-    children, rootRef,
-		value, forbidden, max, min, 
-    whenValueChange, whenValueModify,
+    children, 
+    forbidden, 
+    max, 
+    min, 
+    rootRef,
+		value, 
+    whenValueChange, 
+    whenValueModify,
     ...attributes
 	} = props;
 
