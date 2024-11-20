@@ -14,6 +14,7 @@ export const Switcher = props => {
     min,
     modular,
     src, 
+    step,
     value, 
     whenValueChange, 
     whenValueModify,
@@ -42,21 +43,22 @@ export const Switcher = props => {
   // render
 
   const btnPrevProps = {
-		className: `${className.split(" ")[0]}-first`,
-		onClick: () => { whenValueModify(- step); },
+		className: `${className.split(" ")[0]}-prev`,
+		onClick: handlePrevClick,
 		disabled: value === min && !modular,
 	}
+  
   const btnNextProps = {
-		className: `${className.split(" ")[0]}-first`,
-		onClick: () => { whenValueModify(- step); },
-		disabled: value === max && !modular,
+		className: `${className.split(" ")[0]}-next`,
+		onClick: handleNextClick,
+		disabled: value === max - 1 && !modular,
 	}
 
   return (
     <>
-      <button onClick={handlePrevClick}>←</button>
+      <button {... btnPrevProps}>←</button>
       <span>{src[value]?.caption || "Not Found"}</span>
-      <button onClick={handleNextClick}>→</button>
+      <button {... btnNextProps}>→</button>
     </>
   );
 };
