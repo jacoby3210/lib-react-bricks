@@ -18,15 +18,6 @@ export const Scroll = props => {
 
 	const {axis, axisProps, mode, target, value} = props;
 
-  // hooks 
-
-	useEffect(() => {
-    target.current.addEventListener("scroll", (e) => {
-			const newValue = toValue(target.current, axisProps);
-			return whenValueChange(newValue); 
-		})
-	}, []);
-
   // input handling
 
 	const whenValueChange = (next, prev) => {
@@ -37,6 +28,22 @@ export const Scroll = props => {
 		area.scrollTo(scrollParams);
     return props.whenValueChange(next);
 	};
+
+  // hooks 
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const newValue = toValue(target.current, axisProps);
+      whenValueChange(newValue);
+    };
+  
+    const area = target.current;
+    area.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      area.removeEventListener("scroll", handleScroll);
+    };
+  }, [target, axisProps, whenValueChange]);
 
 	// render
 

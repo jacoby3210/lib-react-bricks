@@ -92,8 +92,6 @@ export const props = {
 		src: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
 	},
 
-
-
   scroll: {axis: false,  step: 0.01, value: 0.5 },
   
   accordion: {

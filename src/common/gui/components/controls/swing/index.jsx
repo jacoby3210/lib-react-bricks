@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 
 // -------------------------------------------------------------------------- //
 // Layout - to control the increase/decrease of the value.
@@ -10,7 +10,7 @@ export const Swing = (props) => {
 
   const {
     className,
-    max, min, step,
+    max, min, step,value,
     whenValueChange, whenValueModify,
   } = props;
   const isButtonStart = (btn) => btn.classList.contains(`${className}-start`);
@@ -31,15 +31,22 @@ export const Swing = (props) => {
     whenValueChange(next);
   };
 
-  const onMouseDownSlice = (offset) => whenValueModify(offset);
+  const onMouseDownSlice = (offset) =>{ 
+    console.log(1, offset, value)
+    return whenValueModify(offset);
+  }
   
-  const onMouseDown = (evt) => {
-    if (evt.detail !== 1) return;
-    const normStep = step * (isButtonStart(evt.target) ? -1 : 1);
-    const fn = () => onMouseDownSlice(normStep);
-    fn();
-    timeoutRef.current = setInterval(fn, 100);
-  };  
+  const onMouseDown = useCallback(
+    (evt) => {
+      
+      if (evt.detail !== 1) return;
+      const normStep = step * (isButtonStart(evt.target) ? -1 : 1);
+      const fn = () => onMouseDownSlice(normStep);
+      fn();
+      timeoutRef.current = setInterval(fn, 100);
+    }, 
+    [value]
+  );  
 
   const onMouseUp = () => {
     if (timeoutRef.current) clearInterval(timeoutRef.current);

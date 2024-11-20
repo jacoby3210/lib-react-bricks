@@ -30,9 +30,9 @@ export const Layouts = () => {
       GUI.Native.HOCs.withState("value")
       (GUI.Templates.Gallery),
 
-    // Accordion: 
-      // GUI.Native.HOCs.withState("value")
-      // (GUI.Layouts.Accordion),
+    Accordion: 
+      GUI.Native.HOCs.withState("value")
+      (GUI.Layouts.Accordion),
     // CheckList: 
       // GUI.Native.HOCs.withState("value")
       // (GUI.Layouts.CheckList),
@@ -53,8 +53,8 @@ export const Layouts = () => {
       <fsComponents.Catalog {...props.catalog}/>
       <fsComponents.Gallery {...props.gallery}/>
 
-			{/* <GUI.Layouts.Scroll {...props.scroll} target={areaRef}  /> */}
-			{/* <TestAreaForScroll />   */}
+			<GUI.Layouts.Scroll {...props.scroll} target={areaRef}  />
+			<TestAreaForScroll />  
 {/*       
       <fsComponents.Accordion  {...props.accordion}/>
       <fsComponents.Accordion  {...props.accordionSingle}/>
