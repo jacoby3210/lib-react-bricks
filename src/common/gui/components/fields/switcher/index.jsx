@@ -25,20 +25,18 @@ export const Switcher = props => {
 
   const handlePrevClick = useCallback(
     () => {
-      console.log(value)
       if(value !== 0) whenValueModify(-1);
       else if(modular) whenValueChange(src.length - 1);
     }, 
-    []
+    [value, whenValueChange, whenValueModify]
   );
 
   const handleNextClick = useCallback(
     () => {
-      console.log(value)
       if(value !== src.length - 1) whenValueModify(1);
       else if(modular) whenValueChange(0);
     },
-    []
+    [value, whenValueChange, whenValueModify]
   )
 
   // render

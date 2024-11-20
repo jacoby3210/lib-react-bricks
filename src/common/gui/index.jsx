@@ -74,8 +74,8 @@ export const GUI = {
       (compose(withContainer, withValueBase, withFilter, withCursor, withReveals, withRepeat)
       (Components.Select.Container)),
     Switcher: 
-      withMerge("rc-switcher", {})
-      (compose(withValueBase, withContainer)(Components.Switcher)),
+      withMerge("rc-switcher", {max: (props)=>props.src.length, value: 0})
+      (compose(withValueDigit, withContainer)(Components.Switcher)),
     Text: 
       withMerge("rc-text")(Components.Text)
   },
