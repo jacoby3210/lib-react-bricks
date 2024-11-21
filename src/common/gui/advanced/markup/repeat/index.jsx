@@ -12,7 +12,7 @@ export const withRepeat = (WrappedComponent) => (props) => {
 
   const {
     first = 0, 
-    length = 0, 
+    length = -1, 
     src = [], 
     matchingItems, 
     cursorIndexState,
@@ -38,7 +38,6 @@ export const withRepeat = (WrappedComponent) => (props) => {
   );
   
   // render
-
   const children = useMemo(
     () =>
       srcMemo
