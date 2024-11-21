@@ -17,7 +17,7 @@ export const withValueBoolean = (WrappedComponent) => (props) => {
   // input handling
 
   const handleValueChange = useCallback(
-    (next) => whenValueChange(next, value),
+    (next) => whenValueChange(next),
     [whenValueChange]
   );
 

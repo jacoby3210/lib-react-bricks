@@ -19,24 +19,20 @@ export const withValueText = (WrappedComponent) => (props) => {
 
   // supporting methods
 
-  const containsForbiddenChars = (next) => {
+  const validate = (next, prev) => {
     const forbiddenPattern = new RegExp(`[${forbidden.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}]`);
-    return forbiddenPattern.test(next);
+    return forbiddenPattern.test(next) ? prev : next;
   }
 
   // input handling
-
   const handleValueChange = useCallback(
-    (next) => {
-      if(!containsForbiddenChars(next)) 
-        whenValueChange(next)
-    },
-    [min, max, whenValueChange]
+    (next) => whenValueChange(next, validate),
+    [value, whenValueChange]
   );
 
   const handleValueModify = useCallback(
-    (increment) =>{ whenValueModify( increment)},
-    [whenValueModify, value]
+    (increment) => whenValueModify(increment, validate),
+    [value, whenValueModify]
   );
 
 // render 

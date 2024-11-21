@@ -20,15 +20,17 @@ export const withState = (stateName) => (WrappedComponent) => (props) => {
   // input handling
   
   const handleStateChange = useCallback(
-    (next) => {
-      const updatedValue = stateHandler ? stateHandler(next, state) : next;
-      setState((prev) => (stateHandler ? stateHandler(updatedValue, prev) : updatedValue));
+    (next, validate = (next, prev) => next) => {
+      setState((prev) => {
+        const validateValue = validate(next, prev);
+        return (stateHandler ? stateHandler(validateValue, prev) : validateValue);
+      })
     },
     [stateHandler, stateValue]
   );
 
   const handleStateModify = useCallback(
-    (delta) => {
+    (delta, validate) => {
       setState((prev) => {
         const newValue = prev + delta;
         return (stateHandler ? stateHandler(newValue, prev) : newValue)

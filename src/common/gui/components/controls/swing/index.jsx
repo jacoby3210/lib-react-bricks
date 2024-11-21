@@ -32,7 +32,6 @@ export const Swing = (props) => {
   };
 
   const onMouseDownSlice = (offset) =>{ 
-    console.log(1, offset, value)
     return whenValueModify(offset);
   }
   

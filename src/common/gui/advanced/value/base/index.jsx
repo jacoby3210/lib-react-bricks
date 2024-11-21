@@ -10,6 +10,7 @@ export const withValueBase = (WrappedComponent) => (props) => {
 
   const {
     value = null,
+    validation = (value) => value,
     whenValueChange = (next, prev) => next, 
     whenValueModify = (m) => m,
   } = props;
