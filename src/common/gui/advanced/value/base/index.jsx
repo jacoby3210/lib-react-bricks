@@ -12,18 +12,18 @@ export const withValueBase = (WrappedComponent) => (props) => {
     value = null,
     validate = (value) => value,
     whenValueChange = (next, validate) => next, 
-    whenValueModify = (m, validate) => m,
+    whenValueModify = (modifier, validate) => m,
   } = props;
 
   // input handling
 
   const handleValueChange = useCallback(
-    (next) => whenValueChange(next),
+    (next) => whenValueChange(next, validate),
     [whenValueChange]
   );
 
   const handleValueModify = useCallback(
-    (increment) => whenValueModify(increment),
+    (modifier) => whenValueModify(modifier, validate),
     [handleValueChange]
   );
 

@@ -14,7 +14,7 @@ export const withValueText = (WrappedComponent) => (props) => {
     min = 0,
     value = "",
     whenValueChange = (next, prev) => next, 
-    whenValueModify = (m) => m,
+    whenValueModify = (modifier) => modifier,
   } = props;
 
   // supporting methods
@@ -31,7 +31,7 @@ export const withValueText = (WrappedComponent) => (props) => {
   );
 
   const handleValueModify = useCallback(
-    (increment) => whenValueModify(increment, validate),
+    (modifier) => whenValueModify(modifier, validate),
     [value, whenValueModify]
   );
 

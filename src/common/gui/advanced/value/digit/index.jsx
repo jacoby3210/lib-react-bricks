@@ -15,7 +15,7 @@ export const withValueDigit = (WrappedComponent) => (props) => {
     step = 1,
     value = 0,
     whenValueChange = (next, validate) => next, 
-    whenValueModify = (m, validate) => m,
+    whenValueModify = (modifier, validate) => m,
   } = props;
 
   // supporting methods
@@ -25,8 +25,8 @@ export const withValueDigit = (WrappedComponent) => (props) => {
     return decimalPart ? decimalPart.length : 0;
   };
 
-  const validate = (next, prev) => {
-    const wrappedValue = modular ? (next + maxMemo) % maxMemo : Math.max(Math.min(next, maxMemo));
+  const validate = (next) => {
+    const wrappedValue = modular ? (next + maxMemo) % maxMemo : Math.max(Math.min(next, maxMemo), minMemo);
     const steppedValue = Math.round(wrappedValue / step) * step;
     return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
   };
@@ -51,7 +51,7 @@ export const withValueDigit = (WrappedComponent) => (props) => {
   );
 
   const handleValueModify = useCallback(
-    (increment) => whenValueModify(increment, validate),
+    (modifier) => whenValueModify(modifier, validate),
     [whenValueModify, value]
   );
 
