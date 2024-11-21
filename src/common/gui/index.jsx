@@ -10,7 +10,8 @@ import * as Layouts     from "./layouts"
 const { 
   withContainer, withCursor,  withReveals, withRepeat, 
   withDirection, withFilter, withMerge, withState, 
-  withValueBase, withValueBoolean, withValueDigit, withValueText
+  withValueBase, withValueBoolean, withValueDigit, withValueText,
+  withUnion,
 } = HOCs;
 
 const filter = function (item) {
@@ -28,106 +29,191 @@ export const GUI = {
   Components: {
 
     Button: 
-      withMerge("rc-button")
-      (Components.Button),
+      compose(
+        withMerge("rc-button")
+      )(Components.Button),
+    
     Container: 
-      withMerge("rc-container")
-      (Components.Container),
+      compose(
+        withMerge("rc-container")
+      )(Components.Container),
+    
     Dropout: 
-      withMerge("rc-dropout", { shown: false, ... Components.Dropout })
-      (compose(withContainer, withReveals)
-      (Components.Empty)),
+      compose(
+        withMerge("rc-dropout", { shown: false, ... Components.Dropout }),
+        withContainer, 
+        withReveals,
+      )(Components.Empty),
+    
     List: 
-      withMerge("rc-list", {... Components.List})
-      (compose(withFilter, withRepeat)
-      (Components.List.Container)),
+      compose(
+        withMerge("rc-list", {... Components.List}),
+        withFilter, 
+        withRepeat,
+      )(Components.List.Container),
+
     Empty: 
-      withMerge("rc-empty")
-      (Components.Empty),
+      compose(
+        withMerge("rc-empty"),
+      )(Components.Empty),
 
     Bar: 
-      withMerge("rc-bar", { value: null , ... Components.Bar})
-      (compose(withValueBase, withContainer, withRepeat)(Components.Container)),
+      compose(
+        withMerge("rc-bar", { value: null , ... Components.Bar}),
+        withValueBase, 
+        withContainer, 
+        withRepeat,
+      )(Components.Container),
+
     CheckBox: 
-      withMerge("rc-checkbox", { value: false })
-      (compose(withValueBoolean)(Components.CheckBox)),
+      compose(
+        withMerge("rc-checkbox", { value: false }),
+        withValueBoolean,
+      )(Components.CheckBox),
+
     Clicker: 
-      withMerge("rc-clicker", { value: 0 })
-      (withValueDigit(Components.Clicker)),
+      compose(
+        withMerge("rc-clicker", { value: 0 }),
+        withValueDigit,
+      )(Components.Clicker),
+
     Range: 
-      withMerge("rc-range", { axis: false, value: 0 })
-      (compose(withValueDigit, withDirection)(Components.Range)),
+      compose(
+        withMerge("rc-range", { axis: false, value: 0 }),
+        withValueDigit, 
+        withDirection
+      )(Components.Range),
+
     Swing: 
-      withMerge("rc-swing", { axis: false, value: 0 })
-      (compose(withValueDigit, withContainer)(Components.Swing)),
+      compose(
+        withMerge("rc-swing", { axis: false, value: 0 }),
+        withValueDigit, 
+        withContainer,
+      )(Components.Swing),
 
     Advisor: 
-      withMerge("rc-advisor", {filter, value: "", ... Components.Advisor })(
-      compose(withContainer, withFilter, withValueText, withCursor, withReveals, withRepeat)
-      (Components.Advisor.Container)
-    ),
+      compose(
+        withMerge("rc-advisor", {filter, value: "", ... Components.Advisor }),
+        withContainer, 
+        withFilter, 
+        withValueText, 
+        withCursor, 
+        withReveals, 
+        withRepeat,
+      )(Components.Advisor.Container),
+
     Paragraph: 
-      withMerge("rc-paragraph", {})
-      (withValueText(Components.Paragraph)),
+      compose(
+        withMerge("rc-paragraph", {}),
+        withValueText
+      )(Components.Paragraph),
+
     Select: 
-      withMerge("rc-select", {shown: false, ... Components.Select})
-      (compose(withContainer, withValueBase, withFilter, withCursor, withReveals, withRepeat)
-      (Components.Select.Container)),
+      compose(
+        withMerge("rc-select", {shown: false, ... Components.Select}),
+        withContainer, 
+        withValueBase, 
+        withFilter, 
+        withCursor, 
+        withReveals, 
+        withRepeat,
+      )(Components.Select.Container),
+
     Switcher: 
-      withMerge("rc-switcher", {max: (props)=>props.src.length, value: 0})
-      (compose(withValueDigit, withContainer)(Components.Switcher)),
+      compose(
+        withMerge("rc-switcher", {max: (props)=>props.src.length, value: 0}),
+        withValueDigit, 
+        withContainer,
+      )(Components.Switcher),
+
     Text: 
-      withMerge("rc-text")
-      (Components.Text)
+      compose(
+        withMerge("rc-text")
+      )(Components.Text)
   },
 
   Layouts: {
 
     Display: 
-      withMerge("rc-display", {... Layouts.Display})
-      (compose(withValueDigit, withContainer, withRepeat)
-      (Components.Container)),
+      compose(
+        withMerge("rc-display", {... Layouts.Display}),
+        withValueDigit, 
+        withContainer, 
+        withRepeat,
+      )(Components.Container),
+
     Navigator: 
-      withMerge("rc-navigator")
-      (compose(withValueDigit, withContainer)(Layouts.Navigator)),
+      compose(
+        withMerge("rc-navigator"),
+        withValueDigit, 
+        withContainer,
+      )(Layouts.Navigator),
+
     Paginator: 
-      withMerge("rc-paginator", {... Layouts.Display})
-      (compose(withValueDigit, withContainer, withRepeat)
-      (Layouts.Paginator.Container)),
+      compose(
+        withMerge("rc-paginator", {... Layouts.Display}),
+        withValueDigit, 
+        withContainer, 
+        withRepeat,
+      )(Layouts.Paginator.Container),
+
     Scroll: 
-      withMerge("rc-scroll", { mode: "smooth", target: null, value: 0.0 })
-      (compose(withState("value"), withValueDigit, withDirection, withContainer)
-      (Layouts.Scroll)),
+      compose (
+        withMerge("rc-scroll", { mode: "smooth", target: null, max: 1.0, min: 0.0, value: 0.0 }),
+        withState("value"), 
+        withValueDigit, 
+        withDirection, 
+        withContainer,
+      )(Layouts.Scroll),
 
     Accordion: 
-      withMerge("rc-accordion", {... Layouts.Accordion})
-      (compose(withValueBase, withContainer, withRepeat)
-      (Layouts.Accordion.Container)),
-    CheckList: withMerge("rc-checklist", {... Layouts.CheckList})
-      (compose(withValueBase, withContainer, withRepeat)
-      ()),
+      compose(
+        withMerge("rc-accordion", {... Layouts.Accordion}),
+        withValueBase, 
+        withContainer, 
+        withRepeat,
+      )(Layouts.Accordion.Container),
+
+    CheckList: 
+      compose(
+        withMerge("rc-checklist", {... Layouts.CheckList}),
+        withValueBase, 
+        withContainer, 
+        withRepeat
+      )(),
+
     Inspector: 
-      withMerge("rc-inspector", {... Layouts.Inspector})
-      (compose(withValueBase, withContainer, withRepeat)
-      (Layouts.Inspector.Container)),
+      compose(
+        withMerge("rc-inspector", {... Layouts.Inspector}),
+        withValueBase, 
+        withContainer, 
+        withRepeat,
+      )(Layouts.Inspector.Container),
+
     Menu: 
-      withMerge("rc-menu", {... Layouts.Menu})
-      (compose(withValueBase, withContainer,  withReveals, withRepeat)
-      (Components.Container)),
+      compose(
+        withMerge("rc-menu", {... Layouts.Menu}),
+        withValueBase, 
+        withContainer, 
+        withReveals, 
+        withRepeat,
+      )(Components.Container),
 
   }
 };
 
 GUI.Templates = {
   Browser:
-    withMerge("rc-browser", {})
-    (HOCs.withUnion(GUI.Layouts.Display, GUI.Components.List)),
+    compose(withMerge("rc-browser", {}), withUnion)
+    (GUI.Layouts.Display, GUI.Components.List),
+  
   Catalog:
-    withMerge("rc-catalog", {})
-    (HOCs.withUnion(GUI.Layouts.Paginator, GUI.Components.List)),
+    compose(withMerge("rc-catalog", {}), withUnion)
+    (GUI.Layouts.Paginator, GUI.Components.List),
+  
   Gallery:
-    withMerge("rc-gallery", {})
-    (HOCs.withUnion(GUI.Layouts.Navigator, GUI.Components.List)),
+    compose(withMerge("rc-gallery", {}), withUnion)
+    (GUI.Layouts.Navigator, GUI.Components.List),
 }
 
 // -------------------------------------------------------------------------- //
