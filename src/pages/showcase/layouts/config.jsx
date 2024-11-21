@@ -1,4 +1,4 @@
-import {GUI} from '/src/common/gui'
+import {GUI} from "@lib-react-bricks/src/core/gui"
 
 // -------------------------------------------------------------------------- //
 // Constants.

@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useRef, useState } from 'react';
-import {Range, Swing} from '@lib-react-bricks/src/common/gui/components'
+import {Range, Swing} from '@lib-react-bricks/src/core/gui/components'
 
 // -------------------------------------------------------------------------- //
 // Widget - to scroll the content in the element.
