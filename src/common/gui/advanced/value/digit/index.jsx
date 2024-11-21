@@ -51,7 +51,7 @@ export const withValueDigit = (WrappedComponent) => (props) => {
   );
 
   const handleValueModify = useCallback(
-    (increment) => {handleValueChange(calculateNormalizedValue(value + increment))},
+    (increment) => handleValueChange(value + increment),
     [whenValueModify, value]
   );
 

@@ -77,7 +77,8 @@ export const GUI = {
       withMerge("rc-switcher", {max: (props)=>props.src.length, value: 0})
       (compose(withValueDigit, withContainer)(Components.Switcher)),
     Text: 
-      withMerge("rc-text")(Components.Text)
+      withMerge("rc-text")
+      (Components.Text)
   },
 
   Layouts: {
@@ -100,15 +101,19 @@ export const GUI = {
 
     Accordion: 
       withMerge("rc-accordion", {... Layouts.Accordion})
-      (compose(withValueBase, withContainer, withRepeat)(Layouts.Accordion.Container)),
+      (compose(withValueBase, withContainer, withRepeat)
+      (Layouts.Accordion.Container)),
     CheckList: withMerge("rc-checklist", {... Layouts.CheckList})
-      (compose(withValueBase, withContainer, withRepeat)()),
+      (compose(withValueBase, withContainer, withRepeat)
+      ()),
     Inspector: 
       withMerge("rc-inspector", {... Layouts.Inspector})
-      (compose(withValueBase, withContainer, withRepeat)(Layouts.Inspector.Container)),
+      (compose(withValueBase, withContainer, withRepeat)
+      (Layouts.Inspector.Container)),
     Menu: 
       withMerge("rc-menu", {... Layouts.Menu})
-      (compose(withValueBase, withContainer,  withReveals, withRepeat)(Components.Container)),
+      (compose(withValueBase, withContainer,  withReveals, withRepeat)
+      (Components.Container)),
 
   }
 };

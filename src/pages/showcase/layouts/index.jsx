@@ -47,7 +47,7 @@ export const Layouts = () => {
 	// render 
 
 	return (
-		<div id="Layouts">
+		<div id="layouts">
 
       <fsComponents.Browser {...props.browser}/>
       <fsComponents.Catalog {...props.catalog}/>
