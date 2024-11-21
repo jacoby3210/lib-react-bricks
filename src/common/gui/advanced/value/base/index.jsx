@@ -11,14 +11,14 @@ export const withValueBase = (WrappedComponent) => (props) => {
   const {
     value = null,
     validation = (value) => value,
-    whenValueChange = (next, prev) => next, 
+    whenValueChange = (next, validate) => next, 
     whenValueModify = (m) => m,
   } = props;
 
   // input handling
 
   const handleValueChange = useCallback(
-    (next) => whenValueChange(next, value),
+    (next) => whenValueChange(next),
     [whenValueChange]
   );
 

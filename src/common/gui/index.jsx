@@ -14,7 +14,6 @@ const {
 } = HOCs;
 
 const filter = function (item) {
-  return true;
   return item.caption != this.value && item.value.includes(this.value);
 };
 
@@ -63,7 +62,7 @@ export const GUI = {
       (compose(withValueDigit, withContainer)(Components.Swing)),
 
     Advisor: 
-      withMerge("rc-advisor", { value: "", ... Components.Advisor })(
+      withMerge("rc-advisor", {filter, value: "", ... Components.Advisor })(
       compose(withContainer, withFilter, withValueText, withCursor, withReveals, withRepeat)
       (Components.Advisor.Container)
     ),
