@@ -10,8 +10,8 @@ export const withValueBoolean = (WrappedComponent) => (props) => {
 
   const {
     value = false,
-    whenValueChange= (next, prev) => next,
-    whenValueToggle= (prev) => !prev,
+    whenValueChange = (next, validate) => next, 
+    whenValueToggle= (prev, validate) => !prev,
   } = props;
 
   // input handling

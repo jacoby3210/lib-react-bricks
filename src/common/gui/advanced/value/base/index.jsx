@@ -10,9 +10,9 @@ export const withValueBase = (WrappedComponent) => (props) => {
 
   const {
     value = null,
-    validation = (value) => value,
+    validate = (value) => value,
     whenValueChange = (next, validate) => next, 
-    whenValueModify = (m) => m,
+    whenValueModify = (m, validate) => m,
   } = props;
 
   // input handling
