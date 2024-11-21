@@ -49,7 +49,7 @@ const Controller = props => {
 
   const handleChange = useCallback(
     (evt) => whenValueChange(evt.target.value), 
-    [whenValueChange]
+    [value, whenValueChange]
   );
   
 	const handleClick =  useCallback(
@@ -71,10 +71,10 @@ const Controller = props => {
 
   const inputProps  = {
     className:`${className}-input`, 
-    onChange: handleChange, 
-    onClick: handleClick,
-    onFocus: handleFocus,
-    onKeyDown: handleKeyDown, 
+    onChange:   handleChange, 
+    onClick:    handleClick,
+    onFocus:    handleFocus,
+    onKeyDown:  handleKeyDown, 
     value
   };
 
@@ -106,7 +106,10 @@ const Template = (props) => {
 	)
 };
 
-export const Advisor = {Controller, Container, Template,
+export const Advisor = {
+  Controller, 
+  Container, 
+  Template,
 }
 
 // -------------------------------------------------------------------------- //
