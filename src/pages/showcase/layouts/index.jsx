@@ -33,15 +33,15 @@ export const Layouts = () => {
     Accordion: 
       GUI.Native.HOCs.withState("value")
       (GUI.Layouts.Accordion),
-    // CheckList: 
-      // GUI.Native.HOCs.withState("value")
-      // (GUI.Layouts.CheckList),
-    // Inspector: 
-      // GUI.Native.HOCs.withState("value")
-      // (GUI.Layouts.Inspector),
-    // Menu:      
-      // GUI.Native.HOCs.withState("value")
-      // (GUI.Layouts.Menu),
+    CheckList: 
+      GUI.Native.HOCs.withState("value")
+      (GUI.Layouts.CheckList),
+    Inspector: 
+      GUI.Native.HOCs.withState("value")
+      (GUI.Layouts.Inspector),
+    Menu:      
+      GUI.Native.HOCs.withState("value")
+      (GUI.Layouts.Menu),
   }
   
 	// render 
@@ -55,12 +55,12 @@ export const Layouts = () => {
 
 			<GUI.Layouts.Scroll {...props.scroll} target={areaRef}  />
 			<TestAreaForScroll />  
-{/*       
+
       <fsComponents.Accordion  {...props.accordion}/>
       <fsComponents.Accordion  {...props.accordionSingle}/>
       <fsComponents.CheckList  {...props.checklist}/>
       <fsComponents.Inspector  {...props.inspector}/>
-      <fsComponents.Menu       {...props.menu}/> */}
+      <fsComponents.Menu       {...props.menu}/>
 
 		</div>
 	);
