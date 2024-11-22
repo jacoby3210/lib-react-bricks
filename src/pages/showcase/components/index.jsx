@@ -7,9 +7,12 @@ import {props} from "./config";
 
 export const Components = () => {
   
-  const fsComponents = {} 
-  for (let key in GUI.Components)
-    fsComponents[key] = GUI.Native.HOCs.withState("value")(GUI.Components[key]);
+  const {withDebugCompose, withState} = GUI.Native.HOCs; 
+  const fsComponents = Object.fromEntries(
+    Object.keys(GUI.Components).map(
+      (key) => [key, withDebugCompose(withState("value"))(GUI.Components[key])]
+    )
+  )
 
   // render 
   return (

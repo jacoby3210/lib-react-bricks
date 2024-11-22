@@ -205,16 +205,22 @@ export const GUI = {
 
 GUI.Templates = {
   Browser:
-    compose(withMerge("rc-browser", {}), withUnion)
-    (GUI.Layouts.Display, GUI.Components.List),
+    compose(
+      withMerge("rc-browser", {value: 0}), 
+      withUnion
+    )(GUI.Layouts.Display, GUI.Components.List),
   
   Catalog:
-    compose(withMerge("rc-catalog", {}), withUnion)
-    (GUI.Layouts.Paginator, GUI.Components.List),
+    compose(
+      withMerge("rc-catalog", {value: 0}), 
+      withUnion
+    )(GUI.Layouts.Paginator, GUI.Components.List),
   
   Gallery:
-    compose(withMerge("rc-gallery", {}), withUnion)
-    (GUI.Layouts.Navigator, GUI.Components.List),
+    compose(
+      withMerge("rc-gallery", {value: 0}), 
+      withUnion
+    )(GUI.Layouts.Navigator, GUI.Components.List),
 }
 
 // -------------------------------------------------------------------------- //

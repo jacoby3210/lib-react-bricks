@@ -10,57 +10,43 @@ export const Layouts = () => {
 
   // initial data
   
+  const {withDebugCompose, withState} = GUI.Native.HOCs; 
+
   const areaRef = React.useRef(null)
 	const TestAreaForScroll = () =>
 		<div style={{ height: "100px", "overflowY": "scroll" }} ref={areaRef}>
 	  		<div style={{ height: "200px" }} />
 		</div>;
-
-  const fsComponents = {
-
-    Browser: 
-      GUI.Native.HOCs.withState("value")
-      (GUI.Templates.Browser),
-
-    Catalog: 
-      GUI.Native.HOCs.withState("value")
-      (GUI.Templates.Catalog),
-      
-    Gallery: 
-      GUI.Native.HOCs.withState("value")
-      (GUI.Templates.Gallery),
-
-    Accordion: 
-      GUI.Native.HOCs.withState("value")
-      (GUI.Layouts.Accordion),
-    CheckList: 
-      GUI.Native.HOCs.withState("value")
-      (GUI.Layouts.CheckList),
-    Inspector: 
-      GUI.Native.HOCs.withState("value")
-      (GUI.Layouts.Inspector),
-    Menu:      
-      GUI.Native.HOCs.withState("value")
-      (GUI.Layouts.Menu),
-  }
   
-	// render 
+  const fsLayouts = Object.fromEntries(
+    Object.keys(GUI.Layouts).map(
+      (key) => [key, withDebugCompose(withState("value"))(GUI.Layouts[key])]
+    )
+  )
+
+  const fsTemplates = Object.fromEntries(
+    Object.keys(GUI.Templates).map(
+      (key) => [key, withDebugCompose(withState("value"))(GUI.Templates[key])]
+    )
+  )
+
+  // render 
 
 	return (
 		<div id="layouts">
 
-      <fsComponents.Browser {...props.browser}/>
-      <fsComponents.Catalog {...props.catalog}/>
-      <fsComponents.Gallery {...props.gallery}/>
-
 			<GUI.Layouts.Scroll {...props.scroll} target={areaRef}  />
 			<TestAreaForScroll />  
 
-      <fsComponents.Accordion  {...props.accordion}/>
-      <fsComponents.Accordion  {...props.accordionSingle}/>
-      <fsComponents.CheckList  {...props.checklist}/>
-      <fsComponents.Inspector  {...props.inspector}/>
-      <fsComponents.Menu       {...props.menu}/>
+      <fsLayouts.Accordion  {...props.accordion}/>
+      <fsLayouts.Accordion  {...props.accordionSingle}/>
+      <fsLayouts.CheckList  {...props.checklist}/>
+      <fsLayouts.Inspector  {...props.inspector}/>
+      <fsLayouts.Menu       {...props.menu}/>
+
+      <fsTemplates.Browser {...props.browser}/>
+      <fsTemplates.Catalog {...props.catalog}/>
+      <fsTemplates.Gallery {...props.gallery}/>
 
 		</div>
 	);
