@@ -10,7 +10,7 @@ export const Components = () => {
   const {withDebugCompose, withState} = GUI.Native.HOCs; 
   const fsComponents = Object.fromEntries(
     Object.keys(GUI.Components).map(
-      (key) => [key, withDebugCompose(withState("value"))(GUI.Components[key])]
+      (key) => [key, withDebugCompose(key, withState("value"))(GUI.Components[key])]
     )
   )
 
@@ -25,13 +25,13 @@ export const Components = () => {
       <fsComponents.Empty/>
       <fsComponents.List {...props.list}/>
 
-      {/* controls */}
+       {/*controls */}
+      <fsComponents.Bar       {...props.bar}/>
       <fsComponents.CheckBox  value={false}/>
       <fsComponents.Clicker   {...props.clicker}/>
       <fsComponents.Range     {...props.rangeHorizontal} />
       <fsComponents.Range     {...props.rangeVertical} />
       <fsComponents.Swing     {...props.swing} />
-      <fsComponents.Bar       {...props.bar}/>
 
       {/* fields */}
       <fsComponents.Advisor   {...props.advisor}/>

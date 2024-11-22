@@ -13,7 +13,10 @@ const {
   withUnion,
 } = HOCs;
 
-const compose = HOCs.withDebugCompose;
+
+const compose = (name)  => (...components) => (... hocs) => {
+  return {[name]: HOCs.withDebugCompose(name, ...hocs)(...components)}
+}
 
 const filter = function (item) {
   return item.caption != this.value && item.value.includes(this.value);
@@ -29,198 +32,167 @@ export const GUI = {
 
   Components: {
 
-    Button: 
-      compose(
-        withMerge("rc-button")
-      )(Components.Button),
+    ... compose("Button")(Components.Button)(withMerge("rc-button")),
     
-    Container: 
-      compose(
-        withMerge("rc-container")
-      )(Components.Container),
-    
-    Dropout: 
-      compose(
-        withMerge("rc-dropout", { shown: false, ... Components.Dropout }),
-        withContainer, 
-        withReveals,
-      )(Components.Empty),
-    
-    List: 
-      compose(
-        withMerge("rc-list", {... Components.List}),
-        withFilter, 
-        withRepeat,
-      )(Components.List.Container),
+    ... compose("Container")(Components.Container)(withMerge("rc-container")),
 
-    Empty: 
-      compose(
-        withMerge("rc-empty"),
-      )(Components.Empty),
+    ... compose("Dropout")(Components.Empty)(
+      withMerge("rc-dropout", { shown: false, ... Components.Dropout }),
+      withContainer, 
+      withReveals,
+    ),
 
-    Bar: 
-      compose(
-        withMerge("rc-bar", { value: null , ... Components.Bar}),
-        withValueBase, 
-        withContainer, 
-        withRepeat,
-      )(Components.Container),
+    ... compose("Empty")(Components.Empty)(withMerge("rc-empty"),),
+  
+    ... compose ("List")(Components.List.Container)(
+      withMerge("rc-list", {... Components.List}),
+      withFilter, 
+      withRepeat,
+    ),
 
-    CheckBox: 
-      compose(
-        withMerge("rc-checkbox", { value: false }),
-        withValueBoolean,
-      )(Components.CheckBox),
+    ... compose("Bar")(Components.Container)(
+      withMerge("rc-bar", { value: null , ... Components.Bar}),
+      withValueBase, 
+      withContainer, 
+      withRepeat,
+    ),
 
-    Clicker: 
-      compose(
-        withMerge("rc-clicker", { value: 0 }),
-        withValueDigit,
-      )(Components.Clicker),
+    ... compose("CheckBox")(Components.CheckBox)(
+      withMerge("rc-checkbox", { value: false }),
+      withValueBoolean,
+    ),
 
-    Range: 
-      compose(
-        withMerge("rc-range", { axis: false, value: 0 }),
-        withValueDigit, 
-        withDirection
-      )(Components.Range),
+    ... compose("Clicker")(Components.Clicker)(
+      withMerge("rc-clicker", { value: 0 }),
+      withValueDigit,
+    ),
 
-    Swing: 
-      compose(
-        withMerge("rc-swing", { axis: false, value: 0 }),
-        withValueDigit, 
-        withContainer,
-      )(Components.Swing),
+    ... compose("Range")(Components.Range)(
+      withMerge("rc-range", { axis: false, value: 0 }),
+      withValueDigit, 
+      withDirection
+    ),
 
-    Advisor: 
-      compose(
-        withMerge("rc-advisor", {filter, value: "", ... Components.Advisor }),
-        withContainer, 
-        withFilter, 
-        withValueText, 
-        withCursor, 
-        withReveals, 
-        withRepeat,
-      )(Components.Advisor.Container),
+    ... compose("Swing")(Components.Swing)(
+      withMerge("rc-swing", { axis: false, value: 0 }),
+      withValueDigit, 
+      withContainer,
+    ),
 
-    Paragraph: 
-      compose(
-        withMerge("rc-paragraph", {}),
-        withValueText
-      )(Components.Paragraph),
+    ... compose("Advisor")(Components.Advisor.Container)(
+      withMerge("rc-advisor", {filter, value: "", ... Components.Advisor }),
+      withContainer, 
+      withFilter, 
+      withValueText, 
+      withCursor, 
+      withReveals, 
+      withRepeat,
+    ),
 
-    Select: 
-      compose(
-        withMerge("rc-select", {shown: false, ... Components.Select}),
-        withContainer, 
-        withValueBase, 
-        withFilter, 
-        withCursor, 
-        withReveals, 
-        withRepeat,
-      )(Components.Select.Container),
+    ... compose("Paragraph")(Components.Paragraph)(        
+      withMerge("rc-paragraph", {}),
+      withValueText
+    ),
 
-    Switcher: 
-      compose(
-        withMerge("rc-switcher", {max: (props)=>props.src.length, value: 0}),
-        withValueDigit, 
-        withContainer,
-      )(Components.Switcher),
+    ... compose("Select")(Components.Select.Container)(
+      withMerge("rc-select", {shown: false, ... Components.Select}),
+      withContainer, 
+      withValueBase, 
+      withFilter, 
+      withCursor, 
+      withReveals, 
+      withRepeat,
+    ),
 
-    Text: 
-      compose(
-        withMerge("rc-text")
-      )(Components.Text)
+    ... compose("Switcher")(Components.Switcher)(
+      withMerge("rc-switcher", {max: (props)=>props.src.length, value: 0}),
+      withValueDigit, 
+      withContainer,
+    ),
+
+    ... compose("Text")(Components.Text)(
+      withMerge("rc-text")
+    )
   },
 
   Layouts: {
 
-    Display: 
-      compose(
-        withMerge("rc-display", {... Layouts.Display}),
-        withValueDigit, 
-        withContainer, 
-        withRepeat,
-      )(Components.Container),
+    ... compose("Display")(Components.Container)(
+      withMerge("rc-display", {... Layouts.Display}),
+      withValueDigit, 
+      withContainer, 
+      withRepeat,
+    ),
 
-    Navigator: 
-      compose(
-        withMerge("rc-navigator"),
-        withValueDigit, 
-        withContainer,
-      )(Layouts.Navigator),
+    ... compose("Navigator")(Layouts.Navigator)(
+      withMerge("rc-navigator"),
+      withValueDigit, 
+      withContainer,
+    ),
 
-    Paginator: 
-      compose(
-        withMerge("rc-paginator", {... Layouts.Display}),
-        withValueDigit, 
-        withContainer, 
-        withRepeat,
-      )(Layouts.Paginator.Container),
+    ... compose("Paginator")(Layouts.Paginator.Container)(
+      withMerge("rc-paginator", {... Layouts.Display}),
+      withValueDigit, 
+      withContainer, 
+      withRepeat,
+    ),
 
-    Scroll: 
-      compose (
-        withMerge("rc-scroll", { mode: "smooth", target: null, max: 1.0, min: 0.0, value: 0.0 }),
-        withState("value"), 
-        withValueDigit, 
-        withDirection, 
-        withContainer,
-      )(Layouts.Scroll),
+    ... compose ("Scroll")(Layouts.Scroll)(
+      withMerge("rc-scroll", { mode: "smooth", target: null, max: 1.0, min: 0.0, value: 0.0 }),
+      withState("value"), 
+      withValueDigit, 
+      withDirection, 
+      withContainer,
+    ),
 
-    Accordion: 
-      compose(
-        withMerge("rc-accordion", {... Layouts.Accordion}),
-        withValueBase, 
-        withContainer, 
-        withRepeat,
-      )(Layouts.Accordion.Container),
+    ... compose("Accordion")(Layouts.Accordion.Container)(
+      withMerge("rc-accordion", {... Layouts.Accordion}),
+      withValueBase, 
+      withContainer, 
+      withRepeat,
+    ),
 
-    CheckList: 
-      compose(
-        withMerge("rc-checklist", {... Layouts.CheckList}),
-        withValueBase, 
-        withContainer, 
-        withRepeat
-      )(),
+    ... compose("CheckList")()(
+      withMerge("rc-checklist", {... Layouts.CheckList}),
+      withValueBase, 
+      withContainer, 
+      withRepeat
+    ),
 
-    Inspector: 
-      compose(
-        withMerge("rc-inspector", {... Layouts.Inspector}),
-        withValueBase, 
-        withContainer, 
-        withRepeat,
-      )(Layouts.Inspector.Container),
+    ... compose("Inspector")(Layouts.Inspector.Container)(
+      withMerge("rc-inspector", {... Layouts.Inspector}),
+      withValueBase, 
+      withContainer, 
+      withRepeat,
+    ),
 
-    Menu: 
-      compose(
-        withMerge("rc-menu", {... Layouts.Menu}),
-        withValueBase, 
-        withContainer, 
-        withReveals, 
-        withRepeat,
-      )(Components.Container),
+    ... compose("Menu")(Components.Container)(
+      withMerge("rc-menu", {... Layouts.Menu}),
+      withValueBase, 
+      withContainer, 
+      withReveals, 
+      withRepeat,
+    ),
 
   }
 };
 
 GUI.Templates = {
-  Browser:
-    compose(
-      withMerge("rc-browser", {value: 0}), 
-      withUnion
-    )(GUI.Layouts.Display, GUI.Components.List),
   
-  Catalog:
-    compose(
-      withMerge("rc-catalog", {value: 0}), 
-      withUnion
-    )(GUI.Layouts.Paginator, GUI.Components.List),
+  ... compose("Browser")(GUI.Layouts.Display, GUI.Components.List)(
+    withMerge("rc-browser", {value: 0}), 
+    withUnion
+  ),
   
-  Gallery:
-    compose(
-      withMerge("rc-gallery", {value: 0}), 
-      withUnion
-    )(GUI.Layouts.Navigator, GUI.Components.List),
+  ... compose("Catalog")(GUI.Layouts.Paginator, GUI.Components.List)(
+    withMerge("rc-catalog", {value: 0}), 
+    withUnion
+  ),
+  
+  ... compose("Gallery")(GUI.Layouts.Navigator, GUI.Components.List)(
+    withMerge("rc-gallery", {value: 0}), 
+    withUnion
+  ),
 }
 
 // -------------------------------------------------------------------------- //

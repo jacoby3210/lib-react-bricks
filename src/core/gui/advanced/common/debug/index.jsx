@@ -10,11 +10,15 @@ export const withDebug = (name,) => (BaseComponent) => {
   return EnhancedComponent;
 };
 
-export const withDebugCompose = (...hocs) => (BaseComponent) => {
+export const withDebugCompose = (name, ...hocs) => (BaseComponent) => {
   return hocs.reduceRight((AccumulatedComponent, hoc) => {
+    // console.log(name, hocs, hoc,  BaseComponent) 
     const EnhancedComponent = hoc(AccumulatedComponent);
-    const hocName = hoc.name || BaseComponent?.name || BaseComponent?.displayName || 'HOC';
-    EnhancedComponent.displayName = `${hocName}(${'Component'})`;
+    const hocName = hoc.name || BaseComponent?.displayName || name || 'HOC';
+    // const name = BaseComponent?.name 
+    //   ? 
+
+    EnhancedComponent.displayName = `${hocName}(${hocName})`;
     return EnhancedComponent;
   }, BaseComponent);
 };
