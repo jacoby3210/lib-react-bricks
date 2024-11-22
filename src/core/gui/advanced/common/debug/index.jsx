@@ -12,16 +12,18 @@ export const withDebug = (name,) => (BaseComponent) => {
 
 export const withDebugCompose = (name, ...hocs) => (BaseComponent) => {
   return hocs.reduceRight((AccumulatedComponent, hoc) => {
-    // console.log(name, hocs, hoc,  BaseComponent) 
+    // Применение текущего HOC
     const EnhancedComponent = hoc(AccumulatedComponent);
-    const hocName = hoc.name || BaseComponent?.displayName || name || 'HOC';
-    // const name = BaseComponent?.name 
-    //   ? 
 
-    EnhancedComponent.displayName = `${hocName}(${hocName})`;
+    // Определение имени HOC и базового компонента
+    const hocName = hoc.name || "AnonymousHOC";
+    const baseName = AccumulatedComponent?.displayName || BaseComponent?.displayName || name || "Component";
+
+    // Установка displayName для отладки
+    EnhancedComponent.displayName = `${hocName}(${baseName})`;
+
     return EnhancedComponent;
   }, BaseComponent);
 };
-
 
 // -------------------------------------------------------------------------- //
