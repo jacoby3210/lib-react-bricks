@@ -1,4 +1,3 @@
-import { compose }      from 'redux'; 
 import * as HOCs        from "./advanced"
 import * as Components  from "./components"
 import * as Layouts     from "./layouts"
@@ -8,12 +7,13 @@ import * as Layouts     from "./layouts"
 // -------------------------------------------------------------------------- //
 
 const { 
-  withDebug,
   withContainer, withCursor,  withReveals, withRepeat, 
   withDirection, withFilter, withMerge, withState, 
   withValueBase, withValueBoolean, withValueDigit, withValueText,
   withUnion,
 } = HOCs;
+
+const compose = HOCs.withDebugCompose;
 
 const filter = function (item) {
   return item.caption != this.value && item.value.includes(this.value);
@@ -31,7 +31,6 @@ export const GUI = {
 
     Button: 
       compose(
-        withDebug("ff"),
         withMerge("rc-button")
       )(Components.Button),
     
