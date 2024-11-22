@@ -8,6 +8,7 @@ import * as Layouts     from "./layouts"
 // -------------------------------------------------------------------------- //
 
 const { 
+  withDebug,
   withContainer, withCursor,  withReveals, withRepeat, 
   withDirection, withFilter, withMerge, withState, 
   withValueBase, withValueBoolean, withValueDigit, withValueText,
@@ -30,6 +31,7 @@ export const GUI = {
 
     Button: 
       compose(
+        withDebug("ff"),
         withMerge("rc-button")
       )(Components.Button),
     
