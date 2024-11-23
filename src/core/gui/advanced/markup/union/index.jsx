@@ -4,38 +4,48 @@ import React, {useMemo} from 'react';
 // A feature - to transfer common properties to multiple components.
 // -------------------------------------------------------------------------- //
 
-export const withUnion = (...components) => (props) => {
-  
-  // initial data
-  
-  const {
-    packages = [],
-    ...commonProps
-  } = props;
 
-  const {value} = props;
-
-  // render
+export const withUnion = (...components) => {
+  const withUnion = (WrappedComponent) => {
+    return (props) => {
   
-  const childrenMemo = useMemo(
-    () =>
-      Object.values(components).map(
-        (Component, index) => (
-          <Component
-            key={index}
-            {...commonProps}
-            {...packages[index]}
-          />
-      )
-    ),
-    [value]
-  );
+      // initial data
+      
+      const {
+        packages = [],
+        ...commonProps
+      } = props;
 
-  return (
-    <>
-      {childrenMemo}
-    </>
-  );
+      const {value} = props;
+
+      // render
+      
+      const childrenMemo = useMemo(
+        () =>
+          Object.values(components).map(
+            (Component, index) => (
+              <Component
+                key={index}
+                {...commonProps}
+                {...packages[index]}
+              />
+          )
+        ),
+        [value]
+      );
+      
+      console.log(1, components)
+      
+      return (
+        <>
+          {childrenMemo}
+        </>
+      );
+    };
+  };
+
+  Object.defineProperty(withUnion, "name", { value: "withState" });
+  return withUnion;
 };
 
 // -------------------------------------------------------------------------- //

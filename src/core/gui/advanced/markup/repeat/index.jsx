@@ -29,12 +29,12 @@ export const withRepeat = (WrappedComponent) => (props) => {
   
   const firstMemo = useMemo(
     () => (typeof first === "function" ? first(props) : first), 
-    [first, value]
+    [first, srcMemo, value]
   );
 
   const lengthMemo = useMemo(
     () => (length === -1 ? srcMemo.length : Math.min(srcMemo.length, length)), 
-    [length, srcMemo]
+    [length, srcMemo, value]
   );
   
   // render

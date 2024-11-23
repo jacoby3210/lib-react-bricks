@@ -179,20 +179,21 @@ export const GUI = {
 
 GUI.Templates = {
   
-  ... compose("Browser")(GUI.Layouts.Display, GUI.Components.List)(
+  ... compose("Browser")()(
     withMerge("rc-browser", {value: 0}), 
-    withUnion
+    withUnion(GUI.Layouts.Display, GUI.Components.List)
   ),
   
-  ... compose("Catalog")(GUI.Layouts.Paginator, GUI.Components.List)(
+  ... compose("Catalog")()(
     withMerge("rc-catalog", {value: 0}), 
-    withUnion
+    withUnion(GUI.Layouts.Paginator, GUI.Components.List)
   ),
   
-  ... compose("Gallery")(GUI.Layouts.Navigator, GUI.Components.List)(
+  ... compose("Gallery")()(
     withMerge("rc-gallery", {value: 0}), 
-    withUnion
+    withUnion(GUI.Layouts.Navigator, GUI.Components.List)
   ),
+  
 }
 
 // -------------------------------------------------------------------------- //
