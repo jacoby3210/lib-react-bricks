@@ -12,14 +12,12 @@ export const withDebug = (name,) => (BaseComponent) => {
 
 export const withDebugCompose = (name, ...hocs) => (BaseComponent) => {
   return hocs.reduceRight((AccumulatedComponent, hoc) => {
-    // Применение текущего HOC
+
     const EnhancedComponent = hoc(AccumulatedComponent);
 
-    // Определение имени HOC и базового компонента
     const hocName = hoc.name || "AnonymousHOC";
     const baseName = AccumulatedComponent?.displayName || BaseComponent?.displayName || name || "Component";
 
-    // Установка displayName для отладки
     EnhancedComponent.displayName = `${hocName}(${baseName})`;
 
     return EnhancedComponent;
