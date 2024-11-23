@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 // -------------------------------------------------------------------------- //
 //  A feature - to handle a change in the value of a component (text type).
@@ -19,12 +19,20 @@ export const withValueText = (WrappedComponent) => (props) => {
 
   // supporting methods
 
+  const resolve = (variable) => (typeof variable === "function" ? variable(props) : variable)
+
   const validate = (next, prev) => {
     const forbiddenPattern = new RegExp(`[${forbidden.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}]`);
     return forbiddenPattern.test(next) ? prev : next;
   }
 
+  // hooks
+
+  const maxMemo = useMemo(() => resolve(max), [max, value]);
+  const minMemo = useMemo(() => resolve(min), [min, value]);
+
   // input handling
+
   const handleValueChange = useCallback(
     (next) => whenValueChange(next, validate),
     [value, whenValueChange]
@@ -40,8 +48,8 @@ export const withValueText = (WrappedComponent) => (props) => {
   const updateProps = {
     ...props,
     forbidden, 
-    max,
-    min,
+    maxMemo,
+    minMemo,
     value,
     whenValueChange: handleValueChange,
     whenValueModify: handleValueModify,

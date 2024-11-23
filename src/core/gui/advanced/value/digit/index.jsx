@@ -24,6 +24,8 @@ export const withValueDigit = (WrappedComponent) => (props) => {
     const decimalPart = num.toString().split('.')[1];
     return decimalPart ? decimalPart.length : 0;
   };
+  
+  const resolve = (variable) => (typeof variable === "function" ? variable(props) : variable)
 
   const validate = (next) => {
     const wrappedValue = modular ? (next + maxMemo) % maxMemo : Math.max(Math.min(next, maxMemo), minMemo);
@@ -33,15 +35,8 @@ export const withValueDigit = (WrappedComponent) => (props) => {
 
   // hooks
   
-  const maxMemo = useMemo(
-    () => (typeof max === "function" ? max(props) : max), 
-    [max, value]
-  );
-
-  const minMemo = useMemo(
-    () => (typeof min === "function" ? min(props) : min), 
-    [min, value]
-  );
+  const maxMemo = useMemo(() => resolve(max), [max, value]);
+  const minMemo = useMemo(() => resolve(min), [min, value]);
 
   // input handling
 
