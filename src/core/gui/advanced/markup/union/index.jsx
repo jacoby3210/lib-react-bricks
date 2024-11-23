@@ -34,8 +34,6 @@ export const withUnion = (...components) => {
         [value]
       );
       
-      console.log(1, components)
-      
       return (
         <>
           {childrenMemo}
