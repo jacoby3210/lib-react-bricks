@@ -19,7 +19,7 @@ const Template = props =>{
 
   return <button 
     className= {`${className.split(" ")[0]}-button`} 
-    onClick= {()=> common.whenValueChange(index * common.step)}
+    onClick= {()=> common.whenValueChange(item.id * common.step)}
     {...item}
   >
     {item?.caption}
