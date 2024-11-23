@@ -48,8 +48,8 @@ export const withValueText = (WrappedComponent) => (props) => {
   const updateProps = {
     ...props,
     forbidden, 
-    maxMemo,
-    minMemo,
+    max: maxMemo,
+    min: minMemo,
     value,
     whenValueChange: handleValueChange,
     whenValueModify: handleValueModify,
