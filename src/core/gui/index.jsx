@@ -14,9 +14,8 @@ const {
 } = HOCs;
 
 
-const compose = (name)  => (...components) => (... hocs) => {
-  return {[name]: HOCs.withDebugCompose(name, ...hocs)(...components)}
-}
+const compose = (name) => (...components) => (... hocs) => 
+  ({[name]: HOCs.withDebugCompose(name, ...hocs)(...components)})
 
 const filter = function (item) {
   return item.caption != this.value && item.value.includes(this.value);
