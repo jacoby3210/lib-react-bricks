@@ -78,7 +78,6 @@ export const withCursor = (WrappedComponent) => (props) => {
         
         case 'Enter':
           const selected = matchingItems[state.index]?.id;
-          console.log(selected)
           dispatch({ type: 'SET_SELECTED_VALUE', payload: { value: selected } });
         break;
 

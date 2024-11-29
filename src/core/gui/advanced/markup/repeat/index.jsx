@@ -58,6 +58,7 @@ export const withRepeat = (WrappedComponent) => (props) => {
     Template, 
     ...rest 
   } = props;
+  const {value} = props;
 
   // Memoized source data
   
@@ -91,7 +92,7 @@ export const withRepeat = (WrappedComponent) => (props) => {
           index={index}
         />
       )),
-    [srcMemo, firstMemo, lengthMemo, Template]
+    [srcMemo, firstMemo, lengthMemo, Template, value]
   );
 
   // render

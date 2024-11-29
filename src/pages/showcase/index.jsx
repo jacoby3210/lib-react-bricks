@@ -22,7 +22,7 @@ const ShowcasePage = props => {
     <section id={id} {...attributes}>
       {"Its alive"}
       <div>
-        {/* <Components/> */}
+        <Components/>
         <Layouts/>
       </div>
     </section>
