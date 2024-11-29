@@ -17,8 +17,8 @@ const Container = props => {
     onMouseDown,
 	} = props;
 
-	const listProps = {className:`${className}-list`, onMouseDown, onKeyDown} 
-
+	const listProps = {className:`${className}-list`, onMouseDown, onKeyDown}
+  
 	return (
     <div {...listProps}>
       {children}

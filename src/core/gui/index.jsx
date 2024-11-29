@@ -44,7 +44,7 @@ export const GUI = {
     ... compose("Empty")(Components.Empty)(withMerge("rc-empty"),),
   
     ... compose ("List")(Components.List.Container)(
-      withMerge("rc-list", {... Components.List}),
+      withMerge("rc-list", {length: -1, ... Components.List}),
       withFilter, 
       withRepeat,
     ),
@@ -79,7 +79,7 @@ export const GUI = {
     ),
 
     ... compose("Advisor")(Components.Advisor.Container)(
-      withMerge("rc-advisor", {filter, value: "", ... Components.Advisor }),
+      withMerge("rc-advisor", {filter, value: "",  ... Components.Advisor }),
       withContainer, 
       withFilter, 
       withValueText, 
