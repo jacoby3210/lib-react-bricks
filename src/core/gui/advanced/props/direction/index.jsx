@@ -1,4 +1,3 @@
-import React, { useState, useCallback } from 'react';
 
 // -------------------------------------------------------------------------- //
 // A feature - to support a component with vertical / horizontal direction.

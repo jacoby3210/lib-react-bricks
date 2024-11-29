@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import {useMemo} from 'react';
 
 // -------------------------------------------------------------------------- //
 // A feature - to transfer common properties to multiple components.

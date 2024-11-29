@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {CheckBox} from "@lib-react-bricks/src/core/gui/components"
 
 // -------------------------------------------------------------------------- //

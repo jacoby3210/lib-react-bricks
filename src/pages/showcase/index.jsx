@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Components } from "./components";
 import { Layouts } from './layouts';
 import "./index.css"

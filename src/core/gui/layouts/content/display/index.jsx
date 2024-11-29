@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 // -------------------------------------------------------------------------- //
 // Widget - to switch of displayed content in the view by special id.

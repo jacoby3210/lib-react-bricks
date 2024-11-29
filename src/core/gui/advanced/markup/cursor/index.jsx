@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 // -------------------------------------------------------------------------- //
 // A feature - to navigate through the direct children of an element.

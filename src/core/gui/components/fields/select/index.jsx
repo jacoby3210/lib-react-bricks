@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState } from 'react';
+import {useCallback, useEffect, useRef, useState } from 'react';
 
 // -------------------------------------------------------------------------- //
 // Layout - to select one option from the source list.

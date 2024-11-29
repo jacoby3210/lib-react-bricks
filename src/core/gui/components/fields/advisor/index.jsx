@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 // -------------------------------------------------------------------------- //
 // Layout - to show text line field with autocomplete suggestions.

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 // -------------------------------------------------------------------------- //
 // A feature - to create a managed state of the wrapped component.

@@ -1,7 +1,6 @@
-import React, { useRef, memo, forwardRef } from 'react';
 
 // -------------------------------------------------------------------------- //
-//  A feature - to wrap base component into ui block (<div>).
+//  A feature - to display the element name in the react developer tools.
 // -------------------------------------------------------------------------- //
 
 export const withDebugCompose = (name = "Component", ...hocs) => 

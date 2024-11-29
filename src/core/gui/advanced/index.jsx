@@ -5,7 +5,7 @@
 
 // common - аdd a few general capabilities.
 
-export {withDebugCompose}             from "./common/debug";                  // - to display the element name in the React debugger.
+export {withDebugCompose}             from "./common/debug";                  // - to display the element name in the react developer tools.
 
 // markup - modifies and tracks the html markup of the component.
 

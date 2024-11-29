@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import { useMemo } from 'react';
 
 // -------------------------------------------------------------------------- //
 // A feature - to create a list of recurring items,

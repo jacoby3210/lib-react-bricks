@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 // -------------------------------------------------------------------------- //
 // A feature - to handle a change in the value of a component (numeric type).

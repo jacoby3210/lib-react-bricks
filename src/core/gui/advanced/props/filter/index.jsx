@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import {useMemo} from 'react';
 
 // -------------------------------------------------------------------------- //
 // A feature - to apply a filter to the srс.

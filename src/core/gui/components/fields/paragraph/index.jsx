@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 // -------------------------------------------------------------------------- //
 // Layout - to display and edit multiline text (paragraph).
