@@ -1,5 +1,6 @@
 import {useCallback, useEffect, useRef, useState } from 'react';
 import { useCursor } from '../../../advanced/markup/cursor';
+import { useReveals } from '../../../advanced/markup/reveals';
 
 // -------------------------------------------------------------------------- //
 // Layout - to select one option from the source list.
@@ -30,7 +31,6 @@ const Container = props => {
 
   useEffect(() => {
     const select = rootRef.current;
-  //   setCursorIndexState(value);
     if (select) select.addEventListener('mousedown', handleClick);
     return () => {
       if (select) select.removeEventListener('mousedown', handleClick);
@@ -54,25 +54,21 @@ const Controller = props => {
   
   // initial data
 
-  const {
-    className, 
-    children, 
-    label, 
-    onKeyDown,
-    setShownState, 
-    matchingItems, 
-    value
-  } = props;
+  const {onKeyDown, matchingItems, value} = props;
   const cssPrefix = `button`; 
   const currentItem = matchingItems?.find(item => item.id == value);
   const displayValue = currentItem?.label || value;
+	const reveals = useReveals();
 
   // hooks 
   
-  const onClick = (evt) => {
-    evt.stopPropagation();
-    setShownState(prev => !prev);
-  }
+  const onClick = useCallback(
+
+    (evt) => {
+      evt.stopPropagation();
+      reveals.dispatch({type:"TOGGLE"})
+    },
+  )
 
   // render
 

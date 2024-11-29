@@ -1,4 +1,5 @@
 import {useCallback} from 'react';
+import { useReveals } from '../../../advanced/markup/reveals';
 
 // -------------------------------------------------------------------------- //
 // Contains helper code that ensures the component's operation.
@@ -8,16 +9,18 @@ const Controller = props => {
 
   // initial data
   
-  const {className, children, label, setShownState, ...attributes} = props;
+  const {className, children, label, ...attributes} = props;
   const cssPrefix = `button`; 
+	const reveals = useReveals();
 
   // input handling
-
+  
   const onClick = useCallback(
     (evt) => {
+      evt.preventDefault();
       evt.stopPropagation();
-      setShownState(prev => !prev);
-    }, [setShownState]
+      reveals.dispatch({type: reveals.state.shown ? 'HIDE' : 'SHOW'});
+    }, [reveals]
   );
 
   // render

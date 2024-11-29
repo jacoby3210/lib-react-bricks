@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useReveals } from '../../../advanced/markup/reveals';
 
 // -------------------------------------------------------------------------- //
 // Widget - to display desktop application menu. 
@@ -12,20 +13,23 @@ const Controller = props => {
   
   // initial data
 
-  const {caption, setShownState, value} = props;
+  const {caption, value} = props;
   const cssPrefix = `button`; 
+	const reveals = useReveals();
   
   // hooks 
-  
-  const onClick = (evt) => {
-    evt.stopPropagation();
-    setShownState(prev => !prev);
-  }
+
+  const handleClick = useCallback(
+    (evt) => {
+      evt.stopPropagation();
+      reveals.dispatch({type: "TOGGLE"}); 
+    }, [reveals]
+  )
 
   // render
 
   return (
-    <button className={cssPrefix} onClick={onClick}>
+    <button className={cssPrefix} onClick={handleClick}>
       <span className={`${cssPrefix}-caption`}>{caption || value}</span>
       <span className={`${cssPrefix}-arrow`}>
         <i className={'fa-solid fa-chevron-down'}></i>
@@ -45,18 +49,24 @@ const Template = props => {
 	
   const {common, item, index, ...attributes} = props;
   const {value, whenValueChange} = common;
+	const reveals = useReveals();
   
   // hooks 
 
-  const [shownState, setShownState] = useState(value);
-  useEffect(() => {setShownState(value.includes(index))}, [value]);
+  useEffect(
+    () => {
+      if(value.includes(index) == reveals.state.shown)
+        reveals.dispatch({type: value.includes(index) ? "SHOW" : "HIDE"})
+      }, 
+    [reveals]
+  );
 
   // render
   
   return (
     item.datatype == "menu"
     ? 
-      <item.Render {...common} src={item.props.src} caption={item.caption} shown={shownState}/>
+      <item.Render {...common} src={item.props.src} caption={item.caption} shown={value.includes(index)}/>
     : 
       <item.Render label={item.caption}/>
 	);

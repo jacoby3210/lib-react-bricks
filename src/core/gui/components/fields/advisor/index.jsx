@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import { useCursor } from '../../../advanced/markup/cursor';
+import { useReveals } from '../../../advanced/markup/reveals';
 
 // -------------------------------------------------------------------------- //
 // Layout - to show text line field with autocomplete suggestions.
@@ -35,11 +36,11 @@ const Controller = props => {
   const {
     className, 
     onKeyDown, 
-    shownState, 
-    setShownState,
 		value, 
     whenValueChange,
 	} = props;
+  
+	const reveals = useReveals();
 
 	// hooks
 
@@ -54,17 +55,17 @@ const Controller = props => {
   
 	const handleClick =  useCallback(
     (evt) => {evt.stopPropagation();},
-    [shownState]
+    [reveals]
   )
   
 	const handleFocus =  useCallback(
-    (evt) => {setShownState(true);},
-    [shownState]
+    (evt) => {reveals.dispatch({type:"SHOW"})},
+    [reveals]
   )
 
   const handleKeyDown = useCallback(
     (evt) => {onKeyDown(evt)},
-    [shownState]
+    [reveals]
   )
 
 	// render 

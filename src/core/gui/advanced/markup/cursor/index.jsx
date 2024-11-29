@@ -57,6 +57,7 @@ export const withCursor = (WrappedComponent) => (props) => {
   const { matchingItems, whenValueChange } = props;
 
   const [state, dispatch] = useReducer(cursorReducer, initialState);
+  const context = { state, dispatch };
 
   const handleClick = useCallback(
     (evt) => whenValueChange(evt.target.value),
@@ -77,6 +78,7 @@ export const withCursor = (WrappedComponent) => (props) => {
         
         case 'Enter':
           const selected = matchingItems[state.index]?.id;
+          console.log(selected)
           dispatch({ type: 'SET_SELECTED_VALUE', payload: { value: selected } });
         break;
 
@@ -94,10 +96,9 @@ export const withCursor = (WrappedComponent) => (props) => {
     }
   }, [state.value, whenValueChange]);
 
-  const contextValue = { state, dispatch };
 
   return (
-    <CursorContext.Provider value={contextValue}>
+    <CursorContext.Provider value={context}>
       <WrappedComponent
         {...props}
         onClick={handleClick}
