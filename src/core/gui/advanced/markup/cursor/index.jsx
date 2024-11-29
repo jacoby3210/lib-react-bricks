@@ -53,9 +53,15 @@ export const useCursor = () => {
 };
 
 export const withCursor = (WrappedComponent) => (props) => {
+
   const { matchingItems, whenValueChange } = props;
 
   const [state, dispatch] = useReducer(cursorReducer, initialState);
+
+  const handleClick = useCallback(
+    (evt) => whenValueChange(evt.target.value),
+    [whenValueChange]
+  );
 
   const handleKeyDown = useCallback(
     (evt) => {
@@ -80,11 +86,6 @@ export const withCursor = (WrappedComponent) => (props) => {
       evt.preventDefault();
     },
     [matchingItems, state.index]
-  );
-
-  const handleClick = useCallback(
-    (evt) => whenValueChange(evt.target.value),
-    [whenValueChange]
   );
 
   useEffect(() => {
