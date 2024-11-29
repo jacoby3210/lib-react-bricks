@@ -6,7 +6,9 @@ import {useMemo} from 'react';
 
 
 export const withUnion = (...components) => {
+
   const withUnion = (WrappedComponent) => {
+
     return (props) => {
   
       // initial data
@@ -44,6 +46,7 @@ export const withUnion = (...components) => {
 
   Object.defineProperty(withUnion, "name", { value: "withState" });
   return withUnion;
+  
 };
 
 // -------------------------------------------------------------------------- //
