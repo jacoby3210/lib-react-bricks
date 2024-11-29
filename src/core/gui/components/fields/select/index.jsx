@@ -1,4 +1,5 @@
 import {useCallback, useEffect, useRef, useState } from 'react';
+import { useCursor } from '../../../advanced/markup/cursor';
 
 // -------------------------------------------------------------------------- //
 // Layout - to select one option from the source list.
@@ -11,7 +12,6 @@ const Container = props => {
   const {
     children, 
     rootRef, 
-    setCursorIndexState,
     value, 
     whenValueChange, 
   } = props;
@@ -26,11 +26,11 @@ const Container = props => {
     [whenValueChange]
   );
 
-  // hooks 
+  // // hooks 
 
   useEffect(() => {
     const select = rootRef.current;
-    setCursorIndexState(value);
+  //   setCursorIndexState(value);
     if (select) select.addEventListener('mousedown', handleClick);
     return () => {
       if (select) select.removeEventListener('mousedown', handleClick);
@@ -95,21 +95,16 @@ const Template = props => {
   
   // initial data
 
-  const {
-    common, 
-    item
-  } = props;
-  const {
-    className, 
-    cursorIndexState,
-  } = common;
+  const {common, item, index} = props;
+  const {className} = common;
+	const cursor = useCursor();
   
   // render
 
   return (
     <option 
       className={`${className.split(" ")[0]}-option`} 
-      cursor={cursorIndexState == item.id ? "true" : null}
+      cursor={cursor.state.index == index ? "true" : null}
       onMouseDown={item?.onMouseDown} 
       value={item?.id}
     >

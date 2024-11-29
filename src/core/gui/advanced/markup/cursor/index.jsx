@@ -1,63 +1,109 @@
-import { useCallback, useEffect, useState } from 'react';
+import { 
+  createContext, 
+  useCallback, useContext, useEffect, useReducer, 
+} from 'react';
 
 // -------------------------------------------------------------------------- //
 // A feature - to navigate through the direct children of an element.
 // -------------------------------------------------------------------------- //
 
-export const withCursor = (WrappedComponent) => (props) => {
-    
-  // initial data
-  
-  const {
-    matchingItems, 
-    whenValueChange
-  } = props;
+const CursorContext = createContext();
 
-  // hooks
+const initialState = {
+  index: 0,
+  value: null,
+};
 
-  const [cursorIndexState, setCursorIndexState] = useState(0);
-  const [selectedValue, setSelectedValue] = useState(null);
+const cursorReducer = (state, action) => {
+  switch (action.type) {
 
-  useEffect(
-    () => {
-      if (selectedValue !== null) {
-        whenValueChange(selectedValue);
+    case 'MOVE_CURSOR_UP':
+      {
+        const index = Math.max(state.index - 1, 0);
+        return {
+          ...state,
+          index,
+        };
       }
-    },
-    [selectedValue, whenValueChange]
-  );
 
-  // input handling
+    case 'MOVE_CURSOR_DOWN':
+      const index = Math.min(state.index + 1, action.payload.matchingItems.length - 1);
+      return {
+        ...state,
+        index,
+      };
+      
+    case 'SET_SELECTED_VALUE':
+      return {
+        ...state,
+        value: action.payload.value,
+      };
+
+    default:
+      throw new Error(`Unhandled action type: ${action.type}`);
+  }
+};
+
+export const useCursor = () => {
+  const context = useContext(CursorContext);
+  if (!context) {
+    throw new Error('useCursor must be used within a CursorProvider');
+  }
+  return context;
+};
+
+export const withCursor = (WrappedComponent) => (props) => {
+  const { matchingItems, whenValueChange } = props;
+
+  const [state, dispatch] = useReducer(cursorReducer, initialState);
+
+  const handleKeyDown = useCallback(
+    (evt) => {
+      switch (evt.key) {
+        
+        case 'ArrowDown':
+          dispatch({ type: 'MOVE_CURSOR_DOWN', payload: { matchingItems } });
+        break;
+        
+        case 'ArrowUp':
+          dispatch({ type: 'MOVE_CURSOR_UP' });
+        break;
+        
+        case 'Enter':
+          const selected = matchingItems[state.index]?.id;
+          dispatch({ type: 'SET_SELECTED_VALUE', payload: { value: selected } });
+        break;
+
+        default: break;
+
+      }
+      evt.preventDefault();
+    },
+    [matchingItems, state.index]
+  );
 
   const handleClick = useCallback(
     (evt) => whenValueChange(evt.target.value),
     [whenValueChange]
   );
-  
-  const handleKeyDown = useCallback(
-    (evt) => {
-      setCursorIndexState((prev) => {
-        if (evt.key === 'ArrowDown')  return Math.min(prev + 1, matchingItems.length - 1);
-        if (evt.key === 'ArrowUp')    return Math.max(prev - 1, 0);
-        if (evt.key === 'Enter')      setSelectedValue(matchingItems[prev]?.id);
-        return prev;
-      });
-    },
-    [matchingItems]
+
+  useEffect(() => {
+    if (state.value !== null) {
+      whenValueChange(state.value);
+    }
+  }, [state.value, whenValueChange]);
+
+  const contextValue = { state, dispatch };
+
+  return (
+    <CursorContext.Provider value={contextValue}>
+      <WrappedComponent
+        {...props}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+      />
+    </CursorContext.Provider>
   );
-
-  // render
-
-  const updateProps = { 
-    cursorIndexState, 
-    setCursorIndexState,
-    onKeyDown: handleKeyDown, 
-    onClick: handleClick,
-    ...props,
-  };
-
-  return <WrappedComponent {...updateProps} />;
-  
 };
 
 // -------------------------------------------------------------------------- //

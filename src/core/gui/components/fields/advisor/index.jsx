@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
+import { useCursor } from '../../../advanced/markup/cursor';
 
 // -------------------------------------------------------------------------- //
 // Layout - to show text line field with autocomplete suggestions.
@@ -31,7 +32,6 @@ const Container = props => {
 const Controller = props => {
   
   // initial data
-	
   const {
     className, 
     onKeyDown, 
@@ -88,20 +88,19 @@ const Controller = props => {
 const Template = (props) => {
   
 	// initial data
-
   const {common, item, index} = props;
-  const {className, cursorIndexState} = common;
-  const {value} = item;
+  const {className} = common;
+	const cursor = useCursor();
 
 	// render 
 
   return (
 		<option 
       className={`${className.split(" ")[0]}-option`} 
-      cursor={cursorIndexState == index ? "true" : null}
-			value={value}
+      cursor={cursor.state.index == index ? "true" : null}
+			value={item.value}
 		>
-			{value}
+			{item.value}
 		</option>
 	)
 };
