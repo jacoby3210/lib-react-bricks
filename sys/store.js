@@ -8,7 +8,12 @@ import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
   reducer: {
-    // locale: locale.reducer 
+    add: (state = {}, action) => {
+      switch (action.type) {
+        default:
+          return state;
+      }
+    },
   },
 });
 

@@ -1,9 +1,8 @@
 import React            from 'react'
 import ReactDOM         from 'react-dom/client'
-import {Provider}       from "react-redux"
 import {BrowserRouter}  from 'react-router-dom';
 import Router           from '@lib-react-bricks/src/pages/router.jsx'
-// import {store}          from "./store"
+import {store}          from "./store"
 
 // -------------------------------------------------------------------------- //
 // The main React component defining the structure of the application.
@@ -11,11 +10,9 @@ import Router           from '@lib-react-bricks/src/pages/router.jsx'
 
 const App = props => (
   <React.StrictMode>
-		{/* <Provider store={store}> */}
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
-    {/* </Provider> */}
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   </React.StrictMode>
 );
 

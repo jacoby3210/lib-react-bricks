@@ -1,7 +1,3 @@
-
-import { useState } from 'react';
-import { Components } from "./components";
-import { Layouts } from './layouts';
 import "./index.css"
 
 // -------------------------------------------------------------------------- //
@@ -10,25 +6,22 @@ import "./index.css"
 // of the application in artificial conditions.                              //
 // -------------------------------------------------------------------------- //
 
-const ShowcasePage = props => {
+export const CoreComponentsPage = props => {
 
   // initial data
 
-  const {id, ...attributes} = props;
+  const {
+    id, 
+    ...attributes
+  } = props;
     
   // render
   
   return (
     <section id={id} {...attributes}>
       {"Its alive"}
-      <div>
-        <Components/>
-        <Layouts/>
-      </div>
     </section>
   );
 }
-
-export default ShowcasePage;
 
 // -------------------------------------------------------------------------- //

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Routes, Route } from 'react-router-dom';
-import ShowcasePage from './showcase'
+import "@lib-react-bricks/src/assets/themes/theme.css"
+import {CoreComponentsPage} from './core-components'
 
 // ------------------------------------------------------------------------- //
 // Main Application Router.
@@ -10,7 +11,7 @@ import ShowcasePage from './showcase'
 function Router() {
   return (
     <Routes>
-      <Route element={<ShowcasePage />} path="/" exact />
+      <Route element={<CoreComponentsPage />} path="/" exact />
     </Routes>
   );
 }

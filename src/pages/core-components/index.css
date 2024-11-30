@@ -1,0 +1,92 @@
+#root {position:relative;}
+
+.rc-scroll-range[axis=horizontal],
+.rc-slider-range[axis=horizontal], 
+.rc-range[axis=horizontal] {
+  background-color: aliceblue;
+  height: 24px;
+  padding-right: 24px;
+  margin-left: 25%;
+  width: 50%;
+}
+
+.rc-scroll-track,
+.rc-slider-track,  
+.rc-range-track {
+  height: 100%;
+  width: 100%;
+}
+
+.rc-scroll-thumb,
+.rc-slider-thumb,
+.rc-range-thumb {
+  background-color: olivedrab;
+  height: 24px;
+  width: 24px;
+  position: relative;
+}
+
+.rc-scroll[axis=vertical],
+.rc-slider[axis=vertical], 
+.rc-range[axis=vertical] {
+  background-color: orangered;
+  padding-bottom: 24px;
+  height: 100px;
+  width: 24px;
+}
+
+[cursor="true"]{
+  background-color: red;
+}
+
+.rc-area {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  overflow: hidden;
+  padding: 100px;
+}
+
+.rc-drag {
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100px;
+  width: 100px;
+  background-color: #61dafb;
+  cursor: grab;
+  z-index: 999;
+}
+
+.rc-store {
+  flex-wrap: wrap;
+}
+.rc-drop {
+  width: 300px;
+  height: 300px;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #fff;
+}
+.rc-store-slot {}
+.rc-store .rc-drag {position: relative;}
+
+.rc-drop-accept {
+  background-color: #f0f0f0;
+  border: 2px dashed #000;
+}
+  
+.rc-store-cursor {
+  background-color: gold;
+}
+.rc-store-cursor > * {visibility: hidden;}
+
+.rc-advisor-list-cursor {
+  background-color: blue;
+  color: white;
+}
