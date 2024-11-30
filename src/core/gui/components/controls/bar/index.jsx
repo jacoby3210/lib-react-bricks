@@ -14,7 +14,7 @@ const Template = (props) => {
   const handleChange = (e) => common.whenValueChange(e.target.value);
 
   // render
-  console.log(item.value)
+
   return (
     <label 
       className={`${className.split(" ")[0]}-option`} 

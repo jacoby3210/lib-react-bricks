@@ -1,7 +1,5 @@
-import { 
-  createContext,
-  useContext, useMemo, useReducer 
-} from 'react';
+import { useMemo, useReducer } from 'react';
+import { createSmartContext } from '../../common/context';
 
 // -------------------------------------------------------------------------- //
 // A feature - to create a list of recurring items,
@@ -10,9 +8,31 @@ import {
 // -------------------------------------------------------------------------- //
 
 // Context and Reducer setup
-const RepeatContext = createContext();
 
-const initialState = {
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'SET_SRC':
+      return { ...state, src: action.payload };
+      
+    case 'SET_FIRST':
+      return { ...state, first: action.payload };
+    
+    case 'SET_LENGTH':
+      return { ...state, length: action.payload };
+  
+    case 'SET_MATCHING_ITEMS':
+      return { ...state, matchingItems: action.payload };
+
+    case 'SET_VALUE':
+      return { ...state, value: action.payload };
+
+    default:
+      throw new Error(`Unhandled action type: ${action.type}`);
+  }
+};
+
+
+const stateInitial = {
   src: [],
   first: 0,
   length: -1,
@@ -20,31 +40,9 @@ const initialState = {
   value: null,
 };
 
-const repeatReducer = (state, action) => {
-  switch (action.type) {
-    case 'SET_SRC':
-      return { ...state, src: action.payload };
-    case 'SET_FIRST':
-      return { ...state, first: action.payload };
-    case 'SET_LENGTH':
-      return { ...state, length: action.payload };
-    case 'SET_MATCHING_ITEMS':
-      return { ...state, matchingItems: action.payload };
-    case 'SET_VALUE':
-      return { ...state, value: action.payload };
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`);
-  }
-};
+const {RepeatContext, useRepeat} = createSmartContext("Repeat", reducer);
 
-// Custom Hook for using RepeatContext
-const useRepeat = () => {
-  const context = useContext(RepeatContext);
-  if (!context) {
-    throw new Error('useRepeat must be used within a RepeatProvider');
-  }
-  return context;
-};
+export {useRepeat};
 
 export const withRepeat = (WrappedComponent) => (props) => {
   
@@ -81,24 +79,30 @@ export const withRepeat = (WrappedComponent) => (props) => {
     return Math.min(srcMemo.length, length);
   }, [length, rest, srcMemo]);
 
-  // Generate children
-  const children = useMemo(
-    () =>
-      srcMemo.slice(firstMemo, firstMemo + lengthMemo).map((item, index) => (
+  // generate children
+
+  const renderChildren = () => {
+    return srcMemo
+      .slice(firstMemo, firstMemo + lengthMemo)
+      .map((item, index) => (
         <Template
           key={item.id || index}
           common={props}
           item={item}
           index={index}
         />
-      )),
+      ));
+  };
+
+  const children = useMemo(
+    renderChildren, 
     [srcMemo, firstMemo, lengthMemo, Template, value]
   );
 
   // render
   
-  const [state, dispatch] = useReducer(repeatReducer, {
-    ...initialState,
+  const [state, dispatch] = useReducer(reducer, {
+    ...stateInitial,
     first: firstMemo,
     length: lengthMemo,
     src: srcMemo,

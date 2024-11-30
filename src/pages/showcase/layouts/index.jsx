@@ -32,10 +32,10 @@ export const Layouts = () => {
 			<GUI.Layouts.Scroll {...props.scroll} target={areaRef}  />
 			<TestAreaForScroll />  
 
-      <fsLayouts.Accordion  {...props.accordion}/>
-      <fsLayouts.Accordion  {...props.accordionSingle}/>
+      {/* <fsLayouts.Accordion  {...props.accordion}/> */}
+      {/* <fsLayouts.Accordion  {...props.accordionSingle}/> */}
       <fsLayouts.CheckList  {...props.checklist}/>
-      <fsLayouts.Inspector  {...props.inspector}/>
+      {/* <fsLayouts.Inspector  {...props.inspector}/> */}
       <fsLayouts.Menu       {...props.menu}/>
 
       <fsTemplates.Browser {...props.browser}/>

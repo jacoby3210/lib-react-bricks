@@ -1,20 +1,11 @@
-import { 
-  createContext, 
-  useCallback, useContext, useEffect, useReducer, 
-} from 'react';
+import {useCallback, useEffect, useReducer} from 'react';
+import {createSmartContext} from '../../common/context';
 
 // -------------------------------------------------------------------------- //
 // A feature - to navigate through the direct children of an element.
 // -------------------------------------------------------------------------- //
 
-const CursorContext = createContext();
-
-const initialState = {
-  index: 0,
-  value: null,
-};
-
-const cursorReducer = (state, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
 
     case 'MOVE_CURSOR_UP':
@@ -44,19 +35,23 @@ const cursorReducer = (state, action) => {
   }
 };
 
-export const useCursor = () => {
-  const context = useContext(CursorContext);
-  if (!context) {
-    throw new Error('useCursor must be used within a CursorProvider');
-  }
-  return context;
-};
+const stateInitial = {
+  index: 0, 
+  value: null,
+}
+
+const {CursorContext, useCursor} = createSmartContext("Cursor", reducer, stateInitial);
+export {useCursor};
+
+// -------------------------------------------------------------------------- //
+// A feature - to navigate through the direct children of an element.
+// -------------------------------------------------------------------------- //
 
 export const withCursor = (WrappedComponent) => (props) => {
 
   const { matchingItems, whenValueChange } = props;
 
-  const [state, dispatch] = useReducer(cursorReducer, initialState);
+  const [state, dispatch] = useReducer(reducer, stateInitial);
   const context = { state, dispatch };
 
   const handleClick = useCallback(
@@ -106,5 +101,6 @@ export const withCursor = (WrappedComponent) => (props) => {
     </CursorContext.Provider>
   );
 };
+
 
 // -------------------------------------------------------------------------- //
