@@ -7,9 +7,11 @@
 
 export {withDebug}                    from "./common/debug";                  // - to display the element name in the react developer tools.
 
-// markup - modifies and tracks the html markup of the component.
+// markup - modifies the html markup of the component.
 
-// props - modifies and tracks the properties of the component.
+export {withContainer}                from "./markup/container"               // - to wrap base component into ui block (<div>).
+
+// props - modifies the properties of the component.
 
 // value 
 
