@@ -8,6 +8,8 @@ import * as Components  from "./components"
 
 const { 
   withDebug,
+  withContainer,
+  withMerge,
 } = HOCs;
 
 const compose = (name) => (...components) => (... HOCs) => 
@@ -21,16 +23,18 @@ export const GUI = {
 
   Native: { 
     HOCs, 
-    // Components, 
+    Components, 
     // Layouts 
   },
 
   Components: {
 
+    ... compose("Container")(Components.Container)(withMerge("rc-container")),
+
   },
 
   Layouts: {
-    
+
   }
 }
 
