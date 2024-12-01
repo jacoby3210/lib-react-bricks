@@ -3,5 +3,6 @@
 // -------------------------------------------------------------------------- //
 
 export {createSmartContext} from ".\createSmartContext" 
+export {useCustomReducer} from ".\useCustomReducer"
 
 // -------------------------------------------------------------------------- //
