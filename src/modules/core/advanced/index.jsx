@@ -13,6 +13,8 @@ export {withContainer}                from "./markup/container"               //
 
 // props - modifies the properties of the component.
 
+export {withMerge}                    from "./props/merge";                   // - to smartly merge the component's default and passed properties.
+
 // value 
 
 // -------------------------------------------------------------------------- //
