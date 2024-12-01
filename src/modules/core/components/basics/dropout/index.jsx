@@ -1,5 +1,4 @@
-import {useCallback} from 'react';
-import { useReveals } from '../../../advanced/markup/reveals';
+import {useReveal} from '../../../advanced/markup/reveal';
 
 // -------------------------------------------------------------------------- //
 // Layout - to render the content of the reveal.
@@ -11,7 +10,7 @@ const Controller = props => {
   
   const {className, children, label, ...attributes} = props;
   const cssPrefix = `button`; 
-	const reveals = useReveals();
+	const reveals = useReveal();
 
   // input handling
   

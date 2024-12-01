@@ -5,6 +5,8 @@
 // - basics
 
 export {Container}        from "./basics/container";                          // - to use as a universal container for the contents.
+export {Dropout}          from "./basics/dropout";                            // - to render the content of the reveal.
+export {Empty}            from "./basics/empty"
 
 // - controls
 

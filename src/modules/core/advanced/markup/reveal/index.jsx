@@ -1,5 +1,5 @@
 
-import { createSmartContext } from '../../common/context';
+import { createSmartContext } from '@lib-react-bricks/src/modules/core/utils';
 import { useCallback, useEffect, useReducer } from 'react';
 
 // -------------------------------------------------------------------------- //

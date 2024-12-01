@@ -1,8 +1,7 @@
 // -------------------------------------------------------------------------- //
-// A set of support functions to simplify your work.
+// Layout - to use in place where the syntax requires component.
 // -------------------------------------------------------------------------- //
 
-export {createSmartContext} from "./createSmartContext" 
-export {useCustomReducer} from "./useCustomReducer"
+export const Empty = props => {return (<></>);};
 
 // -------------------------------------------------------------------------- //

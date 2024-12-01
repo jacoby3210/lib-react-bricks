@@ -8,8 +8,8 @@ import * as Components  from "./components"
 
 const { 
   withDebug,
-  withContainer,
-  withMerge,
+  withContainer, withReveal,
+  withMerge, 
 } = HOCs;
 
 const compose = (name) => (...components) => (... HOCs) => 
@@ -30,6 +30,12 @@ export const GUI = {
   Components: {
 
     ... compose("Container")(Components.Container)(withMerge("rc-container")),
+
+    ... compose("Dropout")(Components.Empty)(
+      withMerge("rc-dropout", { shown: false, ... Components.Dropout }),
+      withContainer, 
+      withReveal,
+    ),
 
   },
 
