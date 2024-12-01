@@ -1,5 +1,3 @@
-import "./index.css"
-
 // -------------------------------------------------------------------------- //
 // Showcase Application Page.                                                //
 // It is used to demonstrate the operation of components / layers / pages    //
