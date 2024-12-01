@@ -10,6 +10,7 @@ export {withDebug}                    from "./common/debug";                  //
 // markup - modifies the html markup of the component.
 
 export {withContainer}                from "./markup/container"               // - to wrap base component into ui block (<div>).
+export {withReveals}                  from "./markup/reveals";                // - to reveal child components.
 
 // props - modifies the properties of the component.
 
