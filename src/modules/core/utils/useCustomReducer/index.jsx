@@ -5,7 +5,7 @@ import { useReducer } from "react";
 // -------------------------------------------------------------------------- //
 
 export const useCustomReducer = (reducer, stateInitial) => {
-  const [state, dispatch] = useReducer(reducer, { ...stateInitial, shown });
+  const [state, dispatch] = useReducer(reducer, stateInitial);
   return {state, dispatch};
 }
 

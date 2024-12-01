@@ -1,5 +1,5 @@
 
-import { createSmartContext } from '@lib-react-bricks/src/modules/core/utils';
+import { createSmartContext, useCustomReducer } from '@lib-react-bricks/src/modules/core/utils';
 import { useCallback, useEffect, useReducer } from 'react';
 
 // -------------------------------------------------------------------------- //
@@ -48,44 +48,45 @@ export const withReveal = (WrappedComponent) => (props) => {
     Controller = (props) => <button {... props}></button> ,
     ... rest
   } = props;
-
+  
   // hooks 
 
-  const [state, dispatch] = useReducer(reducer, { ...stateInitial, shown });
-  const context = {state, dispatch}
+  const ctx = useCustomReducer(reducer, { ...stateInitial, shown });
 
   const handleClick = useCallback(
-    () => { dispatch({ type: 'HIDE' }) },
-    [dispatch]
+    () => { ctx.dispatch({ type: 'HIDE' }) },
+    [ctx.dispatch]
   );
   
   const handleKeyDown = useCallback(
-    (evt) => {
-      if (evt.key === 'Enter') dispatch({ type: 'HIDE' });
-    },
-    [dispatch]
+    (evt) => { if (evt.key === 'Enter') ctx.dispatch({ type: 'HIDE' }); },
+    [ctx.dispatch]
   );
 
-  useEffect(() => {
-    if(state.shown != shown) dispatch({ type: 'TOGGLE' });
-  }, [dispatch, shown]);
+  useEffect(
+    () => { if(ctx.state.shown != shown) ctx.dispatch({ type: 'TOGGLE' }); },
+    [ctx.dispatch, shown]
+  );
 
-  useEffect(() => {
-    if (state.shown) {
-      document.addEventListener('click', handleClick);
-      document.addEventListener('keydown', handleKeyDown);
-    }
-    return () => {
-      document.removeEventListener('click', handleClick);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [state.shown, dispatch, handleClick, handleKeyDown]);
+  useEffect(
+    () => {
+      if (ctx.state.shown) {
+        document.addEventListener('click', handleClick);
+        document.addEventListener('keydown', handleKeyDown);
+      }
+      return () => {
+        document.removeEventListener('click', handleClick);
+        document.removeEventListener('keydown', handleKeyDown);
+      };
+    }, 
+    [ctx.state.shown, ctx.dispatch, handleClick, handleKeyDown]
+  );
 
   // render 
   
   return (
-    <RevealContext.Provider value={context}>
-      {state.shown ? (
+    <RevealContext.Provider value={ctx}>
+      {ctx.state.shown ? (
         <>
           <Controller {...props} />
           <WrappedComponent {...rest} />

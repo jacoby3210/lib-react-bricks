@@ -7,14 +7,9 @@ import {props} from "./config";
 // of the application in artificial conditions.                              //
 // -------------------------------------------------------------------------- //
 
-export const CoreComponentsPage = props => {
+export const CoreComponentsPage = () => {
 
   // initial data
-
-  const {
-    id, 
-    ...attributes
-  } = props;
     
   const fsComponents = Object.fromEntries(
     Object.keys(GUI.Components).map(
@@ -25,7 +20,7 @@ export const CoreComponentsPage = props => {
   // render
   
   return (
-    <section id={id} {...attributes}>
+    <section id={"core-components"}>
       {"Its alive"}
       <fsComponents.Container/>
       <GUI.Components.Dropout  {...props.dropout}>{"Its Popup!"}</GUI.Components.Dropout>
