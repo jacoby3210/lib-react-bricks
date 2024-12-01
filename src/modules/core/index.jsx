@@ -37,6 +37,8 @@ export const GUI = {
       withReveal,
     ),
 
+    ... compose("Empty")(Components.Empty)(withMerge("rc-empty"),),
+    
   },
 
   Layouts: {

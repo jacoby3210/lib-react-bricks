@@ -1,6 +1,6 @@
 
 import { createSmartContext, useCustomReducer } from '@lib-react-bricks/src/modules/core/utils';
-import { useCallback, useEffect, useReducer } from 'react';
+import { useCallback, useEffect} from 'react';
 
 // -------------------------------------------------------------------------- //
 // A feature - to hide \ show children components.
@@ -9,6 +9,10 @@ import { useCallback, useEffect, useReducer } from 'react';
 // -------------------------------------------------------------------------- //
 // By default WrappedComponent hides when clicked inside.
 // To prevent this behavior, the click event inside should not bubble.
+// -------------------------------------------------------------------------- //
+
+// -------------------------------------------------------------------------- //
+// Context and Reducer setup
 // -------------------------------------------------------------------------- //
 
 const reducer = (state, action) => {
