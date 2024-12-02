@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 
 // -------------------------------------------------------------------------- //
-// A helper hooks to converts the array returned by useReducer into object.
+// A helper hook to converts the array returned by useReducer into object.
 // -------------------------------------------------------------------------- //
 
 export const useReducerAsContext = (reducer, stateInitial) => {
