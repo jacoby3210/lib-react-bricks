@@ -3,7 +3,6 @@ import {
   reduceProperty, 
   useReducerAsContext, 
 } from '@lib-react-bricks/src/modules/core/utils';
-import { useReducerAsContext } from '../../../utils/useReducerAsContext';
 
 // -------------------------------------------------------------------------- //
 // A feature - to create a list of child components according to the template.
@@ -84,18 +83,18 @@ export const withRepeat = (WrappedComponent) => (props) => {
 
   // render
 
-  const childrenReduce = () => {
-    return srcReduce
-      .slice(firstReduce, rangeReduce)
-      .map((item, index) => (
+  const childrenReduce = srcReduce
+    .slice(firstReduce, rangeReduce)
+    .map(
+      (item, index) => (
         <Template
           key={item.id || index}
           common={props}
           item={item}
           index={index}
         />
-      ));
-  };
+      )
+    );
   
   const ctx = useReducerAsContext(reducer, { 
     ...stateInitial, 

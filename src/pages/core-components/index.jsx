@@ -25,6 +25,7 @@ export const CoreComponentsPage = () => {
       <fsComponents.Container/>
       <GUI.Components.Dropout  {...props.dropout}>{"Its Popup!"}</GUI.Components.Dropout>
       <fsComponents.Empty/>
+      <fsComponents.List {...props.list}/>
 
     </section>
   );
