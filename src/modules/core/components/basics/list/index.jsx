@@ -1,3 +1,5 @@
+import { useRepeat } from '@lib-react-bricks/src/modules/core/advanced';
+
 // -------------------------------------------------------------------------- //
 // Layout - to generate a gui for an item in an source data by default.
 // -------------------------------------------------------------------------- //
@@ -11,7 +13,7 @@ const Container = props => {
   // render 
 
   return (
-    <ul className={className}>
+    <ul className={className} {...props}>
       {children}
     </ul>
   );
@@ -22,7 +24,8 @@ const Template = props => {
 
   // initial data
 
-  const {common, item, ...attributes} = props;
+  const {item, ...attributes} = props;
+  const ctx = useRepeat();
 
   // render 
   

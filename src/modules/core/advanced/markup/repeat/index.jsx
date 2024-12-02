@@ -60,6 +60,7 @@ export const withRepeat = (WrappedComponent) => (props) => {
 
   const {
     children,
+    
     first = 0, 
     length = -1,
     src, 
@@ -87,12 +88,7 @@ export const withRepeat = (WrappedComponent) => (props) => {
     .slice(firstReduce, rangeReduce)
     .map(
       (item, index) => (
-        <Template
-          key={item.id || index}
-          common={props}
-          item={item}
-          index={index}
-        />
+        <Template key={item.id || index} index={index} item={item}/>
       )
     );
   

@@ -40,7 +40,7 @@ export const GUI = {
     ... compose("Empty")(Components.Empty)(withMerge("rc-empty"),),
     
     ... compose ("List")(Components.List.Container)(
-      withMerge("rc-list", {length: -1, ... Components.List}),
+      withMerge("rc-list", {length: -1, Template: Components.List.Template}),
       withRepeat,
     ),
 
