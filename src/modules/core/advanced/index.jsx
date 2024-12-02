@@ -15,6 +15,7 @@ export {useReveal, withReveal}          from "./markup/reveal";               //
 
 // props - modifies the properties of the component.
 
+export {withFilter}                   from "./props/filter";                  // - to apply a filter to the source data.
 export {withMerge}                    from "./props/merge";                   // - to smartly merge the component's default and passed properties.
 
 // value 

@@ -9,7 +9,7 @@ import * as Components  from "./components"
 const { 
   withDebug,
   withContainer, withRepeat, withReveal,
-  withMerge, 
+  withFilter, withMerge, 
 } = HOCs;
 
 const compose = (name) => (...components) => (... HOCs) => 
@@ -41,6 +41,7 @@ export const GUI = {
     
     ... compose ("List")(Components.List.Container)(
       withMerge("rc-list", {length: -1, Template: Components.List.Template}),
+      withFilter,
       withRepeat,
     ),
 

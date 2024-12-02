@@ -9,7 +9,7 @@ import {
 // -------------------------------------------------------------------------- //
 
 // -------------------------------------------------------------------------- //
-// based on wrapped component and an array of source data.
+// Based on wrapped component and an array of source data.
 // Supports the ability to output the result of applying a filter to the src.
 // -------------------------------------------------------------------------- //
 
@@ -67,6 +67,7 @@ export const withRepeat = (WrappedComponent) => (props) => {
     Template, 
 
     matchingItems = null,
+    nonMatchingItems = null,
     
     ...rest 
   } = props;
@@ -97,6 +98,8 @@ export const withRepeat = (WrappedComponent) => (props) => {
     first: firstReduce,
     length: lengthReduce,
     src: srcReduce,
+    matchingItems,
+    nonMatchingItems,
   });
 
   return (
