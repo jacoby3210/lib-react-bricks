@@ -1,5 +1,5 @@
 
-import { createSmartContext, useCustomReducer } from '@lib-react-bricks/src/modules/core/utils';
+import { createSmartContext, useReducerAsContext } from '@lib-react-bricks/src/modules/core/utils';
 import { useCallback, useEffect} from 'react';
 
 // -------------------------------------------------------------------------- //
@@ -55,7 +55,7 @@ export const withReveal = (WrappedComponent) => (props) => {
   
   // hooks 
 
-  const ctx = useCustomReducer(reducer, { ...stateInitial, shown });
+  const ctx = useReducerAsContext(reducer, { ...stateInitial, shown });
 
   const handleClick = useCallback(
     () => { ctx.dispatch({ type: 'HIDE' }) },
