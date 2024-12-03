@@ -72,8 +72,6 @@ export const withRepeat = (WrappedComponent) => (props) => {
     ...rest 
   } = props;
   
-  const {value} = props;
-
   // reduce props  
 
   const srcReduce = matchingItems | Array.isArray(src) ? src : Object.values(src);
@@ -109,7 +107,7 @@ export const withRepeat = (WrappedComponent) => (props) => {
           {childrenReduce}
         </WrappedComponent>
       ) : (
-        <>{children}</>
+        <>{childrenReduce}</>
       )}
     </RepeatContext.Provider>
   );

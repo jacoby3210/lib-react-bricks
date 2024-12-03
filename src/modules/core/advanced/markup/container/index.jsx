@@ -44,7 +44,6 @@ export const withContainer = (WrappedComponent) => (props) => {
 
     id, 
     children, 
-    className = "rc-container", 
 
     Container = (props) => <div {...props}/>,
     
@@ -52,7 +51,10 @@ export const withContainer = (WrappedComponent) => (props) => {
   
   } = props;
 
-  const {value = null } = props;
+  const {
+    className = "rc-container", 
+    value = null, 
+  } = props;
 
   // hooks
   
