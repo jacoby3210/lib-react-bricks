@@ -13,6 +13,7 @@ export {List}             from "./basics/list";                               //
 
 export {Bar}              from "./controls/bar";                              // - to output multiple radio buttons as a single component.
 export {CheckBox}         from "./controls/checkbox";                         // - to provide an advanced version of the classic checkbox.
+export {Clicker}          from "./controls/clicker";                          // - to track the user's clicks and display the total value.
 
 // - fields
 

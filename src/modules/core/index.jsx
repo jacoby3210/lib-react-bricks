@@ -59,6 +59,11 @@ export const GUI = {
       withValueBoolean,
     ),
     
+    ... compose("Clicker")(Components.Clicker)(
+      withMerge("rc-clicker", { value: 0 }),
+      withValueDigital,
+    ),
+
   },
 
   Layouts: {

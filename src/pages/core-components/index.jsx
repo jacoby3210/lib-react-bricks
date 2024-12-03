@@ -29,6 +29,7 @@ export const CoreComponentsPage = () => {
 
       <fsComponents.Bar  {...props.bar}/>
       <fsComponents.CheckBox  {...props.checkbox}/>
+      <fsComponents.Clicker  {...props.clicker}/>
 
     </section>
   );
