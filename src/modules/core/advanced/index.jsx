@@ -9,14 +9,14 @@ export {withDebug}                      from "./common/debug";                //
 
 // markup - modifies the html markup of the component.
 
-export {withContainer}                  from "./markup/container"             // - to wrap base component into ui block (<div>).
+export {useContainer, withContainer}    from "./markup/container"             // - to wrap base component into ui block (<div>).
 export {useRepeat, withRepeat}          from "./markup/repeat";               // - to create a list of child components according to the template.
 export {useReveal, withReveal}          from "./markup/reveal";               // - to reveal child components.
 
 // props - modifies the properties of the component.
 
-export {withFilter}                   from "./props/filter";                  // - to apply a filter to the source data.
-export {withMerge}                    from "./props/merge";                   // - to smartly merge the component's default and passed properties.
+export {withFilter}                     from "./props/filter";                // - to apply a filter to the source data.
+export {withMerge}                      from "./props/merge";                 // - to smartly merge the component's default and passed properties.
 
 // value 
 
