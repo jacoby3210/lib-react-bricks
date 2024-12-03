@@ -45,7 +45,7 @@ export const GUI = {
       withRepeat,
     ),
 
-    ... compose("Bar")(Components.Container)(
+    ... compose("Bar")()(
       withMerge("rc-bar", { value: null , ... Components.Bar}),
       withContainer, 
       withRepeat,
