@@ -53,6 +53,12 @@ export const GUI = {
       withRepeat,
     ),
 
+    
+    ... compose("CheckBox")(Components.CheckBox)(
+      withMerge("rc-checkbox", { value: false }),
+      withValueBoolean,
+    ),
+    
   },
 
   Layouts: {

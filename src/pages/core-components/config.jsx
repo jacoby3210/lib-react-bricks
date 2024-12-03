@@ -33,6 +33,10 @@ export const props = {
     value: 2,
   },
   
+  checkbox: {
+    value: false
+  },
+  
   clicker:          { 
     value: 0, 
   },
