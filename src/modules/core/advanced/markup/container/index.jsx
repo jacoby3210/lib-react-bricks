@@ -43,8 +43,6 @@ export {useContainer};
 
 export const withContainer = (WrappedComponent) => (props) => {
 
-  // initial data
-  
   const {
 
     id, 
@@ -57,19 +55,16 @@ export const withContainer = (WrappedComponent) => (props) => {
   } = props;
 
   const {
+    
     className = "rc-container", 
     value = null, 
+
   } = props;
-
-  // hooks
   
-  const ctx = useReducerAsContext(reducer, { 
-    ...rest,
-  });
-
+  const ctx = useReducerAsContext(reducer, { ...rest, });
+  
   const selfRef = useRef(null);
-  
-  // render
+
   return (
     <ContainerContext.Provider value={ctx}>
       <Container id={id} className={className} value={value}>

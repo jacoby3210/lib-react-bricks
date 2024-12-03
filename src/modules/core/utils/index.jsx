@@ -5,7 +5,7 @@
 // common functions
 
 export {createSmartContext}         from "./createSmartContext"               // to simplify context creation.
-export {reduceProperty}             from "./reduceProperty"                   // to reduce the property to a summary value.
+export {resolveProperty}            from "./resolveProperty"                  // to reduce the property to a summary value.
 
 // custom hooks
 

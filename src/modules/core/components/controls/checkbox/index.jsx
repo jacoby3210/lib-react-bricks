@@ -8,8 +8,6 @@ import {
 
 export const CheckBox = props => {
 
-  // unpack data
-
   const {
     id,
     className,
@@ -17,18 +15,12 @@ export const CheckBox = props => {
     ...attributes
   } = props;
 
-  // hooks
-
   const ctxValueBoolean = useValueBoolean();
-
-  // input handling
-
+  
   const handleChange = (e) => {
     onChange(e)
-    ctxValueBoolean?.dispatch({type: 'CHANGE', payload: {next: e.target.value}});
+    ctxValueBoolean.dispatch({type: 'CHANGE', payload: {next: e.target.value}});
   }
-
-  // render 
 
   return (
     <input 

@@ -1,4 +1,4 @@
-import {useReveal} from '../../../advanced/markup/reveal';
+import {useReveal} from '@lib-react-bricks/src/modules/core/advanced';
 
 // -------------------------------------------------------------------------- //
 // Layout - to render the content of the reveal.
@@ -6,21 +6,15 @@ import {useReveal} from '../../../advanced/markup/reveal';
 
 const Controller = props => {
 
-  // initial data
-  
   const {className, children, label, ...attributes} = props;
   const cssPrefix = `button`; 
 	const reveals = useReveal();
 
-  // input handling
-  
   const onClick = (evt) => {
     evt.preventDefault();
     evt.stopPropagation();
     reveals.dispatch({type: reveals.state.shown ? 'HIDE' : 'SHOW'});
   };
-
-  // render
 
   return (
     <button className={cssPrefix} onClick={onClick}>

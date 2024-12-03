@@ -1,6 +1,6 @@
 import { 
   createSmartContext,
-  reduceProperty, 
+  resolveProperty, 
   useReducerAsContext, 
 } from '@lib-react-bricks/src/modules/core/utils';
 
@@ -56,11 +56,8 @@ export {useRepeat};
 
 export const withRepeat = (WrappedComponent) => (props) => {
   
-  // unpack data
-
   const {
-    children,
-    
+
     first = 0, 
     length = -1,
     src, 
@@ -70,44 +67,42 @@ export const withRepeat = (WrappedComponent) => (props) => {
     nonMatchingItems = null,
     
     ...rest 
+
   } = props;
   
-  // reduce props  
+  const resolveSrc = matchingItems | Array.isArray(src) ? src : Object.values(src);
+  const resolveFirst = resolveProperty(first, props);
+  const resolveLength = resolveProperty(length, props) == -1 
+    ? resolveSrc.length 
+    : Math.min(resolveSrc.length, length);
+  const resolveRange = resolveFirst + resolveLength;
 
-  const srcReduce = matchingItems | Array.isArray(src) ? src : Object.values(src);
-  const firstReduce = reduceProperty(first, props);
-  const lengthReduce = reduceProperty(length, props) == -1 
-    ? srcReduce.length 
-    : Math.min(srcReduce.length, length);
-  const rangeReduce = firstReduce + lengthReduce;
+  const ctx = useReducerAsContext(reducer, { 
+    ...stateInitial, 
+    first: resolveFirst,
+    length: resolveLength,
+    range: resolveRange,
+    src: resolveSrc,
+    matchingItems,
+    nonMatchingItems,
+  });
 
-  // render
-
-  const childrenReduce = srcReduce
-    .slice(firstReduce, rangeReduce)
+  const children = resolveSrc
+    .slice(resolveFirst, resolveRange)
     .map(
       (item, index) => (
         <Template key={item.id || index} index={index} item={item}/>
       )
     );
-  
-  const ctx = useReducerAsContext(reducer, { 
-    ...stateInitial, 
-    first: firstReduce,
-    length: lengthReduce,
-    src: srcReduce,
-    matchingItems,
-    nonMatchingItems,
-  });
 
   return (
     <RepeatContext.Provider value={ctx}>
       {WrappedComponent ? (
         <WrappedComponent {...rest}>
-          {childrenReduce}
+          {children}
         </WrappedComponent>
       ) : (
-        <>{childrenReduce}</>
+        <>{children}</>
       )}
     </RepeatContext.Provider>
   );

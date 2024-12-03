@@ -20,7 +20,7 @@ export {withMerge}                            from "./props/merge";           //
 
 // value 
 
-export {useValueBase, withValueBase}          from "./value/base";            // - to handle a change in the value of a component (variant type).
-export {useValueBoolean, withValueBoolean}    from "./value/boolean";         // - to handle a change in the value of a component (variant type).
+export {useValueBase, withValueBase}          from "./value/base";            // - to handle a change in the value of a component (base\variant type).
+export {useValueBoolean, withValueBoolean}    from "./value/boolean";         // - to handle a change in the value of a component (boolean).
 
 // -------------------------------------------------------------------------- //

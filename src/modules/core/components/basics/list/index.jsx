@@ -6,11 +6,7 @@ import { useRepeat } from '@lib-react-bricks/src/modules/core/advanced';
 
 const Container = props => {
 
-  // initial data
-
   const {className, children} = props;
-
-  // render 
 
   return (
     <ul className={className} {...props}>
@@ -22,12 +18,9 @@ const Container = props => {
 
 const Template = props => {
 
-  // initial data
-
   const {item, ...attributes} = props;
+  
   const ctx = useRepeat();
-
-  // render 
   
   return (
     <li id={item.id} name={item.label} {...attributes}>

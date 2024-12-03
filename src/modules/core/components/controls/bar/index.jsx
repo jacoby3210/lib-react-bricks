@@ -9,8 +9,6 @@ import {
 
 const Template = (props) => {
 
-  // initial data
-  
   const {index, item} = props;
 
   const ctxContainer = useContainer();
@@ -18,15 +16,10 @@ const Template = (props) => {
 
   const {name, className} = ctxContainer.state;
   const { value } = ctxValueBase?.state;
-  // const value = null;
   
-  // input handling
-
   const handleChange = (e) => {
-    ctxValueBase?.dispatch({type: 'CHANGE', payload: {next: e.target.value}});
+    ctxValueBase.dispatch({type: 'CHANGE', payload: {next: e.target.value}});
   }
-
-  // render
 
   return (
     <label 

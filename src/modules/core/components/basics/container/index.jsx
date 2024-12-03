@@ -6,20 +6,14 @@ import {useRef} from "react"
 
 export const Container = props => {
 
-  // initial props
-
   const { 
     id, 
     className, 
     children, 
     value 
   } = props;
-
-  // hooks
-
+  
   const selfRef = useRef(null);
-
-  // render
   
   return (
     <div id={id} className={className} ref={selfRef} value={value} >

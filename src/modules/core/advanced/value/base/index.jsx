@@ -1,4 +1,3 @@
-import { useReducer, } from 'react';
 import { 
   createSmartContext, 
   useReducerAsContext,
@@ -16,7 +15,7 @@ const reducer = (state, action) => {
 
   //  unpack data
 
-  const {value, validate, whenValueChange,  whenValueModify, } = state;
+  const {value, valueChange, valueNormalize} = state;
 
   // behavior
 
@@ -24,10 +23,9 @@ const reducer = (state, action) => {
 
     case "CHANGE":
       {
-        return {
-          ... state, 
-          value: validate(whenValueChange(action.payload.next), value)
-        }
+        const next = valueNormalize(action.payload.next, value, state);
+        if(next != state.value) valueChange(next, value)
+        return {... state, value: next}
       }
       break;
 
@@ -35,12 +33,6 @@ const reducer = (state, action) => {
       throw new Error(`Unhandled action type: ${action.type}`);
   }
 
-};
-
-const stateInitial = {
-  value: null,
-  validate: (next, prev) => next,
-  whenValueChange: (value) => value, 
 };
 
 const {ValueBaseContext, useValueBase} = createSmartContext("ValueBase");
@@ -52,27 +44,20 @@ export {useValueBase};
 
 export const withValueBase = (WrappedComponent) => (props) => {
 
-  // unpack data
-
   const {
     value = null,
-    validate = (value) => value,
-    whenValueChange = (next, validate) => next, 
+    valueChange = (next, prev, state) => next, 
+    valueNormalize = (value) => value,
     ...rest
   } = props;
 
-  // hooks
-
   const ctx = useReducerAsContext(reducer, 
     {
-      ...stateInitial, 
       value,
-      validate,
-      whenValueChange,
+      valueChange,
+      valueNormalize,
     }
   );
-
-  // render
 
   return (
     <ValueBaseContext.Provider value={ctx}>

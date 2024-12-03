@@ -1,4 +1,3 @@
-import { useReducer, } from 'react';
 import { 
   createSmartContext, 
   useReducerAsContext,
@@ -14,30 +13,24 @@ import {
 
 const reducer = (state, action) => {
 
-  //  unpack data
-
-  const {value, validate, whenValueChange,  whenValueModify, } = state;
-
-  // behavior
+  const {value, valueChange, valueNormalize,  } = state;
 
   switch (action.type) {
 
     case "CHANGE":
       {
-        return {
-          ... state, 
-          value: validate(whenValueChange(action.payload.next), value)
-        }
+        const next = valueNormalize(action.payload.next, value, state);
+        if(next != state.value) valueChange(next, value)
+        return {... state, value: next}
       }
       break;
 
     case "INVERT":
     case "TOGGLE":
       {
-        return {
-          ... state, 
-          value: validate(whenValueChange(!value), value)
-        }
+        const next = valueNormalize(!value, value, state);
+        if(next != state.value) valueChange(next, value)
+        return {... state, value: next}
       }  
       break;
 
@@ -45,12 +38,6 @@ const reducer = (state, action) => {
       throw new Error(`Unhandled action type: ${action.type}`);
   }
 
-};
-
-const stateInitial = {
-  value: false,
-  validate: (next, prev) => next,
-  whenValueChange: (value) => value, 
 };
 
 const {ValueBooleanContext, useValueBoolean} = createSmartContext("ValueBoolean");
@@ -62,27 +49,20 @@ export {useValueBoolean};
 
 export const withValueBoolean = (WrappedComponent) => (props) => {
 
-  // unpack data
-
   const {
-    value = null,
-    validate = (value) => value,
-    whenValueChange = (next, validate) => next, 
+    value = false,
+    valueChange = (next, prev, state) => next, 
+    valueNormalize = (value) => value,
     ...rest
   } = props;
 
-  // hooks
-
   const ctx = useReducerAsContext(reducer, 
     {
-      ...stateInitial, 
       value,
-      validate,
-      whenValueChange,
+      valueChange,
+      valueNormalize,
     }
   );
-
-  // render
 
   return (
     <ValueBooleanContext.Provider value={ctx}>

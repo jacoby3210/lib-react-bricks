@@ -1,6 +1,8 @@
-
-import { createSmartContext, useReducerAsContext } from '@lib-react-bricks/src/modules/core/utils';
 import { useCallback, useEffect} from 'react';
+import { 
+  createSmartContext, 
+  useReducerAsContext 
+} from '@lib-react-bricks/src/modules/core/utils';
 
 // -------------------------------------------------------------------------- //
 // A feature - to hide \ show children components.
@@ -33,8 +35,6 @@ const reducer = (state, action) => {
   }
 };
 
-const stateInitial = {shown: false,};
-
 const {RevealContext, useReveal} = createSmartContext("Reveal");
 export {useReveal};
 
@@ -44,8 +44,6 @@ export {useReveal};
 
 export const withReveal = (WrappedComponent) => (props) => {
   
-  // unpack data
-
   const { 
     children = [], 
     shown = false, 
@@ -53,9 +51,7 @@ export const withReveal = (WrappedComponent) => (props) => {
     ... rest
   } = props;
   
-  // hooks 
-
-  const ctx = useReducerAsContext(reducer, { ...stateInitial, shown });
+  const ctx = useReducerAsContext(reducer, { shown });
 
   const handleClick = useCallback(
     () => { ctx.dispatch({ type: 'HIDE' }) },
@@ -86,8 +82,6 @@ export const withReveal = (WrappedComponent) => (props) => {
     [ctx.state.shown, ctx.dispatch, handleClick, handleKeyDown]
   );
 
-  // render 
-  
   return (
     <RevealContext.Provider value={ctx}>
       {ctx.state.shown ? (
