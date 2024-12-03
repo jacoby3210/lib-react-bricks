@@ -1,6 +1,6 @@
 
 // -------------------------------------------------------------------------- //
-// A helper function to reduce the property to a summary value.
+// A helper function to resolve the property to a summary value.
 // -------------------------------------------------------------------------- //
 
 export const resolveProperty = (property, rest) => {
