@@ -1,4 +1,7 @@
-import { useContainer } from '@lib-react-bricks/src/modules/core/advanced';
+import { 
+  useContainer, 
+  useValueBase 
+} from '@lib-react-bricks/src/modules/core/advanced';
 
 // -------------------------------------------------------------------------- //
 // Template - to output multiple radio buttons as a single component.  
@@ -10,12 +13,18 @@ const Template = (props) => {
   
   const {index, item} = props;
 
-  const ctx = useContainer();
-  const {name, className, value} = ctx.state;
+  const ctxContainer = useContainer();
+  const ctxValueBase = useValueBase();
+
+  const {name, className} = ctxContainer.state;
+  const { value } = ctxValueBase?.state;
+  // const value = null;
   
   // input handling
 
-  const handleChange = (e) => {}
+  const handleChange = (e) => {
+    ctxValueBase?.dispatch({type: 'CHANGE', payload: {next: e.target.value}});
+  }
 
   // render
 

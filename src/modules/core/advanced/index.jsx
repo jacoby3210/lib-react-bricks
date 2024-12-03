@@ -20,4 +20,6 @@ export {withMerge}                      from "./props/merge";                 //
 
 // value 
 
+export {useValueBase, withValueBase}    from "./value/base";                  // - to handle a change in the value of a component (variant type).
+
 // -------------------------------------------------------------------------- //

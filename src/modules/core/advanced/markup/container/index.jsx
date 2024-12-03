@@ -1,10 +1,15 @@
-import { forwardRef, useRef } from 'react';
+import { useRef } from 'react';
 import { 
   createSmartContext,
   useReducerAsContext, 
 } from '@lib-react-bricks/src/modules/core/utils';
+
 // -------------------------------------------------------------------------- //
 //  A feature - to wrap base component into ui block (<div>).
+// -------------------------------------------------------------------------- //
+
+// -------------------------------------------------------------------------- //
+// Context and Reducer setup
 // -------------------------------------------------------------------------- //
 
 const reducer = (state, action) => {
