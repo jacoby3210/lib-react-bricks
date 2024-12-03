@@ -11,6 +11,8 @@ export {List}             from "./basics/list";                               //
 
 // - controls
 
+export {Bar}              from "./controls/bar";                              // - to output multiple radio buttons as a single component.
+
 // - fields
 
 // -------------------------------------------------------------------------- //

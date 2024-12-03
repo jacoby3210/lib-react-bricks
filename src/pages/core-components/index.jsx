@@ -27,6 +27,8 @@ export const CoreComponentsPage = () => {
       <fsComponents.Empty/>
       <fsComponents.List {...props.list}/>
 
+      <fsComponents.Bar  {...props.bar}/>
+
     </section>
   );
 }
