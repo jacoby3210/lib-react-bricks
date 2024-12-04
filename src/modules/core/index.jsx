@@ -77,6 +77,11 @@ export const GUI = {
       withValueDigital, 
       withContainer,
     ),
+
+    ... compose("Text")(Components.Text)(
+      withMerge("rc-text")
+    )
+    
   },
 
   Layouts: {

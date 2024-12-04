@@ -18,5 +18,6 @@ export {Range}            from "./controls/range";                            //
 export {Swing}            from "./controls/swing";                            // - to control the increase/decrease of the value
 
 // - fields
+export {Text}             from "./fields/text";                               // - to render value as only read text.
 
 // -------------------------------------------------------------------------- //

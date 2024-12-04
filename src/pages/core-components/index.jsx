@@ -36,6 +36,8 @@ export const CoreComponentsPage = () => {
       <fsComponents.Range     {...props.rangeVertical}/>
       <fsComponents.Swing     {...props.swing}/>
 
+      <fsComponents.Text      {...props.text}/>
+
     </section>
   );
 }
