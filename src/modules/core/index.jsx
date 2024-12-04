@@ -72,6 +72,11 @@ export const GUI = {
       withValueDigital, 
     ),
 
+    ... compose("Swing")(Components.Swing)(
+      withMerge("rc-swing", { axis: false, value: 0 }),
+      withValueDigital, 
+      withContainer,
+    ),
   },
 
   Layouts: {

@@ -34,6 +34,7 @@ export const CoreComponentsPage = () => {
       <fsComponents.Clicker   {...props.clicker}/>
       <fsComponents.Range     {...props.rangeHorizontal}/>
       <fsComponents.Range     {...props.rangeVertical}/>
+      <fsComponents.Swing     {...props.swing}/>
 
     </section>
   );
