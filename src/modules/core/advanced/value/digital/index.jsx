@@ -37,7 +37,6 @@ const reducer = (state, action) => {
     case "CHANGE":
       {
         const next = valueNormalize(action.payload.next, value, state);
-        console.log(next, action.payload, state)
         if(next != state.value) valueChange(next, value)
         return {... state, value: next}
       }

@@ -30,7 +30,9 @@ export const GUI = {
 
   Components: {
 
-    ... compose("Container")(Components.Container)(withMerge("rc-container")),
+    ... compose("Container")(Components.Container)(
+      withMerge("rc-container"),
+    ),
 
     ... compose("Dropout")(Components.Empty)(
       withMerge("rc-dropout", { shown: false, ... Components.Dropout }),
@@ -38,7 +40,9 @@ export const GUI = {
       withReveal,
     ),
 
-    ... compose("Empty")(Components.Empty)(withMerge("rc-empty"),),
+    ... compose("Empty")(Components.Empty)(
+      withMerge("rc-empty"),
+    ),
     
     ... compose ("List")(Components.List.Container)(
       withMerge("rc-list", {length: -1, Template: Components.List.Template}),
@@ -52,7 +56,6 @@ export const GUI = {
       withContainer, 
       withRepeat,
     ),
-
     
     ... compose("CheckBox")(Components.CheckBox)(
       withMerge("rc-checkbox", { value: false }),
@@ -62,6 +65,11 @@ export const GUI = {
     ... compose("Clicker")(Components.Clicker)(
       withMerge("rc-clicker", { value: 0 }),
       withValueDigital,
+    ),
+
+    ... compose("Range")(Components.Range)(
+      withMerge("rc-range", { axis: false, value: 0 }),
+      withValueDigital, 
     ),
 
   },

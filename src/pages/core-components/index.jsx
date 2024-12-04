@@ -21,15 +21,18 @@ export const CoreComponentsPage = () => {
   
   return (
     <section id={"core-components"}>
+      
       {"Its alive"}
-      <fsComponents.Container/>
-      <GUI.Components.Dropout  {...props.dropout}>{"Its Popup!"}</GUI.Components.Dropout>
-      <fsComponents.Empty/>
-      <fsComponents.List {...props.list}/>
 
-      <fsComponents.Bar  {...props.bar}/>
+      <fsComponents.Container/>
+      <GUI.Components.Dropout {...props.dropout}>{"Its Popup!"}</GUI.Components.Dropout>
+      <fsComponents.Empty/>
+      <fsComponents.List      {...props.list}/>
+
+      <fsComponents.Bar       {...props.bar}/>
       <fsComponents.CheckBox  {...props.checkbox}/>
-      <fsComponents.Clicker  {...props.clicker}/>
+      <fsComponents.Clicker   {...props.clicker}/>
+      <fsComponents.Range     {...props.range}/>
 
     </section>
   );
