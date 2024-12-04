@@ -13,10 +13,10 @@ const getDecimalPlaces = (num) => {
   return decimalPart ? decimalPart.length : 0;
 };
 
-const normalize = (next, prev, state) => {
-  const wrappedValue = state.modular ? (next + state.max) % maxReduce : Math.max(Math.min(next, state.max), state.min);
-  const steppedValue = Math.round(wrappedValue / state.step) * state.step;
-  return parseFloat(steppedValue.toFixed(getDecimalPlaces(state.step)));
+const normalize = (next, prev, {max, min, modular, step}) => {
+  const wrappedValue = modular ? (next + max) % max : Math.max(Math.min(next, max), min);
+  const steppedValue = Math.round(wrappedValue / step) * step;
+  return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
 };
 
 // -------------------------------------------------------------------------- //
@@ -37,6 +37,7 @@ const reducer = (state, action) => {
     case "CHANGE":
       {
         const next = valueNormalize(action.payload.next, value, state);
+        console.log(next, action.payload, state)
         if(next != state.value) valueChange(next, value)
         return {... state, value: next}
       }
