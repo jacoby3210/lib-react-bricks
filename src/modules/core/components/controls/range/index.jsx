@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState} from 'react';
+import { useCallback, useEffect, useRef} from 'react';
 import { resolvePropertyAxis } from '@lib-react-bricks/src/modules/core/utils';
 import { useValueDigital } from '@lib-react-bricks/src/modules/core/advanced';
 import * as code from './utils';
@@ -9,6 +9,8 @@ import * as code from './utils';
 
 export const Range = props => {
   
+  const ctxValueDigital = useValueDigital();
+  
   const {
     id, 
     className, 
@@ -17,18 +19,16 @@ export const Range = props => {
 
   const resolveAxis = resolvePropertyAxis(axis)
 
-  const ctxValueDigital = useValueDigital();
-
   const thumbRef = useRef(null), trackRef = useRef(null);
   const cursorOffsetRef = useRef(0);
   
   const handleChange = (next) => {
-    ctxValueDigital.dispatch({type: 'CHANGE', payload: {next}});
+    ctxValueDigital.dispatch({type: 'RELATIVE', payload: {next}});
   };
 
   const handleMouseMove = (evt) => {
     const rect = trackRef.current.getBoundingClientRect();
-    handleChange(code.offsetToValue(evt, cursorOffsetRef.current, rect, resolveAxis, ctxValueDigital.state));
+    handleChange(code.offsetToValue(evt, cursorOffsetRef.current, rect, resolveAxis));
   }
 
   const handleThumbMouseDown = useCallback(
@@ -49,10 +49,10 @@ export const Range = props => {
     (evt) => {
       if (evt.buttons !== 1) return;
       const rect = trackRef.current.getBoundingClientRect();
-      const newValue = code.offsetToValue(evt, 0, rect, resolveAxis, ctxValueDigital.state);
+      const newValue = code.offsetToValue(evt, 0, rect, resolveAxis);
       code.valueAnimate(ctxValueDigital.state.value, newValue, 200, handleChange);
     }, 
-    []
+    [resolveAxis]
   );
 
   const handleMouseUp = useCallback(
@@ -60,15 +60,10 @@ export const Range = props => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     }, 
-    []
+    [resolveAxis]
   );
 
   useEffect(() => {return () => {handleMouseUp()};}, []);
-
-  useEffect(
-    () => handleChange(ctxValueDigital.state.value), 
-    [ctxValueDigital.state.value]
-  );
 
   const thumbProps = {
     className,

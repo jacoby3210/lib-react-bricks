@@ -48,13 +48,10 @@ export const valueToStyle = (axis, {value, min, max}) => {
 
 export const offsetToValue = (evt, offset, rect, resolveAxis, state) => {
   
-  const {max, min, step} = state;
   const {cursor, rectOffset, rectSize} = resolveAxis;
-
   const absolutePos = evt[cursor] - rect[rectOffset] - offset;
   const relativePos = Math.max(0, Math.min(1, absolutePos / rect[rectSize]));
-  const newValue = min + Math.round((relativePos * (max - min)) / step) * step;
-  return newValue;
+  return relativePos;
 
 }
 

@@ -32,7 +32,8 @@ export const CoreComponentsPage = () => {
       <fsComponents.Bar       {...props.bar}/>
       <fsComponents.CheckBox  {...props.checkbox}/>
       <fsComponents.Clicker   {...props.clicker}/>
-      <fsComponents.Range     {...props.range}/>
+      <fsComponents.Range     {...props.rangeHorizontal}/>
+      <fsComponents.Range     {...props.rangeVertical}/>
 
     </section>
   );
