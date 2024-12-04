@@ -8,6 +8,41 @@ import {
 // A feature - to handle a change in the value of a component (numeric type).
 // -------------------------------------------------------------------------- //
 
+const getCandidate = (state, action) => {
+
+  const {
+    max,
+    min,
+    step,
+    value, 
+  } = state;
+
+  const {next, modifier} = action.payload;
+
+  switch (action.type) {
+    
+    case "CHANGE":    
+      return next; 
+      break;
+    
+    case "INVERT":
+    case "TOGGLE":   
+      return -value; 
+      break;
+    
+    case "MODIFY":    
+      return value + (modifier || step); 
+      break;
+    
+    case "RELATIVE":  
+      return min + Math.round((next * (max - min)) / step) * step; 
+      break;
+    
+    default:
+      throw new Error(`Unhandled action type: ${action.type}`);
+  }
+}
+
 const getDecimalPlaces = (num) => {
   const decimalPart = num.toString().split('.')[1];
   return decimalPart ? decimalPart.length : 0;
@@ -25,43 +60,12 @@ const normalize = (next, prev, {max, min, modular, step}) => {
 
 const reducer = (state, action) => {
 
-  const {
-    step,
-    value, 
-    valueChange,
-    valueNormalize, 
-  } = state;
+  const { value, valueChange, valueNormalize } = state;
 
-  switch (action.type) {
-
-    case "CHANGE":
-      {
-        const next = valueNormalize(action.payload.next, value, state);
-        if(next != state.value) valueChange(next, value)
-        return {... state, value: next}
-      }
-      break;
-
-    case "INVERT":
-    case "TOGGLE":
-      {
-        const next = valueNormalize(-value, value, state);
-        if(next != state.value) valueChange(next, value)
-        return {... state, value: next}
-      }  
-      break;
-
-    case "MODIFY":
-      {
-        const next = valueNormalize(value + (action.payload?.modifier || step), value, state);
-        if(next != state.value) valueChange(next, value)
-        return {... state, value: next}
-      }  
-      break;
-
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`);
-  }
+  const candidate = getCandidate(state, action)
+  const next = valueNormalize(candidate, value, state);
+  if(next != state.value) valueChange(next, value)
+  return {... state, value: next}
 
 };
 
@@ -84,7 +88,7 @@ export const withValueDigital = (WrappedComponent) => (props) => {
     valueNormalize = normalize,
     ...rest
   } = props;
-
+  
   const maxReduce = resolveProperty(max, props);
   const minReduce = resolveProperty(min, props);
   const stepReduce = resolveProperty(step, props);
