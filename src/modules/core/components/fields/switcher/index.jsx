@@ -1,4 +1,5 @@
 import { useValueOption } from '@lib-react-bricks/src/modules/core/advanced';
+import { resolveClassName } from '@lib-react-bricks/src/modules/core/utils';
 
 // -------------------------------------------------------------------------- //
 // Layout - to select one option from the source list (alt mode \ enum).
@@ -14,13 +15,13 @@ export const Switcher = props => {
   const displayText = value?.caption || "Not Found"; 
   
   const btnPrevProps = {
-    className: `${className.split(" ")[0]}-prev`,
+    className: resolveClassName(className, '-prev'), 
 		onClick: (e) => ctxValueOption.dispatch({ type: 'DECREMENT' }),
 		disabled: index === 0 && !loop,
 	}
   
   const btnNextProps = {
-		className: `${className.split(" ")[0]}-next`,
+    className: resolveClassName(className, '-next'), 
 		onClick: (e) => ctxValueOption.dispatch({ type: 'INCREMENT' }),
 		disabled: index === max - 1 && !loop,
 	}

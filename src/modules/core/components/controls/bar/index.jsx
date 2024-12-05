@@ -2,6 +2,7 @@ import {
   useContainer, 
   useValueBase 
 } from '@lib-react-bricks/src/modules/core/advanced';
+import { resolveClassName } from '@lib-react-bricks/src/modules/core/utils';
 
 // -------------------------------------------------------------------------- //
 // Template - to output multiple radio buttons as a single component.  
@@ -23,11 +24,11 @@ const Template = (props) => {
 
   return (
     <label 
-      className={`${className.split(" ")[0]}-option`} 
+      className={resolveClassName(className, '-option')} 
       key={index}
     >
       <input
-        className={`${className.split(" ")[0]}-input`}
+        className= {resolveClassName(className, '-input')}
         checked={item.value == value}
         name={name}
         type="radio"
