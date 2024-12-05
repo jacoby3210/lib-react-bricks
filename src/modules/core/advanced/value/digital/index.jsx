@@ -5,7 +5,11 @@ import {
 } from '@lib-react-bricks/src/modules/core/utils';
 
 // -------------------------------------------------------------------------- //
-// A feature - to handle a change in the value of a component (numeric type).
+// A feature - to handle a change in the value (type: digital).
+// -------------------------------------------------------------------------- //
+
+// -------------------------------------------------------------------------- //
+// Context and Reducer setup
 // -------------------------------------------------------------------------- //
 
 const getCandidate = (state, action) => {
@@ -54,10 +58,6 @@ const normalize = (next, prev, {max, min, modular, step}) => {
   return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
 };
 
-// -------------------------------------------------------------------------- //
-// Context and Reducer setup
-// -------------------------------------------------------------------------- //
-
 const reducer = (state, action) => {
 
   const { value, valueChange, valueNormalize } = state;
@@ -79,26 +79,32 @@ export {useValueDigital};
 export const withValueDigital = (WrappedComponent) => (props) => {
 
   const {
+  
     modular = false,
     max = 100,
     min = 0,
     step = 1,
+
     value = 0,
-    valueChange = (next) => next,
+    valueChange = (next, prev) => next,
     valueNormalize = normalize,
+    
     ...rest
+  
   } = props;
   
-  const maxReduce = resolveProperty(max, props);
-  const minReduce = resolveProperty(min, props);
-  const stepReduce = resolveProperty(step, props);
+  const maxResolve = resolveProperty(max, props);
+  const minResolve = resolveProperty(min, props);
+  const stepResolve = resolveProperty(step, props);
 
   const ctx = useReducerAsContext(reducer, 
     {
+
       modular,
-      max: maxReduce,
-      min: minReduce,
-      step: stepReduce,
+      max: maxResolve,
+      min: minResolve,
+      step: stepResolve,
+
       value,
       valueChange,
       valueNormalize,

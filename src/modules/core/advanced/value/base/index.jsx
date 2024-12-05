@@ -4,7 +4,7 @@ import {
 } from '@lib-react-bricks/src/modules/core/utils';
 
 // -------------------------------------------------------------------------- //
-// A feature - to handle a change in the value of a component (base\variant).
+// A feature - to handle a change in the value (type: base\variant).
 // -------------------------------------------------------------------------- //
 
 // -------------------------------------------------------------------------- //
