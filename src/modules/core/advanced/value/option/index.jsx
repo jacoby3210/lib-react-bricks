@@ -17,20 +17,28 @@ const getIndex = (state, action) => {
   
   switch (action.type) {
     
-    case 'CHANGE':
+    case 'CHANGE_BY_INDEX':
       {
-        const {next} = action.payload;
-        return loop ? (next + max) % max : Math.max(0, Math.min(next, max));
+        const {index} = action.payload;
+        return loop ? (index + max) % max : Math.max(0, Math.min(index, max));
       }
 
-    case "DECREMENT":
+    case 'CHANGE_BY_VALUE':
+      {
+        const {value} = action.payload;
+        return matchingItems?.findIndex(item => item.id == value);
+      }
+
+    case "PREVIOUS":
     case 'MOVE_CURSOR_UP':
+    case 'MOVE_CURSOR_LEFT':
       {
         return loop ? (prev - 1 + max) % max : Math.max(prev - 1, 0);
       }
         
-    case "INCREMENT":
+    case "NEXT":
     case 'MOVE_CURSOR_DOWN':
+    case 'MOVE_CURSOR_RIGHT':
       {
         return loop ? (prev + 1 + max) % max : Math.min(prev + 1, max);
       }  
