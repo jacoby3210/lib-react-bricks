@@ -19,6 +19,7 @@ export {Swing}            from "./controls/swing";                            //
 
 // - fields
 
+export {Select}           from "./fields/select";                             // - to select one option from the source list.
 export {Switcher}         from "./fields/switcher";                           // - to select one option from the source list (alt mode \ enum).
 export {Text}             from "./fields/text";                               // - to render value as only read text.
 

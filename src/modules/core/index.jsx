@@ -52,8 +52,8 @@ export const GUI = {
 
     ... compose("Bar")()(
       withMerge("rc-bar", { value: null , ... Components.Bar}),
-      withValueBase,
       withContainer, 
+      withValueBase,
       withRepeat,
     ),
     
@@ -74,8 +74,17 @@ export const GUI = {
 
     ... compose("Swing")(Components.Swing)(
       withMerge("rc-swing", { axis: false, value: 0 }),
-      withValueDigital, 
       withContainer,
+      withValueDigital, 
+    ),
+
+    ... compose("Select")()(
+      withMerge("rc-select", {shown: false, ... Components.Select}),
+      withContainer, 
+      withFilter, 
+      withValueOption, 
+      withReveal, 
+      withRepeat,
     ),
 
     ... compose("Switcher")(Components.Switcher)(
