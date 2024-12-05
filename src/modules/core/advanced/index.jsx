@@ -23,5 +23,6 @@ export {withMerge}                            from "./props/merge";           //
 export {useValueBase, withValueBase}          from "./value/base";            // - to handle a change in the value of a component (base\variant type).
 export {useValueBoolean, withValueBoolean}    from "./value/boolean";         // - to handle a change in the value of a component (boolean).
 export {useValueDigital, withValueDigital}    from "./value/digital";         // - to handle a change in the value of a component (digital).
+export {useValueOption, withValueOption}      from "./value/option";          // - to handle a change in the value of a component (option from source data).
 
 // -------------------------------------------------------------------------- //

@@ -10,7 +10,7 @@ const {
   withDebug,
   withContainer, withRepeat, withReveal,
   withFilter, withMerge,
-  withValueBase, withValueBoolean, withValueDigital,
+  withValueBase, withValueBoolean, withValueDigital, withValueOption,
 } = HOCs;
 
 const compose = (name) => (...components) => (... HOCs) => 
