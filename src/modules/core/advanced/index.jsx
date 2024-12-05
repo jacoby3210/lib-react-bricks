@@ -23,6 +23,7 @@ export {withMerge}                            from "./props/merge";           //
 export {useValueBase, withValueBase}          from "./value/base";            // - to handle a change in the value (type: base\variant).
 export {useValueBoolean, withValueBoolean}    from "./value/boolean";         // - to handle a change in the value (type: boolean).
 export {useValueDigital, withValueDigital}    from "./value/digital";         // - to handle a change in the value (type: digital).
+export {useValueLiteral, withValueLiteral}    from "./value/literal";         // - to handle a change in the value (type: literal - line\paragraph).
 export {useValueOption, withValueOption}      from "./value/option";          // - to handle a change in the value (type: option from source data).
 
 // -------------------------------------------------------------------------- //
