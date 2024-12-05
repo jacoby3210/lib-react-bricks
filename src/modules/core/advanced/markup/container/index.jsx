@@ -14,24 +14,11 @@ import {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'SET_SRC':
-      return { ...state, src: action.payload };
-      
-    case 'SET_FIRST':
-      return { ...state, first: action.payload };
-    
-    case 'SET_LENGTH':
-      return { ...state, length: action.payload };
-  
-    case 'SET_MATCHING_ITEMS':
-      return { ...state, matchingItems: action.payload };
-
-    case 'SET_VALUE':
-      return { ...state, value: action.payload };
 
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
-  }
+
+    }
 };
 
 const {ContainerContext, useContainer} = createSmartContext("Container", reducer);
@@ -47,18 +34,14 @@ export const withContainer = (WrappedComponent) => (props) => {
 
     id, 
     children, 
-
     Container = (props) => <div {...props}/>,
-    
     ... rest
   
   } = props;
 
   const {
-    
     className = "rc-container", 
     value = null, 
-
   } = props;
   
   const ctx = useReducerAsContext(reducer, { ...rest, });

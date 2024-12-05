@@ -1,6 +1,4 @@
-import { 
-  useValueBoolean 
-} from '@lib-react-bricks/src/modules/core/advanced';
+import { useValueBoolean } from '@lib-react-bricks/src/modules/core/advanced';
 
 // -------------------------------------------------------------------------- //
 // Layout - to provides an advanced version of the classic checkbox.

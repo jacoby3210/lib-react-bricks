@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState} from 'react';
-import { resolvePropertyAxis } from '@lib-react-bricks/src/modules/core/utils';
 import { useValueDigital } from '@lib-react-bricks/src/modules/core/advanced';
+import { resolvePropertyAxis } from '@lib-react-bricks/src/modules/core/utils';
 import * as code from './utils';
 
 // -------------------------------------------------------------------------- //
@@ -22,7 +22,7 @@ export const Range = props => {
   const resolveAxis = resolvePropertyAxis(axis)
 
   const thumbRef = useRef(null), trackRef = useRef(null);
-  const cursorOffsetRef = useRef(0);
+  const cursorOffset = useRef(0);
   
   const handleChange = (next) => {
     ctxValueDigital.dispatch({type: 'RELATIVE', payload: {next}});
@@ -33,7 +33,7 @@ export const Range = props => {
       if (evt.button !== 0) return;
       
       const rect = evt.currentTarget.getBoundingClientRect();
-      cursorOffsetRef.current = evt[resolveAxis.cursor] - rect[resolveAxis.rectOffset];
+      cursorOffset.current = evt[resolveAxis.cursor] - rect[resolveAxis.rectOffset];
       setCapture(true);
 
       evt.stopPropagation();
@@ -54,7 +54,7 @@ export const Range = props => {
 
       const handleMouseMove = (evt) => {
         const rect = trackRef.current.getBoundingClientRect();
-        handleChange(code.offsetToValue(evt, cursorOffsetRef.current, rect, resolveAxis));
+        handleChange(code.offsetToValue(evt, cursorOffset.current, rect, resolveAxis));
       }
 
       const handleMouseUp = (evt) => setCapture(false);

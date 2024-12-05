@@ -1,7 +1,4 @@
-import { 
-  useContainer, 
-  useValueBase 
-} from '@lib-react-bricks/src/modules/core/advanced';
+import { useContainer, useValueBase } from '@lib-react-bricks/src/modules/core/advanced';
 import { resolveClassName } from '@lib-react-bricks/src/modules/core/utils';
 
 // -------------------------------------------------------------------------- //
@@ -24,11 +21,11 @@ const Template = (props) => {
 
   return (
     <label 
-      className={resolveClassName(className, '-option')} 
+      className={resolveClassName(className, 'option')} 
       key={index}
     >
       <input
-        className= {resolveClassName(className, '-input')}
+        className= {resolveClassName(className, 'input')}
         checked={item.value == value}
         name={name}
         type="radio"

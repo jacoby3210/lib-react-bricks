@@ -18,6 +18,7 @@ import {
 // -------------------------------------------------------------------------- //
 
 const reducer = (state, action) => {
+  
   switch (action.type) {
     case 'SET_SRC':
       return { ...state, src: action.payload };

@@ -1,23 +1,38 @@
 import React from 'react';
+import { resolveClassName } from '@lib-react-bricks/src/modules/core/utils';
 
 // -------------------------------------------------------------------------- //
 // Additional embedded components.
 // -------------------------------------------------------------------------- //
 
 export const RangeTrack = React.forwardRef((receivedProps, ref) => {
+
   const { children, className,  ...attributes } = receivedProps;
+
   return (
-    <div className={`${className}-track`} ref={ref} {...attributes}> 
+    <div 
+      className={resolveClassName(className, `track`)} 
+      ref={ref} 
+      {...attributes}
+    > 
       {children}
     </div >
   );
+
 });
 
 export const RangeThumb = React.forwardRef((receivedProps, ref) => {
+
   const { children, className, ...attributes } = receivedProps;
+  
   return (
-    <div className={`${className}-thumb`} ref={ref} {...attributes}/>
+    <div 
+      className={resolveClassName(className, `thumb`)} 
+      ref={ref} 
+      {...attributes}
+    />
   );
+
 });
 
 // -------------------------------------------------------------------------- //
@@ -25,6 +40,7 @@ export const RangeThumb = React.forwardRef((receivedProps, ref) => {
 // -------------------------------------------------------------------------- //
 
 export const valueAnimate = (start, end, duration, handleUpdateValueState) => {
+
   let startTime = null;
 
   const step = timestamp => {
@@ -38,11 +54,14 @@ export const valueAnimate = (start, end, duration, handleUpdateValueState) => {
   };
 
   requestAnimationFrame(step);
+
 };
 
 export const valueToStyle = (axis, {value, min, max}) => {
+
   const style = `${((value - min) / (max - min)) * 100.0}%`
   return axis ? { left: style } : { top: style }
+
 };
 
 

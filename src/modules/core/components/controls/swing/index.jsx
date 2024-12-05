@@ -1,14 +1,16 @@
 import { useRef, useEffect } from 'react';
 import { useValueDigital } from '@lib-react-bricks/src/modules/core/advanced';
+import { resolveClassName } from '@lib-react-bricks/src/modules/core/utils';
 
 // -------------------------------------------------------------------------- //
 // Layout - to control the increase/decrease of the value.
 // -------------------------------------------------------------------------- //
 
 export const Swing = (props) => {
+
   const { className, step, min, max } = props;
   const ctxValueDigital = useValueDigital();
-  const timeoutRef = useRef(null);
+  const timeout = useRef(null);
 
   const isButtonStart = (btn) => btn.classList.contains(`${className}-start`);
 
@@ -29,11 +31,11 @@ export const Swing = (props) => {
     const fn = () => onMouseDownSlice(normStep);
 
     fn();
-    timeoutRef.current = setInterval(fn, 100);
+    timeout.current = setInterval(fn, 100);
 
     const clearMouseUp = () => {
-      if (timeoutRef.current) clearInterval(timeoutRef.current);
-      timeoutRef.current = null;
+      if (timeout.current) clearInterval(timeout.current);
+      timeout.current = null;
       document.removeEventListener('mouseup', clearMouseUp);
     };
 
@@ -42,18 +44,16 @@ export const Swing = (props) => {
 
   useEffect(() => {
     return () => {
-      if (timeoutRef.current) clearInterval(timeoutRef.current);
+      if (timeout.current) clearInterval(timeout.current);
     };
   }, []);
 
   const buttonProps = { onDoubleClick, onMouseDown };
-  const startProps = { className: `${className}-start`, ...buttonProps };
-  const endProps = { className: `${className}-end`, ...buttonProps };
 
   return (
     <>
-      <button {...startProps} />
-      <button {...endProps} />
+      <button className={resolveClassName(className, 'start')} {...buttonProps} />
+      <button className={resolveClassName(className, 'end')} {...buttonProps} />
     </>
   );
 };

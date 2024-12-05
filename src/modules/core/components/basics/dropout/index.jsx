@@ -1,4 +1,5 @@
 import {useReveal} from '@lib-react-bricks/src/modules/core/advanced';
+import {resolveClassName}  from '@lib-react-bricks/src/modules/core/utils';
 
 // -------------------------------------------------------------------------- //
 // Layout - to render the content of the reveal.
@@ -7,7 +8,6 @@ import {useReveal} from '@lib-react-bricks/src/modules/core/advanced';
 const Controller = props => {
 
   const {className, children, label, ...attributes} = props;
-  const cssPrefix = `button`; 
 	const reveals = useReveal();
 
   const onClick = (evt) => {
@@ -17,9 +17,11 @@ const Controller = props => {
   };
 
   return (
-    <button className={cssPrefix} onClick={onClick}>
-      <span className={`${cssPrefix}-label`}>{label || children}</span>
-      <span className={`${cssPrefix}-sprite`}>
+    <button className={resolveClassName(className, 'button')} onClick={onClick}>
+      <span className={resolveClassName(className, 'button-label')}>
+        {label || children}
+      </span>
+      <span className={resolveClassName(className, 'button-sprite')}>
         <i className={'fa-solid fa-chevron-down'}></i>
       </span>
     </button>

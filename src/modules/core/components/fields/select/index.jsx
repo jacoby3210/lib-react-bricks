@@ -21,8 +21,8 @@ const Controller = props => {
 
   return (
     <button className={className} onClick={handleClick}>
-      <span className={resolveClassName(className, '-label')}>{displayValue}</span>
-      <span className={resolveClassName(className, '-sprite')}>
+      <span className={resolveClassName(className, 'label')}>{displayValue}</span>
+      <span className={resolveClassName(className, 'sprite')}>
         <i className={'fa-solid fa-chevron-down'}></i>
       </span>
     </button>
