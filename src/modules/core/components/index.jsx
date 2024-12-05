@@ -18,6 +18,8 @@ export {Range}            from "./controls/range";                            //
 export {Swing}            from "./controls/swing";                            // - to control the increase/decrease of the value
 
 // - fields
+
+export {Switcher}         from "./fields/switcher";                           // - to select one option from the source list (alt mode \ enum).
 export {Text}             from "./fields/text";                               // - to render value as only read text.
 
 // -------------------------------------------------------------------------- //

@@ -78,6 +78,12 @@ export const GUI = {
       withContainer,
     ),
 
+    ... compose("Switcher")(Components.Switcher)(
+      withMerge("rc-switcher", {max: (props)=>props.src.length, value: 0}),
+      withValueOption, 
+      withContainer,
+    ),
+
     ... compose("Text")(Components.Text)(
       withMerge("rc-text")
     )

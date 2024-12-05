@@ -85,6 +85,7 @@ export const props = {
   },
   
   switcher: {
+    loop: true,
     length: 5,
     src: produceEntries(5, (v, i) => ({caption: `Option #${i}`, id: i})),
     value: 0,
