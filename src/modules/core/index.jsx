@@ -16,6 +16,10 @@ const {
 const compose = (name) => (...components) => (... HOCs) => 
   ({[name]: withDebug(name, ...HOCs)(...components)})
 
+const filter = function (item) {
+  return item.caption != this.value && item.value.includes(this.value);
+};
+
 // -------------------------------------------------------------------------- //
 // export api
 // -------------------------------------------------------------------------- //
@@ -76,6 +80,15 @@ export const GUI = {
       withMerge("rc-swing", { axis: false, value: 0 }),
       withContainer,
       withValueDigital, 
+    ),
+
+    ... compose("Advisor")()(
+      withMerge("rc-advisor", {filter, value: "",  ... Components.Advisor }),
+      withContainer, 
+      withFilter, 
+      withValueOption, 
+      withReveal, 
+      withRepeat,
     ),
 
     ... compose("Select")()(

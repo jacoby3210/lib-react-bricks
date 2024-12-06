@@ -15,7 +15,6 @@ export const props = {
   },
 
   list: {
-    length: 5,
     data: produceEntries(5, (v, i) => { 
       return { 
         id: i,
@@ -24,12 +23,16 @@ export const props = {
         onClick: (e) => {console.log(`Option #${i}`); return false;} 
       } 
     }),
+    length: 5,
   },
-  text: {value: "ttttttttttttttttttt"},
+  
+  text: {
+    value: "ttttttttttttttttttt",
+  },
   
   bar: {
-    name: "test-bar", 
     data: produceEntries(5, (v, i) => {return {label: `Option #${i}`, value: i}}), 
+    name: "test-bar", 
     value: 2,
   },
   
@@ -37,11 +40,11 @@ export const props = {
     value: false
   },
   
-  clicker:          { 
+  clicker: { 
     value: 0, 
   },
   
-  rangeHorizontal:  { 
+  rangeHorizontal: { 
     axis: true, 
     min: 0, 
     max: 10, 
@@ -49,14 +52,14 @@ export const props = {
     value: 5 
   },
   
-  rangeVertical:    { 
+  rangeVertical: { 
     max: 50, 
     min: 0, 
     step: 0.1, 
     value: 5 
   },
   
-  swing:            { 
+  swing: { 
     max: 50, 
     min: 0, 
     step: 0.5, 
@@ -64,11 +67,11 @@ export const props = {
   },
 
   advisor: {
-    data: produceEntries(5, (v, i) => ({value: `Option #${i}`})),
+    data: produceEntries(5, (v, i) => ({id: i, value: `Option #${i}`})),
   },
 
   paragraph: {
-    value: "long long long long long long long long long long long long long long long long long long string",
+    value: "long long long long long long long long long long long long long long string",
   },
 
   select: {
@@ -85,14 +88,18 @@ export const props = {
   },
   
   switcher: {
-    loop: true,
-    length: 5,
     data: produceEntries(5, (v, i) => ({caption: `Option #${i}`, id: i})),
+    length: 5,
+    loop: true,
     value: 0,
   },
-
     
-  slider: { value: 5, max: 50, min: 0, step: 0.5,},
+  slider: { 
+    max: 50, 
+    min: 0, 
+    step: 0.5,
+    value: 5, 
+  },
 
 };
 
