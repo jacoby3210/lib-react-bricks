@@ -40,14 +40,6 @@ const reducer = (state, action) => {
   }
 };
 
-const stateInitial = {
-  src: [],
-  first: 0,
-  length: -1,
-  matchingItems: null,
-  value: null,
-};
-
 const {RepeatContext, useRepeat} = createSmartContext("Repeat", reducer);
 export {useRepeat};
 
@@ -71,25 +63,29 @@ export const withRepeat = (WrappedComponent) => (props) => {
 
   } = props;
   
-  const resolveSrc = matchingItems | Array.isArray(src) ? src : Object.values(src);
-  const resolveFirst = resolveProperty(first, props);
-  const resolveLength = resolveProperty(length, props) == -1 
-    ? resolveSrc.length 
-    : Math.min(resolveSrc.length, length);
-  const resolveRange = resolveFirst + resolveLength;
+  const srcResolve = Array.isArray(src) ? src : Object.values(src);
+  const matchingItemsResolve = matchingItems ? matchingItems : srcResolve 
+
+  const firstResolve = resolveProperty(first, props);
+  const lengthResolve = resolveProperty(length, props) == -1 
+    ? srcResolve.length 
+    : Math.min(srcResolve.length, length);
+  const lastResolve = firstResolve + lengthResolve;
 
   const ctx = useReducerAsContext(reducer, { 
-    ...stateInitial, 
-    first: resolveFirst,
-    length: resolveLength,
-    range: resolveRange,
-    src: resolveSrc,
-    matchingItems,
+
+    first: firstResolve,
+    last: lastResolve,
+    length: lengthResolve,
+
+    matchingItems: matchingItemsResolve,
     nonMatchingItems,
+    src: srcResolve,
+  
   });
 
-  const children = resolveSrc
-    .slice(resolveFirst, resolveRange)
+  const children = matchingItemsResolve
+    .slice(firstResolve, lastResolve)
     .map(
       (item, index) => (
         <Template key={item.id || index} index={index} item={item}/>
@@ -98,13 +94,10 @@ export const withRepeat = (WrappedComponent) => (props) => {
 
   return (
     <RepeatContext.Provider value={ctx}>
-      {WrappedComponent ? (
-        <WrappedComponent {...rest}>
-          {children}
-        </WrappedComponent>
-      ) : (
-        <>{children}</>
-      )}
+      {WrappedComponent 
+        ? (<WrappedComponent {...rest}> { children } </WrappedComponent>) 
+        : (<> { children } </>)
+      }
     </RepeatContext.Provider>
   );
 };
