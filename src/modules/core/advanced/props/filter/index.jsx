@@ -11,25 +11,24 @@ export const withFilter = (WrappedComponent) => (props) => {
       ...rest
     } = props;
     
-    const {src = []} = props;
+    const {data = []} = props;
 
-    const resolveSrc = useMemo(() => {
-      if (!src || typeof src !== 'object') {
+    const dataResolve = useMemo(() => {
+      if (!data || typeof data !== 'object') {
         console.warn("Property `src` is not passed or has an incorrect format. An empty array is used.");
         return [];
       }
-      return Array.isArray(src) ? src : Object.values(src);
-    }, [src]);
+      return Array.isArray(data) ? data : Object.values(src);
+    }, [data]);
 
-    const [matchingItems, nonMatchingItems] = useMemo(() => {
-      const matching = resolveSrc.filter(filter, props);
-      const notMatching = resolveSrc.filter((item) => !matching.includes(item));
-      return [matching, notMatching];
-    }, [filter, resolveSrc]);
+    const dataset = useMemo(
+      () => dataResolve.filter(filter, props), 
+      [filter, dataResolve, props]
+    );
     
     // render
 
-    const updateProps = { ...rest, matchingItems, nonMatchingItems}
+    const updateProps = { ...rest, dataset}
     return <WrappedComponent {...updateProps}/>;
 
 };

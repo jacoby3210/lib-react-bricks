@@ -13,7 +13,7 @@ import {
 
 const getIndex = (state, action) => {
 
-  const {matchingItems, max, loop, index: prev } = state;
+  const {dataset, max, loop, index: prev } = state;
   
   switch (action.type) {
     
@@ -26,7 +26,7 @@ const getIndex = (state, action) => {
     case 'CHANGE_BY_VALUE':
       {
         const {value} = action.payload;
-        return matchingItems?.findIndex(item => item.id == value);
+        return dataset?.findIndex(item => item.id == value);
       }
 
     case "PREVIOUS":
@@ -53,7 +53,7 @@ const getIndex = (state, action) => {
 const reducer = (state, action) => {
 
   const index = getIndex(state, action);
-  const value = state.matchingItems[index];
+  const value = state.dataset[index];
   if(value != state.value) state.valueChange(value, state.value)
   return {... state, index, value};
 
@@ -69,19 +69,25 @@ export {useValueOption};
 export const withValueOption = (WrappedComponent) => (props) => {
 
   const {
+    
+    data = [], 
+    dataset = null, 
+    
+    index = 0,
     loop = false,
+    
     value = null, 
     valueChange = (next) => next,
-    src = [], 
-    index = 0,
+
   } = props;
 
+  const datasetResolve = dataset ? dataset : data;
   const ctx = useReducerAsContext(reducer, {
-    matchingItems: src,
-    max:  src.length,
-    loop, 
+    dataset: datasetResolve,
     index,
-    value: src[index],
+    loop, 
+    max:  datasetResolve.length,
+    value: datasetResolve[index],
     valueChange,
   });
 

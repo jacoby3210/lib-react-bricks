@@ -16,7 +16,7 @@ export const props = {
 
   list: {
     length: 5,
-    src: produceEntries(5, (v, i) => { 
+    data: produceEntries(5, (v, i) => { 
       return { 
         id: i,
         name: `Option #${i}`, 
@@ -29,7 +29,7 @@ export const props = {
   
   bar: {
     name: "test-bar", 
-    src: produceEntries(5, (v, i) => {return {label: `Option #${i}`, value: i}}), 
+    data: produceEntries(5, (v, i) => {return {label: `Option #${i}`, value: i}}), 
     value: 2,
   },
   
@@ -64,7 +64,7 @@ export const props = {
   },
 
   advisor: {
-    src: produceEntries(5, (v, i) => ({value: `Option #${i}`})),
+    data: produceEntries(5, (v, i) => ({value: `Option #${i}`})),
   },
 
   paragraph: {
@@ -73,7 +73,7 @@ export const props = {
 
   select: {
     length: 5,
-    src: produceEntries(5, (v, i) => ({ 
+    data: produceEntries(5, (v, i) => ({ 
       id: i,
       label: `Option #${i}`, 
       onMouseDown: (e) => {
@@ -87,7 +87,7 @@ export const props = {
   switcher: {
     loop: true,
     length: 5,
-    src: produceEntries(5, (v, i) => ({caption: `Option #${i}`, id: i})),
+    data: produceEntries(5, (v, i) => ({caption: `Option #${i}`, id: i})),
     value: 0,
   },
 

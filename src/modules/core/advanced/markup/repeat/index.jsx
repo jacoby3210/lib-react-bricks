@@ -29,8 +29,8 @@ const reducer = (state, action) => {
     case 'SET_LENGTH':
       return { ...state, length: action.payload };
   
-    case 'SET_MATCHING_ITEMS':
-      return { ...state, matchingItems: action.payload };
+    case 'SET_DATASET':
+      return { ...state, dataset: action.payload };
 
     case 'SET_VALUE':
       return { ...state, value: action.payload };
@@ -51,40 +51,39 @@ export const withRepeat = (WrappedComponent) => (props) => {
   
   const {
 
+    data = [],
+    dataset = null,
+
     first = 0, 
     length = -1,
     src, 
     Template, 
 
-    matchingItems = null,
-    nonMatchingItems = null,
-    
     ...rest 
 
   } = props;
   
-  const srcResolve = Array.isArray(src) ? src : Object.values(src);
-  const matchingItemsResolve = matchingItems ? matchingItems : srcResolve 
+  const dataResolve = Array.isArray(data) ? data : Object.values(data);
+  const datasetResolve = dataset ? dataset : dataResolve 
 
   const firstResolve = resolveProperty(first, props);
   const lengthResolve = resolveProperty(length, props) == -1 
-    ? srcResolve.length 
-    : Math.min(srcResolve.length, length);
+    ? datasetResolve.length 
+    : Math.min(datasetResolve.length, length);
   const lastResolve = firstResolve + lengthResolve;
 
   const ctx = useReducerAsContext(reducer, { 
+
+    data: dataResolve,
+    dataset: datasetResolve,
 
     first: firstResolve,
     last: lastResolve,
     length: lengthResolve,
 
-    matchingItems: matchingItemsResolve,
-    nonMatchingItems,
-    src: srcResolve,
-  
   });
 
-  const children = matchingItemsResolve
+  const children = datasetResolve
     .slice(firstResolve, lastResolve)
     .map(
       (item, index) => (
