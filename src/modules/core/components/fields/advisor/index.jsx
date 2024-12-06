@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useContainer, useReveal, useValueOption } from '@lib-react-bricks/src/modules/core/advanced';
 import { resolveClassName } from '@lib-react-bricks/src/modules/core/utils';
 
@@ -15,21 +15,48 @@ const Controller = props => {
 	
   const input = useRef(null);
   
-  const handleChange = useCallback(
-    (evt) => {
-      if(ctxValueOption.state.value.value == evt.target.value) return; 
-      ctxValueOption.dispatch({
-        type: "CHANGE_BY_VALUE", 
-        payload: {value: {id: -1, value: evt.target.value}}
-      })
-    }, 
-    [ctxValueOption]
-  );
+  const handleChange = (evt) => {
+    
+    if(ctxValueOption.state.value.value == evt.target.value) return; 
+    ctxValueOption.dispatch({
+      type: "CHANGE_BY_VALUE", 
+      payload: {value: {id: -1, value: evt.target.value}}
+    })
+    ctxReveal.dispatch({ type: "SHOW" })
+
+  };
   
+  const handleKeyDown = (evt) => {
+    
+    switch (evt.key) {
+        
+      case 'ArrowDown': 
+        ctxValueOption.dispatch({ type: 'MOVE_CURSOR_DOWN' });  
+        evt.preventDefault();
+        break;
+      
+      case 'ArrowUp':   
+        ctxValueOption.dispatch({ type: 'MOVE_CURSOR_UP' });    
+        evt.preventDefault();
+        break;
+        
+      case 'Enter':
+        ctxReveal.dispatch({type:"TOGGLE"})
+        break;
+      
+      default: break;
+
+    }
+
+  };
+
+
   const inputProps  = {
-    className: resolveClassName(className, 'input'), 
+    className:  resolveClassName(className, 'input'), 
+    onChange:   handleChange,
     onClick:    (evt) => {evt.stopPropagation();},
     onFocus:    (evt) => {ctxReveal.dispatch({type:"SHOW"});},
+    onKeyDown:  handleKeyDown,
     value: ctxValueOption.state.value.value || ctxValueOption.state.value
   };
 
