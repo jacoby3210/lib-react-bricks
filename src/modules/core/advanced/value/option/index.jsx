@@ -1,7 +1,5 @@
-import { 
-  createSmartContext,
-  useReducerAsContext, 
-} from '@lib-react-bricks/src/modules/core/utils';
+import { createSmartContext, useReducerAsContext, } 
+from '@lib-react-bricks/src/modules/core/utils';
 
 // -------------------------------------------------------------------------- //
 // A feature - to handle a change in the value (type: option from src).
@@ -26,7 +24,7 @@ const getIndex = (state, action) => {
     case 'CHANGE_BY_VALUE':
       {
         const {value} = action.payload;
-        return dataset?.findIndex(item => item.id == value);
+        return dataset?.findIndex(item => item.id == value.id);
       }
 
     case "PREVIOUS":
@@ -53,7 +51,7 @@ const getIndex = (state, action) => {
 const reducer = (state, action) => {
 
   const index = getIndex(state, action);
-  const value = state.dataset[index];
+  const value = index !== -1 ? state.dataset[index] : action.payload.value;
   if(value != state.value) state.valueChange(value, state.value)
   return {... state, index, value};
 
@@ -87,7 +85,7 @@ export const withValueOption = (WrappedComponent) => (props) => {
     index,
     loop, 
     max:  datasetResolve.length,
-    value: datasetResolve[index],
+    value: value || datasetResolve[index],
     valueChange,
   });
 
@@ -99,6 +97,5 @@ export const withValueOption = (WrappedComponent) => (props) => {
     </ValueOptionContext.Provider>
   );
 };
-
 
 // -------------------------------------------------------------------------- //
