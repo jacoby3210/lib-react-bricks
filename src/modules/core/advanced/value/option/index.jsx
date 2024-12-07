@@ -20,12 +20,12 @@ const getIndex = (state, action) => {
 
     case "CHANGE_BY_VALUE_ID": {
       const { id } = action.payload;
-      return dataset?.findIndex((item) => item.id === id) ?? -1;
+      return dataset?.findIndex((item) => item.id === id);
     }
     
     case "CHANGE_BY_VALUE_TEXT": {
       const { text } = action.payload;
-      return dataset?.findIndex((item) => item.label === text) ?? -1;
+      return dataset?.findIndex((item) => item.label === text);
     }
 
     case "PREVIOUS":

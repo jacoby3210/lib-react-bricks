@@ -67,7 +67,7 @@ export const props = {
   },
 
   advisor: {
-    data: produceEntries(5, (v, i) => ({id: i, value: `Option #${i}`})),
+    data: produceEntries(5, (v, i) => ({id: i, label: `Option #${i}`})),
   },
 
   paragraph: {

@@ -1,6 +1,8 @@
 import { useRef } from 'react';
-import { useContainer, useReveal, useValueOption } from '@lib-react-bricks/src/modules/core/advanced';
-import { resolveClassName } from '@lib-react-bricks/src/modules/core/utils';
+import { useContainer, useReveal, useValueLiteral, useValueOption } 
+from '@lib-react-bricks/src/modules/core/advanced';
+import { resolveClassName } 
+from '@lib-react-bricks/src/modules/core/utils';
 
 // -------------------------------------------------------------------------- //
 // Layout - to show text line field with autocomplete suggestions.
@@ -9,19 +11,19 @@ import { resolveClassName } from '@lib-react-bricks/src/modules/core/utils';
 const Controller = props => {
   
 	const ctxReveal = useReveal();
+  const ctxValueLiteral = useValueLiteral();
   const ctxValueOption = useValueOption();
   
-  const { className } = props;
-	
-  const input = useRef(null);
-  
+  const { className, data } = props;
+	const {index} = ctxValueOption.state;
+	const {value} = ctxValueLiteral.state;
+
+  const valueResolve = index == -1 ? value : data[index].label || data[index].id;
+
   const handleChange = (evt) => {
     
-    if(ctxValueOption.state.value.value == evt.target.value) return; 
-    ctxValueOption.dispatch({
-      type: "CHANGE_BY_VALUE", 
-      payload: {value: {id: -1, value: evt.target.value}}
-    })
+    ctxValueOption.dispatch({type: "CHANGE_BY_VALUE_TEXT", payload: {text: evt.target.value}})
+    ctxValueLiteral.dispatch({type: "CHANGE", payload: {next: evt.target.value}})
     ctxReveal.dispatch({ type: "SHOW" })
 
   };
@@ -57,10 +59,10 @@ const Controller = props => {
     onClick:    (evt) => {evt.stopPropagation();},
     onFocus:    (evt) => {ctxReveal.dispatch({type:"SHOW"});},
     onKeyDown:  handleKeyDown,
-    value: ctxValueOption.state.value.value || ctxValueOption.state.value
+    value: valueResolve
   };
 
-	return (<input ref={input} onChange={handleChange} {...inputProps} />);
+	return (<input onChange={handleChange} {...inputProps} />);
 
 };
 
@@ -77,10 +79,12 @@ const Template = (props) => {
   const {item, index} = props;
   const {className} = ctxContainer.state;
 
+  const textResolve = item.label || item.id;
+
   const handleClick = (evt) => {
     evt.stopPropagation();
     ctxReveal.dispatch({type:"TOGGLE"})
-    ctxValueOption.dispatch({type: "CHANGE_BY_VALUE", payload: {value: item}})
+    ctxValueOption.dispatch({type: "CHANGE_BY_VALUE_ID", payload: {id: item.id}})
   }
 
   return (
@@ -90,7 +94,7 @@ const Template = (props) => {
       onClick={handleClick} 
       value={item?.value}
     >
-      {item.value||item.id}
+      {textResolve}
     </option>
   );
 };

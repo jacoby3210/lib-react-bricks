@@ -10,14 +10,16 @@ const {
   withDebug,
   withContainer, withRepeat, withReveal,
   withFilter, withMerge,
-  withValueBase, withValueBoolean, withValueDigital, withValueOption,
+  withValueBase, withValueBoolean, withValueDigital, withValueLiteral, withValueOption,
 } = HOCs;
 
 const compose = (name) => (...components) => (... HOCs) => 
   ({[name]: withDebug(name, ...HOCs)(...components)})
 
-const filter = function (item) {
-  return item.caption != this.value && item.value.includes(this.value);
+const filter = function (item,props) {
+  console.log(props)
+  return item.label != props.value ;
+  // return item.label != props.value && item.label.includes(props.value);
 };
 
 // -------------------------------------------------------------------------- //
@@ -86,6 +88,7 @@ export const GUI = {
       withMerge("rc-advisor", {filter, value: "",  ... Components.Advisor }),
       withContainer, 
       withFilter, 
+      withValueLiteral,
       withValueOption, 
       withReveal, 
       withRepeat,

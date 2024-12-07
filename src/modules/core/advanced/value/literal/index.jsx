@@ -29,7 +29,7 @@ const getCandidate = (state, action) => {
 
 const normalize = (next, prev, {max, min, pattern}) => {
   if(next.length < min || next.length > max) return prev;
-  const patternExp = new RegExp(`[${forbidden.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}]`);
+  const patternExp = new RegExp(`[${pattern.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}]`);
   return patternExp.test(next) ? prev : next;
 }
 
