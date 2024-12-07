@@ -1,6 +1,6 @@
 import { 
   createSmartContext, 
-  resolveProperty,
+  resolveFunction,
   useReducerAsContext,
 } from '@lib-react-bricks/src/modules/core/utils';
 
@@ -70,8 +70,8 @@ export const withValueLiteral = (WrappedComponent) => (props) => {
   
   } = props;
   
-  const maxResolve = resolveProperty(max, props);
-  const minResolve = resolveProperty(min, props);
+  const maxResolve = resolveFunction(max, props);
+  const minResolve = resolveFunction(min, props);
   
   const ctx = useReducerAsContext(reducer, 
     {

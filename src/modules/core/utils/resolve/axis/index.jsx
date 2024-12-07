@@ -4,7 +4,7 @@
 // (vertically or horizontally).
 // -------------------------------------------------------------------------- //
 
-export const resolvePropertyAxis = (axis) => {
+export const resolveAxis = (axis) => {
 
   const horizontalProps = {
     axis: "horizontal",

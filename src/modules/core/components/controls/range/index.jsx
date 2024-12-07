@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState} from 'react';
 import { useValueDigital } from '@lib-react-bricks/src/modules/core/advanced';
-import { resolvePropertyAxis } from '@lib-react-bricks/src/modules/core/utils';
+import { resolveAxis } from '@lib-react-bricks/src/modules/core/utils';
 import * as code from './utils';
 
 // -------------------------------------------------------------------------- //
@@ -19,7 +19,7 @@ export const Range = props => {
     axis
   } = props;
 
-  const resolveAxis = resolvePropertyAxis(axis)
+  const axisResolve = resolveAxis(axis);
 
   const thumbRef = useRef(null), trackRef = useRef(null);
   const cursorOffset = useRef(0);
@@ -33,7 +33,7 @@ export const Range = props => {
       if (evt.button !== 0) return;
       
       const rect = evt.currentTarget.getBoundingClientRect();
-      cursorOffset.current = evt[resolveAxis.cursor] - rect[resolveAxis.rectOffset];
+      cursorOffset.current = evt[axisResolve.cursor] - rect[axisResolve.rectOffset];
       setCapture(true);
 
       evt.stopPropagation();
@@ -44,9 +44,9 @@ export const Range = props => {
     (evt) => {
       if (evt.buttons !== 1) return;
       const rect = trackRef.current.getBoundingClientRect();
-      handleChange(code.offsetToValue(evt, 0, rect, resolveAxis));
+      handleChange(code.offsetToValue(evt, 0, rect, axisResolve));
     }, 
-    [resolveAxis, ctxValueDigital.state.value]
+    [axisResolve, ctxValueDigital.state.value]
   );
 
   useEffect(
@@ -54,7 +54,7 @@ export const Range = props => {
 
       const handleMouseMove = (evt) => {
         const rect = trackRef.current.getBoundingClientRect();
-        handleChange(code.offsetToValue(evt, cursorOffset.current, rect, resolveAxis));
+        handleChange(code.offsetToValue(evt, cursorOffset.current, rect, axisResolve));
       }
 
       const handleMouseUp = (evt) => setCapture(false);
@@ -84,7 +84,7 @@ export const Range = props => {
   }
   
   return (
-    <div id={id} className={className} axis={resolveAxis.axis} value={ctxValueDigital.state.value}>
+    <div id={id} className={className} axis={axisResolve.axis} value={ctxValueDigital.state.value}>
       <code.RangeTrack ref={trackRef} {...trackProps}>
         <code.RangeThumb ref={thumbRef} {... thumbProps} />
       </code.RangeTrack>

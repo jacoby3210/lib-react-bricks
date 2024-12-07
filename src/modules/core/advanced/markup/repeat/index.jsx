@@ -1,6 +1,6 @@
 import { 
   createSmartContext,
-  resolveProperty, 
+  resolveFunction, 
   useReducerAsContext, 
 } from '@lib-react-bricks/src/modules/core/utils';
 
@@ -66,8 +66,8 @@ export const withRepeat = (WrappedComponent) => (props) => {
   const dataResolve = Array.isArray(data) ? data : Object.values(data);
   const datasetResolve = dataset ? dataset : dataResolve 
 
-  const firstResolve = resolveProperty(first, props);
-  const lengthResolve = resolveProperty(length, props) == -1 
+  const firstResolve = resolveFunction(first, props);
+  const lengthResolve = resolveFunction(length, props) == -1 
     ? datasetResolve.length 
     : Math.min(datasetResolve.length, length);
   const lastResolve = firstResolve + lengthResolve;
