@@ -14,8 +14,6 @@ import {
 
 const getCandidate = (state, action) => {
 
-  const { max, min, pattern, value, } = state;
-
   const { next } = action.payload;
 
   switch (action.type) {
@@ -55,8 +53,6 @@ export {useValueLiteral};
 
 export const withValueLiteral = (WrappedComponent) => (props) => {
   
-  // initial data
-  
   const {
 
     pattern = "", 
@@ -64,11 +60,13 @@ export const withValueLiteral = (WrappedComponent) => (props) => {
     max = 100,
     min = 0,
     
-    value = "",
     valueChange = (next, prev) => next,
     valueNormalize = normalize,
-  
+    
+    ... rest
   } = props;
+
+  const {value = ""} = props;
   
   const maxResolve = resolveFunction(max, props);
   const minResolve = resolveFunction(min, props);
@@ -88,7 +86,7 @@ export const withValueLiteral = (WrappedComponent) => (props) => {
   
   return (
     <ValueLiteralContext.Provider value={ctx}>
-      <WrappedComponent {...updateProps} />;
+      <WrappedComponent {...rest} />
     </ValueLiteralContext.Provider>
   );
 
