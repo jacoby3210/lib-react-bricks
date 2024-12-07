@@ -18,9 +18,14 @@ const getIndex = (state, action) => {
       return loop ? (index + max) % max : Math.max(0, Math.min(index, max - 1));
     }
 
-    case "CHANGE_BY_VALUE": {
+    case "CHANGE_BY_VALUE_ID": {
       const { id } = action.payload;
       return dataset?.findIndex((item) => item.id === id) ?? -1;
+    }
+    
+    case "CHANGE_BY_VALUE_TEXT": {
+      const { text } = action.payload;
+      return dataset?.findIndex((item) => item.label === text) ?? -1;
     }
 
     case "PREVIOUS":
