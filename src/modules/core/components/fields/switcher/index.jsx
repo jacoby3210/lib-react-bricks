@@ -7,13 +7,12 @@ import { resolveClassName } from '@lib-react-bricks/src/modules/core/utils';
 
 export const Switcher = props => {
 
-  const { className } = props;
-
+  const { className, data } = props;
   const ctxValueOption = useValueOption();
   const {index, loop, max,  value} = ctxValueOption.state;
 
-  const displayText = value?.caption || "Not Found"; 
-  
+  const displayText = data[index].caption || "Not Found";
+
   const btnPrevProps = {
     className: resolveClassName(className, 'prev'), 
 		onClick: (e) => ctxValueOption.dispatch({ type: 'PREVIOUS' }),

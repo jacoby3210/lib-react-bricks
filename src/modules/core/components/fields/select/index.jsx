@@ -10,9 +10,9 @@ const Controller = props => {
   const ctxReveal = useReveal();
   const ctxValueOption = useValueOption();
 
-  const {className} = props;
-  const {index, loop, max,  value} = ctxValueOption.state;
-  const displayValue = value?.label || "Not Found"; 
+  const {className, data} = props;
+  const {index, loop, max, value} = ctxValueOption.state;
+  const displayText = data[index].label ||  data[index].id || "Not Found";
 
   const handleClick = (evt) => {
     evt.stopPropagation();
@@ -21,7 +21,9 @@ const Controller = props => {
 
   return (
     <button className={className} onClick={handleClick}>
-      <span className={resolveClassName(className, 'label')}>{displayValue}</span>
+      <span className={resolveClassName(className, 'label')}>
+        {displayText}
+      </span>
       <span className={resolveClassName(className, 'sprite')}>
         <i className={'fa-solid fa-chevron-down'}></i>
       </span>
@@ -40,8 +42,9 @@ const Template = props => {
   const ctxValueOption = useValueOption();
 
   const {item, index} = props;
-  const {className} = ctxContainer.state;
-  
+  const {className, data} = ctxContainer.state;
+  const resolveText = data[index].label ||  data[index].id || "Not Found";
+
   const handleClick = (evt) => {
     evt.stopPropagation();
     ctxReveal.dispatch({type:"TOGGLE"})
@@ -55,7 +58,7 @@ const Template = props => {
       onClick={handleClick} 
       value={item?.id}
     >
-      {item.label||item.id}
+      {resolveText}
     </option>
   );
 }

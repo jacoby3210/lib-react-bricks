@@ -36,7 +36,7 @@ export const CoreComponentsPage = () => {
       <fsComponents.Range     {...props.rangeVertical}/>
       <fsComponents.Swing     {...props.swing}/>
 
-      <fsComponents.Advisor   {...props.advisor}/>
+      {/* <fsComponents.Advisor   {...props.advisor}/> */}
       <fsComponents.Select    {...props.select}/>
       <fsComponents.Switcher  {...props.switcher}/>
       <fsComponents.Text      {...props.text}/>
