@@ -5,6 +5,7 @@
 // common functions
 
 export {resolveAxis}                from "./resolve/axis"                     // to resolve the property axis to a set of properties (vertically or horizontally).
+export {resolveData}                from "./resolve/data"                     // to resolve the property data to a set of properties.
 export {resolveClassName}           from "./resolve/className"                // to resolve additional css classes based on the first one.
 export {resolveFunction}            from "./resolve/function"                 // to resolve the property to a summary value.
 

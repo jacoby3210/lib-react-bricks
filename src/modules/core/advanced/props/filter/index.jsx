@@ -1,4 +1,5 @@
 import {useMemo} from 'react';
+import { resolveData } from '@lib-react-bricks/src/modules/core/utils';
 
 // -------------------------------------------------------------------------- //
 // A feature - to apply a filter to the source data.
@@ -13,13 +14,7 @@ export const withFilter = (WrappedComponent) => (props) => {
     
     const {data = []} = props;
 
-    const dataResolve = useMemo(() => {
-      if (!data || typeof data !== 'object') {
-        console.warn("Property `src` is not passed or has an incorrect format. An empty array is used.");
-        return [];
-      }
-      return Array.isArray(data) ? data : Object.values(src);
-    }, [data]);
+    const dataResolve = useMemo(() => resolveData(data, rest),  [data]);
 
     const dataset = useMemo(
       () => dataResolve.filter(filter, props), 
