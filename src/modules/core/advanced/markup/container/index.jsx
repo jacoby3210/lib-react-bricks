@@ -35,6 +35,7 @@ export const withContainer = (WrappedComponent) => (props) => {
     id, 
     children, 
     Container = (props) => <div {...props}/>,
+    
     ... rest
   
   } = props;

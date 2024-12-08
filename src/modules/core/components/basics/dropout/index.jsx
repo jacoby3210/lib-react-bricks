@@ -10,14 +10,14 @@ const Controller = props => {
   const {className, children, label, ...attributes} = props;
 	const reveals = useReveal();
 
-  const onClick = (evt) => {
+  const handleClick = (evt) => {
     evt.preventDefault();
     evt.stopPropagation();
     reveals.dispatch({type: reveals.state.shown ? 'HIDE' : 'SHOW'});
   };
 
   return (
-    <button className={resolveClassName(className, 'button')} onClick={onClick}>
+    <button className={resolveClassName(className, 'button')} onClick={handleClick}>
       <span className={resolveClassName(className, 'button-label')}>
         {label || children}
       </span>

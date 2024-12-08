@@ -12,7 +12,7 @@ const Template = (props) => {
   const ctxContainer = useContainer();
   const ctxValueBase = useValueBase();
 
-  const {name, className} = ctxContainer.state;
+  const { name, className } = ctxContainer.state;
   const { value } = ctxValueBase?.state;
   
   const handleChange = (e) => {

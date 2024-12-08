@@ -9,7 +9,7 @@ export const Switcher = props => {
 
   const { className, data } = props;
   const ctxValueOption = useValueOption();
-  const {index, loop, max,  value} = ctxValueOption.state;
+  const { index, loop, max,  value } = ctxValueOption.state;
 
   const displayText = data[index].caption || "Not Found";
 
@@ -28,7 +28,7 @@ export const Switcher = props => {
   return (
     <>
       <button {... btnPrevProps}>←</button>
-      <span>{displayText}</span>
+      <span> { displayText } </span>
       <button {... btnNextProps}>→</button>
     </>
   );

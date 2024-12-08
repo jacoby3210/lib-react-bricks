@@ -10,8 +10,8 @@ const Controller = props => {
   const ctxReveal = useReveal();
   const ctxValueOption = useValueOption();
 
-  const {className, data} = props;
-  const {index, loop, max, value} = ctxValueOption.state;
+  const { className, data } = props;
+  const { index, loop, max, value } = ctxValueOption.state;
   const displayText = data[index].label ||  data[index].id || "Not Found";
 
   const handleClick = (evt) => {
@@ -41,8 +41,8 @@ const Template = props => {
   const ctxReveal = useReveal();
   const ctxValueOption = useValueOption();
 
-  const {item, index} = props;
-  const {className, data} = ctxContainer.state;
+  const { item, index } = props;
+  const { className, data } = ctxContainer.state;
   const resolveText = data[index].label ||  data[index].id || "Not Found";
 
   const handleClick = (evt) => {

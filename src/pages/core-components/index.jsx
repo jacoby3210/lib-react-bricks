@@ -9,16 +9,12 @@ import {props} from "./config";
 
 export const CoreComponentsPage = () => {
 
-  // initial data
-    
   const fsComponents = Object.fromEntries(
     Object.keys(GUI.Components).map(
       (key) => [key, GUI.Components[key]]
     )
   )
 
-  // render
-  
   return (
     <section id={"core-components"}>
       

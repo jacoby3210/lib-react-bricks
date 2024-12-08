@@ -52,7 +52,6 @@ const Controller = props => {
 
   };
 
-
   const inputProps  = {
     className:  resolveClassName(className, 'input'), 
     onChange:   handleChange,
@@ -76,8 +75,8 @@ const Template = (props) => {
   const ctxReveal = useReveal();
   const ctxValueOption = useValueOption();
   
-  const {item, index} = props;
-  const {className} = ctxContainer.state;
+  const { item, index } = props;
+  const { className } = ctxContainer.state;
 
   const textResolve = item.label || item.id;
 

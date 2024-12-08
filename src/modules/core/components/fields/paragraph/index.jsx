@@ -9,7 +9,7 @@ export const Paragraph = props => {
 	
   const ctxValueLiteral = useValueLiteral();
 
-	const {children, value, ...attributes} = props;
+	const { children, value, ...attributes } = props;
 
   const handleChange = (evt) => {
     ctxValueLiteral.dispatch({type: "CHANGE", payload: {next: evt.target.value}})

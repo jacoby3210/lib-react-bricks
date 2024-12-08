@@ -13,11 +13,7 @@ import {
 
 const reducer = (state, action) => {
 
-  //  unpack data
-
   const {value, valueChange, valueNormalize} = state;
-
-  // behavior
 
   switch (action.type) {
 

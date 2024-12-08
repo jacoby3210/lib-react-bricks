@@ -44,11 +44,14 @@ export {useReveal};
 
 export const withReveal = (WrappedComponent) => (props) => {
   
-  const { 
+  const {
+
     children = [], 
     shown = false, 
     Controller = (props) => <button {... props}></button> ,
+    
     ... rest
+  
   } = props;
   
   const ctx = useReducerAsContext(reducer, { shown });
@@ -84,15 +87,15 @@ export const withReveal = (WrappedComponent) => (props) => {
 
   return (
     <RevealContext.Provider value={ctx}>
-      {ctx.state.shown ? (
-        <>
-          <Controller {...props} />
-          <WrappedComponent {...rest} />
-          {children}
-        </>
-      ) : (
-        <Controller {...props}/>
-      )}
+      {
+        ctx.state.shown 
+        ? <>
+            <Controller {...props} />
+            <WrappedComponent {...rest} />
+            {children}
+          </>
+        : <Controller {...props}/>
+      }
     </RevealContext.Provider>
   );
 };
