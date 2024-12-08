@@ -16,12 +16,6 @@ const {
 const compose = (name) => (...components) => (... HOCs) => 
   ({[name]: withDebug(name, ...HOCs)(...components)})
 
-const filter = function (item,props) {
-  console.log(props)
-  return item.label != props.value ;
-  // return item.label != props.value && item.label.includes(props.value);
-};
-
 // -------------------------------------------------------------------------- //
 // export api
 // -------------------------------------------------------------------------- //
@@ -85,10 +79,10 @@ export const GUI = {
     ),
 
     ... compose("Advisor")()(
-      withMerge("rc-advisor", {filter, value: "",  ... Components.Advisor }),
+      withMerge("rc-advisor", {... Components.Advisor }),
       withContainer, 
-      withFilter, 
       withValueLiteral,
+      withFilter, 
       withValueOption, 
       withReveal, 
       withRepeat,

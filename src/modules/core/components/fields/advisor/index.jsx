@@ -1,8 +1,8 @@
-import { useRef } from 'react';
 import { useContainer, useReveal, useValueLiteral, useValueOption } 
 from '@lib-react-bricks/src/modules/core/advanced';
 import { resolveClassName } 
 from '@lib-react-bricks/src/modules/core/utils';
+import { filter } from './utils';
 
 // -------------------------------------------------------------------------- //
 // Layout - to show text line field with autocomplete suggestions.
@@ -99,6 +99,10 @@ const Template = (props) => {
   );
 };
 
-export const Advisor = { Controller, Template }
+export const Advisor = { 
+  filter,
+  Controller, 
+  Template,
+ }
 
 // -------------------------------------------------------------------------- //
