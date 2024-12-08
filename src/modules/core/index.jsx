@@ -79,13 +79,18 @@ export const GUI = {
     ),
 
     ... compose("Advisor")()(
-      withMerge("rc-advisor", {... Components.Advisor }),
+      withMerge("rc-advisor", {value: '', ... Components.Advisor }),
       withContainer, 
       withValueLiteral,
       withFilter, 
       withValueOption, 
       withReveal, 
       withRepeat,
+    ),
+
+    ... compose("Paragraph")(Components.Paragraph)(        
+      withMerge("rc-paragraph", {value: '',}),
+      withValueLiteral,
     ),
 
     ... compose("Select")()(

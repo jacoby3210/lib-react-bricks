@@ -25,21 +25,24 @@ export const CoreComponentsPage = () => {
       {"Its alive"}
 
       <fsComponents.Container/>
-      <GUI.Components.Dropout {...props.dropout}>{"Its Popup!"}</GUI.Components.Dropout>
+      <GUI.Components.Dropout { ... props.dropout }>
+        {"Its Popup!"}
+      </GUI.Components.Dropout>
       <fsComponents.Empty/>
-      <fsComponents.List      {...props.list}/>
+      <fsComponents.List      { ... props.list }/>
 
-      <fsComponents.Bar       {...props.bar}/>
-      <fsComponents.CheckBox  {...props.checkbox}/>
-      <fsComponents.Clicker   {...props.clicker}/>
-      <fsComponents.Range     {...props.rangeHorizontal}/>
-      <fsComponents.Range     {...props.rangeVertical}/>
-      <fsComponents.Swing     {...props.swing}/>
+      <fsComponents.Bar       { ... props.bar }/>
+      <fsComponents.CheckBox  { ... props.checkbox }/>
+      <fsComponents.Clicker   { ... props.clicker }/>
+      <fsComponents.Range     { ... props.rangeHorizontal }/>
+      <fsComponents.Range     { ... props.rangeVertical }/>
+      <fsComponents.Swing     { ... props.swing }/>
 
-      <fsComponents.Advisor   {...props.advisor}/>
-      <fsComponents.Select    {...props.select}/>
-      <fsComponents.Switcher  {...props.switcher}/>
-      <fsComponents.Text      {...props.text}/>
+      <fsComponents.Advisor   { ... props.advisor }/>
+      <fsComponents.Paragraph { ... props.paragraph }/>
+      <fsComponents.Select    { ... props.select }/>
+      <fsComponents.Switcher  { ... props.switcher }/>
+      <fsComponents.Text      { ... props.text }/>
 
     </section>
   );
