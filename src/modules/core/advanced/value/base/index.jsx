@@ -45,10 +45,13 @@ export {useValueBase};
 export const withValueBase = (WrappedComponent) => (props) => {
 
   const {
+    
     value = null,
     valueChange = (next, prev, state) => next, 
     valueNormalize = (value) => value,
+    
     ...rest
+
   } = props;
 
   const ctx = useReducerAsContext(reducer, 
@@ -59,9 +62,11 @@ export const withValueBase = (WrappedComponent) => (props) => {
     }
   );
 
+  const updateProps = { ... rest, value: ctx.state.value};
+
   return (
     <ValueBaseContext.Provider value={ctx}>
-      <WrappedComponent {...rest} />
+      <WrappedComponent { ... updateProps } />
     </ValueBaseContext.Provider>
   );
 

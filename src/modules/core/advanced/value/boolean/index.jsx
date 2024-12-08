@@ -50,10 +50,13 @@ export {useValueBoolean};
 export const withValueBoolean = (WrappedComponent) => (props) => {
 
   const {
+    
     value = false,
     valueChange = (next, prev, state) => next, 
     valueNormalize = (value) => value,
+    
     ...rest
+  
   } = props;
 
   const ctx = useReducerAsContext(reducer, 
@@ -64,9 +67,10 @@ export const withValueBoolean = (WrappedComponent) => (props) => {
     }
   );
 
+  const updateProps = { ... rest, value: ctx.state.value};
   return (
     <ValueBooleanContext.Provider value={ctx}>
-      <WrappedComponent {...rest} />
+      <WrappedComponent { ... updateProps} />
     </ValueBooleanContext.Provider>
   );
 

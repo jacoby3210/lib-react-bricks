@@ -64,6 +64,7 @@ export const withValueLiteral = (WrappedComponent) => (props) => {
     valueNormalize = normalize,
     
     ... rest
+  
   } = props;
 
   const {value = ""} = props;
@@ -81,12 +82,15 @@ export const withValueLiteral = (WrappedComponent) => (props) => {
       value,
       valueChange,
       valueNormalize,
+
     }
   );
-  
+
+  const updateProps = {...rest, value: ctx.state.value};
+
   return (
     <ValueLiteralContext.Provider value={ctx}>
-      <WrappedComponent {...rest} />
+      <WrappedComponent {...updateProps} />
     </ValueLiteralContext.Provider>
   );
 

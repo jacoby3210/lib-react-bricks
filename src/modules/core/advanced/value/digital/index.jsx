@@ -14,13 +14,7 @@ import {
 
 const getCandidate = (state, action) => {
 
-  const {
-    max,
-    min,
-    step,
-    value, 
-  } = state;
-
+  const { max, min, step, value, } = state;
   const {next, modifier} = action.payload;
 
   switch (action.type) {
@@ -45,6 +39,7 @@ const getCandidate = (state, action) => {
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
+
 }
 
 const getDecimalPlaces = (num) => {
@@ -111,9 +106,11 @@ export const withValueDigital = (WrappedComponent) => (props) => {
     }
   );
 
+  const updateProps = {...rest, value: ctx.state.value};
+
   return (
     <ValueDigitalContext.Provider value={ctx}>
-      <WrappedComponent {...rest} />
+      <WrappedComponent { ... updateProps } />
     </ValueDigitalContext.Provider>
   );
 };
