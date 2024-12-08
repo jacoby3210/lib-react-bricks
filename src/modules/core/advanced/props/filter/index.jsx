@@ -1,4 +1,4 @@
-import {useMemo} from 'react';
+import {useEffect, useMemo} from 'react';
 import { resolveData } from '@lib-react-bricks/src/modules/core/utils';
 
 // -------------------------------------------------------------------------- //
@@ -12,17 +12,15 @@ export const withFilter = (WrappedComponent) => (props) => {
       ...rest
     } = props;
     
-    const {data = []} = props;
+    const {data = [], value = ''} = props;
 
     const dataResolve = useMemo(() => resolveData(data, rest),  [data]);
 
     const dataset = useMemo(
-      () => dataResolve.filter(filter, props), 
-      [filter, dataResolve, props]
+      () => dataResolve.filter((item) => filter(item, props)), 
+      [filter, dataResolve, value, props]
     );
     
-    // render
-
     const updateProps = { ...rest, dataset}
     return <WrappedComponent {...updateProps}/>;
 
