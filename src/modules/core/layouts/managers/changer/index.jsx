@@ -14,8 +14,8 @@ const Template = props =>{
 
   const { className } = ctxContainer.state;
   const { value } = ctxValueBase?.state;
-  
   const {item, index} = props;
+  const resolveText = item.caption;
 
   const handleClick = (evt) => {
     ctxValueBase.dispatch({type: 'SET_VALUE_BY_ID', payload: {id: item.id}});
@@ -26,7 +26,7 @@ const Template = props =>{
     onClick= {handleClick}
     {...item}
   >
-    {value}
+    {resolveText}
   </button>;
 }
 
