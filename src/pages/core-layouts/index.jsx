@@ -14,6 +14,7 @@ export const CoreLayoutsPage = () => {
 		<div id="core-layouts">
       
       <GUI.Templates.Browser      { ... props.browser }/>
+      <GUI.Templates.Gallery      { ... props.gallery }/>
 
 		</div>
 	);

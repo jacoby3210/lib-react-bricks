@@ -121,7 +121,12 @@ export const GUI = {
       withContainer, 
       withRepeat,
     ),
-  
+
+    ... compose("Navigator")(Layouts.Navigator)(
+      withMerge("rc-navigator"),
+      withContainer,
+    ),
+    
   }
 }
 
@@ -133,6 +138,15 @@ GUI.Templates = {
     withValueBase, 
     withUnion(GUI.Layouts.Changer, GUI.Components.List)
   ),
+
+  ... compose("Gallery")()(
+    withMerge("rc-gallery", {value: 0}), 
+    withContainer,
+    withValueDigital, 
+    withUnion(GUI.Layouts.Navigator, GUI.Components.List)
+  ),
+
+
 
 }
 

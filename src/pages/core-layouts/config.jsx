@@ -86,7 +86,7 @@ export const props = {
 	},
 
 	gallery: {
-    valueMode: true, 
+    modular: true, 
     max: 250,
     value:0, 
     first: (props) => props.value,
