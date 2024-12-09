@@ -6,5 +6,6 @@
 
 export {Changer}        from "./managers/changer"                             // - to change of displayed content in the view by value.
 export {Navigator}      from "./managers/navigator"                           // - to switch of displayed content in the view by linear order.
+export {Paginator}      from "./managers/paginator"                           // - to switch of displayed content in the view by the page index. 
 
 // -------------------------------------------------------------------------- //

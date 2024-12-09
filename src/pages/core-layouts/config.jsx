@@ -70,7 +70,7 @@ export const props = {
 	},
 
   catalog: {
-    data: produceEntries(250, (v, i) => ({ caption: `Option #${i}`, id: i})),
+    data: produceEntries(25, (v, i) => ({ caption: `Option #${i}`, id: i})),
     loop: true, 
     max: 250,
 		value: 0,

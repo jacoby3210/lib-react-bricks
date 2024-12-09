@@ -126,7 +126,13 @@ export const GUI = {
       withMerge("rc-navigator"),
       withContainer,
     ),
-    
+
+    ... compose("Paginator")(Layouts.Paginator.Container)(
+      withMerge("rc-paginator", {... Layouts.Changer}),
+      withContainer, 
+      withRepeat,
+    ),
+
   }
 }
 
@@ -137,6 +143,13 @@ GUI.Templates = {
     withContainer, 
     withValueOption, 
     withUnion(GUI.Layouts.Changer, GUI.Components.List)
+  ),
+
+  ... compose("Catalog")()(
+    withMerge("rc-catalog", {value: 0}), 
+    withContainer,
+    withValueOption, 
+    withUnion(GUI.Layouts.Paginator, GUI.Components.List)
   ),
 
   ... compose("Gallery")()(

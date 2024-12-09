@@ -10,11 +10,12 @@ import {props} from "./config";
 
 export const CoreLayoutsPage = () => {
 
-	return (
+  return (
 		<div id="core-layouts">
       
       <GUI.Templates.Browser      { ... props.browser }/>
       <GUI.Templates.Gallery      { ... props.gallery }/>
+      <GUI.Templates.Catalog      { ... props.catalog }/>
 
 		</div>
 	);
