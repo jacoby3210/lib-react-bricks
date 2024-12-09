@@ -48,7 +48,7 @@ const Template = props => {
   const handleClick = (evt) => {
     evt.stopPropagation();
     ctxReveal.dispatch({type:"TOGGLE"})
-    ctxValueOption.dispatch({type: "CHANGE_BY_INDEX", payload: {index}})
+    ctxValueOption.dispatch({type: "SET_INDEX", payload: {index}})
   }
 
   return (

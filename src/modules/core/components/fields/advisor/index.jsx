@@ -22,7 +22,7 @@ const Controller = props => {
 
   const handleChange = (evt) => {
     
-    ctxValueOption.dispatch({type: "CHANGE_BY_VALUE_TEXT", payload: {text: evt.target.value}})
+    ctxValueOption.dispatch({type: "SET_VALUE_BY_TEXT", payload: {text: evt.target.value}})
     ctxValueLiteral.dispatch({type: "CHANGE", payload: {next: evt.target.value}})
     ctxReveal.dispatch({ type: "SHOW" })
 
@@ -83,7 +83,7 @@ const Template = (props) => {
   const handleClick = (evt) => {
     evt.stopPropagation();
     ctxReveal.dispatch({type:"TOGGLE"})
-    ctxValueOption.dispatch({type: "CHANGE_BY_VALUE_ID", payload: {id: item.id}})
+    ctxValueOption.dispatch({type: "SET_VALUE_BY_ID", payload: {id: item.id}})
   }
 
   return (
