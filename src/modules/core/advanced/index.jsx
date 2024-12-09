@@ -12,6 +12,7 @@ export {withDebug}                            from "./common/debug";          //
 export {useContainer, withContainer}          from "./markup/container"       // - to wrap base component into ui block (<div>).
 export {useRepeat, withRepeat}                from "./markup/repeat";         // - to create a list of child components according to the template.
 export {useReveal, withReveal}                from "./markup/reveal";         // - to reveal child components.
+export {withUnion}                            from "./markup/union";          // - to transfer common properties to multiple components
 
 // props - modifies the properties of the component.
 

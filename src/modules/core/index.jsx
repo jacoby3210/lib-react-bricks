@@ -8,7 +8,7 @@ import * as Components  from "./components"
 
 const { 
   withDebug,
-  withContainer, withRepeat, withReveal,
+  withContainer, withRepeat, withReveal, withUnion,
   withFilter, withMerge,
   withValueBase, withValueBoolean, withValueDigital, withValueLiteral, withValueOption,
 } = HOCs;
