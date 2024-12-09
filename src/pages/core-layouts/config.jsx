@@ -101,14 +101,12 @@ export const props = {
   scroll: {axis: false,  step: 0.01, value: 0.5 },
   
   accordion: {
-    data: produceEntries(5, (v, i) => { return { caption: `Option #${i}`, content: i } }),
-    value: [],
+    data: produceEntries(5, (v, i) => ({id: i, caption: `Option #${i}`, content: i })),
   },
 
   accordionSingle: {
     mode: "single",
-    data: produceEntries(5, (v, i) => { return { caption: `Option #${i}`, content: i } }),
-    value: [],
+    data: produceEntries(5, (v, i) => ({ id: i, caption: `Option #${i}`, content: i })),
 	},
 
   checklist: {

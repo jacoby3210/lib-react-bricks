@@ -133,6 +133,13 @@ export const GUI = {
       withRepeat,
     ),
 
+    ... compose("Accordion")()(
+      withMerge("rc-accordion", {mode: "all", value: [], ... Layouts.Accordion}),
+      withValueBase, 
+      withContainer, 
+      withRepeat,
+    ),
+
   }
 }
 

@@ -17,6 +17,9 @@ export const CoreLayoutsPage = () => {
       <GUI.Templates.Gallery      { ... props.gallery }/>
       <GUI.Templates.Catalog      { ... props.catalog }/>
 
+      <GUI.Layouts.Accordion      { ... props.accordion }/>
+      <GUI.Layouts.Accordion      { ... props.accordionSingle }/>
+
 		</div>
 	);
 };
