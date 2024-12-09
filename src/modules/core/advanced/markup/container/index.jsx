@@ -45,14 +45,12 @@ export const withContainer = (WrappedComponent) => (props) => {
     value = null, 
   } = props;
   
-  const ctx = useReducerAsContext(reducer, { ...rest, });
-  
-  const selfRef = useRef(null);
+  const ctx = useReducerAsContext(reducer, { ...rest });
 
   return (
     <ContainerContext.Provider value={ctx}>
       <Container id={id} className={className} value={value}>
-        <WrappedComponent rootRef={selfRef} {...props}>
+        <WrappedComponent {...props}>
           {children}
         </WrappedComponent>
       </Container>
