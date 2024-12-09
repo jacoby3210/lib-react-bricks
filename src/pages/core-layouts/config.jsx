@@ -52,35 +52,39 @@ const menuFirstLine = {
 export const props = {
 
   browser: {
-    common: { value: 0, },
+    data: produceEntries(5, (v, i) => ({caption: `Option #${i}`, id: i})),
     packages: [
+      
       // browser
       {
-        data: produceEntries(5, (v, i) => ({caption: `Option #${i}`, id: i}))
       },
+      
       // list
       { 
         first:  (props) => {return props.value * 10},
         length: 10,
         data: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
       },
+      
     ]
 	},
 
   catalog: {
+    data: produceEntries(250, (v, i) => ({ caption: `Option #${i}`, id: i})),
+    loop: true, 
     max: 250,
-    step: 1,
 		value: 0,
-    first: (props) => props.value,
+    
     packages: [
-      { // paginator
-        length: 10, 
-        data: produceEntries(250, (v, i) => { return { caption: `Option #${i}`, id: i} })
-      },
-      { // list
-        first:  (props) => props.value * 10,
+      
+      // paginator
+      { },
+      
+      // list
+      { 
+        first:  (props) => props.index * 10,
         length: 10,
-        data: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}`} })
+        data: Array.from({ length: 250 }, (_, i) => { return {id: i, text: `string_${i}`} })
       },   
     ]
 	},
