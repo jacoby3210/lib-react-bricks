@@ -1,6 +1,6 @@
 import * as HOCs        from "./advanced"
 import * as Components  from "./components"
-// import * as Layouts     from "./layouts"
+import * as Layouts     from "./layouts"
 
 // -------------------------------------------------------------------------- //
 // compile api
@@ -25,7 +25,7 @@ export const GUI = {
   Native: { 
     HOCs, 
     Components, 
-    // Layouts 
+    Layouts, 
   },
 
   Components: {
@@ -115,10 +115,25 @@ export const GUI = {
   },
 
   Layouts: {
-
+    
+    ... compose("Changer")()(
+      withMerge("rc-changer", {... Layouts.Changer}),
+      withContainer, 
+      withRepeat,
+    ),
+  
   }
 }
 
-GUI.Templates = {}
+GUI.Templates = {
+
+  ... compose("Browser")()(
+    withMerge("rc-browser", {value: 0}), 
+    withContainer, 
+    withValueBase, 
+    withUnion(GUI.Layouts.Changer, GUI.Components.List)
+  ),
+
+}
 
 // -------------------------------------------------------------------------- //

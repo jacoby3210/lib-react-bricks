@@ -13,6 +13,8 @@ export const CoreLayoutsPage = () => {
 	return (
 		<div id="core-layouts">
       
+      <GUI.Templates.Browser      { ... props.browser }/>
+
 		</div>
 	);
 };
