@@ -135,14 +135,14 @@ GUI.Templates = {
   ... compose("Browser")()(
     withMerge("rc-browser", {value: 0}), 
     withContainer, 
-    withValueBase, 
+    withValueOption, 
     withUnion(GUI.Layouts.Changer, GUI.Components.List)
   ),
 
   ... compose("Gallery")()(
     withMerge("rc-gallery", {value: 0}), 
     withContainer,
-    withValueDigital, 
+    withValueOption, 
     withUnion(GUI.Layouts.Navigator, GUI.Components.List)
   ),
 

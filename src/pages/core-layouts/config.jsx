@@ -86,12 +86,12 @@ export const props = {
 	},
 
 	gallery: {
-    modular: true, 
+		data: Array.from({ length: 250 }, (_, i) => { return {id: i, text: `string_${i}` } }),
     max: 250,
-    value:0, 
-    first: (props) => props.value,
+    first: (props) => props.index,
     length: 1,
-		data: Array.from({ length: 250 }, (_, i) => { return { text: `string_${i}` } }),
+    loop: true, 
+    value:0, 
 	},
 
   scroll: {axis: false,  step: 0.01, value: 0.5 },
