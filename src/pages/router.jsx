@@ -2,6 +2,7 @@ import React from 'react';
 import {Routes, Route } from 'react-router-dom';
 import "@lib-react-bricks/src/assets/themes/theme.css"
 import {CoreComponentsPage} from './core-components'
+import {CoreLayoutsPage} from './core-layouts'
 
 // ------------------------------------------------------------------------- //
 // Main Application Router.
@@ -11,7 +12,8 @@ import {CoreComponentsPage} from './core-components'
 function Router() {
   return (
     <Routes>
-      <Route element={<CoreComponentsPage />} path="/" exact />
+      <Route element={<CoreComponentsPage />} path="/core/components" exact />
+      <Route element={<CoreLayoutsPage />} path="/" exact />
     </Routes>
   );
 }
