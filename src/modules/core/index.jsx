@@ -140,6 +140,13 @@ export const GUI = {
       withRepeat,
     ),
 
+    ... compose("CheckList")()(
+      withMerge("rc-checklist", {... Layouts.CheckList}),
+      withValueBase, 
+      withContainer, 
+      withRepeat
+    ),
+    
   }
 }
 

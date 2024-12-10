@@ -11,6 +11,6 @@ export {Paginator}      from "./managers/paginator"                           //
 // widgets
 
 export {Accordion}      from "./widgets/accordion"                            // - which organizes content into sections, that can be collapsed/expanded.
-
+export {CheckList}      from "./widgets/checklist"                            // - which displays a tag cloud, with support for adding and deleting tags. 
 
 // -------------------------------------------------------------------------- //

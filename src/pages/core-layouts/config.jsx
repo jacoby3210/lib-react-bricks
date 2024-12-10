@@ -110,7 +110,7 @@ export const props = {
 	},
 
   checklist: {
-    data: produceEntries(5, (v, i) => { return {id: i, label: `Option #${i}`, text: `Option #${i}`, content: i } }),
+    data: produceEntries(5, (v, i) => ({id: i, label: `Option #${i}`, text: `Option #${i}` })),
     value: [],
   },
 

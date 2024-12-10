@@ -20,6 +20,8 @@ export const CoreLayoutsPage = () => {
       <GUI.Layouts.Accordion      { ... props.accordion }/>
       <GUI.Layouts.Accordion      { ... props.accordionSingle }/>
 
+      <GUI.Layouts.CheckList      { ... props.checklist }/>
+
 		</div>
 	);
 };
