@@ -1,4 +1,5 @@
 import {GUI} from "@lib-react-bricks/src/modules/core"
+import { Template } from "../../modules/core/layouts/widgets/inspector";
 
 // -------------------------------------------------------------------------- //
 // Constants.
@@ -8,6 +9,7 @@ const produceEntries = (count, func = (_, i) => i) => Array.from({ length: count
 const sig = (caption, datatype, props, Render) => 
   ({caption, datatype, props, Render})
 
+const list = {Template: ({item}) => <GUI.Components.Advisor value={item}/>};
 const select = {data: produceEntries(5, (v, i) => ({ id: i, label: `label-${i}`}))}
 const switcher = {data: produceEntries(5, (v, i) => ({ id: i, caption: `label-${i}`}))}
 
@@ -20,6 +22,7 @@ const data = [
   sig("isPlayable", "bool",       {},            GUI.Components.CheckBox),
   sig("type",       "enum",       switcher,      GUI.Components.Switcher),
   sig("tooltip",    "text",       {},            GUI.Components.Paragraph),
+  sig("skills",     "array",      list,          GUI.Components.List)
 ];
 
 const menuSecondLine = {
@@ -41,8 +44,8 @@ const menuFirstLine = {
       sig("entry-2",    "menu",   menuSecondLine,GUI.Layouts.Menu),
       sig("entry-3",    "button", {},            GUI.Components.Button),
       sig("entry-4",    "menu",   menuSecondLine,GUI.Layouts.Menu),
-    ]}
-;
+    ]
+  };
 
 // -------------------------------------------------------------------------- //
 // Properties.
@@ -124,6 +127,7 @@ export const props = {
       isPlayable: true,
       type: 1,
       tooltip: "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      skills: produceEntries(5, (v, i) => ({id: i, name: `Option #${i}`, value: "12345"})),
     },
   },
   

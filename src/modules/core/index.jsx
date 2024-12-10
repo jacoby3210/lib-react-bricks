@@ -147,7 +147,7 @@ export const GUI = {
       withRepeat
     ),
 
-    ... compose("Inspector")(Layouts.Inspector.Container)(
+    ... compose("Inspector")()(
       withMerge("rc-inspector", {... Layouts.Inspector}),
       withValueBase, 
       withContainer, 
@@ -179,8 +179,6 @@ GUI.Templates = {
     withValueOption, 
     withUnion(GUI.Layouts.Navigator, GUI.Components.List)
   ),
-
-
 
 }
 
