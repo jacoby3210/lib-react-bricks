@@ -146,7 +146,14 @@ export const GUI = {
       withContainer, 
       withRepeat
     ),
-    
+
+    ... compose("Inspector")(Layouts.Inspector.Container)(
+      withMerge("rc-inspector", {... Layouts.Inspector}),
+      withValueBase, 
+      withContainer, 
+      withRepeat,
+    ),
+
   }
 }
 

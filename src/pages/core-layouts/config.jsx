@@ -8,7 +8,7 @@ const produceEntries = (count, func = (_, i) => i) => Array.from({ length: count
 const sig = (caption, datatype, props, Render) => 
   ({caption, datatype, props, Render})
 
-const select = {data: produceEntries(5, (v, i) => ({ id: i, caption: `label-${i}`}))}
+const select = {data: produceEntries(5, (v, i) => ({ id: i, label: `label-${i}`}))}
 const switcher = {data: produceEntries(5, (v, i) => ({ id: i, caption: `label-${i}`}))}
 
 const data = [
@@ -20,7 +20,6 @@ const data = [
   sig("isPlayable", "bool",       {},            GUI.Components.CheckBox),
   sig("type",       "enum",       switcher,      GUI.Components.Switcher),
   sig("tooltip",    "text",       {},            GUI.Components.Paragraph),
-  sig("skills",     "array",      {},            GUI.Components.List)
 ];
 
 const menuSecondLine = {
@@ -125,7 +124,6 @@ export const props = {
       isPlayable: true,
       type: 1,
       tooltip: "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-      skills: produceEntries(5, (v, i) => { return {id: i, name: `Option #${i}`, text: "12345"}}),
     },
   },
   
