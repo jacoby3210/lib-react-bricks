@@ -15,13 +15,13 @@ export const Switcher = props => {
 
   const btnPrevProps = {
     className: resolveClassName(className, 'prev'), 
-		onClick: (e) => ctxValueOption.dispatch({ type: 'PREVIOUS' }),
+		onClick: (e) => ctxValueOption.dispatch({ type: 'SET_INDEX_PREVIOUS' }),
 		disabled: index === 0 && !loop,
 	}
   
   const btnNextProps = {
     className: resolveClassName(className, 'next'), 
-		onClick: (e) => ctxValueOption.dispatch({ type: 'NEXT' }),
+		onClick: (e) => ctxValueOption.dispatch({ type: 'SET_INDEX_NEXT' }),
 		disabled: index === max - 1 && !loop,
 	}
 
