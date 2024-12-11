@@ -5,10 +5,10 @@ import { useRepeat } from "@lib-react-bricks/src/modules/core/advanced";
 // -------------------------------------------------------------------------- //
 
 const Container = (props) => {
-  const { className, children } = props;
+  const { id, className, children } = props;
 
   return (
-    <ul className={className} {...props}>
+    <ul id={id} className={className} {...props}>
       {children}
     </ul>
   );

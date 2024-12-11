@@ -8,8 +8,10 @@ import { resolveClassName } from "@lib-react-bricks/src/modules/core/utils";
 //  Widget - which creates a UI for viewing / editing an object.
 // -------------------------------------------------------------------------- //
 
-const Container = ({ children, className }) => (
-  <div className={className}>{children}</div>
+const Container = ({ id, children, className }) => (
+  <div id={id} className={className}>
+    {children}
+  </div>
 );
 
 export const Template = (props) => {

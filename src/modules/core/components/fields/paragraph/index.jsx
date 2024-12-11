@@ -8,7 +8,7 @@ import { useValueLiteral } from "@lib-react-bricks/src/modules/core/advanced";
 export const Paragraph = (props) => {
   const ctxValueLiteral = useValueLiteral();
 
-  const { children, value, ...attributes } = props;
+  const { id, children, value, ...attributes } = props;
 
   const handleChange = (evt) => {
     ctxValueLiteral.dispatch({

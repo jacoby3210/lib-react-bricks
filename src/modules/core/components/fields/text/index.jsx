@@ -2,8 +2,10 @@
 // Field - to render value as only read text.
 // -------------------------------------------------------------------------- //
 
-export const Text = ({ className, value }) => (
-  <span className={className}>{value}</span>
+export const Text = ({ id, className, value }) => (
+  <span id={id} className={className}>
+    {value}
+  </span>
 );
 
 // -------------------------------------------------------------------------- //
