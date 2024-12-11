@@ -2,105 +2,110 @@
 // Constants && component properties.
 // -------------------------------------------------------------------------- //
 
-const produceEntries = (count, func = (_, i) => i) => Array.from({ length: count }, func);
+const produceEntries = (count, func = (_, i) => i) =>
+  Array.from({ length: count }, func);
 
 export const props = {
-
   button: {
-    label: "button"
+    label: "button",
   },
-  
-  dropout: { 
-    shown: true, 
+
+  dropout: {
+    shown: true,
   },
 
   list: {
-    data: produceEntries(5, (v, i) => { 
-      return { 
+    data: produceEntries(5, (v, i) => {
+      return {
         id: i,
-        name: `Option #${i}`, 
+        name: `Option #${i}`,
         text: `Option text #${i}`,
-        onClick: (e) => {console.log(`Option #${i}`); return false;} 
-      } 
+        onClick: (e) => {
+          console.log(`Option #${i}`);
+          return false;
+        },
+      };
     }),
     length: 5,
   },
-  
+
   text: {
     value: "ttttttttttttttttttt",
   },
-  
+
   bar: {
-    data: produceEntries(5, (v, i) => {return {label: `Option #${i}`, value: i}}), 
-    name: "test-bar", 
+    data: produceEntries(5, (v, i) => {
+      return { label: `Option #${i}`, value: i };
+    }),
+    name: "test-bar",
     value: 2,
   },
-  
+
   checkbox: {
-    value: false
+    value: false,
   },
-  
-  clicker: { 
-    value: 0, 
+
+  clicker: {
+    value: 0,
   },
-  
-  rangeHorizontal: { 
-    axis: true, 
-    min: 0, 
-    max: 10, 
-    step: 0.0001, 
-    value: 5 
+
+  rangeHorizontal: {
+    axis: true,
+    min: 0,
+    max: 10,
+    step: 0.0001,
+    value: 5,
   },
-  
-  rangeVertical: { 
-    max: 50, 
-    min: 0, 
-    step: 0.1, 
-    value: 5 
+
+  rangeVertical: {
+    max: 50,
+    min: 0,
+    step: 0.1,
+    value: 5,
   },
-  
-  swing: { 
-    max: 50, 
-    min: 0, 
-    step: 0.5, 
-    value: 5 
+
+  swing: {
+    max: 50,
+    min: 0,
+    step: 0.5,
+    value: 5,
   },
 
   advisor: {
-    data: produceEntries(5, (v, i) => ({id: i, label: `Option #${i}`})),
+    data: produceEntries(5, (v, i) => ({ id: i, label: `Option #${i}` })),
   },
 
   paragraph: {
-    value: "long long long long long long long long long long long long long long string",
+    value:
+      "long long long long long long long long long long long long long long string",
   },
 
   select: {
     length: 5,
-    data: produceEntries(5, (v, i) => ({ 
+    data: produceEntries(5, (v, i) => ({
       id: i,
-      label: `Option #${i}`, 
+      label: `Option #${i}`,
       onMouseDown: (e) => {
-        console.log(`Option #${i}`); 
+        console.log(`Option #${i}`);
         return false;
-      } 
+      },
     })),
     value: 0,
   },
-  
+
   switcher: {
-    data: produceEntries(5, (v, i) => ({caption: `Option #${i}`, id: i})),
+    data: produceEntries(5, (v, i) => ({ caption: `Option #${i}`, id: i })),
     length: 5,
     loop: true,
     value: 0,
   },
-    
-  slider: { 
-    max: 50, 
-    min: 0, 
-    step: 0.5,
-    value: 5, 
-  },
 
+  slider: {
+    max: 50,
+    min: 0,
+    step: 0.5,
+    value: 5,
+  },
 };
 
 // -------------------------------------------------------------------------- //

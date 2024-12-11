@@ -1,7 +1,9 @@
 // -------------------------------------------------------------------------- //
-// Layout - to use in place where the syntax requires component.
+// Base component - to use in place where the syntax requires component.
 // -------------------------------------------------------------------------- //
 
-export const Empty = props => {return (<></>);};
+export const Empty = (props) => {
+  return <></>;
+};
 
 // -------------------------------------------------------------------------- //

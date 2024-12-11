@@ -1,27 +1,29 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import {useValueLiteral} from '@lib-react-bricks/src/modules/core/advanced';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useValueLiteral } from "@lib-react-bricks/src/modules/core/advanced";
 
 // -------------------------------------------------------------------------- //
-// Layout - to display and edit multiline text (paragraph).
+// Field - to display and edit multiline text (paragraph).
 // -------------------------------------------------------------------------- //
 
-export const Paragraph = props => {
-	
+export const Paragraph = (props) => {
   const ctxValueLiteral = useValueLiteral();
 
-	const { children, value, ...attributes } = props;
+  const { children, value, ...attributes } = props;
 
   const handleChange = (evt) => {
-    ctxValueLiteral.dispatch({type: "CHANGE", payload: {next: evt.target.value}})
+    ctxValueLiteral.dispatch({
+      type: "CHANGE",
+      payload: { next: evt.target.value },
+    });
   };
-  
-	const paragraphProps  = {
-    ...attributes, 
-    onChange: handleChange,  
-    value: ctxValueLiteral.state.value,
-	};
 
-	return (<textarea  {...paragraphProps} />);
+  const paragraphProps = {
+    ...attributes,
+    onChange: handleChange,
+    value: ctxValueLiteral.state.value,
+  };
+
+  return <textarea {...paragraphProps} />;
 };
 
 // -------------------------------------------------------------------------- //

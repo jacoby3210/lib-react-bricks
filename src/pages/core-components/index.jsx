@@ -1,5 +1,5 @@
-import {GUI} from "@lib-react-bricks/src/modules/core"
-import {props} from "./config";
+import { GUI } from "@lib-react-bricks/src/modules/core";
+import { props } from "./config";
 
 // -------------------------------------------------------------------------- //
 // Showcase Application Page.                                                //
@@ -8,40 +8,35 @@ import {props} from "./config";
 // -------------------------------------------------------------------------- //
 
 export const CoreComponentsPage = () => {
-
   const fsComponents = Object.fromEntries(
-    Object.keys(GUI.Components).map(
-      (key) => [key, GUI.Components[key]]
-    )
-  )
+    Object.keys(GUI.Components).map((key) => [key, GUI.Components[key]])
+  );
 
   return (
     <section id={"core-components"}>
-      
       {"Its alive"}
 
-      <fsComponents.Container/>
-      <GUI.Components.Dropout { ... props.dropout }>
+      <fsComponents.Container />
+      <GUI.Components.Dropout {...props.dropout}>
         {"Its Popup!"}
       </GUI.Components.Dropout>
-      <fsComponents.Empty/>
-      <fsComponents.List      { ... props.list }/>
+      <fsComponents.Empty />
+      <fsComponents.List {...props.list} />
 
-      <fsComponents.Bar       { ... props.bar }/>
-      <fsComponents.CheckBox  { ... props.checkbox }/>
-      <fsComponents.Clicker   { ... props.clicker }/>
-      <fsComponents.Range     { ... props.rangeHorizontal }/>
-      <fsComponents.Range     { ... props.rangeVertical }/>
-      <fsComponents.Swing     { ... props.swing }/>
+      <fsComponents.Bar {...props.bar} />
+      <fsComponents.CheckBox {...props.checkbox} />
+      <fsComponents.Clicker {...props.clicker} />
+      <fsComponents.Range {...props.rangeHorizontal} />
+      <fsComponents.Range {...props.rangeVertical} />
+      <fsComponents.Swing {...props.swing} />
 
-      <fsComponents.Advisor   { ... props.advisor }/>
-      <fsComponents.Paragraph { ... props.paragraph }/>
-      <fsComponents.Select    { ... props.select }/>
-      <fsComponents.Switcher  { ... props.switcher }/>
-      <fsComponents.Text      { ... props.text }/>
-
+      <fsComponents.Advisor {...props.advisor} />
+      <fsComponents.Paragraph {...props.paragraph} />
+      <fsComponents.Select {...props.select} />
+      <fsComponents.Switcher {...props.switcher} />
+      <fsComponents.Text {...props.text} />
     </section>
   );
-}
+};
 
 // -------------------------------------------------------------------------- //

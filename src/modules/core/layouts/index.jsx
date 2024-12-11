@@ -2,16 +2,26 @@
 // Layouts - components for content management.
 // -------------------------------------------------------------------------- //
 
-// managers
+// Layout manager
 
-export {Changer}        from "./managers/changer"                             // - to change of displayed content in the view by value.
-export {Navigator}      from "./managers/navigator"                           // - to switch of displayed content in the view by linear order.
-export {Paginator}      from "./managers/paginator"                           // - to switch of displayed content in the view by the page index. 
+// - to change of displayed content in the view by value.
+export { Changer } from "./managers/changer";
 
-// widgets
+// - to switch of displayed content in the view by linear order.
+export { Navigator } from "./managers/navigator";
 
-export {Accordion}      from "./widgets/accordion"                            // - which organizes content into sections, that can be collapsed/expanded.
-export {CheckList}      from "./widgets/checklist"                            // - which displays a tag cloud, with support for adding and deleting tags. 
-export {Inspector}      from "./widgets/inspector";                           // - which creates a UI for viewing / editing an object.
+// - to switch of displayed content in the view by the page index.
+export { Paginator } from "./managers/paginator";
+
+// Widget
+
+// - which organizes content into sections, that can be collapsed/expanded.
+export { Accordion } from "./widgets/accordion";
+
+// - which displays a tag cloud, with support for adding and deleting tags.
+export { CheckList } from "./widgets/checklist";
+
+// - which creates a UI for viewing / editing an object.
+export { Inspector } from "./widgets/inspector";
 
 // -------------------------------------------------------------------------- //

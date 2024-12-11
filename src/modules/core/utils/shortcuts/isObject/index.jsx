@@ -3,7 +3,7 @@
 // -------------------------------------------------------------------------- //
 
 export const isObject = (x) => {
-  return typeof x === 'object' && !Array.isArray(x) && x !== null;
-}
+  return typeof x === "object" && !Array.isArray(x) && x !== null;
+};
 
 // -------------------------------------------------------------------------- //

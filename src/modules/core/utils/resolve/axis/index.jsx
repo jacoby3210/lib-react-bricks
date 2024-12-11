@@ -1,11 +1,9 @@
-
 // -------------------------------------------------------------------------- //
-// A helper function to resolve the property axis to a set of properties 
+// A helper function to resolve the property axis to a set of properties
 // (vertically or horizontally).
 // -------------------------------------------------------------------------- //
 
 export const resolveAxis = (axis) => {
-
   const horizontalProps = {
     axis: "horizontal",
     cursor: "clientX",
@@ -15,8 +13,8 @@ export const resolveAxis = (axis) => {
     scrollDirect: "left",
     scrollOffset: "scrollLeft",
     scrollSize: "scrollWidth",
-  }
-  
+  };
+
   const verticalProps = {
     axis: "vertical",
     cursor: "clientY",
@@ -26,10 +24,9 @@ export const resolveAxis = (axis) => {
     scrollDirect: "top",
     scrollOffset: "scrollTop",
     scrollSize: "scrollHeight",
-  }
+  };
 
   return axis ? horizontalProps : verticalProps;
-
 };
 
 // -------------------------------------------------------------------------- //

@@ -1,13 +1,12 @@
-import { useRef, useEffect } from 'react';
-import { useValueDigital } from '@lib-react-bricks/src/modules/core/advanced';
-import { resolveClassName } from '@lib-react-bricks/src/modules/core/utils';
+import { useRef, useEffect } from "react";
+import { useValueDigital } from "@lib-react-bricks/src/modules/core/advanced";
+import { resolveClassName } from "@lib-react-bricks/src/modules/core/utils";
 
 // -------------------------------------------------------------------------- //
-// Layout - to control the increase/decrease of the value.
+// Control - to manage the increase/decrease of the digital value.
 // -------------------------------------------------------------------------- //
 
 export const Swing = (props) => {
-
   const { className, step, min, max } = props;
   const ctxValueDigital = useValueDigital();
   const timeout = useRef(null);
@@ -15,13 +14,13 @@ export const Swing = (props) => {
   const isButtonStart = (btn) => btn.classList.contains(`${className}-start`);
 
   const onDoubleClick = (evt) => {
-    const {max, min} = ctxValueDigital.state;
+    const { max, min } = ctxValueDigital.state;
     const next = isButtonStart(evt.target) ? min : max;
-    ctxValueDigital.dispatch({ type: 'CHANGE', payload: { next } });
+    ctxValueDigital.dispatch({ type: "CHANGE", payload: { next } });
   };
 
   const onMouseDownSlice = (modifier) => {
-    ctxValueDigital.dispatch({ type: 'CHANGE', payload: { modifier } });
+    ctxValueDigital.dispatch({ type: "CHANGE", payload: { modifier } });
   };
 
   const onMouseDown = (evt) => {
@@ -36,10 +35,10 @@ export const Swing = (props) => {
     const clearMouseUp = () => {
       if (timeout.current) clearInterval(timeout.current);
       timeout.current = null;
-      document.removeEventListener('mouseup', clearMouseUp);
+      document.removeEventListener("mouseup", clearMouseUp);
     };
 
-    document.addEventListener('mouseup', clearMouseUp);
+    document.addEventListener("mouseup", clearMouseUp);
   };
 
   useEffect(() => {
@@ -52,11 +51,13 @@ export const Swing = (props) => {
 
   return (
     <>
-      <button className={resolveClassName(className, 'start')} {...buttonProps} />
-      <button className={resolveClassName(className, 'end')} {...buttonProps} />
+      <button
+        className={resolveClassName(className, "start")}
+        {...buttonProps}
+      />
+      <button className={resolveClassName(className, "end")} {...buttonProps} />
     </>
   );
 };
-
 
 // -------------------------------------------------------------------------- //

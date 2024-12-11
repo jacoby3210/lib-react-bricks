@@ -1,7 +1,7 @@
 import { useValueBoolean } from '@lib-react-bricks/src/modules/core/advanced';
 
 // -------------------------------------------------------------------------- //
-// Layout - to provides an advanced version of the classic checkbox.
+// Control - to provides an advanced version of the classic checkbox.
 // -------------------------------------------------------------------------- //
 
 export const CheckBox = props => {

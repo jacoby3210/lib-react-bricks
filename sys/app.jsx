@@ -1,14 +1,14 @@
-import React            from 'react'
-import ReactDOM         from 'react-dom/client'
-import {BrowserRouter}  from 'react-router-dom';
-import Router           from '@lib-react-bricks/src/pages/router.jsx'
-import {store}          from "./store"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import Router from "@lib-react-bricks/src/pages/router.jsx";
+import { store } from "./store";
 
 // -------------------------------------------------------------------------- //
 // The main React component defining the structure of the application.
 // -------------------------------------------------------------------------- //
 
-const App = props => (
+const App = (props) => (
   <React.StrictMode>
     <BrowserRouter>
       <Router />
@@ -22,15 +22,15 @@ const App = props => (
 
 // async function enableMocking() {
 //   if (process.env.NODE_ENV === "development") {
-//     const { worker } = await import("@lib-react-bricks/src/code/development/mocks/index.js");    
-//     return worker.start();  
+//     const { worker } = await import("@lib-react-bricks/src/code/development/mocks/index.js");
+//     return worker.start();
 //   }
 // }
 
-console.log("Start Application")
-const root = ReactDOM.createRoot(document.getElementById('root'));
+console.log("Start Application");
+const root = ReactDOM.createRoot(document.getElementById("root"));
 // enableMocking().then(() => {
-  root.render(<App/>);
+root.render(<App />);
 // });
 
 // -------------------------------------------------------------------------- //

@@ -6,7 +6,7 @@ import { useReducer } from "react";
 
 export const useReducerAsContext = (reducer, stateInitial) => {
   const [state, dispatch] = useReducer(reducer, stateInitial);
-  return {state, dispatch};
-}
+  return { state, dispatch };
+};
 
 // -------------------------------------------------------------------------- //

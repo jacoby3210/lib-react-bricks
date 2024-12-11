@@ -4,7 +4,7 @@ import { resolveAxis } from '@lib-react-bricks/src/modules/core/utils';
 import * as code from './utils';
 
 // -------------------------------------------------------------------------- //
-// Layout - to select a value from the suggested numeric range.
+// Control - to select a value from the suggested numeric range.
 // -------------------------------------------------------------------------- //
 
 export const Range = props => {

@@ -1,7 +1,7 @@
 import { useValueDigital } from '@lib-react-bricks/src/modules/core/advanced';
 
 // -------------------------------------------------------------------------- //
-// Layout - to track the user's clicks and display the total value.
+// Control - to track the user's clicks and display the total value.
 // -------------------------------------------------------------------------- //
 
 export const Clicker = props => {

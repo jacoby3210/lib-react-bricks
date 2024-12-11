@@ -2,18 +2,32 @@
 // A set of support functions to simplify your work.
 // -------------------------------------------------------------------------- //
 
-// resolve
+// Resolve
 
-export {resolveAxis}                from "./resolve/axis"                     // to resolve the property axis to a set of properties (vertically or horizontally).
-export {resolveData}                from "./resolve/data"                     // to resolve the property data to a set of properties.
-export {resolveClassName}           from "./resolve/className"                // to resolve additional css classes based on the first one.
-export {resolveFunction}            from "./resolve/function"                 // to resolve the property to a summary value.
+// to resolve the property axis to a set of properties (vertically or horizontally).
+export { resolveAxis } from "./resolve/axis";
 
-// shortcuts
+// to resolve the property data to a set of properties.
+export { resolveData } from "./resolve/data";
 
-export {createSmartContext}         from "./shortcuts/createSmartContext"     // to simplify context creation.
-export {isObject}                   from "./shortcuts/isObject"               // to check if the variable is of array type.
-export {useEffectMount}             from "./shortcuts/useEffectMount"         // to handle mounting \ unmounting of components 
-export {useReducerAsContext}        from "./shortcuts/useReducerAsContext"    // to converts the array returned by useReducer into object.
+// to resolve additional css classes based on the first one.
+export { resolveClassName } from "./resolve/className";
+
+// to resolve the property to a summary value.
+export { resolveFunction } from "./resolve/function";
+
+// Shortcut
+
+// to simplify context creation.
+export { createSmartContext } from "./shortcuts/createSmartContext";
+
+// to check if the variable is of array type.
+export { isObject } from "./shortcuts/isObject";
+
+// to handle mounting \ unmounting of components
+export { useEffectMount } from "./shortcuts/useEffectMount";
+
+// to converts the array returned by useReducer into object.
+export { useReducerAsContext } from "./shortcuts/useReducerAsContext";
 
 // -------------------------------------------------------------------------- //

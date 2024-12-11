@@ -1,7 +1,7 @@
-import { 
-  createSmartContext, 
+import {
+  createSmartContext,
   useReducerAsContext,
-} from '@lib-react-bricks/src/modules/core/utils';
+} from "@lib-react-bricks/src/modules/core/utils";
 
 // -------------------------------------------------------------------------- //
 // A feature - to handle a change in the value (type: base\variant).
@@ -12,60 +12,51 @@ import {
 // -------------------------------------------------------------------------- //
 
 const reducer = (state, action) => {
-
-  const {value, valueChange, valueNormalize} = state;
+  const { value, valueChange, valueNormalize } = state;
 
   switch (action.type) {
-
     case "CHANGE":
       {
         const next = valueNormalize(action.payload.next, value, state);
-        if(next != state.value) valueChange(next, value)
-        return {... state, value: next}
+        if (next != state.value) valueChange(next, value);
+        return { ...state, value: next };
       }
       break;
 
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
-
 };
 
-const {ValueBaseContext, useValueBase} = createSmartContext("ValueBase");
-export {useValueBase};
+const { ValueBaseContext, useValueBase } = createSmartContext("ValueBase");
+export { useValueBase };
 
 // -------------------------------------------------------------------------- //
 // HOC implementation
 // -------------------------------------------------------------------------- //
 
 export const withValueBase = (WrappedComponent) => (props) => {
-
   const {
-    
     value = null,
-    valueChange = (next, prev, state) => next, 
+    valueChange = (next, prev, state) => next,
     valueNormalize = (value) => value,
-    
-    ...rest
 
+    ...rest
   } = props;
 
-  const ctx = useReducerAsContext(reducer, 
-    {
-      value,
-      valueChange,
-      valueNormalize,
-    }
-  );
+  const ctx = useReducerAsContext(reducer, {
+    value,
+    valueChange,
+    valueNormalize,
+  });
 
-  const updateProps = { ... rest, value: ctx.state.value};
+  const updateProps = { ...rest, value: ctx.state.value };
 
   return (
     <ValueBaseContext.Provider value={ctx}>
-      <WrappedComponent { ... updateProps } />
+      <WrappedComponent {...updateProps} />
     </ValueBaseContext.Provider>
   );
-
 };
 
 // -------------------------------------------------------------------------- //

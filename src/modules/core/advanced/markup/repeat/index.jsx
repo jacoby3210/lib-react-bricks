@@ -1,9 +1,9 @@
-import { 
+import {
   createSmartContext,
   resolveData,
-  resolveFunction, 
-  useReducerAsContext, 
-} from '@lib-react-bricks/src/modules/core/utils';
+  resolveFunction,
+  useReducerAsContext,
+} from "@lib-react-bricks/src/modules/core/utils";
 
 // -------------------------------------------------------------------------- //
 // A feature - to create a list of child components according to the template.
@@ -19,21 +19,20 @@ import {
 // -------------------------------------------------------------------------- //
 
 const reducer = (state, action) => {
-  
   switch (action.type) {
-    case 'SET_SRC':
+    case "SET_SRC":
       return { ...state, src: action.payload };
-      
-    case 'SET_FIRST':
+
+    case "SET_FIRST":
       return { ...state, first: action.payload };
-    
-    case 'SET_LENGTH':
+
+    case "SET_LENGTH":
       return { ...state, length: action.payload };
-  
-    case 'SET_DATASET':
+
+    case "SET_DATASET":
       return { ...state, dataset: action.payload };
 
-    case 'SET_VALUE':
+    case "SET_VALUE":
       return { ...state, value: action.payload };
 
     default:
@@ -41,63 +40,57 @@ const reducer = (state, action) => {
   }
 };
 
-const {RepeatContext, useRepeat} = createSmartContext("Repeat", reducer);
-export {useRepeat};
+const { RepeatContext, useRepeat } = createSmartContext("Repeat", reducer);
+export { useRepeat };
 
 // -------------------------------------------------------------------------- //
 // HOC implementation
 // -------------------------------------------------------------------------- //
 
 export const withRepeat = (WrappedComponent) => (props) => {
-  
   const {
-
     data = [],
     dataset = null,
 
-    first = 0, 
+    first = 0,
     length = -1,
-    src, 
-    Template, 
+    Template,
 
-    ...rest 
-
+    ...rest
   } = props;
-  
+
   const dataResolve = resolveData(data);
-  const datasetResolve = dataset ? dataset : dataResolve 
+  const datasetResolve = dataset ? dataset : dataResolve;
 
   const firstResolve = resolveFunction(first, props);
-  const lengthResolve = resolveFunction(length, props) == -1 
-    ? datasetResolve.length 
-    : Math.min(datasetResolve.length, length);
+  const lengthResolve =
+    resolveFunction(length, props) == -1
+      ? datasetResolve.length
+      : Math.min(datasetResolve.length, length);
   const lastResolve = firstResolve + lengthResolve;
 
-  const ctx = useReducerAsContext(reducer, { 
-
+  const ctx = useReducerAsContext(reducer, {
     data: dataResolve,
     dataset: datasetResolve,
 
     first: firstResolve,
     last: lastResolve,
     length: lengthResolve,
-
   });
 
   const children = datasetResolve
     .slice(firstResolve, lastResolve)
-    .map(
-      (item, index) => (
-        <Template key={item.id || index} index={index} item={item}/>
-      )
-    );
+    .map((item, index) => (
+      <Template key={item.id || index} index={index} item={item} />
+    ));
 
   return (
     <RepeatContext.Provider value={ctx}>
-      {WrappedComponent 
-        ? (<WrappedComponent {...rest}> { children } </WrappedComponent>) 
-        : (<> { children } </>)
-      }
+      {WrappedComponent ? (
+        <WrappedComponent {...rest}> {children} </WrappedComponent>
+      ) : (
+        <> {children} </>
+      )}
     </RepeatContext.Provider>
   );
 };

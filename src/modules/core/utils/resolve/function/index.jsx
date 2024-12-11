@@ -3,7 +3,7 @@
 // -------------------------------------------------------------------------- //
 
 export const resolveFunction = (property, rest) => {
-  const rs = (typeof property === 'function') ? property(rest) : property;
+  const rs = typeof property === "function" ? property(rest) : property;
   return rs;
 };
 
