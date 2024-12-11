@@ -126,6 +126,19 @@ export const GUI = {
       withRepeat
     ),
 
+    ...compose("Scroll")(Layouts.Scroll)(
+      withMerge("rc-scroll", {
+        axis: false,
+        mode: "smooth",
+        target: null,
+        max: 1.0,
+        min: 0.0,
+        value: 0.0,
+      }),
+      withContainer,
+      withValueDigital
+    ),
+
     ...compose("Accordion")()(
       withMerge("rc-accordion", {
         mode: "all",

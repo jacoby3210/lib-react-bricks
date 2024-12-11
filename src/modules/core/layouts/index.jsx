@@ -13,6 +13,9 @@ export { Navigator } from "./managers/navigator";
 // - to switch of displayed content in the view by the page index.
 export { Paginator } from "./managers/paginator";
 
+// - to scroll the content in the element.
+export { Scroll } from "./managers/scroll";
+
 // Widget
 
 // - which organizes content into sections, that can be collapsed/expanded.

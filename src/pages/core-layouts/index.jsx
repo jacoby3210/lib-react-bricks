@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { GUI } from "@lib-react-bricks/src/modules/core";
 import { props } from "./config";
 
@@ -8,8 +9,18 @@ import { props } from "./config";
 // ------------------------------------------------------------------------- //
 
 export const CoreLayoutsPage = () => {
+  const areaRef = useRef(null);
+  const TestAreaForScroll = () => (
+    <div style={{ height: "100px", overflowY: "scroll" }} ref={areaRef}>
+      <div style={{ height: "200px" }} />
+    </div>
+  );
+
   return (
     <div id='core-layouts'>
+      <GUI.Layouts.Scroll {...props.scroll} target={areaRef} />
+      <TestAreaForScroll />
+
       <GUI.Templates.Browser {...props.browser} />
       <GUI.Templates.Gallery {...props.gallery} />
       <GUI.Templates.Catalog {...props.catalog} />
