@@ -7,20 +7,20 @@ import { resolveClassName } from "@lib-react-bricks/src/modules/core/utils";
 // -------------------------------------------------------------------------- //
 
 export const Swing = (props) => {
-  const { className, step, min, max } = props;
   const ctxValueDigital = useValueDigital();
+  const { max, min, step } = ctxValueDigital.state;
+  const { className } = props;
   const timeout = useRef(null);
 
   const isButtonStart = (btn) => btn.classList.contains(`${className}-start`);
 
   const onDoubleClick = (evt) => {
-    const { max, min } = ctxValueDigital.state;
     const next = isButtonStart(evt.target) ? min : max;
     ctxValueDigital.dispatch({ type: "CHANGE", payload: { next } });
   };
 
   const onMouseDownSlice = (modifier) => {
-    ctxValueDigital.dispatch({ type: "CHANGE", payload: { modifier } });
+    ctxValueDigital.dispatch({ type: "MODIFY", payload: { modifier } });
   };
 
   const onMouseDown = (evt) => {
