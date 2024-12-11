@@ -18,6 +18,9 @@ export { Paginator } from "./managers/paginator";
 // - which organizes content into sections, that can be collapsed/expanded.
 export { Accordion } from "./widgets/accordion";
 
+// - which output multiple radio buttons as a single component.
+export { Bar } from "./widgets/bar";
+
 // - which displays a tag cloud, with support for adding and deleting tags.
 export { CheckList } from "./widgets/checklist";
 

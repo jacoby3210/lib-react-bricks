@@ -5,7 +5,7 @@ import {
 import { resolveClassName } from "@lib-react-bricks/src/modules/core/utils";
 
 // -------------------------------------------------------------------------- //
-// Control - to output multiple radio buttons as a single component.
+// Widget - which output multiple radio buttons as a single component.
 // -------------------------------------------------------------------------- //
 
 const Template = (props) => {

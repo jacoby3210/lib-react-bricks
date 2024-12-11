@@ -146,6 +146,12 @@ export const props = {
     })),
   },
 
+  bar: {
+    data: produceEntries(5, (v, i) => ({ label: `Option #${i}`, value: i })),
+    name: "test-bar",
+    value: 2,
+  },
+
   checklist: {
     data: produceEntries(5, (v, i) => ({
       id: i,

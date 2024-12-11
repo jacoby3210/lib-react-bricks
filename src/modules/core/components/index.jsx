@@ -18,9 +18,6 @@ export { List } from "./basics/list";
 
 // Controls
 
-// - to output multiple radio buttons as a single component.
-export { Bar } from "./controls/bar";
-
 // - to provide an advanced version of the classic checkbox.
 export { CheckBox } from "./controls/checkbox";
 

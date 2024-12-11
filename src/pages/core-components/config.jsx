@@ -33,14 +33,6 @@ export const props = {
     value: "ttttttttttttttttttt",
   },
 
-  bar: {
-    data: produceEntries(5, (v, i) => {
-      return { label: `Option #${i}`, value: i };
-    }),
-    name: "test-bar",
-    value: 2,
-  },
-
   checkbox: {
     value: false,
   },

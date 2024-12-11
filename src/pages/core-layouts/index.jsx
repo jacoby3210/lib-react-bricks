@@ -16,6 +16,7 @@ export const CoreLayoutsPage = () => {
 
       <GUI.Layouts.Accordion {...props.accordion} />
       <GUI.Layouts.Accordion {...props.accordionSingle} />
+      <GUI.Layouts.Bar {...props.bar} />
 
       <GUI.Layouts.CheckList {...props.checklist} />
       <GUI.Layouts.Inspector {...props.inspector} />

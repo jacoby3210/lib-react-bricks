@@ -54,13 +54,6 @@ export const GUI = {
       withRepeat
     ),
 
-    ...compose("Bar")()(
-      withMerge("rc-bar", { value: null, ...Components.Bar }),
-      withContainer,
-      withValueBase,
-      withRepeat
-    ),
-
     ...compose("CheckBox")(Components.CheckBox)(
       withMerge("rc-checkbox", { value: false }),
       withValueBoolean
@@ -141,6 +134,13 @@ export const GUI = {
       }),
       withValueBase,
       withContainer,
+      withRepeat
+    ),
+
+    ...compose("Bar")()(
+      withMerge("rc-bar", { value: null, ...Layouts.Bar }),
+      withContainer,
+      withValueBase,
       withRepeat
     ),
 
