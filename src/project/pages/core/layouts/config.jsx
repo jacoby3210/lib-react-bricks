@@ -1,5 +1,4 @@
 import { GUI } from "@lib-react-bricks/src/modules/core";
-import { Template } from "../../modules/core/layouts/widgets/inspector";
 
 // -------------------------------------------------------------------------- //
 // Constants.

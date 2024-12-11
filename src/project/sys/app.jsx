@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import Router from "@lib-react-bricks/src/pages/router.jsx";
+import Router from "@lib-react-bricks/src/project/pages/router.jsx";
 import { store } from "./store";
 
 // -------------------------------------------------------------------------- //

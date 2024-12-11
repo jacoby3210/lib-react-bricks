@@ -8,32 +8,28 @@ import { props } from "./config";
 // -------------------------------------------------------------------------- //
 
 export const CoreComponentsPage = () => {
-  const fsComponents = Object.fromEntries(
-    Object.keys(GUI.Components).map((key) => [key, GUI.Components[key]])
-  );
-
   return (
     <section id={"core-components"}>
       {"Its alive"}
 
-      <fsComponents.Container />
+      <GUI.Components.Container />
       <GUI.Components.Dropout {...props.dropout}>
         {"Its Popup!"}
       </GUI.Components.Dropout>
-      <fsComponents.Empty />
-      <fsComponents.List {...props.list} />
+      <GUI.Components.Empty />
+      <GUI.Components.List {...props.list} />
 
-      <fsComponents.CheckBox {...props.checkbox} />
-      <fsComponents.Clicker {...props.clicker} />
-      <fsComponents.Range {...props.rangeHorizontal} />
-      <fsComponents.Range {...props.rangeVertical} />
-      <fsComponents.Swing {...props.swing} />
+      <GUI.Components.CheckBox {...props.checkbox} />
+      <GUI.Components.Clicker {...props.clicker} />
+      <GUI.Components.Range {...props.rangeHorizontal} />
+      <GUI.Components.Range {...props.rangeVertical} />
+      <GUI.Components.Swing {...props.swing} />
 
-      <fsComponents.Advisor {...props.advisor} />
-      <fsComponents.Paragraph {...props.paragraph} />
-      <fsComponents.Select {...props.select} />
-      <fsComponents.Switcher {...props.switcher} />
-      <fsComponents.Text {...props.text} />
+      <GUI.Components.Advisor {...props.advisor} />
+      <GUI.Components.Paragraph {...props.paragraph} />
+      <GUI.Components.Select {...props.select} />
+      <GUI.Components.Switcher {...props.switcher} />
+      <GUI.Components.Text {...props.text} />
     </section>
   );
 };
