@@ -157,6 +157,13 @@ export const GUI = {
       withContainer,
       withRepeat
     ),
+
+    ...compose("Menu")(Components.Container)(
+      withMerge("rc-menu", { ...Layouts.Menu }),
+      withContainer,
+      withReveal,
+      withRepeat
+    ),
   },
 };
 

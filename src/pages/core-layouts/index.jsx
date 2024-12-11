@@ -19,6 +19,7 @@ export const CoreLayoutsPage = () => {
 
       <GUI.Layouts.CheckList {...props.checklist} />
       <GUI.Layouts.Inspector {...props.inspector} />
+      <GUI.Layouts.Menu {...props.menu} />
     </div>
   );
 };

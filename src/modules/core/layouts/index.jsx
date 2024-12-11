@@ -24,4 +24,7 @@ export { CheckList } from "./widgets/checklist";
 // - which creates a UI for viewing / editing an object.
 export { Inspector } from "./widgets/inspector";
 
+// - which displays desktop application menu.
+export { Menu } from "./widgets/menu";
+
 // -------------------------------------------------------------------------- //

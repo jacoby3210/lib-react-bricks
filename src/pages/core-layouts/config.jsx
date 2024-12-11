@@ -53,20 +53,20 @@ const data = [
 
 const menuSecondLine = {
   data: [
-    sig("entry-0", "button", {}, GUI.Components.Button),
+    sig("entry-0", "button", {}, GUI.Components.Text),
     sig("entry-1", "menu", {}, GUI.Layouts.Menu),
     sig("entry-2", "menu", {}, GUI.Layouts.Menu),
-    sig("entry-3", "button", {}, GUI.Components.Button),
+    sig("entry-3", "button", {}, GUI.Components.Text),
     sig("entry-4", "menu", {}, GUI.Layouts.Menu),
   ],
 };
 
 const menuFirstLine = {
   data: [
-    sig("entry-0", "button", {}, GUI.Components.Button),
+    sig("entry-0", "button", {}, GUI.Components.Text),
     sig("entry-1", "menu", menuSecondLine, GUI.Layouts.Menu),
     sig("entry-2", "menu", menuSecondLine, GUI.Layouts.Menu),
-    sig("entry-3", "button", {}, GUI.Components.Button),
+    sig("entry-3", "button", {}, GUI.Components.Text),
     sig("entry-4", "menu", menuSecondLine, GUI.Layouts.Menu),
   ],
 };
