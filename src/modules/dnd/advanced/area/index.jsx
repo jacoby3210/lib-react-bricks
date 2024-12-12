@@ -1,9 +1,9 @@
-import { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import {
   createSmartContext,
   useReducerAsContext,
 } from "@lib-react-bricks/src/modules/core/utils";
-import { scan } from "./utils";
+import { createCursor, calcBoundary, scan } from "./utils";
 
 // -------------------------------------------------------------------------- //
 // A feature - to control the area in which UI components are drag & drop.
@@ -16,18 +16,17 @@ import { scan } from "./utils";
 const reducer = (state, action) => {
   switch (action.type) {
     case "CAPTURE": {
-      const { drag, e } = action.payload;
-      const cursor = createCursor(state.area, drag, e);
-      const boundary = calcBoundary(state.area, cursor, e);
-
-      return { ...state, boundary, cursor, drag };
+      console.log("CAPTURE");
+      return { ...state, capture: true };
     }
 
     case "RELEASE": {
+      console.log("RELEASE");
       return { ...state, capture: false };
     }
 
     case "MOVE": {
+      console.log("MOVE");
       return { ...state };
     }
 
@@ -44,8 +43,11 @@ export { useArea };
 // -------------------------------------------------------------------------- //
 
 export const withArea = (WrappedComponent) => (props) => {
+  const { children } = props;
+  const area = useRef(null);
+
   const ctx = useReducerAsContext(reducer, {
-    area: null,
+    area: useRef(null),
     capture: false,
     boundary: { x1: 0, y1: 0, x2: 0, y2: 0 },
     cursor: null,
@@ -58,14 +60,47 @@ export const withArea = (WrappedComponent) => (props) => {
     window.dispatchEvent(customEvent);
   };
 
-  const handleMouseDown = (e) => dispatchCustomEvent("drag-start", e);
+  const handleMouseDown = useCallback(
+    (e) => {
+      dispatchCustomEvent("drag-start", e);
+      ctx.dispatch({ type: "CAPTURE", payload: { e } });
+    },
+    [ctx.dispatch]
+  );
+
+  const handleMouseMove = useCallback(
+    (e) => {
+      dispatchCustomEvent("drag-process", e);
+      ctx.dispatch({ type: "MOVE", payload: { e } });
+    },
+    [ctx.dispatch]
+  );
+
+  useEffect(() => {
+    const removeHandlers = () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+
+    const handleMouseUp = (e) => {
+      dispatchCustomEvent("drag-end", e);
+      ctx.dispatch({ type: "RELEASE", payload: { e } });
+      removeHandlers();
+    };
+
+    if (ctx.state.capture) {
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+    }
+
+    return () => {
+      removeHandlers();
+    };
+  }, [ctx.state.capture]);
 
   return (
-    <div
-      style={{ position: "absolute", cursor: "grab" }}
-      onMouseDown={handleMouseDown}
-    >
-      <WrappedComponent {...props} />
+    <div ref={ctx.state.area} {...props} onMouseDown={handleMouseDown}>
+      {children}
     </div>
   );
 };

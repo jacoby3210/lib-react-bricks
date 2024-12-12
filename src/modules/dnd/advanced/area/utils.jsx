@@ -2,13 +2,29 @@
 // Helper functions.
 // -------------------------------------------------------------------------- //
 
+// create an auxiliary element acting as a cursor
+export const createCursor = (area, drag) => {
+  const areaRect = area.getBoundingClientRect();
+  const dragRect = drag.getBoundingClientRect();
+  const x = areaRect.x - dragRect.x,
+    y = dragRect.y - areaRect.y;
+  const cursor = drag.cloneNode(true);
+  cursor.style = {
+    position: "absolute",
+    transform: `translate(${x}px, ${y}px)`,
+  };
+  area.appendChild(cursor);
+  if (drag.attributes["mode"]?.value == "self") drag.hidden = true;
+  return cursor;
+};
+
 // calculate the bounding box for moving an drag element
-export const calcBoundary = (selfRef, dragRef, e) => {
-  const areaRect = selfRef.current.getBoundingClientRect();
-  const dragRect = dragRef.current.getBoundingClientRect();
+export const calcBoundary = (area, drag, x, y) => {
+  const areaRect = area.getBoundingClientRect();
+  const dragRect = drag.getBoundingClientRect();
   const boundary = {
-    x1: areaRect.x + (e.pageX - Math.abs(dragRect.x)),
-    y1: areaRect.y + (e.pageY - Math.abs(dragRect.y)),
+    x1: areaRect.x + (x - Math.abs(dragRect.x)),
+    y1: areaRect.y + (y - Math.abs(dragRect.y)),
     x2: areaRect.width - dragRect.width,
     y2: areaRect.height - dragRect.height,
   };
@@ -21,20 +37,6 @@ export const calcPosition = (e, axis, boundary) => {
   const x = Math.min(Math.max(e.pageX - x1, 0), x2);
   const y = Math.min(Math.max(e.pageY - y1, 0), y2);
   return `translate(${x}px, ${y}px)`;
-};
-
-// create an auxiliary element acting as a cursor
-export const createCursor = (selfRef, dragRef, e) => {
-  const areaRect = selfRef.current.getBoundingClientRect();
-  const dragRect = dragRef.current.getBoundingClientRect();
-  const x = areaRect.x - dragRect.x,
-    y = dragRect.y - areaRect.y;
-  const clone = e.target.cloneNode(true);
-  clone.style.position = "absolute";
-  clone.style.transform = `translate(${x}px, ${y}px)`;
-  selfRef.current.appendChild(clone);
-  if (e.target.attributes["mode"].value == "self") e.target.hidden = true;
-  return clone;
 };
 
 // delete an auxiliary element acting as a cursor

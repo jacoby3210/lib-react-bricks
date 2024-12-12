@@ -35,11 +35,7 @@ export const DnD = {
   // Native: {HOCs, Components, Layouts,},
 
   Components: {
-    ...compose("Area")(({ children }) => <div>{children}</div>)(
-      withMerge("rc-dnd-area", {}),
-      withContainer,
-      withArea
-    ),
+    ...compose("Area")()(withMerge("rc-dnd-area", {}), withArea),
   },
 
   Layouts: {},

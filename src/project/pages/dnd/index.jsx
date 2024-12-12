@@ -11,7 +11,6 @@ export const PageDnD = (receivedProps) => {
     <div id='dnd'>
       <DnD.Components.Area>
         <div
-          draggable
           style={{ backgroundColor: "red", height: "100px", width: "100px" }}
         />
       </DnD.Components.Area>
