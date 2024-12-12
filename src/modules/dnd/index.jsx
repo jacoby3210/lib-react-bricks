@@ -1,4 +1,5 @@
 import { Core } from "@lib-react-bricks/src/modules/core";
+import * as HOCs from "./advanced";
 
 // -------------------------------------------------------------------------- //
 // compile api
@@ -19,6 +20,8 @@ const {
   withValueOption,
 } = Core.Basics.HOCs;
 
+const { withArea } = HOCs;
+
 const compose =
   (name) =>
   (...components) =>
@@ -31,7 +34,13 @@ const compose =
 export const DnD = {
   // Native: {HOCs, Components, Layouts,},
 
-  Components: {},
+  Components: {
+    ...compose("Area")(({ children }) => <div>{children}</div>)(
+      withMerge("rc-dnd-area", {}),
+      withContainer,
+      withArea
+    ),
+  },
 
   Layouts: {},
 };
