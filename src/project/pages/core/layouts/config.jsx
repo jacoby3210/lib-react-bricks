@@ -1,4 +1,4 @@
-import { GUI } from "@lib-react-bricks/src/modules/core";
+import { Core } from "@lib-react-bricks/src/modules/core";
 
 // -------------------------------------------------------------------------- //
 // Constants.
@@ -14,7 +14,7 @@ const sig = (caption, datatype, props, Render) => ({
 });
 
 const list = {
-  Template: ({ item }) => <GUI.Components.Advisor value={item} />,
+  Template: ({ item }) => <Core.Components.Advisor value={item} />,
 };
 const select = {
   data: produceEntries(5, (v, i) => ({ id: i, label: `label-${i}` })),
@@ -25,48 +25,48 @@ const switcher = {
 
 const fieldset = {
   data: [
-    sig("id", "noedit", {}, GUI.Components.Text),
-    sig("label", "string", {}, GUI.Components.Advisor),
-    sig("name", "reference", select, GUI.Components.Select),
-    sig("desc", "reference", select, GUI.Components.Select),
-    sig("note", "reference", select, GUI.Components.Select),
-    sig("isPlayable", "bool", {}, GUI.Components.CheckBox),
-    sig("type", "enum", switcher, GUI.Components.Switcher),
-    sig("tooltip", "text", {}, GUI.Components.Paragraph),
-    sig("skills", "array", list, GUI.Components.List),
+    sig("id", "noedit", {}, Core.Components.Text),
+    sig("label", "string", {}, Core.Components.Advisor),
+    sig("name", "reference", select, Core.Components.Select),
+    sig("desc", "reference", select, Core.Components.Select),
+    sig("note", "reference", select, Core.Components.Select),
+    sig("isPlayable", "bool", {}, Core.Components.CheckBox),
+    sig("type", "enum", switcher, Core.Components.Switcher),
+    sig("tooltip", "text", {}, Core.Components.Paragraph),
+    sig("skills", "array", list, Core.Components.List),
   ],
 };
 
 const data = [
-  sig("id", "noedit", {}, GUI.Components.Text),
-  sig("label", "string", {}, GUI.Components.Advisor),
-  sig("name", "reference", select, GUI.Components.Select),
-  sig("desc", "reference", select, GUI.Components.Select),
-  sig("note", "reference", select, GUI.Components.Select),
-  sig("isPlayable", "bool", {}, GUI.Components.CheckBox),
-  sig("type", "enum", switcher, GUI.Components.Switcher),
-  sig("tooltip", "text", {}, GUI.Components.Paragraph),
-  sig("skills", "array", list, GUI.Components.List),
-  sig("fieldset", "object", fieldset, GUI.Layouts.Inspector),
+  sig("id", "noedit", {}, Core.Components.Text),
+  sig("label", "string", {}, Core.Components.Advisor),
+  sig("name", "reference", select, Core.Components.Select),
+  sig("desc", "reference", select, Core.Components.Select),
+  sig("note", "reference", select, Core.Components.Select),
+  sig("isPlayable", "bool", {}, Core.Components.CheckBox),
+  sig("type", "enum", switcher, Core.Components.Switcher),
+  sig("tooltip", "text", {}, Core.Components.Paragraph),
+  sig("skills", "array", list, Core.Components.List),
+  sig("fieldset", "object", fieldset, Core.Layouts.Inspector),
 ];
 
 const menuSecondLine = {
   data: [
-    sig("entry-0", "button", {}, GUI.Components.Text),
-    sig("entry-1", "menu", {}, GUI.Layouts.Menu),
-    sig("entry-2", "menu", {}, GUI.Layouts.Menu),
-    sig("entry-3", "button", {}, GUI.Components.Text),
-    sig("entry-4", "menu", {}, GUI.Layouts.Menu),
+    sig("entry-0", "button", {}, Core.Components.Text),
+    sig("entry-1", "menu", {}, Core.Layouts.Menu),
+    sig("entry-2", "menu", {}, Core.Layouts.Menu),
+    sig("entry-3", "button", {}, Core.Components.Text),
+    sig("entry-4", "menu", {}, Core.Layouts.Menu),
   ],
 };
 
 const menuFirstLine = {
   data: [
-    sig("entry-0", "button", {}, GUI.Components.Text),
-    sig("entry-1", "menu", menuSecondLine, GUI.Layouts.Menu),
-    sig("entry-2", "menu", menuSecondLine, GUI.Layouts.Menu),
-    sig("entry-3", "button", {}, GUI.Components.Text),
-    sig("entry-4", "menu", menuSecondLine, GUI.Layouts.Menu),
+    sig("entry-0", "button", {}, Core.Components.Text),
+    sig("entry-1", "menu", menuSecondLine, Core.Layouts.Menu),
+    sig("entry-2", "menu", menuSecondLine, Core.Layouts.Menu),
+    sig("entry-3", "button", {}, Core.Components.Text),
+    sig("entry-4", "menu", menuSecondLine, Core.Layouts.Menu),
   ],
 };
 

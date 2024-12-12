@@ -1,4 +1,4 @@
-import { GUI } from "@lib-react-bricks/src/modules/core";
+import { Core } from "@lib-react-bricks/src/modules/core";
 import { props } from "./config";
 
 // -------------------------------------------------------------------------- //
@@ -12,24 +12,24 @@ export const CoreComponentsPage = () => {
     <section id={"core-components"}>
       {"Its alive"}
 
-      <GUI.Components.Container />
-      <GUI.Components.Dropout {...props.dropout}>
+      <Core.Components.Container />
+      <Core.Components.Dropout {...props.dropout}>
         {"Its Popup!"}
-      </GUI.Components.Dropout>
-      <GUI.Components.Empty />
-      <GUI.Components.List {...props.list} />
+      </Core.Components.Dropout>
+      <Core.Components.Empty />
+      <Core.Components.List {...props.list} />
 
-      <GUI.Components.CheckBox {...props.checkbox} />
-      <GUI.Components.Clicker {...props.clicker} />
-      <GUI.Components.Range {...props.rangeHorizontal} />
-      <GUI.Components.Range {...props.rangeVertical} />
-      <GUI.Components.Swing {...props.swing} />
+      <Core.Components.CheckBox {...props.checkbox} />
+      <Core.Components.Clicker {...props.clicker} />
+      <Core.Components.Range {...props.rangeHorizontal} />
+      <Core.Components.Range {...props.rangeVertical} />
+      <Core.Components.Swing {...props.swing} />
 
-      <GUI.Components.Advisor {...props.advisor} />
-      <GUI.Components.Paragraph {...props.paragraph} />
-      <GUI.Components.Select {...props.select} />
-      <GUI.Components.Switcher {...props.switcher} />
-      <GUI.Components.Text {...props.text} />
+      <Core.Components.Advisor {...props.advisor} />
+      <Core.Components.Paragraph {...props.paragraph} />
+      <Core.Components.Select {...props.select} />
+      <Core.Components.Switcher {...props.switcher} />
+      <Core.Components.Text {...props.text} />
     </section>
   );
 };

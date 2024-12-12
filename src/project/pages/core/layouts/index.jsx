@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { GUI } from "@lib-react-bricks/src/modules/core";
+import { Core } from "@lib-react-bricks/src/modules/core";
 import { props } from "./config";
 
 // ------------------------------------------------------------------------- //
@@ -18,20 +18,20 @@ export const CoreLayoutsPage = () => {
 
   return (
     <div id='core-layouts'>
-      <GUI.Layouts.Scroll {...props.scroll} target={areaRef} />
+      <Core.Layouts.Scroll {...props.scroll} target={areaRef} />
       <TestAreaForScroll />
 
-      <GUI.Templates.Browser {...props.browser} />
-      <GUI.Templates.Gallery {...props.gallery} />
-      <GUI.Templates.Catalog {...props.catalog} />
+      <Core.Templates.Browser {...props.browser} />
+      <Core.Templates.Gallery {...props.gallery} />
+      <Core.Templates.Catalog {...props.catalog} />
 
-      <GUI.Layouts.Accordion {...props.accordion} />
-      <GUI.Layouts.Accordion {...props.accordionSingle} />
-      <GUI.Layouts.Bar {...props.bar} />
+      <Core.Layouts.Accordion {...props.accordion} />
+      <Core.Layouts.Accordion {...props.accordionSingle} />
+      <Core.Layouts.Bar {...props.bar} />
 
-      <GUI.Layouts.CheckList {...props.checklist} />
-      <GUI.Layouts.Inspector {...props.inspector} />
-      <GUI.Layouts.Menu {...props.menu} />
+      <Core.Layouts.CheckList {...props.checklist} />
+      <Core.Layouts.Inspector {...props.inspector} />
+      <Core.Layouts.Menu {...props.menu} />
     </div>
   );
 };

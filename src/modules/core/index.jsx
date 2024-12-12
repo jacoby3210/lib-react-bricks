@@ -30,8 +30,8 @@ const compose =
 // export api
 // -------------------------------------------------------------------------- //
 
-export const GUI = {
-  Native: {
+export const Core = {
+  Basics: {
     HOCs,
     Components,
     Layouts,
@@ -180,26 +180,26 @@ export const GUI = {
   },
 };
 
-GUI.Templates = {
+Core.Templates = {
   ...compose("Browser")()(
     withMerge("rc-browser", { value: 0 }),
     withContainer,
     withValueOption,
-    withUnion(GUI.Layouts.Changer, GUI.Components.List)
+    withUnion(Core.Layouts.Changer, Core.Components.List)
   ),
 
   ...compose("Catalog")()(
     withMerge("rc-catalog", { value: 0 }),
     withContainer,
     withValueOption,
-    withUnion(GUI.Layouts.Paginator, GUI.Components.List)
+    withUnion(Core.Layouts.Paginator, Core.Components.List)
   ),
 
   ...compose("Gallery")()(
     withMerge("rc-gallery", { value: 0 }),
     withContainer,
     withValueOption,
-    withUnion(GUI.Layouts.Navigator, GUI.Components.List)
+    withUnion(Core.Layouts.Navigator, Core.Components.List)
   ),
 };
 
