@@ -8,7 +8,7 @@ import { props } from "./config";
 // of the application in artificial conditions.                              //
 // ------------------------------------------------------------------------- //
 
-export const CoreLayoutsPage = () => {
+export const PageCoreLayouts = () => {
   const areaRef = useRef(null);
   const TestAreaForScroll = () => (
     <div style={{ height: "100px", overflowY: "scroll" }} ref={areaRef}>

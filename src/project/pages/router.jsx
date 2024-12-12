@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "@lib-react-bricks/src/assets/themes/theme.css";
-import { CoreComponentsPage } from "./core/components";
-import { CoreLayoutsPage } from "./core/layouts";
+import { PageCoreComponents } from "./core/components";
+import { PageCoreLayouts } from "./core/layouts";
 
 // ------------------------------------------------------------------------- //
 // Main Application Router.
@@ -12,9 +12,9 @@ import { CoreLayoutsPage } from "./core/layouts";
 function Router() {
   return (
     <Routes>
-      <Route element={<CoreComponentsPage />} path='/core/components' exact />
-      <Route element={<CoreLayoutsPage />} path='/core/layouts/' exact />
-      <Route element={<CoreLayoutsPage />} path='/' exact />
+      <Route element={<PageCoreComponents />} path='/core/components' exact />
+      <Route element={<PageCoreLayouts />} path='/core/layouts/' exact />
+      <Route element={<PageCoreLayouts />} path='/' exact />
     </Routes>
   );
 }

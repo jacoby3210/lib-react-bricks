@@ -7,7 +7,7 @@ import { props } from "./config";
 // of the application in artificial conditions.                              //
 // -------------------------------------------------------------------------- //
 
-export const CoreComponentsPage = () => {
+export const PageCoreComponents = () => {
   return (
     <section id={"core-components"}>
       {"Its alive"}
