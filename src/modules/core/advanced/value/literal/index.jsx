@@ -52,10 +52,10 @@ export { useValueLiteral };
 
 export const withValueLiteral = (WrappedComponent) => (props) => {
   const {
-    pattern = "",
-
     max = 100,
     min = 0,
+
+    pattern = "",
 
     valueChange = (next, prev) => next,
     valueNormalize = normalize,

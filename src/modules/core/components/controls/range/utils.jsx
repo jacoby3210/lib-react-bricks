@@ -1,5 +1,4 @@
 import React from "react";
-import { resolveClassName } from "@lib-react-bricks/src/modules/core/utils";
 
 // -------------------------------------------------------------------------- //
 // Additional embedded components.
@@ -9,11 +8,7 @@ export const RangeTrack = React.forwardRef((receivedProps, ref) => {
   const { children, className, ...attributes } = receivedProps;
 
   return (
-    <div
-      className={resolveClassName(className, `track`)}
-      ref={ref}
-      {...attributes}
-    >
+    <div className={className} ref={ref} {...attributes}>
       {children}
     </div>
   );
@@ -22,13 +17,7 @@ export const RangeTrack = React.forwardRef((receivedProps, ref) => {
 export const RangeThumb = React.forwardRef((receivedProps, ref) => {
   const { children, className, ...attributes } = receivedProps;
 
-  return (
-    <div
-      className={resolveClassName(className, `thumb`)}
-      ref={ref}
-      {...attributes}
-    />
-  );
+  return <div className={className} ref={ref} {...attributes} />;
 });
 
 // -------------------------------------------------------------------------- //

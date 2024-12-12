@@ -41,15 +41,10 @@ export const Scroll = (props) => {
     };
   }, [target, axisResolve]);
 
-  const updateProps = {
-    ...props,
-    min: 0.0,
-    max: 1.0,
-  };
   return (
     <>
-      <Range {...updateProps} />
-      <Swing {...updateProps} />
+      <Range {...props} />
+      <Swing {...props} />
     </>
   );
 };

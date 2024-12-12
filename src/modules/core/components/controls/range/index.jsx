@@ -1,6 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useValueDigital } from "@lib-react-bricks/src/modules/core/advanced";
-import { resolveAxis } from "@lib-react-bricks/src/modules/core/utils";
+import {
+  resolveAxis,
+  resolveClassName,
+} from "@lib-react-bricks/src/modules/core/utils";
 import * as code from "./utils";
 
 // -------------------------------------------------------------------------- //
@@ -65,13 +68,13 @@ export const Range = (props) => {
   }, [capture]);
 
   const thumbProps = {
-    className,
+    className: resolveClassName(className, `thumb`),
     onMouseDown: handleThumbMouseDown,
     style: code.valueToStyle(axis, ctxValueDigital.state),
   };
 
   const trackProps = {
-    className,
+    className: resolveClassName(className, `track`),
     onMouseDown: handleTrackMouseDown,
   };
 
