@@ -27,11 +27,6 @@ const reducer = (state, action) => {
       return { ...state, capture: false, drag: null, drop: null, mode: null };
     }
 
-    case "MOVE": {
-      console.log("MOVE");
-      return { ...state };
-    }
-
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }

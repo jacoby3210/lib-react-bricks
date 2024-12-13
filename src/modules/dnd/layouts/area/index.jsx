@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from "react";
 import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
+import { Cursor } from "@lib-react-bricks/src/modules/dnd/components";
 
 // -------------------------------------------------------------------------- //
 // Widget - which manage the area, with dnd ui components.
@@ -19,14 +20,8 @@ export const Area = (props) => {
     ctxArea.dispatch({ type: "CAPTURE", payload: { e } });
   };
 
-  const handleMouseMove = (e) => {
-    dispatchCustomEvent("drag-process", e);
-    ctxArea.dispatch({ type: "MOVE", payload: { e } });
-  };
-
   useEffect(() => {
     const removeHandlers = () => {
-      document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
 
@@ -37,7 +32,6 @@ export const Area = (props) => {
     };
 
     if (ctxArea.state.capture) {
-      document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseUp);
     }
 
@@ -48,6 +42,7 @@ export const Area = (props) => {
 
   return (
     <div ref={ctxArea.state.area} onMouseDown={handleMouseDown}>
+      {ctxArea.state.capture ? <Cursor /> : null}
       {children}
     </div>
   );
