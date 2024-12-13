@@ -3,6 +3,7 @@ import {
   createSmartContext,
   useReducerAsContext,
 } from "@lib-react-bricks/src/modules/core/utils";
+import { getBoundary } from "./utils";
 
 // -------------------------------------------------------------------------- //
 // A feature - to control the area in which UI components are drag & drop.
@@ -16,10 +17,17 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "CAPTURE": {
       console.log("CAPTURE");
+
+      const { area } = state;
       const { e } = action.payload;
       const drag = e.target;
-      const mode = drag.attributes["mode"]?.value || "self";
-      return { ...state, capture: true, drag, mode };
+
+      return {
+        ...state,
+        capture: true,
+        boundary: getBoundary(area.current, drag, e.pageX, e.pageY),
+        mode: drag.getAttribute("mode") || "self",
+      };
     }
 
     case "RELEASE": {
