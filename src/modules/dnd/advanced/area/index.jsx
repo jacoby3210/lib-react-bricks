@@ -43,7 +43,6 @@ export { useArea };
 // -------------------------------------------------------------------------- //
 
 export const withArea = (WrappedComponent) => (props) => {
-  const { children } = props;
   const area = useRef(null);
 
   const ctx = useReducerAsContext(reducer, {
@@ -55,53 +54,10 @@ export const withArea = (WrappedComponent) => (props) => {
     drop: null,
   });
 
-  const dispatchCustomEvent = (eventName, detail) => {
-    const customEvent = new CustomEvent(eventName, { detail });
-    window.dispatchEvent(customEvent);
-  };
-
-  const handleMouseDown = useCallback(
-    (e) => {
-      dispatchCustomEvent("drag-start", e);
-      ctx.dispatch({ type: "CAPTURE", payload: { e } });
-    },
-    [ctx.dispatch]
-  );
-
-  const handleMouseMove = useCallback(
-    (e) => {
-      dispatchCustomEvent("drag-process", e);
-      ctx.dispatch({ type: "MOVE", payload: { e } });
-    },
-    [ctx.dispatch]
-  );
-
-  useEffect(() => {
-    const removeHandlers = () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
-    };
-
-    const handleMouseUp = (e) => {
-      dispatchCustomEvent("drag-end", e);
-      ctx.dispatch({ type: "RELEASE", payload: { e } });
-      removeHandlers();
-    };
-
-    if (ctx.state.capture) {
-      document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
-    }
-
-    return () => {
-      removeHandlers();
-    };
-  }, [ctx.state.capture]);
-
   return (
-    <div ref={ctx.state.area} {...props} onMouseDown={handleMouseDown}>
-      {children}
-    </div>
+    <AreaContext.Provider value={ctx}>
+      <WrappedComponent {...props} />
+    </AreaContext.Provider>
   );
 };
 // -------------------------------------------------------------------------- //

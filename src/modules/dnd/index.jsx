@@ -1,5 +1,6 @@
 import { Core } from "@lib-react-bricks/src/modules/core";
 import * as HOCs from "./advanced";
+import * as Layouts from "./layouts";
 
 // -------------------------------------------------------------------------- //
 // compile api
@@ -35,7 +36,7 @@ export const DnD = {
   // Native: {HOCs, Components, Layouts,},
 
   Components: {
-    ...compose("Area")()(withMerge("rc-dnd-area", {}), withArea),
+    ...compose("Area")(Layouts.Area)(withMerge("rc-dnd-area", {}), withArea),
   },
 
   Layouts: {},

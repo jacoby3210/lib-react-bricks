@@ -2,7 +2,9 @@
 // Advanced GUI features implemented as HOCs.
 // -------------------------------------------------------------------------- //
 
-// - to control the area in which UI components are drag & drop.
-export { useArea, withArea } from "./area";
+// Widget
+
+// - which manage the area, with dnd ui components.
+export { Area } from "./area";
 
 // -------------------------------------------------------------------------- //
