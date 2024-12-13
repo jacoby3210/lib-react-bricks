@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import {
   createSmartContext,
   useReducerAsContext,
 } from "@lib-react-bricks/src/modules/core/utils";
-import { createCursor, calcBoundary, scan } from "./utils";
 
 // -------------------------------------------------------------------------- //
 // A feature - to control the area in which UI components are drag & drop.
@@ -17,12 +16,15 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "CAPTURE": {
       console.log("CAPTURE");
-      return { ...state, capture: true };
+      const { e } = action.payload;
+      const drag = e.target;
+      const mode = drag.attributes["mode"]?.value || "self";
+      return { ...state, capture: true, drag, mode };
     }
 
     case "RELEASE": {
       console.log("RELEASE");
-      return { ...state, capture: false };
+      return { ...state, capture: false, drag: null, drop: null, mode: null };
     }
 
     case "MOVE": {
@@ -49,7 +51,7 @@ export const withArea = (WrappedComponent) => (props) => {
     area: useRef(null),
     capture: false,
     boundary: { x1: 0, y1: 0, x2: 0, y2: 0 },
-    cursor: null,
+    mode: false,
     drag: null,
     drop: null,
   });
