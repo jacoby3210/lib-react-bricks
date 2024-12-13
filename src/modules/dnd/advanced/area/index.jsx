@@ -27,6 +27,7 @@ const reducer = (state, action) => {
         capture: true,
         boundary: getBoundary(area.current, drag, e.pageX, e.pageY),
         mode: drag.getAttribute("mode") || "self",
+        source: drag,
       };
     }
 

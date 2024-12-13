@@ -9,30 +9,36 @@ export const Cursor = (props) => {
   const { id, className } = props;
 
   const ctxArea = useArea();
-  const { boundary } = ctxArea.state;
+  const { boundary, source } = ctxArea.state;
   const cursor = useRef(null);
 
+  const style = {
+    position: "absolute",
+    transform: `translate(0px, 0px)`,
+  };
+
   useEffect(() => {
+    const child = source.cloneNode(true);
+    cursor.current.appendChild(child);
+
     const handleMouseMove = (e) => {
       const { pageX: x, pageY: y } = e;
       const { x1, y1, x2, y2 } = boundary;
       const offsetLeft = Math.min(Math.max(x - x1, 0), x2);
       const offsetTop = Math.min(Math.max(y - y1, 0), y2);
 
-      cursor.current.style.transform = `translate(${offsetLeft}px, ${offsetTop}px)`;
+      if (cursor.current)
+        cursor.current.style.transform = `translate(${offsetLeft}px, ${offsetTop}px)`;
     };
     document.addEventListener("mousemove", handleMouseMove);
 
     return () => {
+      if (cursor.current) cursor.current.innerHTML = "";
       document.removeEventListener("mousemove", handleMouseMove);
     };
-  });
+  }, [source]);
 
-  return (
-    <div id={id} className={className} ref={cursor}>
-      {}
-    </div>
-  );
+  return <div id={id} className={className} ref={cursor} style={style} />;
 };
 
 // -------------------------------------------------------------------------- //
