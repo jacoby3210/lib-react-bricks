@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { dispatchCustomEvent } from "@lib-react-bricks/src/modules/utils";
 import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
-import { Cursor } from "@lib-react-bricks/src/modules/dnd/components";
 
 // -------------------------------------------------------------------------- //
 // Component - that can be dragged in Area.
@@ -10,13 +10,8 @@ export const Item = (props) => {
   const { children, className, id, style } = props;
   const ctxArea = useArea();
 
-  const dispatchCustomEvent = (eventName, detail) => {
-    const customEvent = new CustomEvent(eventName, { detail });
-    window.dispatchEvent(customEvent);
-  };
-
   const handleMouseDown = (e) => {
-    dispatchCustomEvent("drag-start", e);
+    dispatchCustomEvent({ name: "drag-start", detail: e });
     ctxArea.dispatch({ type: "CAPTURE", payload: { e } });
   };
 

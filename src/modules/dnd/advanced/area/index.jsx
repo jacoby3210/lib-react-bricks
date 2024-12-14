@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import {
   createSmartContext,
   useReducerAsContext,
-} from "@lib-react-bricks/src/modules/core/utils";
+} from "@lib-react-bricks/src/modules/utils";
 import { getBoundary } from "./utils";
 
 // -------------------------------------------------------------------------- //
