@@ -3,7 +3,7 @@ import {
   resolveData,
   resolveFunction,
   useReducerAsContext,
-} from "@lib-react-bricks/src/modules/core/utils";
+} from "@lib-react-bricks/src/modules/utils";
 
 // -------------------------------------------------------------------------- //
 // A feature - to create a list of child components according to the template.

@@ -2,7 +2,7 @@ import {
   useContainer,
   useValueOption,
 } from "@lib-react-bricks/src/modules/core/advanced";
-import { resolveClassName } from "@lib-react-bricks/src/modules/core/utils";
+import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
 
 // -------------------------------------------------------------------------- //
 // Layout - to change of displayed content in the view by special id.

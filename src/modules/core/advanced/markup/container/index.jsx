@@ -1,7 +1,7 @@
 import {
   createSmartContext,
   useReducerAsContext,
-} from "@lib-react-bricks/src/modules/core/utils";
+} from "@lib-react-bricks/src/modules/utils";
 
 // -------------------------------------------------------------------------- //
 //  A feature - to wrap base component into ui block (<div>).

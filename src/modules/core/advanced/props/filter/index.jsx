@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { resolveData } from "@lib-react-bricks/src/modules/core/utils";
+import { resolveData } from "@lib-react-bricks/src/modules/utils";
 
 // -------------------------------------------------------------------------- //
 // A feature - to apply a filter to the source data.
