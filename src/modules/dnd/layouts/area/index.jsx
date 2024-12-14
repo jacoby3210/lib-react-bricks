@@ -8,7 +8,7 @@ import { Cursor } from "@lib-react-bricks/src/modules/dnd/components";
 
 export const Area = (props) => {
   const ctxArea = useArea();
-  const { children, className, id } = props;
+  const { children, className, id, ...rest } = props;
 
   const dispatchCustomEvent = (eventName, detail) => {
     const customEvent = new CustomEvent(eventName, { detail });
@@ -45,6 +45,7 @@ export const Area = (props) => {
       className={className}
       ref={ctxArea.state.area}
       onMouseDown={handleMouseDown}
+      {...rest}
     >
       {children}
       {ctxArea.state.capture ? <Cursor /> : null}

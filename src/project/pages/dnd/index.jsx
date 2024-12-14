@@ -9,7 +9,12 @@ import { DnD } from "@lib-react-bricks/src/modules/dnd";
 export const PageDnD = (receivedProps) => {
   return (
     <div id='dnd'>
-      <DnD.Components.Area>
+      <DnD.Components.Area
+        style={{
+          height: "100%",
+          width: "100%",
+        }}
+      >
         <div
           draggable={false}
           style={{
