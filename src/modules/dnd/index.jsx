@@ -1,5 +1,6 @@
 import { Core } from "@lib-react-bricks/src/modules/core";
 import * as HOCs from "./advanced";
+import * as Components from "./components";
 import * as Layouts from "./layouts";
 
 // -------------------------------------------------------------------------- //
@@ -36,10 +37,13 @@ export const DnD = {
   // Native: {HOCs, Components, Layouts,},
 
   Components: {
-    ...compose("Area")(Layouts.Area)(withMerge("rc-dnd-area", {}), withArea),
+    ...compose("Item")(Components.Item)(withMerge("rc-dnd-item", {})),
+    ...compose("Slot")(Components.Slot)(withMerge("rc-dnd-slot", {})),
   },
 
-  Layouts: {},
+  Layouts: {
+    ...compose("Area")(Layouts.Area)(withMerge("rc-dnd-area", {}), withArea),
+  },
 };
 
 DnD.Templates = {};

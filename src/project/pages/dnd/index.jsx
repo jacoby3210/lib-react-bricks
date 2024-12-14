@@ -6,25 +6,25 @@ import { DnD } from "@lib-react-bricks/src/modules/dnd";
 // React Component
 // -------------------------------------------------------------------------- //
 
-export const PageDnD = (receivedProps) => {
+export const PageDnD = (props) => {
+  const style = (color) => ({
+    backgroundColor: color,
+    height: "100px",
+    width: "100px",
+    userSelect: "none",
+  });
   return (
     <div id='dnd'>
-      <DnD.Components.Area
+      <DnD.Layouts.Area
         style={{
           height: "100%",
           width: "100%",
         }}
       >
-        <div
-          draggable={false}
-          style={{
-            backgroundColor: "red",
-            height: "100px",
-            width: "100px",
-            userSelect: "none",
-          }}
-        />
-      </DnD.Components.Area>
+        <DnD.Components.Item style={style("red")} />
+        <DnD.Components.Slot style={style("blue")} />
+        <div draggable={false} style={style("green")} />
+      </DnD.Layouts.Area>
     </div>
   );
 };
