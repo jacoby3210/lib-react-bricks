@@ -33,7 +33,7 @@ const reducer = (state, action) => {
 
     case "RELEASE": {
       console.log("RELEASE");
-      return { ...state, capture: false, drag: null, drop: null, mode: null };
+      return { ...state, capture: false, mode: null, source: null };
     }
 
     default:
@@ -56,8 +56,7 @@ export const withArea = (WrappedComponent) => (props) => {
     capture: false,
     boundary: { x1: 0, y1: 0, x2: 0, y2: 0 },
     mode: false,
-    drag: null,
-    drop: null,
+    source: null,
   });
 
   return (

@@ -11,7 +11,13 @@ export const PageDnD = (receivedProps) => {
     <div id='dnd'>
       <DnD.Components.Area>
         <div
-          style={{ backgroundColor: "red", height: "100px", width: "100px" }}
+          draggable={false}
+          style={{
+            backgroundColor: "red",
+            height: "100px",
+            width: "100px",
+            userSelect: "none",
+          }}
         />
       </DnD.Components.Area>
     </div>

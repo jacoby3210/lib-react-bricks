@@ -28,7 +28,6 @@ export const Area = (props) => {
     const handleMouseUp = (e) => {
       dispatchCustomEvent("drag-end", e);
       ctxArea.dispatch({ type: "RELEASE", payload: { e } });
-      removeHandlers();
     };
 
     if (ctxArea.state.capture) {
@@ -42,8 +41,8 @@ export const Area = (props) => {
 
   return (
     <div ref={ctxArea.state.area} onMouseDown={handleMouseDown}>
-      {ctxArea.state.capture ? <Cursor /> : null}
       {children}
+      {ctxArea.state.capture ? <Cursor /> : null}
     </div>
   );
 };
