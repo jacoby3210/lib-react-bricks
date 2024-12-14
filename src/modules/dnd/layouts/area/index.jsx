@@ -15,10 +15,10 @@ export const Area = (props) => {
     window.dispatchEvent(customEvent);
   };
 
-  const handleMouseDown = (e) => {
-    dispatchCustomEvent("drag-start", e);
-    ctxArea.dispatch({ type: "CAPTURE", payload: { e } });
-  };
+  // const handleMouseDown = (e) => {
+  //   dispatchCustomEvent("drag-start", e);
+  //   ctxArea.dispatch({ type: "CAPTURE", payload: { e } });
+  // };
 
   useEffect(() => {
     const removeHandlers = () => {
@@ -40,13 +40,7 @@ export const Area = (props) => {
   }, [ctxArea.state.capture]);
 
   return (
-    <div
-      id={id}
-      className={className}
-      ref={ctxArea.state.area}
-      onMouseDown={handleMouseDown}
-      {...rest}
-    >
+    <div id={id} className={className} ref={ctxArea.state.area} {...rest}>
       {children}
       {ctxArea.state.capture ? <Cursor /> : null}
     </div>
