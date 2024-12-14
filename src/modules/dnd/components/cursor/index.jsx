@@ -6,13 +6,15 @@ import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
 // -------------------------------------------------------------------------- //
 
 export const Cursor = (props) => {
-  const { id, className } = props;
+  const { id, className = "rc-dnd-cursor" } = props;
 
   const ctxArea = useArea();
   const { boundary, source } = ctxArea.state;
   const cursor = useRef(null);
 
   const style = {
+    left: "0px",
+    top: "0px",
     position: "absolute",
     transform: `translate(0px, 0px)`,
   };

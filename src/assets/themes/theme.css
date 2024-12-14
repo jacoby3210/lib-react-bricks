@@ -54,12 +54,14 @@ body {
   padding: 100px;
 }
 
-.rc-drag {
-  align-items: center;
-  justify-content: center;
+.rc-dnd-cursor {
   position: absolute;
   left: 0px;
   top: 0px;
+  cursor: grab;
+}
+
+.rc-dnd-item {
   height: 100px;
   width: 100px;
   background-color: #61dafb;
