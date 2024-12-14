@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react";
 import {
   createSmartContext,
   useReducerAsContext,
-} from "@lib-react-bricks/src/modules/core/utils";
+} from "@lib-react-bricks/src/modules/utils";
 
 // -------------------------------------------------------------------------- //
 // A feature - to hide \ show children components.

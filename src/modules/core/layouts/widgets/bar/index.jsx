@@ -2,7 +2,7 @@ import {
   useContainer,
   useValueBase,
 } from "@lib-react-bricks/src/modules/core/advanced";
-import { resolveClassName } from "@lib-react-bricks/src/modules/core/utils";
+import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
 
 // -------------------------------------------------------------------------- //
 // Widget - which output multiple radio buttons as a single component.

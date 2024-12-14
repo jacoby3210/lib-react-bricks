@@ -21,6 +21,9 @@ export { resolveFunction } from "./resolve/function";
 // to simplify context creation.
 export { createSmartContext } from "./shortcuts/createSmartContext";
 
+// to send customizable events.
+export { dispatchCustomEvents } from "./shortcuts/dispatchCustomEvent";
+
 // to check if the variable is of array type.
 export { isObject } from "./shortcuts/isObject";
 

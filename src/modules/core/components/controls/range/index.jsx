@@ -3,7 +3,7 @@ import { useValueDigital } from "@lib-react-bricks/src/modules/core/advanced";
 import {
   resolveAxis,
   resolveClassName,
-} from "@lib-react-bricks/src/modules/core/utils";
+} from "@lib-react-bricks/src/modules/utils";
 import * as code from "./utils";
 
 // -------------------------------------------------------------------------- //
