@@ -22,7 +22,7 @@ const {
   withValueOption,
 } = Core.Basics.HOCs;
 
-const { withArea } = HOCs;
+const { withArea, withItem } = HOCs;
 
 const compose =
   (name) =>
@@ -37,8 +37,8 @@ export const DnD = {
   // Native: {HOCs, Components, Layouts,},
 
   Components: {
-    ...compose("Item")(Components.Item)(withMerge("rc-dnd-item", {})),
-    ...compose("Slot")(Components.Slot)(withMerge("rc-dnd-slot", {})),
+    ...compose("Item")(Components.Item)(withMerge("rc-dnd-item", {}), withItem),
+    ...compose("Slot")(Components.Slot)(withMerge("rc-dnd-slot", {}), withItem),
   },
 
   Layouts: {
