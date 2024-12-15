@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "@lib-react-bricks/src/assets/themes/theme.css";
 import { PageCoreComponents } from "@lib-react-bricks/src/modules/core/pages/components";
 import { PageCoreLayouts } from "@lib-react-bricks/src/modules/core/pages/layouts";
+import { PageDnDLayouts } from "@lib-react-bricks/src/modules/dnd/pages/layouts";
 
 // ------------------------------------------------------------------------- //
 // Main Application Router.
@@ -14,7 +15,8 @@ function Router() {
     <Routes>
       <Route element={<PageCoreComponents />} path='/core/components' exact />
       <Route element={<PageCoreLayouts />} path='/core/layouts/' exact />
-      <Route element={<PageCoreLayouts />} path='/' exact />
+      <Route element={<PageDnDLayouts />} path='/dnd' exact />
+      <Route element={<PageDnDLayouts />} path='/' exact />
     </Routes>
   );
 }
