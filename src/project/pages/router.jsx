@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "@lib-react-bricks/src/assets/themes/theme.css";
-import { PageCoreComponents } from "./core/components";
-import { PageCoreLayouts } from "./core/layouts";
+import { PageCoreComponents } from "@lib-react-bricks/src/modules/core/pages/components";
+import { PageCoreLayouts } from "@lib-react-bricks/src/modules/core/pages/layouts";
 
 // ------------------------------------------------------------------------- //
 // Main Application Router.
