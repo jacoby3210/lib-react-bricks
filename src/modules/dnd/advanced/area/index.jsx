@@ -26,12 +26,11 @@ const reducer = (state, action) => {
       console.log("CAPTURE");
 
       const { area } = state;
-      const { e } = action.payload;
-
+      const { e, data } = action.payload;
       const edge = getEdge(area.current, e.target, e.pageX, e.pageY);
       const source = e.target;
 
-      return { ...state, capture: true, edge, source };
+      return { ...state, capture: true, data, edge, source };
     }
 
     case "RELEASE": {

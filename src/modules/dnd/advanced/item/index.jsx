@@ -27,11 +27,12 @@ export { useItem };
 // -------------------------------------------------------------------------- //
 
 export const withItem = (WrappedComponent) => (props) => {
-  const ctx = useReducerAsContext(reducer, {});
+  const { data, ...rest } = props;
+  const ctx = useReducerAsContext(reducer, { data });
 
   return (
     <ItemContext.Provider value={ctx}>
-      <WrappedComponent {...props} />
+      <WrappedComponent {...rest} />
     </ItemContext.Provider>
   );
 };

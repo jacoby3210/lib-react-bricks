@@ -21,7 +21,7 @@ export const PageDnD = (props) => {
           width: "100%",
         }}
       >
-        <DnD.Components.Item style={style("red")} />
+        <DnD.Components.Item data={{ id: 30 }} style={style("red")} />
         <DnD.Components.Slot style={style("blue")} />
         <div draggable={false} style={style("green")} />
       </DnD.Layouts.Area>
