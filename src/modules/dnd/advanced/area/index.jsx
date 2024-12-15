@@ -15,6 +15,7 @@ import { getEdge } from "./utils";
 
 const initialState = {
   capture: false,
+  context: null,
   edge: { x1: 0, y1: 0, x2: 0, y2: 0 },
   source: null,
   target: null,
@@ -26,11 +27,11 @@ const reducer = (state, action) => {
       console.log("CAPTURE");
 
       const { area } = state;
-      const { e, data } = action.payload;
+      const { e, ctxItem: context } = action.payload;
       const edge = getEdge(area.current, e.target, e.pageX, e.pageY);
       const source = e.target;
 
-      return { ...state, capture: true, data, edge, source };
+      return { ...state, capture: true, context, edge, source };
     }
 
     case "RELEASE": {

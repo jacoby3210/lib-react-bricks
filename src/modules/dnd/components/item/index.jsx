@@ -12,8 +12,8 @@ export const Item = (props) => {
   const ctxItem = useItem();
 
   const handleMouseDown = (e) => {
-    dispatchCustomEvent({ name: "drag-start", detail: e });
-    ctxArea.dispatch({ type: "CAPTURE", payload: { e, ...ctxItem.state } });
+    dispatchCustomEvent({ name: "drag-start", detail: { e, ctxItem } });
+    ctxArea.dispatch({ type: "CAPTURE", payload: { e, ctxItem } });
   };
 
   return (
