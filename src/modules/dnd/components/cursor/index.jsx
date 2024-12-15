@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
+import { scan } from "./utils";
 
 // -------------------------------------------------------------------------- //
 // Component - to display dragging an item on the canvas.
@@ -11,6 +12,7 @@ export const Cursor = (props) => {
   const ctxArea = useArea();
   const { edge, source } = ctxArea.state;
   const cursor = useRef(null);
+  const target = useRef(null);
 
   const style = {
     left: "0px",
@@ -31,7 +33,10 @@ export const Cursor = (props) => {
 
       if (cursor.current)
         cursor.current.style.transform = `translate(${offsetLeft}px, ${offsetTop}px)`;
+
+      target.current = scan(cursor, e);
     };
+
     document.addEventListener("mousemove", handleMouseMove);
 
     return () => {
