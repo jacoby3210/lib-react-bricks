@@ -3,7 +3,7 @@ import {
   createSmartContext,
   useReducerAsContext,
 } from "@lib-react-bricks/src/modules/utils";
-import { getBoundary } from "./utils";
+import { getEdge } from "./utils";
 
 // -------------------------------------------------------------------------- //
 // A feature - to control the area in which UI components are drag & drop.
@@ -13,6 +13,13 @@ import { getBoundary } from "./utils";
 // Context and Reducer setup
 // -------------------------------------------------------------------------- //
 
+const initialState = {
+  capture: false,
+  edge: { x1: 0, y1: 0, x2: 0, y2: 0 },
+  source: null,
+  target: null,
+};
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "CAPTURE": {
@@ -20,20 +27,16 @@ const reducer = (state, action) => {
 
       const { area } = state;
       const { e } = action.payload;
-      const drag = e.target;
 
-      return {
-        ...state,
-        capture: true,
-        boundary: getBoundary(area.current, drag, e.pageX, e.pageY),
-        mode: drag.getAttribute("mode") || "self",
-        source: drag,
-      };
+      const edge = getEdge(area.current, e.target, e.pageX, e.pageY);
+      const source = e.target;
+
+      return { ...state, capture: true, edge, source };
     }
 
     case "RELEASE": {
       console.log("RELEASE");
-      return { ...state, capture: false, mode: null, source: null };
+      return { ...state, capture: false, ...initialState };
     }
 
     default:
@@ -49,14 +52,10 @@ export { useArea };
 // -------------------------------------------------------------------------- //
 
 export const withArea = (WrappedComponent) => (props) => {
-  const area = useRef(null);
-
   const ctx = useReducerAsContext(reducer, {
     area: useRef(null),
     capture: false,
-    boundary: { x1: 0, y1: 0, x2: 0, y2: 0 },
-    mode: false,
-    source: null,
+    ...initialState,
   });
 
   return (

@@ -9,7 +9,7 @@ export const Cursor = (props) => {
   const { id, className = "rc-dnd-cursor" } = props;
 
   const ctxArea = useArea();
-  const { boundary, source } = ctxArea.state;
+  const { edge, source } = ctxArea.state;
   const cursor = useRef(null);
 
   const style = {
@@ -25,7 +25,7 @@ export const Cursor = (props) => {
 
     const handleMouseMove = (e) => {
       const { pageX: x, pageY: y } = e;
-      const { x1, y1, x2, y2 } = boundary;
+      const { x1, y1, x2, y2 } = edge;
       const offsetLeft = Math.min(Math.max(x - x1, 0), x2);
       const offsetTop = Math.min(Math.max(y - y1, 0), y2);
 
