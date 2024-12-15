@@ -1,6 +1,6 @@
 import { Core } from "@lib-react-bricks/src/modules/core";
 import * as HOCs from "./advanced";
-// import * as Components from "./components";
+import * as Components from "./components";
 import * as Layouts from "./layouts";
 
 // -------------------------------------------------------------------------- //
@@ -22,7 +22,7 @@ const {
   withValueOption,
 } = Core.Basics.HOCs;
 
-const { withDnD } = HOCs;
+const { withCursor, withDnD } = HOCs;
 
 const compose =
   (name) =>
@@ -36,7 +36,12 @@ const compose =
 export const DnD = {
   // Native: {HOCs, Components, Layouts,},
 
-  Components: {},
+  Components: {
+    ...compose("Item")(Components.Item)(
+      withMerge("rc-dnd-item", {}),
+      withCursor
+    ),
+  },
 
   Layouts: {
     ...compose("Area")(Layouts.Area)(withMerge("rc-dnd-area", {}), withDnD),

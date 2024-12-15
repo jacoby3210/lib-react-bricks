@@ -21,7 +21,9 @@ export const PageDnDLayouts = (props) => {
           height: "100vw",
           width: "100vh",
         }}
-      ></DnD.Layouts.Area>
+      >
+        <DnD.Components.Item data={{ id: 30 }} style={style("red")} />
+      </DnD.Layouts.Area>
     </section>
   );
 };
