@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDnD, useCursor } from "@lib-react-bricks/src/modules/dnd/advanced";
+import { useDnD } from "@lib-react-bricks/src/modules/dnd/advanced";
 
 // -------------------------------------------------------------------------- //
 // Component - that can be dragged in Area.
@@ -8,10 +8,9 @@ import { useDnD, useCursor } from "@lib-react-bricks/src/modules/dnd/advanced";
 export const Item = (props) => {
   const { children, className, id, style } = props;
   const ctxDnD = useDnD();
-  const ctxCursor = useCursor();
 
-  const handleMouseDown = (e) => {
-    ctxCursor.dispatch({ type: "CAPTURE", payload: { ctxDnD } });
+  const handleMouseDown = (event) => {
+    ctxDnD.dispatch({ type: "CAPTURE", payload: { event } });
   };
 
   return (

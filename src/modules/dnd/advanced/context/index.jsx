@@ -14,6 +14,19 @@ import {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "CAPTURE": {
+      console.log("CAPTURE");
+
+      console.log(action.payload);
+      return { ...state, capture: true };
+    }
+
+    case "RELEASE": {
+      console.log("RELEASE");
+
+      return { ...state, capture: false };
+    }
+
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
@@ -29,6 +42,7 @@ export { useDnD };
 export const withDnD = (WrappedComponent) => (props) => {
   const ctx = useReducerAsContext(reducer, {
     area: useRef(null),
+    cursor: useRef(null),
     source: useRef(null),
     target: useRef(null),
   });

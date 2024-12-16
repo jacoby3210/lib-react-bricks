@@ -37,10 +37,7 @@ export const DnD = {
   // Native: {HOCs, Components, Layouts,},
 
   Components: {
-    ...compose("Item")(Components.Item)(
-      withMerge("rc-dnd-item", {}),
-      withCursor
-    ),
+    ...compose("Item")(Components.Item)(withMerge("rc-dnd-item", {})),
   },
 
   Layouts: {
