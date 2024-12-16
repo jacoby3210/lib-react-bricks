@@ -41,7 +41,12 @@ export { DragStateContext, useDragState, DragDispatchContext, useDragDispatch };
 export const withDragContext = (WrappedComponent) => (props) => {
   const [state, dispatch] = useReducer(reducer, {
     capture: false,
-    components: { area: useRef(null), cursor: useRef(null) },
+    components: {
+      area: useRef(null),
+      cursor: useRef(null),
+      source: useRef(null),
+      target: useRef(null),
+    },
   });
 
   const valueState = useMemo(() => state, [state.capture]);
