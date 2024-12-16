@@ -22,6 +22,7 @@ export const PageDnDLayouts = (props) => {
           width: "100vh",
         }}
       >
+        <DnD.Components.Cursor />
         <DnD.Components.Item data={{ id: 30 }} style={style("red")} />
       </DnD.Layouts.Area>
     </section>
