@@ -7,16 +7,22 @@ import { useDnD } from "@lib-react-bricks/src/modules/dnd/advanced";
 
 export const Item = (props) => {
   const { children, className, id, style } = props;
-  const ctxDnD = useDnD();
+
+  const dispatch = useDnD((ctx) => ctx.dispatch);
+
+  const source = useRef(null);
 
   const handleMouseDown = (event) => {
-    ctxDnD.dispatch({ type: "CAPTURE", payload: { event } });
+    dispatch({ type: "CAPTURE", payload: { event } });
   };
+
+  console.log("render Item");
 
   return (
     <div
       id={id}
       className={className}
+      ref={source}
       style={style}
       onMouseDown={handleMouseDown}
     >

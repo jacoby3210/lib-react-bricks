@@ -37,7 +37,7 @@ export const DnD = {
   // Native: {HOCs, Components, Layouts,},
 
   Components: {
-    ...compose("Cursor")(Components.Item)(withMerge("rc-dnd-cursor", {})),
+    ...compose("Cursor")(Components.Cursor)(withMerge("rc-dnd-cursor", {})),
     ...compose("Item")(Components.Item)(withMerge("rc-dnd-item", {})),
   },
 

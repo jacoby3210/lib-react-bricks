@@ -1,8 +1,5 @@
-import React, { useRef } from "react";
-import {
-  createSmartContext,
-  useReducerAsContext,
-} from "@lib-react-bricks/src/modules/utils";
+import React, { useRef, useReducer, useMemo, useState } from "react";
+import { createSmartContext } from "@lib-react-bricks/src/modules/utils";
 
 // -------------------------------------------------------------------------- //
 // A feature - to present common drag & drop context.
@@ -17,7 +14,6 @@ const reducer = (state, action) => {
     case "CAPTURE": {
       console.log("CAPTURE");
 
-      console.log(action.payload);
       return { ...state, capture: true };
     }
 
@@ -33,24 +29,23 @@ const reducer = (state, action) => {
 };
 
 const { DnDContext, useDnD } = createSmartContext("DnD");
-export { useDnD };
+export { DnDContext, useDnD };
 
 // -------------------------------------------------------------------------- //
 // HOC implementation
 // -------------------------------------------------------------------------- //
 
 export const withDnD = (WrappedComponent) => (props) => {
-  const ctx = useReducerAsContext(reducer, {
-    area: useRef(null),
-    cursor: useRef(null),
-    source: useRef(null),
-    target: useRef(null),
+  const [state, dispatch] = useReducer(reducer, {
+    capture: false,
   });
+  const contextValue = useMemo(() => ({ state, dispatch }), [dispatch]);
 
   return (
-    <DnDContext.Provider value={ctx}>
+    <DnDContext.Provider value={contextValue}>
       <WrappedComponent {...props} />
     </DnDContext.Provider>
   );
 };
+
 // -------------------------------------------------------------------------- //

@@ -6,13 +6,12 @@ import { useDnD } from "@lib-react-bricks/src/modules/dnd/advanced";
 // -------------------------------------------------------------------------- //
 
 export const Area = (props) => {
-  const ctx = useDnD();
+  // const area = useDnD((ctx) => ctx.state.area);
   const { children, className, id, ...rest } = props;
-
-  useEffect(() => {}, []);
+  console.log("render Area");
 
   return (
-    <div id={id} className={className} ref={ctx.state.area} {...rest}>
+    <div id={id} className={className} {...rest}>
       {children}
     </div>
   );
