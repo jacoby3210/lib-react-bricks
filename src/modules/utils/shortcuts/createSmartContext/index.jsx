@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContextSelector } from "use-context-selector";
 
 // -------------------------------------------------------------------------- //
 // A helper function to simplify context creation.
@@ -7,12 +7,25 @@ import { createContext, useContext } from "react";
 export const createSmartContext = (name) => {
   const Context = createContext();
 
-  const useContextValue = () => {
-    const context = useContext(Context);
-    if (!context) {
-      throw new Error(`use${name} must be used within a ${name}Provider`);
+  const useContextValue = (selector = (ctx) => ctx) => {
+    const contextName = Context.displayName || "Context";
+
+    try {
+      const context = useContextSelector(Context, selector);
+
+      if (context == null) {
+        throw new Error(
+          `use${contextName} must be used within a ${contextName}Provider. ` +
+            `Ensure that the component is wrapped with <${contextName}Provider>.`
+        );
+      }
+
+      return context;
+    } catch (error) {
+      throw new Error(
+        `An error occurred in the selector function for use${contextName}: ${error.message}`
+      );
     }
-    return context;
   };
 
   return {

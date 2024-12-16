@@ -3,14 +3,12 @@
   "private": true,
   "version": "0.0.10",
   "type": "module",
-  
   "exports": {
     "import": "./index",
     "require": "./index"
   },
   "main": "./index",
   "module": "./index",
-
   "scripts": {
     "build": "vite build",
     "dev": "vite",
@@ -36,6 +34,8 @@
     "react-router-dom": "^6.26.1",
     "sass": "^1.77.8",
     "save-dev": "^0.0.1-security",
+    "scheduler": "^0.25.0",
+    "use-context-selector": "^2.0.0",
     "vite-jsconfig-paths": "^2.0.1"
   },
   "devDependencies": {
