@@ -1,22 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDnD } from "@lib-react-bricks/src/modules/dnd/advanced";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { useDragDispatch } from "@lib-react-bricks/src/modules/dnd/advanced";
 
 // -------------------------------------------------------------------------- //
 // Component - that can be dragged in Area.
 // -------------------------------------------------------------------------- //
 
-export const Item = (props) => {
-  const { children, className, id, style } = props;
+export const Item = React.memo((props) => {
+  console.log("render Item");
 
-  const dispatch = useDnD((ctx) => ctx.dispatch);
+  const { children, className, id, style } = props;
 
   const source = useRef(null);
 
+  const dispatch = useDragDispatch();
   const handleMouseDown = (event) => {
-    dispatch({ type: "CAPTURE", payload: { event } });
+    dispatch({ type: "CAPTURE", payload: { event, source } });
   };
-
-  console.log("render Item");
 
   return (
     <div
@@ -29,6 +28,6 @@ export const Item = (props) => {
       {children}
     </div>
   );
-};
+});
 
 // -------------------------------------------------------------------------- //

@@ -22,7 +22,7 @@ const {
   withValueOption,
 } = Core.Basics.HOCs;
 
-const { withCursor, withDnD } = HOCs;
+const { withDragContext } = HOCs;
 
 const compose =
   (name) =>
@@ -42,7 +42,10 @@ export const DnD = {
   },
 
   Layouts: {
-    ...compose("Area")(Layouts.Area)(withMerge("rc-dnd-area", {}), withDnD),
+    ...compose("Area")(Layouts.Area)(
+      withMerge("rc-dnd-area", {}),
+      withDragContext
+    ),
   },
 };
 

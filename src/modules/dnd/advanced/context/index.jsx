@@ -1,8 +1,8 @@
-import React, { useRef, useReducer, useMemo, useState } from "react";
+import React, { useRef, useReducer, useMemo, useState, useEffect } from "react";
 import { createSmartContext } from "@lib-react-bricks/src/modules/utils";
 
 // -------------------------------------------------------------------------- //
-// A feature - to present common drag & drop context.
+// A feature - to present common drag dispatch & drag state contexts.
 // -------------------------------------------------------------------------- //
 
 // -------------------------------------------------------------------------- //
@@ -13,8 +13,9 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "CAPTURE": {
       console.log("CAPTURE");
+      const { event, source } = action.payload;
 
-      return { ...state, capture: true };
+      return { capture: true, components: { ...state.components, source } };
     }
 
     case "RELEASE": {
@@ -28,23 +29,29 @@ const reducer = (state, action) => {
   }
 };
 
-const { DnDContext, useDnD } = createSmartContext("DnD");
-export { DnDContext, useDnD };
+const { DragDispatchContext, useDragDispatch } =
+  createSmartContext("DragDispatch");
+const { DragStateContext, useDragState } = createSmartContext("DragState");
+export { DragStateContext, useDragState, DragDispatchContext, useDragDispatch };
 
 // -------------------------------------------------------------------------- //
 // HOC implementation
 // -------------------------------------------------------------------------- //
 
-export const withDnD = (WrappedComponent) => (props) => {
+export const withDragContext = (WrappedComponent) => (props) => {
   const [state, dispatch] = useReducer(reducer, {
     capture: false,
+    components: { area: useRef(null), cursor: useRef(null) },
   });
-  const contextValue = useMemo(() => ({ state, dispatch }), [dispatch]);
+
+  const valueState = useMemo(() => state, [state.capture]);
 
   return (
-    <DnDContext.Provider value={contextValue}>
-      <WrappedComponent {...props} />
-    </DnDContext.Provider>
+    <DragDispatchContext.Provider value={dispatch}>
+      <DragStateContext.Provider value={valueState}>
+        <WrappedComponent {...props} />
+      </DragStateContext.Provider>
+    </DragDispatchContext.Provider>
   );
 };
 
