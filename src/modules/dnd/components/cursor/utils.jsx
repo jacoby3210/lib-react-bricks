@@ -1,5 +1,8 @@
 // calculate the bounding box for moving an drag element
-export const getEdge = (area, drag, x, y) => {
+export const getEdge = (area, drag, event) => {
+  const { pageX: x, pageY: y } = event;
+  console.log(x, y);
+
   const areaRect = area.getBoundingClientRect();
   const dragRect = drag.getBoundingClientRect();
   const edge = {

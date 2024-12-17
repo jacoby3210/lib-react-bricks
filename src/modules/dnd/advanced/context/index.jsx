@@ -15,7 +15,11 @@ const reducer = (state, action) => {
       console.log("CAPTURE");
       const { event, source } = action.payload;
 
-      return { capture: true, components: { ...state.components, source } };
+      return {
+        capture: true,
+        components: { ...state.components, source },
+        event,
+      };
     }
 
     case "RELEASE": {
@@ -47,6 +51,7 @@ export const withDragContext = (WrappedComponent) => (props) => {
       source: useRef(null),
       target: useRef(null),
     },
+    event: {},
   });
 
   const valueState = useMemo(() => state, [state.capture]);
