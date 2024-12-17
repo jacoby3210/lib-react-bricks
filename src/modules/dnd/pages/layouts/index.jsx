@@ -16,9 +16,10 @@ const style = (color) => ({
 export const PageDnDLayouts = (props) => {
   return (
     <section id='dnd'>
-      <DnD.Layouts.Area style={{ height: "100vw", width: "100vh" }}>
+      <DnD.Layouts.Area style={{ height: "100vh", width: "100vw" }}>
         <DnD.Components.Cursor />
         <DnD.Components.Item data={{ id: 30 }} style={style("red")} />
+        <DnD.Components.Slot style={style("green")} />
       </DnD.Layouts.Area>
     </section>
   );

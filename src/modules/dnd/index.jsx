@@ -39,6 +39,7 @@ export const DnD = {
   Components: {
     ...compose("Cursor")(Components.Cursor)(withMerge("rc-dnd-cursor", {})),
     ...compose("Item")(Components.Item)(withMerge("rc-dnd-item", {})),
+    ...compose("Slot")(Components.Slot)(withMerge("rc-dnd-slot", {})),
   },
 
   Layouts: {

@@ -1,7 +1,9 @@
 #root {
   position: relative;
 }
-
+body {
+  margin: 0px;
+}
 .rc-scroll-range[axis="horizontal"],
 .rc-slider-range[axis="horizontal"],
 .rc-range[axis="horizontal"] {
