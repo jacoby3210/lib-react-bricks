@@ -9,6 +9,12 @@ import { createSmartContext } from "@lib-react-bricks/src/modules/utils";
 // Context and Reducer setup
 // -------------------------------------------------------------------------- //
 
+const resetSelection = (state) => {
+  if (state.components.target?.current) {
+    state.components.target.current.classList.remove("selected");
+    state.components.target.current = null;
+  }
+};
 const reducer = (state, action) => {
   switch (action.type) {
     case "CAPTURE": {
@@ -24,8 +30,25 @@ const reducer = (state, action) => {
 
     case "RELEASE": {
       console.log("RELEASE");
+      resetSelection(state);
 
       return { ...state, capture: false };
+    }
+
+    case "SET_TARGET": {
+      if (!state.capture) return state;
+
+      console.log("SET_TARGET");
+      const { event, target } = action.payload;
+
+      resetSelection(state);
+
+      if (target?.current) {
+        state.components.target.current = target?.current;
+        state.components.target.current.classList.add("selected");
+      }
+
+      return state;
     }
 
     default:

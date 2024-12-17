@@ -48,8 +48,11 @@ body {
   top: 0px;
   position: absolute;
   transform: translate(0px, 0px);
+  pointer-events: none;
 }
-
+.selected {
+  background-color: gold !important;
+}
 .rc-area {
   display: flex;
   flex-direction: row;

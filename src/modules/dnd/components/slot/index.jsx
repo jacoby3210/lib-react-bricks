@@ -9,11 +9,16 @@ export const Slot = (props) => {
   console.log("render Slot");
   const { children, className, id, style } = props;
 
-  const slot = useRef(null);
+  const target = useRef(null);
   const dispatch = useDragDispatch();
 
-  const handleMouseEnter = () => {};
-  const handleMouseLeave = () => {};
+  const handleMouseEnter = () => {
+    dispatch({ type: "SET_TARGET", payload: { event, target } });
+  };
+
+  const handleMouseLeave = () => {
+    dispatch({ type: "SET_TARGET", payload: { event, target: null } });
+  };
 
   const updateProps = {
     onMouseEnter: handleMouseEnter,
@@ -24,7 +29,7 @@ export const Slot = (props) => {
     <div
       id={id}
       className={className}
-      ref={slot}
+      ref={target}
       style={style}
       {...updateProps}
     >
