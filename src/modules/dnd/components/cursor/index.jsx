@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
-import { useDragState } from "@lib-react-bricks/src/modules/dnd/advanced";
+import {
+  useDragState,
+  useDragDispatch,
+} from "@lib-react-bricks/src/modules/dnd/advanced";
 import { getEdge } from "./utils";
 
 // -------------------------------------------------------------------------- //
@@ -15,6 +18,7 @@ export const Cursor = (props) => {
   const components = useDragState((ctx) => ctx.components);
   const event = useDragState((ctx) => ctx.event);
   const { area, cursor, source, target } = components;
+  const dispatch = useDragDispatch();
 
   useEffect(() => {
     if (!capture || source.current == null) return;
@@ -35,11 +39,19 @@ export const Cursor = (props) => {
       // target.current = scan(cursor, e);
     };
 
-    document.addEventListener("mousemove", handleMouseMove);
+    const handleMouseUp = (e) => {
+      dispatch({ type: "RELEASE", payload: { e } });
+    };
+
+    if (capture) {
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+    }
 
     return () => {
       if (cursor.current) cursor.current.innerHTML = "";
       document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
     };
   }, [capture]);
 
