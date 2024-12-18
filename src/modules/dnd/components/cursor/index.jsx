@@ -31,7 +31,7 @@ export const Cursor = (props) => {
     cursor.current.style.transform = `translate(${areaRect.x}px, ${areaRect.y}px)`;
 
     const handleMouseMoveInitial = (event) => {
-      edge.current = getEdge(area.current, source.current, event);
+      edge.current = getEdge(components, event);
       document.removeEventListener("mousemove", handleMouseMoveInitial);
       document.addEventListener("mousemove", handleMouseMove);
     };
