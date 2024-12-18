@@ -5,7 +5,7 @@ import { useDragDispatch } from "@lib-react-bricks/src/modules/dnd/advanced";
 // Component - which can accept and place drag-and-drop components inside it.
 // -------------------------------------------------------------------------- //
 
-export const Slot = (props) => {
+export const Target = (props) => {
   console.log("render Slot");
   const { children, className, id, style } = props;
 

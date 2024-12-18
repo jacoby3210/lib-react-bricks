@@ -6,9 +6,9 @@
 export { Cursor } from "./cursor";
 
 // - that can be dragged in Area.
-export { Item } from "./item";
+export { Source } from "./source";
 
 // - which can accept and place drag-and-drop components inside it.
-export { Slot } from "./slot";
+export { Target } from "./target";
 
 // -------------------------------------------------------------------------- //

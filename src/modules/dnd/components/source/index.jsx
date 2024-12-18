@@ -5,7 +5,7 @@ import { useDragDispatch } from "@lib-react-bricks/src/modules/dnd/advanced";
 // Component - that can be dragged in Area.
 // -------------------------------------------------------------------------- //
 
-export const Item = React.memo((props) => {
+export const Source = React.memo((props) => {
   console.log("render Item");
 
   const { children, className, id, style } = props;

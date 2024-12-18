@@ -33,13 +33,24 @@ const compose =
 // export api
 // -------------------------------------------------------------------------- //
 
+const Source = compose("Source")(Components.Source)(
+  withMerge("rc-dnd-source", {}),
+  withValueBase
+);
+
+const Target = compose("Target")(Components.Target)(
+  withMerge("rc-dnd-target", {}),
+  withValueBase
+);
+
+console.log(Source, Target);
 export const DnD = {
   // Native: {HOCs, Components, Layouts,},
 
   Components: {
     ...compose("Cursor")(Components.Cursor)(withMerge("rc-dnd-cursor", {})),
-    ...compose("Item")(Components.Item)(withMerge("rc-dnd-item", {})),
-    ...compose("Slot")(Components.Slot)(withMerge("rc-dnd-slot", {})),
+    ...Source,
+    ...Target,
   },
 
   Layouts: {
