@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Core } from "@lib-react-bricks/src/modules/core";
-import {
-  useDragDispatch,
-  useDragState,
-} from "@lib-react-bricks/src/modules/dnd/advanced";
+import { useDispatcher } from "@lib-react-bricks/src/modules/dnd/advanced";
 
 // -------------------------------------------------------------------------- //
 // Component - which can accept and place drag-and-drop components inside it.
@@ -16,14 +13,14 @@ export const Target = (props) => {
 
   const { children, className, id, style, onChange = (evt) => {} } = props;
 
-  const dispatch = useDragDispatch();
+  const dispatcher = useDispatcher();
   const ctxValueBase = useValueBase();
   const { value } = ctxValueBase.state;
 
-  const target = useRef(null);
+  const ref = useRef(null);
 
   const handleClick = (e) => {
-    // console.log(e);
+    console.log(e);
     // ctxValueBase.dispatch({
     //   type: "CHANGE",
     //   payload: { next: e.detail.value },
@@ -31,11 +28,11 @@ export const Target = (props) => {
   };
 
   const handleMouseEnter = () => {
-    dispatch({ type: "UPDATE_TARGET", payload: { target } });
+    dispatcher({ type: "UPDATE_TARGET", payload: { ref } });
   };
 
   const handleMouseLeave = () => {
-    dispatch({ type: "UPDATE_TARGET", payload: {} });
+    dispatcher({ type: "UPDATE_TARGET", payload: {} });
   };
 
   const updateProps = {
@@ -45,13 +42,7 @@ export const Target = (props) => {
   };
 
   return (
-    <div
-      id={id}
-      className={className}
-      ref={target}
-      style={style}
-      {...updateProps}
-    >
+    <div id={id} className={className} ref={ref} style={style} {...updateProps}>
       {value && children}
     </div>
   );

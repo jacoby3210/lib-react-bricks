@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Core } from "@lib-react-bricks/src/modules/core";
-import { useDragDispatch } from "@lib-react-bricks/src/modules/dnd/advanced";
+import { useDispatcher } from "@lib-react-bricks/src/modules/dnd/advanced";
 
 // -------------------------------------------------------------------------- //
 // Component - to represent a possible value, to be set in Target by dnd ui.
@@ -13,20 +13,20 @@ export const Source = (props) => {
 
   const { children, className, id, style } = props;
 
-  const dispatch = useDragDispatch();
+  const dispatcher = useDispatcher();
   const { value } = useValueBase().state;
 
-  const source = useRef(null);
+  const ref = useRef(null);
 
   const handleMouseDown = () => {
-    dispatch({ type: "CAPTURE", payload: { source, value } });
+    dispatcher({ type: "CAPTURE", payload: { ref, value } });
   };
 
   return (
     <div
       id={id}
       className={className}
-      ref={source}
+      ref={ref}
       style={style}
       onMouseDown={handleMouseDown}
     >

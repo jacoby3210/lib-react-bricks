@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useDragState } from "@lib-react-bricks/src/modules/dnd/advanced";
+import { useData } from "@lib-react-bricks/src/modules/dnd/advanced";
 
 // -------------------------------------------------------------------------- //
 // Widget - which manage the area, with dnd ui components.
@@ -10,7 +10,7 @@ export const Area = (props) => {
 
   const { children, className, id, ...rest } = props;
 
-  const area = useDragState((ctx) => ctx.components.area);
+  const area = useData((ctx) => ctx.components.area);
 
   return (
     <div id={id} className={className} ref={area} {...rest}>

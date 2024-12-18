@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import {
-  useDragState,
-  useDragDispatch,
+  useData,
+  useDispatcher,
 } from "@lib-react-bricks/src/modules/dnd/advanced";
 import { getEdge } from "./utils";
 
@@ -14,10 +14,10 @@ export const Cursor = (props) => {
 
   const { children, className, id, style } = props;
 
-  const dispatch = useDragDispatch();
+  const dispatcher = useDispatcher();
 
-  const state = useDragState();
-  const { components, value } = state;
+  const data = useData();
+  const { components, value } = data;
   const { area, cursor, source } = components;
 
   const edge = useRef(null);
@@ -43,7 +43,7 @@ export const Cursor = (props) => {
       cursor.current.style.transform = `translate(${x}px, ${y}px)`;
     };
 
-    const handleMouseUp = () => dispatch({ type: "RELEASE" });
+    const handleMouseUp = () => dispatcher({ type: "RELEASE" });
 
     document.addEventListener("mousemove", handleMouseMoveInitial);
     document.addEventListener("mouseup", handleMouseUp);

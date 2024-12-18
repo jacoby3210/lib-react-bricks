@@ -16,42 +16,34 @@ const updateTarget = (next, prev) => {
 };
 
 const reducer = (state, action) => {
+  const { components, value } = state;
+  const { area, cursor, source, target } = components;
+
   switch (action.type) {
     case "CAPTURE": {
-      console.log("CAPTURE");
-
-      const { components } = state;
-      const { source, value } = action.payload;
-      components.source.current = source.current;
+      const { ref, value } = action.payload;
+      source.current = ref.current;
       return { components, value };
     }
 
     case "RELEASE": {
-      console.log("RELEASE");
-
-      const { components, value } = state;
-      const { source, target } = components;
-
       if (target.current) {
-        target.current.dispatchEvent(
-          new CustomEvent("click", { detail: { value }, bubbles: true })
-        );
+        const e = new CustomEvent("click", {
+          detail: { value },
+          bubbles: true,
+        });
+        target.current.dispatchEvent(e);
       }
 
       source.current = null;
       updateTarget(null, target);
 
-      return { ...state, value: null };
+      return { components, value: null };
     }
 
     case "UPDATE_TARGET": {
-      console.log("UPDATE_TARGET");
-
-      const { components, value } = state;
       if (!value) return state;
-
-      updateTarget(action.payload.target, components.target);
-
+      updateTarget(action.payload.ref, target);
       return { components, value };
     }
 
@@ -60,10 +52,9 @@ const reducer = (state, action) => {
   }
 };
 
-const { DragDispatchContext, useDragDispatch } =
-  createSmartContext("DragDispatch");
-const { DragStateContext, useDragState } = createSmartContext("DragState");
-export { DragStateContext, useDragState, DragDispatchContext, useDragDispatch };
+const { DispatcherContext, useDispatcher } = createSmartContext("Dispatcher");
+const { DataContext, useData } = createSmartContext("Data");
+export { useData, useDispatcher };
 
 // -------------------------------------------------------------------------- //
 // HOC implementation
@@ -80,14 +71,14 @@ export const withDragContext = (WrappedComponent) => (props) => {
     value: null,
   });
 
-  const valueState = useMemo(() => state, [state.value]);
+  const stateMemo = useMemo(() => state, [state.value]);
 
   return (
-    <DragDispatchContext.Provider value={dispatch}>
-      <DragStateContext.Provider value={valueState}>
+    <DispatcherContext.Provider value={dispatch}>
+      <DataContext.Provider value={stateMemo}>
         <WrappedComponent {...props} />
-      </DragStateContext.Provider>
-    </DragDispatchContext.Provider>
+      </DataContext.Provider>
+    </DispatcherContext.Provider>
   );
 };
 
