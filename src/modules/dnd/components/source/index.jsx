@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Core } from "@lib-react-bricks/src/modules/core";
-import { useDragDispatch } from "@lib-react-bricks/src/modules/dnd/advanced";
+import {
+  useDragDispatch,
+  useDragState,
+} from "@lib-react-bricks/src/modules/dnd/advanced";
 
 // -------------------------------------------------------------------------- //
 // Component - that can be dragged in Area.
@@ -19,6 +22,7 @@ export const Source = React.memo((props) => {
   const source = useRef(null);
 
   const dispatch = useDragDispatch();
+  const state = useDragState();
   const handleMouseDown = (event) => {
     dispatch({ type: "CAPTURE", payload: { event, source, value } });
   };

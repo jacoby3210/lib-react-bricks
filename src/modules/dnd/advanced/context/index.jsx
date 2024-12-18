@@ -21,18 +21,12 @@ const reducer = (state, action) => {
     case "CAPTURE": {
       console.log("CAPTURE");
       const { event, source, value } = action.payload;
-
-      return {
-        capture: true,
-        components: { ...state.components, source },
-        event,
-        value,
-      };
+      return { components: { ...state.components, source }, value };
     }
 
     case "RELEASE": {
       console.log("RELEASE");
-      const { value, components } = state;
+      const { components, value } = state;
 
       if (state.components.target) {
         const customEvent = new CustomEvent("click", {
@@ -40,15 +34,12 @@ const reducer = (state, action) => {
           bubbles: true,
         });
         state.components.target.dispatchEvent(customEvent);
-        console.log(99, state.components.target);
       }
 
       resetSelection(state);
 
       return {
-        capture: false,
         components: { ...state.components, source: null, target: null },
-        event: undefined,
         value: null,
       };
     }
@@ -86,18 +77,16 @@ export { DragStateContext, useDragState, DragDispatchContext, useDragDispatch };
 
 export const withDragContext = (WrappedComponent) => (props) => {
   const [state, dispatch] = useReducer(reducer, {
-    capture: false,
     components: {
       area: useRef(null),
       cursor: useRef(null),
       source: null,
       target: null,
     },
-    event: {},
     value: null,
   });
 
-  const valueState = useMemo(() => state, [state.capture]);
+  const valueState = useMemo(() => state, [state.value]);
 
   return (
     <DragDispatchContext.Provider value={dispatch}>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   useDragState,
   useDragDispatch,
@@ -6,51 +6,55 @@ import {
 import { getEdge } from "./utils";
 
 // -------------------------------------------------------------------------- //
-// Component - that can be dragged in Area.
+// Component - to display the dragging process of the source component
 // -------------------------------------------------------------------------- //
 
 export const Cursor = (props) => {
-  // console.log("render Cursor");
+  console.log("render Cursor");
 
   const { children, className, id, style } = props;
 
   const dispatch = useDragDispatch();
+
   const state = useDragState();
-  const { capture, components, event, value } = state;
-  const { area, cursor, source, target } = components;
+  const { components, value } = state;
+  const { area, cursor, source } = components;
+
+  const edge = useRef(null);
 
   useEffect(() => {
-    if (!capture) return;
+    if (value == null) return;
     const child = source.current.cloneNode(true);
     cursor.current.appendChild(child);
 
-    const edge = getEdge(area.current, source.current, event);
-    const { x1, y1, x2, y2 } = edge;
+    const areaRect = source.current.getBoundingClientRect();
+    cursor.current.style.transform = `translate(${areaRect.x}px, ${areaRect.y}px)`;
 
-    const handleMouseMove = (e) => {
-      const { pageX: x, pageY: y } = e;
-      const offsetLeft = Math.min(Math.max(x - x1, 0), x2);
-      const offsetTop = Math.min(Math.max(y - y1, 0), y2);
-
-      if (cursor.current)
-        cursor.current.style.transform = `translate(${offsetLeft}px, ${offsetTop}px)`;
-    };
-
-    const handleMouseUp = (e) => {
-      dispatch({ type: "RELEASE", payload: { e } });
-    };
-
-    if (capture) {
+    const handleMouseMoveInitial = (event) => {
+      edge.current = getEdge(area.current, source.current, event);
+      document.removeEventListener("mousemove", handleMouseMoveInitial);
       document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
-    }
+    };
+
+    const handleMouseMove = ({ pageX, pageY }) => {
+      const { left, top, right, bottom } = edge.current;
+      const x = Math.min(Math.max(pageX - left, 0), right);
+      const y = Math.min(Math.max(pageY - top, 0), bottom);
+      cursor.current.style.transform = `translate(${x}px, ${y}px)`;
+    };
+
+    const handleMouseUp = () => dispatch({ type: "RELEASE" });
+
+    document.addEventListener("mousemove", handleMouseMoveInitial);
+    document.addEventListener("mouseup", handleMouseUp);
 
     return () => {
       if (cursor.current) cursor.current.innerHTML = "";
+      document.removeEventListener("mousemove", handleMouseMoveInitial);
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [capture]);
+  }, [value]);
 
   return (
     <div id={id} className={className} ref={cursor} style={style}>

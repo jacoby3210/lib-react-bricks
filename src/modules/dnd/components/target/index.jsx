@@ -9,8 +9,8 @@ import { useDragDispatch } from "@lib-react-bricks/src/modules/dnd/advanced";
 const { useValueBase } = Core.Basics.HOCs;
 
 export const Target = (props) => {
-  // console.log("render Target");
   const { children, className, id, style, onChange = (evt) => {} } = props;
+  console.log("render Target", id);
 
   const ctxValueBase = useValueBase();
   const { value } = ctxValueBase.state;
