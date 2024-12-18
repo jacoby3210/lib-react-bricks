@@ -1,30 +1,25 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Core } from "@lib-react-bricks/src/modules/core";
-import {
-  useDragDispatch,
-  useDragState,
-} from "@lib-react-bricks/src/modules/dnd/advanced";
+import { useDragDispatch } from "@lib-react-bricks/src/modules/dnd/advanced";
 
 // -------------------------------------------------------------------------- //
-// Component - that can be dragged in Area.
+// Component - to represent a possible value, to be set in Target by dnd ui.
 // -------------------------------------------------------------------------- //
 
 const { useValueBase } = Core.Basics.HOCs;
 
-export const Source = React.memo((props) => {
-  // console.log("render Source");
+export const Source = (props) => {
+  console.log("render Source");
 
   const { children, className, id, style } = props;
 
-  const ctxValueBase = useValueBase();
-  const { value } = ctxValueBase.state;
+  const dispatch = useDragDispatch();
+  const { value } = useValueBase().state;
 
   const source = useRef(null);
 
-  const dispatch = useDragDispatch();
-  const state = useDragState();
-  const handleMouseDown = (event) => {
-    dispatch({ type: "CAPTURE", payload: { event, source, value } });
+  const handleMouseDown = () => {
+    dispatch({ type: "CAPTURE", payload: { source, value } });
   };
 
   return (
@@ -38,6 +33,6 @@ export const Source = React.memo((props) => {
       {children}
     </div>
   );
-});
+};
 
 // -------------------------------------------------------------------------- //
