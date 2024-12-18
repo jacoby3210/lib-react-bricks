@@ -10,29 +10,47 @@ import { createSmartContext } from "@lib-react-bricks/src/modules/utils";
 // -------------------------------------------------------------------------- //
 
 const resetSelection = (state) => {
-  if (state.components.target?.current) {
-    state.components.target.current.classList.remove("selected");
-    state.components.target.current = null;
+  if (state.components.target) {
+    state.components.target.classList.remove("selected");
+    state.components.target = null;
   }
 };
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "CAPTURE": {
       console.log("CAPTURE");
-      const { event, source } = action.payload;
+      const { event, source, value } = action.payload;
 
       return {
         capture: true,
         components: { ...state.components, source },
         event,
+        value,
       };
     }
 
     case "RELEASE": {
       console.log("RELEASE");
+      const { value, components } = state;
+
+      if (state.components.target) {
+        const customEvent = new CustomEvent("click", {
+          detail: { value },
+          bubbles: true,
+        });
+        state.components.target.dispatchEvent(customEvent);
+        console.log(99, state.components.target);
+      }
+
       resetSelection(state);
 
-      return { ...state, capture: false };
+      return {
+        capture: false,
+        components: { ...state.components, source: null, target: null },
+        event: undefined,
+        value: null,
+      };
     }
 
     case "SET_TARGET": {
@@ -43,9 +61,10 @@ const reducer = (state, action) => {
 
       resetSelection(state);
 
-      if (target?.current) {
-        state.components.target.current = target?.current;
-        state.components.target.current.classList.add("selected");
+      state.components.target = target;
+
+      if (target) {
+        state.components.target.classList.add("selected");
       }
 
       return state;
@@ -71,10 +90,11 @@ export const withDragContext = (WrappedComponent) => (props) => {
     components: {
       area: useRef(null),
       cursor: useRef(null),
-      source: useRef(null),
-      target: useRef(null),
+      source: null,
+      target: null,
     },
     event: {},
+    value: null,
   });
 
   const valueState = useMemo(() => state, [state.capture]);

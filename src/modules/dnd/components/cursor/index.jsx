@@ -10,18 +10,17 @@ import { getEdge } from "./utils";
 // -------------------------------------------------------------------------- //
 
 export const Cursor = (props) => {
-  console.log("render Cursor");
+  // console.log("render Cursor");
 
   const { children, className, id, style } = props;
 
-  const capture = useDragState((ctx) => ctx.capture);
-  const components = useDragState((ctx) => ctx.components);
-  const event = useDragState((ctx) => ctx.event);
-  const { area, cursor, source, target } = components;
   const dispatch = useDragDispatch();
+  const state = useDragState();
+  const { capture, components, event, value } = state;
+  const { area, cursor, source, target } = components;
 
   useEffect(() => {
-    if (!capture || source.current == null) return;
+    if (!capture) return;
     const child = source.current.cloneNode(true);
     cursor.current.appendChild(child);
 
@@ -35,8 +34,6 @@ export const Cursor = (props) => {
 
       if (cursor.current)
         cursor.current.style.transform = `translate(${offsetLeft}px, ${offsetTop}px)`;
-
-      // target.current = scan(cursor, e);
     };
 
     const handleMouseUp = (e) => {
