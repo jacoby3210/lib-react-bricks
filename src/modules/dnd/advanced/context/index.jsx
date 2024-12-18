@@ -9,56 +9,50 @@ import { createSmartContext } from "@lib-react-bricks/src/modules/utils";
 // Context and Reducer setup
 // -------------------------------------------------------------------------- //
 
-const resetSelection = (state) => {
-  if (state.components.target) {
-    state.components.target.classList.remove("selected");
-    state.components.target = null;
-  }
+const updateTarget = (next, prev) => {
+  if (prev?.current) prev.current.classList.remove("selected");
+  if (next?.current) next.current.classList.add("selected");
+  prev.current = next?.current;
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "CAPTURE": {
       console.log("CAPTURE");
-      const { event, source, value } = action.payload;
-      return { components: { ...state.components, source }, value };
+
+      const { components } = state;
+      const { source, value } = action.payload;
+      components.source.current = source.current;
+      return { components, value };
     }
 
     case "RELEASE": {
       console.log("RELEASE");
-      const { components, value } = state;
 
-      if (state.components.target) {
-        const customEvent = new CustomEvent("click", {
-          detail: { value },
-          bubbles: true,
-        });
-        state.components.target.dispatchEvent(customEvent);
+      const { components, value } = state;
+      const { source, target } = components;
+
+      if (target.current) {
+        target.current.dispatchEvent(
+          new CustomEvent("click", { detail: { value }, bubbles: true })
+        );
       }
 
-      resetSelection(state);
+      source.current = null;
+      updateTarget(null, target);
 
-      return {
-        components: { ...state.components, source: null, target: null },
-        value: null,
-      };
+      return { ...state, value: null };
     }
 
-    case "SET_TARGET": {
-      if (!state.capture) return state;
+    case "UPDATE_TARGET": {
+      console.log("UPDATE_TARGET");
 
-      console.log("SET_TARGET");
-      const { event, target } = action.payload;
+      const { components, value } = state;
+      if (!value) return state;
 
-      resetSelection(state);
+      updateTarget(action.payload.target, components.target);
 
-      state.components.target = target;
-
-      if (target) {
-        state.components.target.classList.add("selected");
-      }
-
-      return state;
+      return { components, value };
     }
 
     default:
@@ -80,8 +74,8 @@ export const withDragContext = (WrappedComponent) => (props) => {
     components: {
       area: useRef(null),
       cursor: useRef(null),
-      source: null,
-      target: null,
+      source: useRef(null),
+      target: useRef(null),
     },
     value: null,
   });
