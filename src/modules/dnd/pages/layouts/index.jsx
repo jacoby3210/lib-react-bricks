@@ -20,10 +20,10 @@ export const PageDnDLayouts = (props) => {
         <DnD.Components.Cursor />
         <DnD.Components.Source style={style("red")} value={{ id: 30 }} />
         <DnD.Components.Target id='1' style={style("green")}>
-          <DnD.Components.Source style={style("red")} />
+          <DnD.Components.Source id='1' style={style("red")} />
         </DnD.Components.Target>
         <DnD.Components.Target id='2' style={style("blue")}>
-          <DnD.Components.Source style={style("red")} />
+          <DnD.Components.Source id='2' style={style("red")} />
         </DnD.Components.Target>
       </DnD.Layouts.Area>
     </section>

@@ -9,9 +9,8 @@ import { useDispatcher } from "@lib-react-bricks/src/modules/dnd/advanced";
 const { useValueBase } = Core.Basics.HOCs;
 
 export const Source = (props) => {
-  console.log("render Source");
-
   const { children, className, id, style } = props;
+  console.log("render Source", id);
 
   const dispatcher = useDispatcher();
   const { value } = useValueBase().state;

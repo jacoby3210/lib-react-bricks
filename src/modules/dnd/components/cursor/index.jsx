@@ -18,7 +18,7 @@ export const Cursor = (props) => {
 
   const data = useData();
   const { components, value } = data;
-  const { area, cursor, source } = components;
+  const { area, cursor, source, target } = components;
 
   const edge = useRef(null);
 
@@ -43,7 +43,15 @@ export const Cursor = (props) => {
       cursor.current.style.transform = `translate(${x}px, ${y}px)`;
     };
 
-    const handleMouseUp = () => dispatcher({ type: "RELEASE" });
+    const handleMouseUp = () => {
+      if (!target.current) {
+        dispatcher({ type: "RELEASE" });
+        return;
+      }
+
+      const e = new CustomEvent("drop", { detail: { value }, bubbles: true });
+      target.current.dispatchEvent(e);
+    };
 
     document.addEventListener("mousemove", handleMouseMoveInitial);
     document.addEventListener("mouseup", handleMouseUp);

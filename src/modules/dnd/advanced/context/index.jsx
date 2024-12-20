@@ -22,19 +22,12 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "CAPTURE": {
       const { ref, value } = action.payload;
+      console.log(ref, value);
       source.current = ref.current;
       return { components, value };
     }
 
     case "RELEASE": {
-      if (target.current) {
-        const e = new CustomEvent("click", {
-          detail: { value },
-          bubbles: true,
-        });
-        target.current.dispatchEvent(e);
-      }
-
       source.current = null;
       updateTarget(null, target);
 
@@ -72,11 +65,12 @@ export const withDragContext = (WrappedComponent) => (props) => {
   });
 
   const stateMemo = useMemo(() => state, [state.value]);
+  const componentMemo = useMemo(() => <WrappedComponent {...props} />, []);
 
   return (
     <DispatcherContext.Provider value={dispatch}>
       <DataContext.Provider value={stateMemo}>
-        <WrappedComponent {...props} />
+        {componentMemo}
       </DataContext.Provider>
     </DispatcherContext.Provider>
   );

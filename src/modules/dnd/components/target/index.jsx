@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Core } from "@lib-react-bricks/src/modules/core";
 import { useDispatcher } from "@lib-react-bricks/src/modules/dnd/advanced";
 
@@ -19,13 +19,21 @@ export const Target = (props) => {
 
   const ref = useRef(null);
 
-  const handleClick = (e) => {
-    console.log(e);
-    // ctxValueBase.dispatch({
-    //   type: "CHANGE",
-    //   payload: { next: e.detail.value },
-    // });
-  };
+  useEffect(() => {
+    const handleCustomEvent = (event) => {
+      ctxValueBase.dispatch({
+        type: "CHANGE",
+        payload: { next: event.detail.value },
+      });
+      dispatcher({ type: "RELEASE" });
+    };
+
+    ref.current.addEventListener("drop", handleCustomEvent);
+
+    return () => {
+      ref.current.removeEventListener("drop", handleCustomEvent);
+    };
+  }, [value]);
 
   const handleMouseEnter = () => {
     dispatcher({ type: "UPDATE_TARGET", payload: { ref } });
@@ -36,7 +44,6 @@ export const Target = (props) => {
   };
 
   const updateProps = {
-    onClick: handleClick,
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave,
   };

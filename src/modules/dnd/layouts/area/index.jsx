@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { useData } from "@lib-react-bricks/src/modules/dnd/advanced";
 
 // -------------------------------------------------------------------------- //
@@ -6,7 +5,7 @@ import { useData } from "@lib-react-bricks/src/modules/dnd/advanced";
 // -------------------------------------------------------------------------- //
 
 export const Area = (props) => {
-  // console.log("render Area");
+  console.log("render Area");
 
   const { children, className, id, ...rest } = props;
 
