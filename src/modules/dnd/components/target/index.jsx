@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { Core } from "@lib-react-bricks/src/modules/core";
 import { useDispatcher } from "@lib-react-bricks/src/modules/dnd/advanced";
 
@@ -11,7 +11,7 @@ const { useValueBase } = Core.Basics.HOCs;
 export const Target = (props) => {
   console.log("render Target");
 
-  const { children, className, id, style, onChange = (evt) => {} } = props;
+  const { children, className, id, style, onDrop = (evt) => {} } = props;
 
   const dispatcher = useDispatcher();
   const ctxValueBase = useValueBase();
@@ -19,34 +19,32 @@ export const Target = (props) => {
 
   const ref = useRef(null);
 
-  useEffect(() => {
-    const handleCustomEvent = (event) => {
-      ctxValueBase.dispatch({
-        type: "CHANGE",
-        payload: { next: event.detail.value },
-      });
-      dispatcher({ type: "RELEASE" });
-    };
-
-    ref.current.addEventListener("drop", handleCustomEvent);
-
-    return () => {
-      ref.current.removeEventListener("drop", handleCustomEvent);
-    };
-  }, [value]);
-
-  const handleMouseEnter = () => {
+  const handleMouseEnter = useCallback(() => {
     dispatcher({ type: "UPDATE_TARGET", payload: { ref } });
-  };
+  }, [dispatcher]);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     dispatcher({ type: "UPDATE_TARGET", payload: {} });
-  };
+  }, [dispatcher]);
 
-  const updateProps = {
-    onMouseEnter: handleMouseEnter,
-    onMouseLeave: handleMouseLeave,
-  };
+  const handleDrop = useCallback(
+    (event) => {
+      const payload = { next: event.detail.value };
+      ctxValueBase.dispatch({ type: "CHANGE", payload });
+      dispatcher({ type: "RELEASE" });
+      onDrop(event);
+    },
+    [ctxValueBase, dispatcher, onDrop]
+  );
+
+  const updateProps = useMemo(
+    () => ({
+      onDrop: handleDrop,
+      onMouseEnter: handleMouseEnter,
+      onMouseLeave: handleMouseLeave,
+    }),
+    [handleDrop, handleMouseEnter, handleMouseLeave]
+  );
 
   return (
     <div id={id} className={className} ref={ref} style={style} {...updateProps}>

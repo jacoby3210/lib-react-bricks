@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useCallback } from "react";
 import { Core } from "@lib-react-bricks/src/modules/core";
 import { useDispatcher } from "@lib-react-bricks/src/modules/dnd/advanced";
 
@@ -9,17 +9,15 @@ import { useDispatcher } from "@lib-react-bricks/src/modules/dnd/advanced";
 const { useValueBase } = Core.Basics.HOCs;
 
 export const Source = (props) => {
-  const { children, className, id, style } = props;
+  const { children, className, id, style, value } = props;
   console.log("render Source", id);
 
   const dispatcher = useDispatcher();
-  const { value } = useValueBase().state;
-
   const ref = useRef(null);
 
-  const handleMouseDown = () => {
+  const handleMouseDown = useCallback(() => {
     dispatcher({ type: "CAPTURE", payload: { ref, value } });
-  };
+  });
 
   return (
     <div
