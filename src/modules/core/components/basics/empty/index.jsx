@@ -2,8 +2,6 @@
 // Base component - to use in place where the syntax requires component.
 // -------------------------------------------------------------------------- //
 
-export const Empty = (props) => {
-  return <></>;
-};
+export const Empty = ({ children }) => <>{children}</>;
 
 // -------------------------------------------------------------------------- //
