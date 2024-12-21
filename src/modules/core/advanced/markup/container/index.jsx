@@ -18,10 +18,7 @@ const reducer = (state, action) => {
   }
 };
 
-const { ContainerContext, useContainer } = createSmartContext(
-  "Container",
-  reducer
-);
+const { ContainerContext, useContainer } = createSmartContext("Container");
 export { useContainer };
 
 // -------------------------------------------------------------------------- //

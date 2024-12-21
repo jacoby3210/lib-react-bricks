@@ -40,7 +40,7 @@ const reducer = (state, action) => {
   }
 };
 
-const { RepeatContext, useRepeat } = createSmartContext("Repeat", reducer);
+const { RepeatContext, useRepeat } = createSmartContext("Repeat");
 export { useRepeat };
 
 // -------------------------------------------------------------------------- //
