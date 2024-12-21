@@ -1,41 +1,39 @@
-import { createContext, useReducer } from "react";
+import { useReducer } from "react";
+import { createContext, useContextSelector } from "use-context-selector";
 
 // -------------------------------------------------------------------------- //
 //  A feature - to wrap base component into smart context (data & dispatch).
 // -------------------------------------------------------------------------- //
 
-export const apiContext = (name) => {
-  const StateContext = createContext();
+export const createSmartContext = (name) => {
   const DispatchContext = createContext();
+  const StateContext = createContext();
 
   const useContextValue = (selector = null) => {
+    const dispatch = useContextSelector(DispatchContext, (ctx) => ctx);
+
     const state = selector
       ? useContextSelector(StateContext, selector)
       : undefined;
 
-    const dispatch = useContextSelector(DispatchContext, (ctx) => ctx);
-
-    return selector ? { state, dispatch } : { dispatch };
+    return selector ? { dispatch, state } : { dispatch };
   };
 
-  return {
-    [`${name}StateContext`]: StateContext,
-    [`${name}DispatchContext`]: DispatchContext,
-    [`use${name}`]: useContextValue,
-  };
+  return { DispatchContext, StateContext, [`use${name}`]: useContextValue };
 };
 
-export const withContext = (ContextData, ContextDispatch, reducer, state) => {
+export const withContext = (ctx, reducer, resolver) => {
   return (WrappedComponent) => {
     return (props) => {
+      const [state, rest] = resolver(props);
       const [ctxState, ctxDispatch] = useReducer(reducer, state);
 
       return (
-        <ContextData.Provider value={ctxState}>
-          <ContextDispatch.Provider value={ctxDispatch}>
-            <WrappedComponent {...props} />
-          </ContextDispatch.Provider>
-        </ContextData.Provider>
+        <ctx.StateContext.Provider value={ctxState}>
+          <ctx.DispatchContext.Provider value={ctxDispatch}>
+            <WrappedComponent {...rest} />
+          </ctx.DispatchContext.Provider>
+        </ctx.StateContext.Provider>
       );
     };
   };
