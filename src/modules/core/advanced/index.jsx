@@ -5,7 +5,7 @@
 // common - аdd a few general capabilities.
 
 // - to wrap base component into smart context (data & dispatch).
-export { withContext } from "./common/context";
+export { useContext, withContext } from "./common/context";
 
 // - to display the element name in the react developer tools.
 export { withDebug } from "./common/debug";
