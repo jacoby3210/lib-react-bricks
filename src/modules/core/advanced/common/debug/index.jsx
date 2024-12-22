@@ -22,6 +22,7 @@ export const withDebug =
       console.debug(
         `[withDebug] Applied HOC: ${EnhancedComponent.displayName}`
       );
+
       return EnhancedComponent;
     }, BaseComponent);
   };

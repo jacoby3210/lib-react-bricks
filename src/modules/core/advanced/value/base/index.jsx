@@ -1,15 +1,11 @@
-import {
-  createSmartContext,
-  useReducerAsContext,
-} from "@lib-react-bricks/src/modules/utils";
+import { createSmartContext, withContext } from "../../common/context";
 
 // -------------------------------------------------------------------------- //
 // A feature - to handle a change in the value (type: base\variant).
 // -------------------------------------------------------------------------- //
 
-// -------------------------------------------------------------------------- //
-// Context and Reducer setup
-// -------------------------------------------------------------------------- //
+const ctx = createSmartContext("ValueBase");
+export const { useValueBase } = ctx;
 
 const reducer = (state, action) => {
   const { value, valueChange, valueNormalize } = state;
@@ -28,35 +24,19 @@ const reducer = (state, action) => {
   }
 };
 
-const { ValueBaseContext, useValueBase } = createSmartContext("ValueBase");
-export { useValueBase };
-
-// -------------------------------------------------------------------------- //
-// HOC implementation
-// -------------------------------------------------------------------------- //
-
-export const withValueBase = (WrappedComponent) => (props) => {
+const resolver = (props) => {
+  const { value = null } = props;
   const {
-    value = null,
     valueChange = (next, prev, state) => next,
     valueNormalize = (value) => value,
-
     ...rest
   } = props;
 
-  const ctx = useReducerAsContext(reducer, {
-    value,
-    valueChange,
-    valueNormalize,
-  });
+  return [{ value, valueChange, valueNormalize }, rest];
+};
 
-  const updateProps = { ...rest, value: ctx.state.value };
-
-  return (
-    <ValueBaseContext.Provider value={ctx}>
-      <WrappedComponent {...updateProps} />
-    </ValueBaseContext.Provider>
-  );
+export const withValueBase = (WrappedComponent) => {
+  return withContext(ctx, reducer, resolver)(WrappedComponent);
 };
 
 // -------------------------------------------------------------------------- //
