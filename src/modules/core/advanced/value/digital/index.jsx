@@ -1,56 +1,13 @@
-import {
-  createSmartContext,
-  resolveFunction,
-  useReducerAsContext,
-} from "@lib-react-bricks/src/modules/utils";
+import { resolveFunction } from "@lib-react-bricks/src/modules/utils";
+import { createSmartContext, withContext } from "../../common/context";
+import { getCandidate, normalize } from "./utils";
 
 // -------------------------------------------------------------------------- //
 // A feature - to handle a change in the value (type: digital).
 // -------------------------------------------------------------------------- //
 
-// -------------------------------------------------------------------------- //
-// Context and Reducer setup
-// -------------------------------------------------------------------------- //
-
-const getCandidate = (state, action) => {
-  const { max, min, step, value } = state;
-  const { next, modifier } = action.payload;
-
-  switch (action.type) {
-    case "CHANGE":
-      return next;
-      break;
-
-    case "INVERT":
-    case "TOGGLE":
-      return -value;
-      break;
-
-    case "MODIFY":
-      return value + (modifier || step);
-      break;
-
-    case "RELATIVE":
-      return min + Math.round((next * (max - min)) / step) * step;
-      break;
-
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`);
-  }
-};
-
-const getDecimalPlaces = (num) => {
-  const decimalPart = num.toString().split(".")[1];
-  return decimalPart ? decimalPart.length : 0;
-};
-
-const normalize = (next, prev, { max, min, modular, step }) => {
-  const wrappedValue = modular
-    ? (next + max) % max
-    : Math.max(Math.min(next, max), min);
-  const steppedValue = Math.round(wrappedValue / step) * step;
-  return parseFloat(steppedValue.toFixed(getDecimalPlaces(step)));
-};
+const ctx = createSmartContext("ValueDigital");
+export const { useValueDigital } = ctx;
 
 const reducer = (state, action) => {
   const { value, valueChange, valueNormalize } = state;
@@ -61,15 +18,7 @@ const reducer = (state, action) => {
   return { ...state, value: next };
 };
 
-const { ValueDigitalContext, useValueDigital } =
-  createSmartContext("ValueDigital");
-export { useValueDigital };
-
-// -------------------------------------------------------------------------- //
-// HOC implementation
-// -------------------------------------------------------------------------- //
-
-export const withValueDigital = (WrappedComponent) => (props) => {
+const resolver = (props) => {
   const {
     modular = false,
     max = 100,
@@ -87,7 +36,7 @@ export const withValueDigital = (WrappedComponent) => (props) => {
   const minResolve = resolveFunction(min, props);
   const stepResolve = resolveFunction(step, props);
 
-  const ctx = useReducerAsContext(reducer, {
+  const state = {
     modular,
     max: maxResolve,
     min: minResolve,
@@ -96,15 +45,13 @@ export const withValueDigital = (WrappedComponent) => (props) => {
     value,
     valueChange,
     valueNormalize,
-  });
+  };
 
-  const updateProps = { ...rest, value: ctx.state.value };
+  return [state, rest];
+};
 
-  return (
-    <ValueDigitalContext.Provider value={ctx}>
-      <WrappedComponent {...updateProps} />
-    </ValueDigitalContext.Provider>
-  );
+export const withValueDigital = (WrappedComponent) => {
+  return withContext(ctx, reducer, resolver)(WrappedComponent);
 };
 
 // -------------------------------------------------------------------------- //
