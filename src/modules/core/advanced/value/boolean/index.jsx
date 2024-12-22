@@ -1,15 +1,11 @@
-import {
-  createSmartContext,
-  useReducerAsContext,
-} from "@lib-react-bricks/src/modules/utils";
+import { createSmartContext, withContext } from "../../common/context";
 
 // -------------------------------------------------------------------------- //
 // A feature - to handle a change in the value (type: boolean).
 // -------------------------------------------------------------------------- //
 
-// -------------------------------------------------------------------------- //
-// Context and Reducer setup
-// -------------------------------------------------------------------------- //
+const ctx = createSmartContext("ValueBoolean");
+export const { useValueBoolean } = ctx;
 
 const reducer = (state, action) => {
   const { value, valueChange, valueNormalize } = state;
@@ -37,35 +33,20 @@ const reducer = (state, action) => {
   }
 };
 
-const { ValueBooleanContext, useValueBoolean } =
-  createSmartContext("ValueBoolean");
-export { useValueBoolean };
+const resolver = (props) => {
+  const { value = null } = props;
 
-// -------------------------------------------------------------------------- //
-// HOC implementation
-// -------------------------------------------------------------------------- //
-
-export const withValueBoolean = (WrappedComponent) => (props) => {
   const {
-    value = false,
     valueChange = (next, prev, state) => next,
     valueNormalize = (value) => value,
-
     ...rest
   } = props;
 
-  const ctx = useReducerAsContext(reducer, {
-    value,
-    valueChange,
-    valueNormalize,
-  });
+  return [{ value, valueChange, valueNormalize }, rest];
+};
 
-  const updateProps = { ...rest, value: ctx.state.value };
-  return (
-    <ValueBooleanContext.Provider value={ctx}>
-      <WrappedComponent {...updateProps} />
-    </ValueBooleanContext.Provider>
-  );
+export const withValueBoolean = (WrappedComponent) => {
+  return withContext(ctx, reducer, resolver)(WrappedComponent);
 };
 
 // -------------------------------------------------------------------------- //
