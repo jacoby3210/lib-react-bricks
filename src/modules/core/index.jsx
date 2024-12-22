@@ -152,8 +152,8 @@ export const Core = {
 
     ...compose("Bar")()(
       withMerge("rc-bar", { value: null, ...Layouts.Bar }),
-      withContainer,
       withValueBase,
+      withContainer,
       withRepeat
     ),
 
