@@ -1,15 +1,14 @@
 import {
   createSmartContext,
-  useReducerAsContext,
-} from "@lib-react-bricks/src/modules/utils";
+  withContext,
+} from "@lib-react-bricks/src/modules/core/advanced/common/context";
 
 // -------------------------------------------------------------------------- //
 //  A feature - to wrap base component into ui block (<div>).
 // -------------------------------------------------------------------------- //
 
-// -------------------------------------------------------------------------- //
-// Context and Reducer setup
-// -------------------------------------------------------------------------- //
+const ctx = createSmartContext("Container");
+export const { useContainer } = ctx;
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -18,33 +17,26 @@ const reducer = (state, action) => {
   }
 };
 
-const { ContainerContext, useContainer } = createSmartContext("Container");
-export { useContainer };
+const resolver = (props) => {
+  const { id, children, Container, ...rest } = props;
+  return [rest, props];
+};
 
-// -------------------------------------------------------------------------- //
-// HOC implementation
-// -------------------------------------------------------------------------- //
+export const withContainer = (WrappedComponent) => {
+  return withContext(
+    ctx,
+    reducer,
+    resolver
+  )((props) => {
+    const { id, className, value } = props;
+    const { Container = (props) => <div {...props} /> } = props;
 
-export const withContainer = (WrappedComponent) => (props) => {
-  const {
-    id,
-    children,
-    Container = (props) => <div {...props} />,
-
-    ...rest
-  } = props;
-
-  const { className = "rc-container", value = null } = props;
-
-  const ctx = useReducerAsContext(reducer, { ...rest });
-
-  return (
-    <ContainerContext.Provider value={ctx}>
+    return (
       <Container id={id} className={className} value={value}>
-        <WrappedComponent {...props}>{children}</WrappedComponent>
+        <WrappedComponent {...props} />;
       </Container>
-    </ContainerContext.Provider>
-  );
+    );
+  });
 };
 
 // -------------------------------------------------------------------------- //
