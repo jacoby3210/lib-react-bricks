@@ -1,37 +1,13 @@
-import {
-  createSmartContext,
-  resolveFunction,
-  useReducerAsContext,
-} from "@lib-react-bricks/src/modules/utils";
+import { resolveFunction } from "@lib-react-bricks/src/modules/utils";
+import { createSmartContext, withContext } from "../../common/context";
+import { getCandidate, normalize } from "./utils";
 
 // -------------------------------------------------------------------------- //
 // A feature - to handle a change in the value (type: literal - line\paragraph).
 // -------------------------------------------------------------------------- //
 
-// -------------------------------------------------------------------------- //
-// Context and Reducer setup
-// -------------------------------------------------------------------------- //
-
-const getCandidate = (state, action) => {
-  const { next } = action.payload;
-
-  switch (action.type) {
-    case "CHANGE":
-      return next;
-      break;
-
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`);
-  }
-};
-
-const normalize = (next, prev, { max, min, pattern }) => {
-  if (next.length < min || next.length > max) return prev;
-  const patternExp = new RegExp(
-    `[${pattern.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&")}]`
-  );
-  return patternExp.test(next) ? prev : next;
-};
+const ctx = createSmartContext("ValueLiteral");
+export const { useValueLiteral } = ctx;
 
 const reducer = (state, action) => {
   const { value, valueChange, valueNormalize } = state;
@@ -42,15 +18,7 @@ const reducer = (state, action) => {
   return { ...state, value: next };
 };
 
-const { ValueLiteralContext, useValueLiteral } =
-  createSmartContext("ValueLiteral");
-export { useValueLiteral };
-
-// -------------------------------------------------------------------------- //
-// HOC implementation
-// -------------------------------------------------------------------------- //
-
-export const withValueLiteral = (WrappedComponent) => (props) => {
+const resolver = (props) => {
   const {
     max = 100,
     min = 0,
@@ -68,7 +36,7 @@ export const withValueLiteral = (WrappedComponent) => (props) => {
   const maxResolve = resolveFunction(max, props);
   const minResolve = resolveFunction(min, props);
 
-  const ctx = useReducerAsContext(reducer, {
+  const state = {
     max: maxResolve,
     min: minResolve,
     pattern,
@@ -76,15 +44,13 @@ export const withValueLiteral = (WrappedComponent) => (props) => {
     value,
     valueChange,
     valueNormalize,
-  });
+  };
 
-  const updateProps = { ...rest, value: ctx.state.value };
+  return [state, rest];
+};
 
-  return (
-    <ValueLiteralContext.Provider value={ctx}>
-      <WrappedComponent {...updateProps} />
-    </ValueLiteralContext.Provider>
-  );
+export const withValueLiteral = (WrappedComponent) => {
+  return withContext(ctx, reducer, resolver)(WrappedComponent);
 };
 
 // -------------------------------------------------------------------------- //
