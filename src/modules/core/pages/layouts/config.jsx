@@ -6,6 +6,7 @@ import { Core } from "@lib-react-bricks/src/modules/core";
 
 const produceEntries = (count, func = (_, i) => i) =>
   Array.from({ length: count }, func);
+
 const sig = (caption, datatype, props, Render) => ({
   caption,
   datatype,
@@ -83,13 +84,9 @@ export const props = {
 
       // list
       {
-        first: (props) => {
-          return props.value * 10;
-        },
+        data: Array.from({ length: 250 }, (_, i) => ({ text: `string_${i}` })),
+        first: (props) => props.value * 10,
         length: 10,
-        data: Array.from({ length: 250 }, (_, i) => {
-          return { text: `string_${i}` };
-        }),
       },
     ],
   },
@@ -106,11 +103,12 @@ export const props = {
 
       // list
       {
+        data: Array.from({ length: 250 }, (_, i) => ({
+          id: i,
+          text: `string_${i}`,
+        })),
         first: (props) => props.index * 10,
         length: 10,
-        data: Array.from({ length: 250 }, (_, i) => {
-          return { id: i, text: `string_${i}` };
-        }),
       },
     ],
   },
