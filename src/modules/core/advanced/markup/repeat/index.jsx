@@ -1,9 +1,11 @@
 import {
-  createSmartContext,
   resolveData,
   resolveFunction,
-  useReducerAsContext,
 } from "@lib-react-bricks/src/modules/utils";
+import {
+  createSmartContext,
+  withContext,
+} from "@lib-react-bricks/src/modules/core/advanced/common/context";
 
 // -------------------------------------------------------------------------- //
 // A feature - to create a list of child components according to the template.
@@ -14,9 +16,8 @@ import {
 // Supports the ability to output the result of applying a filter to the src.
 // -------------------------------------------------------------------------- //
 
-// -------------------------------------------------------------------------- //
-// Context and Reducer setup
-// -------------------------------------------------------------------------- //
+const ctx = createSmartContext("Repeat");
+export const { useRepeat } = ctx;
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -40,14 +41,7 @@ const reducer = (state, action) => {
   }
 };
 
-const { RepeatContext, useRepeat } = createSmartContext("Repeat");
-export { useRepeat };
-
-// -------------------------------------------------------------------------- //
-// HOC implementation
-// -------------------------------------------------------------------------- //
-
-export const withRepeat = (WrappedComponent) => (props) => {
+const resolver = (props) => {
   const {
     data = [],
     dataset = null,
@@ -69,14 +63,14 @@ export const withRepeat = (WrappedComponent) => (props) => {
       : Math.min(datasetResolve.length, length);
   const lastResolve = firstResolve + lengthResolve;
 
-  const ctx = useReducerAsContext(reducer, {
+  const state = {
     data: dataResolve,
     dataset: datasetResolve,
 
     first: firstResolve,
     last: lastResolve,
     length: lengthResolve,
-  });
+  };
 
   const children = datasetResolve
     .slice(firstResolve, lastResolve)
@@ -84,15 +78,23 @@ export const withRepeat = (WrappedComponent) => (props) => {
       <Template key={item.id || index} index={index} item={item} />
     ));
 
-  return (
-    <RepeatContext.Provider value={ctx}>
-      {WrappedComponent ? (
-        <WrappedComponent {...rest}> {children} </WrappedComponent>
-      ) : (
-        <> {children} </>
-      )}
-    </RepeatContext.Provider>
-  );
+  return [state, { ...rest, children }];
+};
+
+export const withRepeat = (WrappedComponent) => {
+  return withContext(
+    ctx,
+    reducer,
+    resolver
+  )((props) => {
+    const { children, ...rest } = props;
+
+    return WrappedComponent ? (
+      <WrappedComponent {...rest}> {children} </WrappedComponent>
+    ) : (
+      <> {children} </>
+    );
+  });
 };
 
 // -------------------------------------------------------------------------- //
