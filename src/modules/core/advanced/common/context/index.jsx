@@ -9,7 +9,7 @@ export const createSmartContext = (name) => {
   const DispatchContext = createContext();
   const StateContext = createContext();
 
-  const useContextValue = (selector = null) => {
+  const useContextValue = (selector = (ctx) => ctx) => {
     const dispatch = useContextSelector(DispatchContext, (ctx) => ctx);
 
     const state = selector
