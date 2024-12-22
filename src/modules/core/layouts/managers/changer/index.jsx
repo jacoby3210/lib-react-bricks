@@ -9,12 +9,13 @@ import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
 // -------------------------------------------------------------------------- //
 
 const Template = (props) => {
+  const { item, index } = props;
+
   const ctxContainer = useContainer();
+  const { className } = ctxContainer.state;
+
   const ctxValueBase = useValueOption();
 
-  const { className } = ctxContainer.state;
-  const { value } = ctxValueBase?.state;
-  const { item, index } = props;
   const resolveText = item.caption;
 
   const handleClick = (evt) => {

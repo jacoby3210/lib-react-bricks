@@ -9,14 +9,15 @@ import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
 // -------------------------------------------------------------------------- //
 
 export const Template = (props) => {
-  const ctxContainer = useContainer();
-  const ctxValueBase = useValueBase();
-
   const { item, index } = props;
-  const resolveText = item.content;
 
+  const ctxContainer = useContainer();
   const { className, mode } = ctxContainer.state;
+
+  const ctxValueBase = useValueBase();
   const { value } = ctxValueBase.state;
+
+  const resolveText = item.content;
 
   const handleToggle = (evt) => {
     const getNextValue = () => {

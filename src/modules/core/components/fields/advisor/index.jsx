@@ -12,13 +12,15 @@ import { filter } from "./utils";
 // -------------------------------------------------------------------------- //
 
 const Controller = (props) => {
-  const ctxReveal = useReveal();
-  const ctxValueLiteral = useValueLiteral();
-  const ctxValueOption = useValueOption();
-
   const { className, data } = props;
-  const { index } = ctxValueOption.state;
+
+  const ctxReveal = useReveal();
+
+  const ctxValueLiteral = useValueLiteral();
   const { value } = ctxValueLiteral.state;
+
+  const ctxValueOption = useValueOption();
+  const { index } = ctxValueOption.state;
 
   const valueResolve =
     index == -1 ? value : data[index].label || data[index].id;

@@ -6,7 +6,7 @@ import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
 // -------------------------------------------------------------------------- //
 
 const Controller = (props) => {
-  const { className, children, label, ...attributes } = props;
+  const { className, children, label } = props;
   const reveals = useReveal();
 
   const handleClick = (evt) => {

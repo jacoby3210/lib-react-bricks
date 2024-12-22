@@ -10,11 +10,12 @@ import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
 // -------------------------------------------------------------------------- //
 
 const Controller = (props) => {
+  const { className, data } = props;
+
   const ctxReveal = useReveal();
   const ctxValueOption = useValueOption();
-
-  const { className, data } = props;
   const { index, loop, max, value } = ctxValueOption.state;
+
   const displayText = data[index].label || data[index].id || "Not Found";
 
   const handleClick = (evt) => {

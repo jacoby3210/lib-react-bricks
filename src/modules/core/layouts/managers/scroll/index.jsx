@@ -8,12 +8,12 @@ import { toValue, valueToPosition } from "./utils";
 // -------------------------------------------------------------------------- //
 
 export const Scroll = (props) => {
-  const ctxValueDigital = useValueDigital();
-
   const { className, axis, mode, target } = props;
 
-  const axisResolve = resolveAxis(axis);
+  const ctxValueDigital = useValueDigital();
   const valueResolve = ctxValueDigital.state.value;
+
+  const axisResolve = resolveAxis(axis);
 
   useEffect(() => {
     const area = target?.current;

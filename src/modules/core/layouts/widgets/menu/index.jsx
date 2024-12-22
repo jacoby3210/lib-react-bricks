@@ -6,8 +6,9 @@ import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
 // -------------------------------------------------------------------------- //
 
 const Controller = (props) => {
-  const ctxReveal = useReveal();
   const { caption, className, value } = props;
+
+  const ctxReveal = useReveal();
 
   const handleClick = (evt) => {
     evt.stopPropagation();
@@ -28,7 +29,7 @@ const Controller = (props) => {
 };
 
 const Template = (props) => {
-  const { item, index, ...attributes } = props;
+  const { item } = props;
 
   return item.datatype == "menu" ? (
     <item.Render caption={item.caption} data={item.props.data} />

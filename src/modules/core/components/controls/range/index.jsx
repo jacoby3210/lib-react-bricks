@@ -11,9 +11,9 @@ import * as code from "./utils";
 // -------------------------------------------------------------------------- //
 
 export const Range = (props) => {
-  const ctxValueDigital = useValueDigital();
-
   const { id, className, axis } = props;
+
+  const ctxValueDigital = useValueDigital();
 
   const axisResolve = resolveAxis(axis);
 

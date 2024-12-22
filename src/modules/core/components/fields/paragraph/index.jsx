@@ -1,4 +1,3 @@
-import { useCallback, useEffect, useRef, useState } from "react";
 import { useValueLiteral } from "@lib-react-bricks/src/modules/core/advanced";
 
 // -------------------------------------------------------------------------- //
@@ -6,9 +5,9 @@ import { useValueLiteral } from "@lib-react-bricks/src/modules/core/advanced";
 // -------------------------------------------------------------------------- //
 
 export const Paragraph = (props) => {
-  const ctxValueLiteral = useValueLiteral();
-
   const { id, children, value, ...attributes } = props;
+
+  const ctxValueLiteral = useValueLiteral();
 
   const handleChange = (evt) => {
     ctxValueLiteral.dispatch({

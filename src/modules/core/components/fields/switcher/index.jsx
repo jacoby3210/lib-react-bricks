@@ -7,6 +7,7 @@ import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
 
 export const Switcher = (props) => {
   const { className, data } = props;
+
   const ctxValueOption = useValueOption();
   const { index, loop, max, value } = ctxValueOption.state;
 

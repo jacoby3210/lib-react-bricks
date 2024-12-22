@@ -9,12 +9,12 @@ import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
 // -------------------------------------------------------------------------- //
 
 const Template = (props) => {
-  const ctxContainer = useContainer();
-  const ctxValueBase = useValueBase();
-
   const { item, index, ...attributes } = props;
 
+  const ctxContainer = useContainer();
   const { className, mode } = ctxContainer.state;
+
+  const ctxValueBase = useValueBase();
   const { value } = ctxValueBase.state;
 
   const resolveText = item.text;

@@ -7,9 +7,11 @@ import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
 // -------------------------------------------------------------------------- //
 
 export const Swing = (props) => {
+  const { className } = props;
+
   const ctxValueDigital = useValueDigital();
   const { max, min, step } = ctxValueDigital.state;
-  const { className } = props;
+
   const timeout = useRef(null);
 
   const isButtonStart = (btn) => btn.classList.contains(`${className}-start`);

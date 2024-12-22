@@ -15,12 +15,12 @@ const Container = ({ id, children, className }) => (
 );
 
 export const Template = (props) => {
-  const ctxContainer = useContainer();
-  const ctxValueBase = useValueBase();
-
   const { item } = props;
 
+  const ctxContainer = useContainer();
   const { className } = ctxContainer.state;
+
+  const ctxValueBase = useValueBase();
   const { value } = ctxValueBase.state;
 
   const resolveText = item.caption;

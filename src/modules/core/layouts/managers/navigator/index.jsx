@@ -10,10 +10,10 @@ import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
 
 export const Navigator = (props) => {
   const ctxContainer = useContainer();
-  const ctxValueOption = useValueOption();
-
   const { className } = ctxContainer.state;
-  const { max, modular, step, index, value } = ctxValueOption?.state;
+
+  const ctxValueOption = useValueOption();
+  const { max, modular, step, index, value } = ctxValueOption.state;
 
   const firstBtnProps = {
     className: resolveClassName(className, "first"),

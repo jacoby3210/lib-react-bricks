@@ -12,10 +12,10 @@ const Template = (props) => {
   const { index, item } = props;
 
   const ctxContainer = useContainer();
-  const ctxValueBase = useValueBase();
-
   const { name, className } = ctxContainer.state;
-  const { value } = ctxValueBase?.state;
+
+  const ctxValueBase = useValueBase();
+  const { value } = ctxValueBase.state;
 
   const handleChange = (e) => {
     ctxValueBase.dispatch({
