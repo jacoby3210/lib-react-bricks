@@ -27,11 +27,15 @@ export const withContext = (ctx, reducer, resolver) => {
     return (props) => {
       const [state, rest] = resolver(props);
       const [ctxState, ctxDispatch] = useReducer(reducer, state);
-
+      const updateProps = {
+        ...rest,
+        index: ctxState.index,
+        value: ctxState.value,
+      };
       return (
         <ctx.StateContext.Provider value={ctxState}>
           <ctx.DispatchContext.Provider value={ctxDispatch}>
-            <WrappedComponent {...rest} />
+            <WrappedComponent {...updateProps} />
           </ctx.DispatchContext.Provider>
         </ctx.StateContext.Provider>
       );
