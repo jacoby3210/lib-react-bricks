@@ -11,7 +11,14 @@ const { useValueBase } = Core.Basics.HOCs;
 export const Target = (props) => {
   console.log("render Target");
 
-  const { children, className, id, style, onDrop = (evt) => {} } = props;
+  const {
+    children,
+    className,
+    id,
+    style,
+    onDragOver = (evt) => {},
+    onDrop = (evt) => {},
+  } = props;
 
   const ctxArea = useArea(null);
   const ctxValueBase = useValueBase();
@@ -19,14 +26,10 @@ export const Target = (props) => {
 
   const ref = useRef(null);
 
-  const handleMouseEnter = () => {
-    if (ref?.current) ref.current.classList.add("selected");
-    ctxArea.dispatch({ type: "UPDATE_TARGET", payload: { ref } });
-  };
-
-  const handleMouseLeave = () => {
-    if (ref?.current) ref.current.classList.remove("selected");
-    ctxArea.dispatch({ type: "UPDATE_TARGET", payload: {} });
+  const handleDragOver = (event) => {
+    const { value } = event.detail;
+    ref.current.classList.add("selected");
+    onDragOver(event);
   };
 
   const handleDrop = (event) => {
@@ -36,8 +39,18 @@ export const Target = (props) => {
     onDrop(event);
   };
 
+  const handleMouseEnter = () => {
+    ctxArea.dispatch({ type: "UPDATE_TARGET", payload: { ref } });
+  };
+
+  const handleMouseLeave = () => {
+    if (ref?.current) ref.current.classList.remove("selected");
+    ctxArea.dispatch({ type: "UPDATE_TARGET", payload: {} });
+  };
+
   const updateProps = useMemo(
     () => ({
+      onDragOver: handleDragOver,
       onDrop: handleDrop,
       onMouseEnter: handleMouseEnter,
       onMouseLeave: handleMouseLeave,

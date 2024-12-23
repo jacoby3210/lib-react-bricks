@@ -12,7 +12,6 @@ export const getEdge = (components, { pageX, pageY }) => {
   const innerBounds = components.source.current.getBoundingClientRect();
 
   // Calculate edge boundaries for the draggable element within the container
-
   return {
     left: outerBounds.x + (pageX - Math.abs(innerBounds.x)),
     top: outerBounds.y + (pageY - Math.abs(innerBounds.y)),

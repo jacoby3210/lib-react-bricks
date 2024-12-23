@@ -30,11 +30,17 @@ export const Cursor = (props) => {
       document.addEventListener("mousemove", handleMouseMove);
     };
 
-    const handleMouseMove = ({ pageX, pageY }) => {
+    const handleMouseMove = ({ pageX, pageY, target }) => {
       const { left, top, right, bottom } = edge.current;
       const x = Math.min(Math.max(pageX - left, 0), right);
       const y = Math.min(Math.max(pageY - top, 0), bottom);
       cursor.current.style.transform = `translate(${x}px, ${y}px)`;
+
+      const e = new CustomEvent("dragover", {
+        detail: { value },
+        bubbles: true,
+      });
+      target.dispatchEvent(e);
     };
 
     const handleMouseUp = () => {
