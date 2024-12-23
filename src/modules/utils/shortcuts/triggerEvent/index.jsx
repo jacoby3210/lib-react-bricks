@@ -2,9 +2,9 @@
 // A helper function to send customizable events.
 // -------------------------------------------------------------------------- //
 
-export const dispatchCustomEvent = ({ name, ...detail }) => {
-  const customEvent = new CustomEvent(name, { detail });
-  window.dispatchEvent(customEvent);
+export const triggerEvent = (element, name, props) => {
+  const customEvent = new CustomEvent(name, { ...props, bubbles: true });
+  element.dispatchEvent(customEvent);
 };
 
 // -------------------------------------------------------------------------- //

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { triggerEvent } from "@lib-react-bricks/src/modules/utils";
 import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
 import { getEdge } from "./utils";
 
@@ -36,11 +37,7 @@ export const Cursor = (props) => {
       const y = Math.min(Math.max(pageY - top, 0), bottom);
       cursor.current.style.transform = `translate(${x}px, ${y}px)`;
 
-      const e = new CustomEvent("dragover", {
-        detail: { value },
-        bubbles: true,
-      });
-      target.dispatchEvent(e);
+      triggerEvent(target, "dragover", { detail: { value } });
     };
 
     const handleMouseUp = () => {
@@ -48,9 +45,9 @@ export const Cursor = (props) => {
         ctxArea.dispatch({ type: "RELEASE" });
         return;
       }
-      const e = new CustomEvent("drop", { detail: { value }, bubbles: true });
-      target.current.dispatchEvent(e);
+      triggerEvent(target.current, "drop", { detail: { value } });
     };
+
     document.addEventListener("mousemove", handleMouseMoveInitial);
     document.addEventListener("mouseup", handleMouseUp);
     return () => {
