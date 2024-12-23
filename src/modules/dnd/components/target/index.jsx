@@ -9,7 +9,7 @@ import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
 const { useValueBase } = Core.Basics.HOCs;
 
 export const Target = (props) => {
-  console.log("render Target");
+  console.debug("render Target");
 
   const {
     children,

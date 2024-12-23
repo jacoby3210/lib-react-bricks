@@ -8,7 +8,7 @@ import { getEdge } from "./utils";
 // -------------------------------------------------------------------------- //
 
 export const Cursor = (props) => {
-  console.log("render Cursor");
+  console.debug("render Cursor");
 
   const { children, className, id, style } = props;
 

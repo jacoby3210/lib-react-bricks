@@ -7,7 +7,7 @@ import { useEffect } from "react";
 // -------------------------------------------------------------------------- //
 
 export const Area = (props) => {
-  console.log("render Area");
+  console.debug("render Area");
 
   const { children, className, id, ...rest } = props;
 

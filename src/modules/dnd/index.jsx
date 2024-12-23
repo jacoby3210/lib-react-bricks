@@ -43,7 +43,6 @@ const Target = compose("Target")(Components.Target)(
   withValueBase
 );
 
-console.log(Source, Target);
 export const DnD = {
   // Native: {HOCs, Components, Layouts,},
 

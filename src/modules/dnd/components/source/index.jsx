@@ -8,7 +8,7 @@ import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
 
 export const Source = (props) => {
   const { children, className, id, style, value } = props;
-  console.log("render Source", id);
+  console.debug("render Source", id);
 
   const { dispatch } = useArea(null);
   const ref = useRef(null);
