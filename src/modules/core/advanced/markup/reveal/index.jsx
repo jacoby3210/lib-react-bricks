@@ -1,8 +1,8 @@
 import { useCallback, useEffect } from "react";
 import {
   createSmartContext,
-  useReducerAsContext,
-} from "@lib-react-bricks/src/modules/utils";
+  withContext,
+} from "@lib-react-bricks/src/modules/core/advanced/common/context";
 
 // -------------------------------------------------------------------------- //
 // A feature - to hide \ show children components.
@@ -13,9 +13,8 @@ import {
 // To prevent this behavior, the click event inside should not bubble.
 // -------------------------------------------------------------------------- //
 
-// -------------------------------------------------------------------------- //
-// Context and Reducer setup
-// -------------------------------------------------------------------------- //
+const ctx = createSmartContext("Reveal");
+export const { useReveal } = ctx;
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -33,63 +32,58 @@ const reducer = (state, action) => {
   }
 };
 
-const { RevealContext, useReveal } = createSmartContext("Reveal");
-export { useReveal };
+const resolver = (props) => {
+  const { shown = false, ...rest } = props;
+  const state = { shown };
+  return [state, { ...rest }];
+};
 
-// -------------------------------------------------------------------------- //
-// HOC implementation
-// -------------------------------------------------------------------------- //
+export const withReveal = (WrappedComponent) => {
+  return withContext(
+    ctx,
+    reducer,
+    resolver
+  )((props) => {
+    const {
+      children,
+      Controller = (props) => <button {...props}></button>,
+      ...rest
+    } = props;
 
-export const withReveal = (WrappedComponent) => (props) => {
-  const {
-    children = [],
-    shown = false,
-    Controller = (props) => <button {...props}></button>,
+    const ctx = useReveal();
 
-    ...rest
-  } = props;
+    const handleClick = useCallback(() => {
+      ctx.dispatch({ type: "HIDE" });
+    }, [ctx.dispatch]);
 
-  const ctx = useReducerAsContext(reducer, { shown });
+    const handleKeyDown = useCallback(
+      (evt) => {
+        if (evt.key === "Enter") ctx.dispatch({ type: "HIDE" });
+      },
+      [ctx.dispatch]
+    );
 
-  const handleClick = useCallback(() => {
-    ctx.dispatch({ type: "HIDE" });
-  }, [ctx.dispatch]);
+    useEffect(() => {
+      if (ctx.state.shown) {
+        document.addEventListener("click", handleClick);
+        document.addEventListener("keydown", handleKeyDown);
+      }
+      return () => {
+        document.removeEventListener("click", handleClick);
+        document.removeEventListener("keydown", handleKeyDown);
+      };
+    }, [ctx.state.shown, ctx.dispatch, handleClick, handleKeyDown]);
 
-  const handleKeyDown = useCallback(
-    (evt) => {
-      if (evt.key === "Enter") ctx.dispatch({ type: "HIDE" });
-    },
-    [ctx.dispatch]
-  );
-
-  useEffect(() => {
-    if (ctx.state.shown != shown) ctx.dispatch({ type: "TOGGLE" });
-  }, [ctx.dispatch, shown]);
-
-  useEffect(() => {
-    if (ctx.state.shown) {
-      document.addEventListener("click", handleClick);
-      document.addEventListener("keydown", handleKeyDown);
-    }
-    return () => {
-      document.removeEventListener("click", handleClick);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [ctx.state.shown, ctx.dispatch, handleClick, handleKeyDown]);
-
-  return (
-    <RevealContext.Provider value={ctx}>
-      {ctx.state.shown ? (
-        <>
-          <Controller {...props} />
-          <WrappedComponent {...rest} />
-          {children}
-        </>
-      ) : (
+    return ctx.state.shown ? (
+      <>
         <Controller {...props} />
-      )}
-    </RevealContext.Provider>
-  );
+        <WrappedComponent {...rest} />
+        {children}
+      </>
+    ) : (
+      <Controller {...props} />
+    );
+  });
 };
 
 // -------------------------------------------------------------------------- //
