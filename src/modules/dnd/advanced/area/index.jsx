@@ -1,12 +1,8 @@
-import React, { useRef, useReducer, useMemo, useState, useEffect } from "react";
-import { createSmartContext } from "@lib-react-bricks/src/modules/utils";
+import React, { useRef, useReducer, useMemo } from "react";
+import { Core } from "@lib-react-bricks/src/modules/core";
 
 // -------------------------------------------------------------------------- //
 // A feature - to present common drag dispatch & drag state contexts.
-// -------------------------------------------------------------------------- //
-
-// -------------------------------------------------------------------------- //
-// Context and Reducer setup
 // -------------------------------------------------------------------------- //
 
 const updateTarget = (next, prev) => {
@@ -14,6 +10,11 @@ const updateTarget = (next, prev) => {
   if (next?.current) next.current.classList.add("selected");
   prev.current = next?.current;
 };
+
+const { createSmartContext, withContext } = Core.Basics.HOCs;
+
+const ctx = createSmartContext("Area");
+export const { useArea } = ctx;
 
 const reducer = (state, action) => {
   const { components, value } = state;
@@ -45,16 +46,8 @@ const reducer = (state, action) => {
   }
 };
 
-const { DispatcherContext, useDispatcher } = createSmartContext("Dispatcher");
-const { DataContext, useData } = createSmartContext("Data");
-export { useData, useDispatcher };
-
-// -------------------------------------------------------------------------- //
-// HOC implementation
-// -------------------------------------------------------------------------- //
-
-export const withDragContext = (WrappedComponent) => (props) => {
-  const [state, dispatch] = useReducer(reducer, {
+const resolver = (props) => {
+  const state = {
     components: {
       area: useRef(null),
       cursor: useRef(null),
@@ -62,18 +55,12 @@ export const withDragContext = (WrappedComponent) => (props) => {
       target: useRef(null),
     },
     value: null,
-  });
+  };
+  return [state, props];
+};
 
-  const stateMemo = useMemo(() => state, [state.value]);
-  const componentMemo = useMemo(() => <WrappedComponent {...props} />, []);
-
-  return (
-    <DispatcherContext.Provider value={dispatch}>
-      <DataContext.Provider value={stateMemo}>
-        {componentMemo}
-      </DataContext.Provider>
-    </DispatcherContext.Provider>
-  );
+export const withArea = (WrappedComponent) => {
+  return withContext(ctx, reducer, resolver)(WrappedComponent);
 };
 
 // -------------------------------------------------------------------------- //

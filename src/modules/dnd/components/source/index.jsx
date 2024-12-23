@@ -1,22 +1,20 @@
 import React, { useRef, useCallback } from "react";
 import { Core } from "@lib-react-bricks/src/modules/core";
-import { useDispatcher } from "@lib-react-bricks/src/modules/dnd/advanced";
+import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
 
 // -------------------------------------------------------------------------- //
 // Component - to represent a possible value, to be set in Target by dnd ui.
 // -------------------------------------------------------------------------- //
 
-const { useValueBase } = Core.Basics.HOCs;
-
 export const Source = (props) => {
   const { children, className, id, style, value } = props;
   console.log("render Source", id);
 
-  const dispatcher = useDispatcher();
+  const { dispatch } = useArea(null);
   const ref = useRef(null);
 
   const handleMouseDown = useCallback(() => {
-    dispatcher({ type: "CAPTURE", payload: { ref, value } });
+    dispatch({ type: "CAPTURE", payload: { ref, value } });
   });
 
   return (

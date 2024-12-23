@@ -1,4 +1,4 @@
-import { useData } from "@lib-react-bricks/src/modules/dnd/advanced";
+import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
 
 // -------------------------------------------------------------------------- //
 // Widget - which manage the area, with dnd ui components.
@@ -9,7 +9,8 @@ export const Area = (props) => {
 
   const { children, className, id, ...rest } = props;
 
-  const area = useData((ctx) => ctx.components.area);
+  const ctxArea = useArea();
+  const { area } = ctxArea.state.components;
 
   return (
     <div id={id} className={className} ref={area} {...rest}>

@@ -1,8 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import {
-  useData,
-  useDispatcher,
-} from "@lib-react-bricks/src/modules/dnd/advanced";
+import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
 import { getEdge } from "./utils";
 
 // -------------------------------------------------------------------------- //
@@ -14,10 +11,8 @@ export const Cursor = (props) => {
 
   const { children, className, id, style } = props;
 
-  const dispatcher = useDispatcher();
-
-  const data = useData();
-  const { components, value } = data;
+  const ctxArea = useArea();
+  const { components, value } = ctxArea.state;
   const { area, cursor, source, target } = components;
 
   const edge = useRef(null);
@@ -26,7 +21,6 @@ export const Cursor = (props) => {
     if (value == null) return;
     const child = source.current.cloneNode(true);
     cursor.current.appendChild(child);
-
     const areaRect = source.current.getBoundingClientRect();
     cursor.current.style.transform = `translate(${areaRect.x}px, ${areaRect.y}px)`;
 
@@ -45,17 +39,14 @@ export const Cursor = (props) => {
 
     const handleMouseUp = () => {
       if (!target.current) {
-        dispatcher({ type: "RELEASE" });
+        ctxArea.dispatch({ type: "RELEASE" });
         return;
       }
-
       const e = new CustomEvent("drop", { detail: { value }, bubbles: true });
       target.current.dispatchEvent(e);
     };
-
     document.addEventListener("mousemove", handleMouseMoveInitial);
     document.addEventListener("mouseup", handleMouseUp);
-
     return () => {
       if (cursor.current) cursor.current.innerHTML = "";
       document.removeEventListener("mousemove", handleMouseMoveInitial);

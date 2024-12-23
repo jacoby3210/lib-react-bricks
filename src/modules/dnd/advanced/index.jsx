@@ -3,6 +3,6 @@
 // -------------------------------------------------------------------------- //
 
 // - to present common drag dispatch & drag state contexts.
-export { useData, useDispatcher, withDragContext } from "./context";
+export { useArea, withArea } from "./area";
 
 // -------------------------------------------------------------------------- //

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { Core } from "@lib-react-bricks/src/modules/core";
-import { useDispatcher } from "@lib-react-bricks/src/modules/dnd/advanced";
+import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
 
 // -------------------------------------------------------------------------- //
 // Component - which can accept and place drag-and-drop components inside it.
@@ -13,29 +13,26 @@ export const Target = (props) => {
 
   const { children, className, id, style, onDrop = (evt) => {} } = props;
 
-  const dispatcher = useDispatcher();
+  const ctxArea = useArea(null);
   const ctxValueBase = useValueBase();
   const { value } = ctxValueBase.state;
 
   const ref = useRef(null);
 
-  const handleMouseEnter = useCallback(() => {
-    dispatcher({ type: "UPDATE_TARGET", payload: { ref } });
-  }, [dispatcher]);
+  const handleMouseEnter = () => {
+    ctxArea.dispatch({ type: "UPDATE_TARGET", payload: { ref } });
+  };
 
-  const handleMouseLeave = useCallback(() => {
-    dispatcher({ type: "UPDATE_TARGET", payload: {} });
-  }, [dispatcher]);
+  const handleMouseLeave = () => {
+    ctxArea.dispatch({ type: "UPDATE_TARGET", payload: {} });
+  };
 
-  const handleDrop = useCallback(
-    (event) => {
-      const payload = { next: event.detail.value };
-      ctxValueBase.dispatch({ type: "CHANGE", payload });
-      dispatcher({ type: "RELEASE" });
-      onDrop(event);
-    },
-    [ctxValueBase, dispatcher, onDrop]
-  );
+  const handleDrop = (event) => {
+    const payload = { next: event.detail.value };
+    ctxValueBase.dispatch({ type: "CHANGE", payload });
+    ctxArea.dispatch({ type: "RELEASE" });
+    onDrop(event);
+  };
 
   const updateProps = useMemo(
     () => ({
