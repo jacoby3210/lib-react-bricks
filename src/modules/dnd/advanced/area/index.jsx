@@ -32,6 +32,13 @@ const reducer = (state, action) => {
       return { components, value: null };
     }
 
+    case "SET_AREA": {
+      const { ref } = action.payload;
+      area.current = ref?.current;
+
+      return { components, value };
+    }
+
     case "UPDATE_TARGET": {
       if (!value) return state;
       const { ref } = action.payload;
