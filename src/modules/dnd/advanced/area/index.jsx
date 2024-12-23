@@ -6,8 +6,6 @@ import { Core } from "@lib-react-bricks/src/modules/core";
 // -------------------------------------------------------------------------- //
 
 const updateTarget = (next, prev) => {
-  if (prev?.current) prev.current.classList.remove("selected");
-  if (next?.current) next.current.classList.add("selected");
   prev.current = next?.current;
 };
 
@@ -23,21 +21,22 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "CAPTURE": {
       const { ref, value } = action.payload;
-      console.log(ref, value);
       source.current = ref.current;
       return { components, value };
     }
 
     case "RELEASE": {
       source.current = null;
-      updateTarget(null, target);
+      target.current = null;
 
       return { components, value: null };
     }
 
     case "UPDATE_TARGET": {
       if (!value) return state;
-      updateTarget(action.payload.ref, target);
+      const { ref } = action.payload;
+      target.current = ref?.current;
+
       return { components, value };
     }
 

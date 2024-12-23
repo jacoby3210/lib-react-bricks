@@ -20,10 +20,12 @@ export const Target = (props) => {
   const ref = useRef(null);
 
   const handleMouseEnter = () => {
+    if (ref?.current) ref.current.classList.add("selected");
     ctxArea.dispatch({ type: "UPDATE_TARGET", payload: { ref } });
   };
 
   const handleMouseLeave = () => {
+    if (ref?.current) ref.current.classList.remove("selected");
     ctxArea.dispatch({ type: "UPDATE_TARGET", payload: {} });
   };
 
