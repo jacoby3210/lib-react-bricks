@@ -33,7 +33,7 @@ export const withContainer = (WrappedComponent) => {
 
     return (
       <Container id={id} className={className} value={value}>
-        <WrappedComponent {...props} />;
+        <WrappedComponent {...props} />
       </Container>
     );
   });
