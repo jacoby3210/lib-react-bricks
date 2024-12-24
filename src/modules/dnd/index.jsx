@@ -40,7 +40,6 @@ const Source = compose("Source")(Components.Source)(
 
 const Target = compose("Target")(Components.Target)(
   withMerge("rc-dnd-target", {}),
-  withTarget,
   withValueBase
 );
 
