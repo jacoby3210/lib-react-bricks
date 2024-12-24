@@ -22,7 +22,7 @@ const {
   withValueOption,
 } = Core.Basics.HOCs;
 
-const { withArea } = HOCs;
+const { withArea, withTarget } = HOCs;
 
 const compose =
   (name) =>
@@ -40,6 +40,7 @@ const Source = compose("Source")(Components.Source)(
 
 const Target = compose("Target")(Components.Target)(
   withMerge("rc-dnd-target", {}),
+  withTarget,
   withValueBase
 );
 
