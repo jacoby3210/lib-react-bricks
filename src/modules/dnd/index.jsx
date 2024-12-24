@@ -38,7 +38,7 @@ const Source = compose("Source")(Components.Source)(
   withValueBase
 );
 
-const Drop = compose("Drop")(Components.Target)(
+const Drop = compose("Drop")(Components.Drop)(
   withMerge("rc-dnd-drop", {}),
   withValueBase
 );

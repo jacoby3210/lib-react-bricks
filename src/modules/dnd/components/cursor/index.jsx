@@ -37,7 +37,7 @@ export const Cursor = (props) => {
       const y = Math.min(Math.max(pageY - top, 0), bottom);
       cursor.current.style.transform = `translate(${x}px, ${y}px)`;
 
-      triggerEvent(target, "dragover", { detail: { value } });
+      triggerEvent(target, "dragenter", { detail: { value } });
     };
 
     const handleMouseUp = () => {
