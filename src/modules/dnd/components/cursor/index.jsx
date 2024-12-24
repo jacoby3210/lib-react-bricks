@@ -31,13 +31,17 @@ export const Cursor = (props) => {
       document.addEventListener("mousemove", handleMouseMove);
     };
 
-    const handleMouseMove = ({ pageX, pageY, target }) => {
+    const handleMouseMove = (event) => {
       const { left, top, right, bottom } = edge.current;
-      const x = Math.min(Math.max(pageX - left, 0), right);
-      const y = Math.min(Math.max(pageY - top, 0), bottom);
+      const x = Math.min(Math.max(event.pageX - left, 0), right);
+      const y = Math.min(Math.max(event.pageY - top, 0), bottom);
       cursor.current.style.transform = `translate(${x}px, ${y}px)`;
 
-      triggerEvent(target, "dragenter", { detail: { value } });
+      if (event.target != target.current) {
+        if (target.current)
+          triggerEvent(target.current, "dragleave", { detail: { value } });
+        triggerEvent(event.target, "dragenter", { detail: { value } });
+      }
     };
 
     const handleMouseUp = () => {
