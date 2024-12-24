@@ -25,6 +25,6 @@ export { isObject } from "./shortcuts/isObject";
 export { triggerEvent } from "./shortcuts/triggerEvent";
 
 // to handle mounting \ unmounting of components
-export { useEffectMount } from "./shortcuts/useEffectMount";
+export { useMount } from "./shortcuts/useMount";
 
 // -------------------------------------------------------------------------- //
