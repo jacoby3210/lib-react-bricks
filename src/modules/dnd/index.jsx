@@ -38,11 +38,6 @@ const Source = compose("Source")(Components.Source)(
   withValueBase
 );
 
-const Drop = compose("Drop")(Components.Drop)(
-  withMerge("rc-dnd-drop", {}),
-  withValueBase
-);
-
 const Slot = compose("Slot")(Components.Target)(
   withMerge("rc-dnd-slot", {}),
   withValueBase
@@ -54,7 +49,7 @@ export const DnD = {
   Components: {
     ...compose("Cursor")(Components.Cursor)(withMerge("rc-dnd-cursor", {})),
     ...Source,
-    ...Drop,
+    ...compose("Drop")(Components.Drop)(withMerge("rc-dnd-drop", {})),
     ...Slot,
   },
 

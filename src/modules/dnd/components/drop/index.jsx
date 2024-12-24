@@ -13,7 +13,8 @@ export const Drop = (props) => {
     className,
     id,
     style,
-    onDragOver = (evt) => {},
+    onDragEnter = (evt) => {},
+    onDragLeave = (evt) => {},
     onDrop = (evt) => {},
     ...rest
   } = props;
@@ -23,14 +24,15 @@ export const Drop = (props) => {
   const ref = useRef(null);
 
   const handleDragEnter = (event) => {
-    console.debug(`fired handleMouseEnter ${event.detail.value}`);
-    onDragOver(event);
+    console.debug(`fired handleDragEnter ${event.detail.value}`);
+    onDragEnter(event);
     ref.current.classList.add("selected");
     ctxArea.dispatch({ type: "UPDATE_TARGET", payload: { ref } });
   };
 
-  const handleDragLeave = () => {
-    console.debug(`fired handleMouseLeave ${id}`);
+  const handleDragLeave = (event) => {
+    console.debug(`fired handleDragLeave ${id}`);
+    onDragLeave(event);
     if (ref?.current) ref.current.classList.remove("selected");
     ctxArea.dispatch({ type: "UPDATE_TARGET", payload: {} });
   };
