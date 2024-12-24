@@ -33,17 +33,16 @@ const compose =
 // export api
 // -------------------------------------------------------------------------- //
 
-const Source = compose("Source")(Components.Source)(
-  withMerge("rc-dnd-source", {}),
-  withValueBase
-);
-
 export const DnD = {
   // Native: {HOCs, Components, Layouts,},
 
   Components: {
     ...compose("Cursor")(Components.Cursor)(withMerge("rc-dnd-cursor", {})),
-    ...Source,
+
+    ...compose("Source")(Components.Source)(
+      withMerge("rc-dnd-source", {}),
+      withValueBase
+    ),
 
     ...compose("Drop")(Components.Drop)(withMerge("rc-dnd-drop", {})),
 
