@@ -18,19 +18,13 @@ export { resolveFunction } from "./resolve/function";
 
 // Shortcut
 
-// to simplify context creation.
-export { createSmartContext } from "./shortcuts/createSmartContext";
+// to check if the variable is of array type.
+export { isObject } from "./shortcuts/isObject";
 
 // to send customizable events.
 export { triggerEvent } from "./shortcuts/triggerEvent";
 
-// to check if the variable is of array type.
-export { isObject } from "./shortcuts/isObject";
-
 // to handle mounting \ unmounting of components
 export { useEffectMount } from "./shortcuts/useEffectMount";
-
-// to converts the array returned by useReducer into object.
-export { useReducerAsContext } from "./shortcuts/useReducerAsContext";
 
 // -------------------------------------------------------------------------- //
