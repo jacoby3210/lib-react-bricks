@@ -14,4 +14,7 @@ export { Target } from "./target";
 // - to accept and handle drag source components inside it.
 export { Drop } from "./drop";
 
+// - which can accept and place drag-and-drop components inside it.
+export { Slot } from "./slot";
+
 // -------------------------------------------------------------------------- //
