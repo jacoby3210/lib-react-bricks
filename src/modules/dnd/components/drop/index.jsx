@@ -25,6 +25,7 @@ export const Drop = (props) => {
 
   const handleDragEnter = (event) => {
     console.debug(`fired handleDragEnter ${event.detail.value}`);
+
     onDragEnter(event);
     ref.current.classList.add("selected");
     ctxArea.dispatch({ type: "UPDATE_TARGET", payload: { ref } });
@@ -32,15 +33,18 @@ export const Drop = (props) => {
 
   const handleDragLeave = (event) => {
     console.debug(`fired handleDragLeave ${id}`);
+
     onDragLeave(event);
-    if (ref?.current) ref.current.classList.remove("selected");
     ctxArea.dispatch({ type: "UPDATE_TARGET", payload: {} });
+    ref.current.classList.remove("selected");
   };
 
   const handleDrop = (event) => {
     console.debug(`fired handleDrop ${id}`);
+
     onDrop(event);
     ctxArea.dispatch({ type: "RELEASE" });
+    ref.current.classList.remove("selected");
   };
 
   const behavior = {
