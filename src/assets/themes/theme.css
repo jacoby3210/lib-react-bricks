@@ -109,3 +109,24 @@ body {
   background-color: blue;
   color: white;
 }
+
+.rc-dnd-vault {
+  display: flex;
+  flex-direction: row;
+  height: max-content;
+  width: max-content;
+}
+
+.rc-dnd-vault .rc-dnd-slot {
+  border: 2px solid black;
+  margin: 5px;
+  height: 100px;
+  width: 100px;
+}
+
+.rc-dnd-drag {
+  background-color: red;
+  height: 100px;
+  width: 100px;
+  user-select: none;
+}

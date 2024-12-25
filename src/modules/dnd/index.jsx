@@ -39,7 +39,7 @@ export const DnD = {
   Components: {
     ...compose("Cursor")(Components.Cursor)(withMerge("rc-dnd-cursor", {})),
 
-    ...compose("Drag")(Components.Drag)(withMerge("rc-dnd-source", {})),
+    ...compose("Drag")(Components.Drag)(withMerge("rc-dnd-drag", {})),
 
     ...compose("Drop")(Components.Drop)(withMerge("rc-dnd-drop", {})),
 
@@ -51,6 +51,10 @@ export const DnD = {
 
   Layouts: {
     ...compose("Area")(Layouts.Area)(withMerge("rc-dnd-area", {}), withArea),
+    ...compose("Vault")(Layouts.Vault)(
+      withMerge("rc-dnd-vault", {}),
+      withRepeat
+    ),
   },
 };
 
