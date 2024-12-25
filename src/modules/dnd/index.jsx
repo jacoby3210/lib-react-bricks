@@ -34,15 +34,12 @@ const compose =
 // -------------------------------------------------------------------------- //
 
 export const DnD = {
-  // Native: {HOCs, Components, Layouts,},
+  Basics: { HOCs, Components, Layouts },
 
   Components: {
     ...compose("Cursor")(Components.Cursor)(withMerge("rc-dnd-cursor", {})),
 
-    ...compose("Source")(Components.Source)(
-      withMerge("rc-dnd-source", {}),
-      withValueBase
-    ),
+    ...compose("Drag")(Components.Drag)(withMerge("rc-dnd-source", {})),
 
     ...compose("Drop")(Components.Drop)(withMerge("rc-dnd-drop", {})),
 

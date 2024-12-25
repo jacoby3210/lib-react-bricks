@@ -6,7 +6,7 @@
 export { Cursor } from "./cursor";
 
 // - to represent a possible value, to be set in Target by dnd ui.
-export { Source } from "./source";
+export { Drag } from "./drag";
 
 // - to accept and handle drag source components inside it.
 export { Drop } from "./drop";

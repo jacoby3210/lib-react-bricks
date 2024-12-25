@@ -6,7 +6,7 @@ import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
 // Component - to represent a possible value, to be set in Target by dnd ui.
 // -------------------------------------------------------------------------- //
 
-export const Source = (props) => {
+export const Drag = (props) => {
   const { children, className, id, style, value } = props;
   console.debug("render Source", id);
 
