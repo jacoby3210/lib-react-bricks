@@ -39,7 +39,10 @@ export const DnD = {
   Components: {
     ...compose("Cursor")(Components.Cursor)(withMerge("rc-dnd-cursor", {})),
 
-    ...compose("Drag")(Components.Drag)(withMerge("rc-dnd-drag", {})),
+    ...compose("Drag")(Components.Drag)(
+      withMerge("rc-dnd-drag", {}),
+      withValueBase
+    ),
 
     ...compose("Drop")(Components.Drop)(withMerge("rc-dnd-drop", {})),
 

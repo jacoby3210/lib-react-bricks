@@ -6,15 +6,19 @@ import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
 // Component - to represent a possible value, to be set in Target by dnd ui.
 // -------------------------------------------------------------------------- //
 
+const { useValueBase } = Core.Basics.HOCs;
+
 export const Drag = (props) => {
-  const { children, className, id, style, value } = props;
+  const { children, className, id, style } = props;
   console.debug("render Source", id);
 
-  const { dispatch } = useArea(null);
+  const ctxArea = useArea(null);
+  const ctxValueBase = useValueBase();
+  const { value } = ctxValueBase.state;
   const ref = useRef(null);
 
   const handleMouseDown = useCallback(() => {
-    dispatch({ type: "CAPTURE", payload: { ref, value } });
+    ctxArea.dispatch({ type: "CAPTURE", payload: { ref, value } });
   });
 
   return (
