@@ -18,7 +18,8 @@ export const Drag = (props) => {
   const ref = useRef(null);
 
   const handleMouseDown = useCallback(() => {
-    ctxArea.dispatch({ type: "CAPTURE", payload: { ref, value } });
+    const payload = { ref, value };
+    ctxArea.dispatch({ type: "CAPTURE", payload });
   });
 
   return (
