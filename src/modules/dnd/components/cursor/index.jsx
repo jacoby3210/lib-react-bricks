@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { triggerEvent } from "@lib-react-bricks/src/modules/utils";
 import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
-import { getEdge } from "./utils";
+import { initCursor, getEdge } from "./utils";
 
 // -------------------------------------------------------------------------- //
 // Component - to display the dragging process of the source component
@@ -20,10 +20,8 @@ export const Cursor = (props) => {
 
   useEffect(() => {
     if (value == null) return;
-    const child = source.current.cloneNode(true);
-    cursor.current.appendChild(child);
-    const areaRect = source.current.getBoundingClientRect();
-    cursor.current.style.transform = `translate(${areaRect.x}px, ${areaRect.y}px)`;
+
+    initCursor(components);
 
     const handleMouseMoveInitial = (event) => {
       edge.current = getEdge(components, event);
@@ -54,6 +52,7 @@ export const Cursor = (props) => {
 
     document.addEventListener("mousemove", handleMouseMoveInitial);
     document.addEventListener("mouseup", handleMouseUp);
+
     return () => {
       if (cursor.current) cursor.current.innerHTML = "";
       document.removeEventListener("mousemove", handleMouseMoveInitial);

@@ -3,6 +3,19 @@
 // -------------------------------------------------------------------------- //
 
 // -------------------------------------------------------------------------- //
+// Initialization of cursor at activation
+// -------------------------------------------------------------------------- //
+
+export const initCursor = (components) => {
+  const { area, cursor, source, target } = components;
+  const child = source.current.cloneNode(true);
+  cursor.current.appendChild(child);
+
+  const sourceRect = source.current.getBoundingClientRect();
+  cursor.current.style.transform = `translate(${sourceRect.x}px, ${sourceRect.y}px)`;
+};
+
+// -------------------------------------------------------------------------- //
 // calculate the bounding box for moving an drag element
 // -------------------------------------------------------------------------- //
 
