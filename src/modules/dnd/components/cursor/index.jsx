@@ -47,7 +47,7 @@ export const Cursor = (props) => {
         ctxArea.dispatch({ type: "RELEASE" });
         return;
       }
-      triggerEvent(target.current, "drop", { detail: { value } });
+      triggerEvent(target.current, "drop", { detail: { ref: source, value } });
     };
 
     document.addEventListener("mousemove", handleMouseMoveInitial);
