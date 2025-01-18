@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import "@lib-react-bricks/src/assets/themes/theme.css";
-import { PageCoreComponents } from "@lib-react-bricks/src/modules/core/pages/components";
-import { PageCoreLayouts } from "@lib-react-bricks/src/modules/core/pages/layouts";
-import { PageDnDLayouts } from "@lib-react-bricks/src/modules/dnd/pages/layouts";
+import "/src/assets/themes/theme.css";
+import { PageCoreComponents } from "/src/modules/core/pages/components";
+import { PageCoreLayouts } from "/src/modules/core/pages/layouts";
+import { PageDnDLayouts } from "/src/modules/dnd/pages/layouts";
 
 // ------------------------------------------------------------------------- //
 // Main Application Router.

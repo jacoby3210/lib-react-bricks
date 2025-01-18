@@ -1,5 +1,5 @@
 import React, { useMemo, useRef } from "react";
-import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
+import { useArea } from "/src/modules/dnd/advanced";
 
 // -------------------------------------------------------------------------- //
 // Component - to accept and handle drag source components inside it.

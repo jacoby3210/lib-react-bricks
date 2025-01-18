@@ -1,9 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useValueDigital } from "@lib-react-bricks/src/modules/core/advanced";
-import {
-  resolveAxis,
-  resolveClassName,
-} from "@lib-react-bricks/src/modules/utils";
+import { useValueDigital } from "/src/modules/core/advanced";
+import { resolveAxis, resolveClassName } from "/src/modules/utils";
 import * as code from "./utils";
 
 // -------------------------------------------------------------------------- //

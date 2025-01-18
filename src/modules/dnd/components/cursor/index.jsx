@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { triggerEvent } from "@lib-react-bricks/src/modules/utils";
-import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
+import { triggerEvent } from "/src/modules/utils";
+import { useArea } from "/src/modules/dnd/advanced";
 import { initCursor, getEdge } from "./utils";
 
 // -------------------------------------------------------------------------- //

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Core } from "@lib-react-bricks/src/modules/core";
+import { Core } from "/src/modules/core";
 
 // -------------------------------------------------------------------------- //
 // Widget - multiply slots, which can accept and place drag component inside.

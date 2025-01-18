@@ -1,6 +1,6 @@
 import React from "react";
-import { Core } from "@lib-react-bricks/src/modules/core";
-import { DnD } from "@lib-react-bricks/src/modules/dnd";
+import { Core } from "/src/modules/core";
+import { DnD } from "/src/modules/dnd";
 import { props } from "./config";
 
 // -------------------------------------------------------------------------- //

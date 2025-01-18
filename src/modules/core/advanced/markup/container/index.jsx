@@ -1,7 +1,7 @@
 import {
   createSmartContext,
   withContext,
-} from "@lib-react-bricks/src/modules/core/advanced/common/context";
+} from "/src/modules/core/advanced/common/context";
 
 // -------------------------------------------------------------------------- //
 //  A feature - to wrap base component into ui block (<div>).

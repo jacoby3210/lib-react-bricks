@@ -1,7 +1,12 @@
+import { Core } from "/src/modules/core";
+import { DnD } from "/src/modules/dnd";
 // -------------------------------------------------------------------------- //
 // Header file for export module.
 // -------------------------------------------------------------------------- //
 
-export { BRICKS } from "./dist/BRICKS.es.js";
+export const BRICKS = {
+  Core,
+  DnD,
+};
 
 // -------------------------------------------------------------------------- //

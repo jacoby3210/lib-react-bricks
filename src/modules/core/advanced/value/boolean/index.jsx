@@ -1,7 +1,7 @@
 import {
   createSmartContext,
   withContext,
-} from "@lib-react-bricks/src/modules/core/advanced/common/context";
+} from "/src/modules/core/advanced/common/context";
 
 // -------------------------------------------------------------------------- //
 // A feature - to handle a change in the value (type: boolean).

@@ -1,17 +1,25 @@
-import path from 'path';
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import {viteConsolePro} from 'vite-plugin-console-pro'
+import { defineConfig } from "vite";
+import { viteConsolePro } from "vite-plugin-console-pro";
+import path from "path";
+import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(), 
-    viteConsolePro({exclude: ["node_modules"]}),
-  ],
-  resolve: {
-    alias: {
-      '@lib-react-bricks/src/': "/src/",
-    }
-  }
-})
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, "src/index.jsX"),
+      name: "BRICKS",
+      fileName: (format) => `BRICKS.${format}.js`,
+    },
+    rollupOptions: {
+      external: ["react", "react-dom"],
+      output: {
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
+      },
+    },
+  },
+  plugins: [react(), viteConsolePro({ exclude: ["node_modules"] })],
+});

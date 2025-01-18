@@ -1,5 +1,5 @@
-import { useReveal } from "@lib-react-bricks/src/modules/core/advanced";
-import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
+import { useReveal } from "/src/modules/core/advanced";
+import { resolveClassName } from "/src/modules/utils";
 
 // -------------------------------------------------------------------------- //
 // Base component - to render the content of the reveal.

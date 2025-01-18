@@ -1,7 +1,7 @@
 import {
   createSmartContext,
   withContext,
-} from "@lib-react-bricks/src/modules/core/advanced/common/context";
+} from "/src/modules/core/advanced/common/context";
 import { getIndex, resolveProps } from "./utils";
 
 // -------------------------------------------------------------------------- //

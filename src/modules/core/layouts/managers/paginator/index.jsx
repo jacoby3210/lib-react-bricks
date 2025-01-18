@@ -1,4 +1,4 @@
-import { Navigator } from "@lib-react-bricks/src/modules/core/layouts/managers/navigator";
+import { Navigator } from "/src/modules/core/layouts/managers/navigator";
 
 // -------------------------------------------------------------------------- //
 // Layout Manager - to switch of displayed content in the view by the page index.

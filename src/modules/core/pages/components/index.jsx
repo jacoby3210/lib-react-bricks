@@ -1,4 +1,4 @@
-import { Core } from "@lib-react-bricks/src/modules/core";
+import { Core } from "/src/modules/core";
 import { props } from "./config";
 
 // -------------------------------------------------------------------------- //

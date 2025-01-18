@@ -1,5 +1,5 @@
-import { useValueOption } from "@lib-react-bricks/src/modules/core/advanced";
-import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
+import { useValueOption } from "/src/modules/core/advanced";
+import { resolveClassName } from "/src/modules/utils";
 
 // -------------------------------------------------------------------------- //
 // Field - to select one option from the source list (alt mode \ enum).

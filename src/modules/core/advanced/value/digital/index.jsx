@@ -1,8 +1,8 @@
-import { resolveFunction } from "@lib-react-bricks/src/modules/utils";
+import { resolveFunction } from "/src/modules/utils";
 import {
   createSmartContext,
   withContext,
-} from "@lib-react-bricks/src/modules/core/advanced/common/context";
+} from "/src/modules/core/advanced/common/context";
 import { getCandidate, normalize } from "./utils";
 
 // -------------------------------------------------------------------------- //

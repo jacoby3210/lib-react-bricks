@@ -1,8 +1,5 @@
-import {
-  useContainer,
-  useValueOption,
-} from "@lib-react-bricks/src/modules/core/advanced";
-import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
+import { useContainer, useValueOption } from "/src/modules/core/advanced";
+import { resolveClassName } from "/src/modules/utils";
 
 // -------------------------------------------------------------------------- //
 // Layout Manager - to switch of displayed content in the view by linear order.

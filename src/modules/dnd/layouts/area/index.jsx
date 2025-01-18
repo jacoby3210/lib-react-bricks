@@ -1,4 +1,4 @@
-import { useArea } from "@lib-react-bricks/src/modules/dnd/advanced";
+import { useArea } from "/src/modules/dnd/advanced";
 import { useRef } from "react";
 import { useEffect } from "react";
 

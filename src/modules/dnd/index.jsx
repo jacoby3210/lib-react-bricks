@@ -1,4 +1,4 @@
-import { Core } from "@lib-react-bricks/src/modules/core";
+import { Core } from "/src/modules/core";
 import * as HOCs from "./advanced";
 import * as Components from "./components";
 import * as Layouts from "./layouts";

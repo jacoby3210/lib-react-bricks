@@ -1,11 +1,8 @@
-import {
-  resolveData,
-  resolveFunction,
-} from "@lib-react-bricks/src/modules/utils";
+import { resolveData, resolveFunction } from "/src/modules/utils";
 import {
   createSmartContext,
   withContext,
-} from "@lib-react-bricks/src/modules/core/advanced/common/context";
+} from "/src/modules/core/advanced/common/context";
 
 // -------------------------------------------------------------------------- //
 // A feature - to create a list of child components according to the template.

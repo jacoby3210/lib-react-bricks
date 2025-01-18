@@ -1,4 +1,4 @@
-import { useRepeat } from "@lib-react-bricks/src/modules/core/advanced";
+import { useRepeat } from "/src/modules/core/advanced";
 
 // -------------------------------------------------------------------------- //
 // Base component - to generate a gui for an item in an source data by default.

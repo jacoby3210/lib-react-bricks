@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
-import { useValueDigital } from "@lib-react-bricks/src/modules/core/advanced";
-import { resolveClassName } from "@lib-react-bricks/src/modules/utils";
+import { useValueDigital } from "/src/modules/core/advanced";
+import { resolveClassName } from "/src/modules/utils";
 
 // -------------------------------------------------------------------------- //
 // Control - to manage the increase/decrease of the digital value.

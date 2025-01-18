@@ -4,11 +4,11 @@
   "version": "0.0.10",
   "type": "module",
   "exports": {
-    "import": "./index",
-    "require": "./index"
+    "require": "./index.jsx",
+    "import": "./index.jsx"
   },
-  "main": "./index",
-  "module": "./index",
+  "main": "./src/index",
+  "module": "./src/index",
   "scripts": {
     "build": "vite build",
     "dev": "vite",

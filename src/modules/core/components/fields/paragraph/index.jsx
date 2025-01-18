@@ -1,4 +1,4 @@
-import { useValueLiteral } from "@lib-react-bricks/src/modules/core/advanced";
+import { useValueLiteral } from "/src/modules/core/advanced";
 
 // -------------------------------------------------------------------------- //
 // Field - to display and edit multiline text (paragraph).

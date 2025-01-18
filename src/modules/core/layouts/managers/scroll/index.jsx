@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { useValueDigital } from "@lib-react-bricks/src/modules/core/advanced";
-import { Range, Swing } from "@lib-react-bricks/src/modules/core/components";
-import { resolveAxis } from "@lib-react-bricks/src/modules/utils";
+import { useValueDigital } from "/src/modules/core/advanced";
+import { Range, Swing } from "/src/modules/core/components";
+import { resolveAxis } from "/src/modules/utils";
 import { toValue, valueToPosition } from "./utils";
 // -------------------------------------------------------------------------- //
 // Layout Manager - to scroll the content in the element.
