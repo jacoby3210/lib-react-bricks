@@ -5,6 +5,28 @@ import { resolveClassName } from "/src/modules/utils";
 // Widget - which displays a tag cloud, with support for adding and deleting tags.
 // -------------------------------------------------------------------------- //
 
+const CheckListItem = ({ className, item, handleChange, text, value }) => {
+  return (
+    <label className={className} value={value}>
+      <input
+        id={item.label}
+        className={resolveClassName(className, "input")}
+        checked={value}
+        type='checkbox'
+        onChange={handleChange}
+      />
+      <img className={resolveClassName(className, "image")} src={item?.icon} />
+      <label
+        className={resolveClassName(className, "summary")}
+        htmlFor={item.label}
+      >
+        {text}
+      </label>
+      <span></span>
+    </label>
+  );
+};
+
 const Template = (props) => {
   const { item, index, ...attributes } = props;
 
@@ -24,23 +46,14 @@ const Template = (props) => {
     ctxValueBase.dispatch({ type: "CHANGE", payload: { next } });
   };
 
-  return (
-    <li className={className} value={resolveValue} {...attributes}>
-      <input
-        id={item.label}
-        className={resolveClassName(className, "checkbox")}
-        checked={resolveValue}
-        type='checkbox'
-        onChange={handleChange}
-      />
-      <label
-        className={resolveClassName(className, "summary")}
-        htmlFor={item.label}
-      >
-        {resolveText}
-      </label>
-    </li>
-  );
+  const updateProps = {
+    className: resolveClassName(className, "item"),
+    item,
+    handleChange,
+    text: resolveText,
+    value: resolveValue,
+  };
+  return <CheckListItem {...updateProps} />;
 };
 
 export const CheckList = { Template };

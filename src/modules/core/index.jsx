@@ -158,7 +158,7 @@ export const Core = {
     ),
 
     ...compose("CheckList")()(
-      withMerge("rc-checklist", { ...Layouts.CheckList }),
+      withMerge("rc-checklist", { value: [], ...Layouts.CheckList }),
       withValueBase,
       withContainer,
       withRepeat
