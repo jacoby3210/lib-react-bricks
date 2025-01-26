@@ -1,4 +1,4 @@
-import { resolveFunction } from "/src/modules/utils";
+import { resolveCallback } from "/src/modules/utils";
 import {
   createSmartContext,
   withContext,
@@ -36,8 +36,8 @@ const resolver = (props) => {
 
   const { value = "" } = props;
 
-  const maxResolve = resolveFunction(max, props);
-  const minResolve = resolveFunction(min, props);
+  const maxResolve = resolveCallback(max, props);
+  const minResolve = resolveCallback(min, props);
 
   const state = {
     max: maxResolve,

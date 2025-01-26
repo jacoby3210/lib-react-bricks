@@ -1,4 +1,4 @@
-import { resolveData, resolveFunction } from "/src/modules/utils";
+import { resolveCallback, resolveData } from "/src/modules/utils";
 import {
   createSmartContext,
   withContext,
@@ -53,9 +53,9 @@ const resolver = (props) => {
   const dataResolve = resolveData(data);
   const datasetResolve = dataset ? dataset : dataResolve;
 
-  const firstResolve = resolveFunction(first, props);
+  const firstResolve = resolveCallback(first, props);
   const lengthResolve =
-    resolveFunction(length, props) == -1
+    resolveCallback(length, props) == -1
       ? datasetResolve.length
       : Math.min(datasetResolve.length, length);
   const lastResolve = firstResolve + lengthResolve;

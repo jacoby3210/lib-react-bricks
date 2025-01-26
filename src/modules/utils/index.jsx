@@ -7,14 +7,14 @@
 // to resolve the property axis to a set of properties (vertically or horizontally).
 export { resolveAxis } from "./resolve/axis";
 
-// to resolve the property data to a set of properties.
-export { resolveData } from "./resolve/data";
-
 // to resolve additional css classes based on the first one.
 export { resolveClassName } from "./resolve/className";
 
 // to resolve the property to a summary value.
-export { resolveFunction } from "./resolve/function";
+export { resolveCallback } from "./resolve/callback";
+
+// to resolve the property data to a set of properties.
+export { resolveData } from "./resolve/data";
 
 // Shortcut
 
