@@ -50,7 +50,7 @@ const resolver = (props) => {
     ...rest
   } = props;
 
-  const dataResolve = resolveData(data);
+  const dataResolve = resolveData(data, rest);
   const datasetResolve = dataset ? dataset : dataResolve;
 
   const firstResolve = resolveCallback(first, props);
