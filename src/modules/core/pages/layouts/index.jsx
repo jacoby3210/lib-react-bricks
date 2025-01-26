@@ -18,7 +18,8 @@ export const PageCoreLayouts = () => {
 
   return (
     <div id='core-layouts'>
-      <Core.Layouts.Scroll {...props.scroll} target={areaRef} />
+      <Core.Layouts.Path value={"\\core\\layouts\\index.html"} />
+      {/* <Core.Layouts.Scroll {...props.scroll} target={areaRef} />
       <TestAreaForScroll />
 
       <Core.Templates.Browser {...props.browser} />
@@ -31,7 +32,7 @@ export const PageCoreLayouts = () => {
 
       <Core.Layouts.CheckList {...props.checklist} />
       <Core.Layouts.Inspector {...props.inspector} />
-      <Core.Layouts.Menu {...props.menu} />
+      <Core.Layouts.Menu {...props.menu} /> */}
     </div>
   );
 };

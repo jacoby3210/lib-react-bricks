@@ -126,6 +126,13 @@ export const Core = {
       withRepeat
     ),
 
+    ...compose("Path")(Layouts.Path.Container)(
+      withMerge("rc-path", { ...Layouts.Path }),
+      withContainer,
+      withValueBase,
+      withRepeat
+    ),
+
     ...compose("Scroll")(Layouts.Scroll)(
       withMerge("rc-scroll", {
         axis: false,
@@ -157,7 +164,7 @@ export const Core = {
       withRepeat
     ),
 
-    ...compose("CheckList")()(
+    ...compose("CheckList")(Components.Container)(
       withMerge("rc-checklist", { value: [], ...Layouts.CheckList }),
       withValueBase,
       withContainer,
