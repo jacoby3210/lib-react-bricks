@@ -25,10 +25,10 @@ const Template = (props) => {
     <label className={resolveClassName(className, "option")} key={index}>
       <input
         className={resolveClassName(className, "input")}
-        checked={item.value == value}
+        checked={item.id == value}
         name={name}
         type='radio'
-        value={item.value}
+        value={item.id}
         onChange={handleChange}
       />
       {item.label}
